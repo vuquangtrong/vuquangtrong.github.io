@@ -1,17 +1,26 @@
-/* 
- * Code, not Hack
+/* Theme for Code the Heck blog
  * vuquangtrong.github.io
  */
 
-/* Body */
+html,
 body {
-    font-size: large;
+    /* make sure footer is at the bottom */
+    height: 100%;
 }
 
-/* Navigation */
 nav {
     min-height: 42px;
-    font-weight: 500;
+}
+
+p {
+    text-align: justify;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+}
+
+a:hover {
+    color: orange;
+    text-decoration: none;
 }
 
 .navbar-brand {
@@ -23,17 +32,13 @@ nav {
     color: orange !important;
 }
 
-.nav-link.active {
-    color: black !important;
+.active {
+    color: orange !important;
+    border-bottom: 2px green solid;
 }
 
-.navbar-toggler {
-    font-size: unset;
-}
-
-/* Header */
-header {
-    color: white;
+.badge {
+    font-weight: unset;
 }
 
 header:after {
@@ -44,7 +49,7 @@ header:after {
     right: 0;
     bottom: 0;
     left: 0;
-    background: url("../images/header.png");
+    background: url("images/header.png");
     opacity: .8;
 }
 
@@ -57,22 +62,38 @@ header a:hover {
     text-decoration: none;
 }
 
-/* Main */
-pre {
-    margin-bottom: 0 !important;
+footer a {
+    color: orange;
 }
 
-a:hover {
+footer a:hover {
     color: orange;
     text-decoration: none;
 }
 
-/* Topics and Tags */
-.badge {
-    font-weight: unset;
+blockquote {
+    font-style: italic;
+    font-size: unset !important;
+}
+
+table caption {
+	caption-side: top;
+	padding-bottom: 0;
+	font-style: italic;
+	text-align: right;
 }
 
 /* Code color scheme */
+pre {
+    margin-bottom: 0 !important;
+}
+
+samp {
+	border: 1px green dashed;
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+}
+
 .highlight,
 .highlighttable .linenodiv {
     border-radius: 0.25rem !important;
@@ -89,20 +110,4 @@ a:hover {
 /* Ads */
 .ads {
 	opacity: 0.5;
-}
-
-/* Footer */
-footer {
-    margin-top: 1rem;
-    font-size: smaller;
-    color: white;
-}
-
-footer a {
-    color: orange;
-}
-
-footer a:hover {
-    color: orange;
-    text-decoration: none;
 }
