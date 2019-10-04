@@ -9,6 +9,8 @@ $(window).scroll(function(e) {
     var scroll = $(window).scrollTop();
     if (scroll >= 150) {
         $('.navbar').addClass("navbar-hide");
+        // force to hide expanded navbar
+        $('#navbarMenu').collapse('hide');
     } else {
         $('.navbar').removeClass("navbar-hide");
     }
