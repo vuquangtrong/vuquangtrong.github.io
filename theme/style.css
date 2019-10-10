@@ -43,6 +43,10 @@ nav .form-control:focus {
     border-bottom: 2px green solid;
 }
 
+nav#toc {
+    padding-top: 28px;
+}
+
 p,
 pre,
 dl,
@@ -139,6 +143,19 @@ span:hover .post-date {
 
 span:hover .modified-date {
     display: inline;
+}
+
+nav[data-toggle=toc] .nav-link.active, nav[data-toggle=toc] .nav-link.active:focus, nav[data-toggle=toc] .nav-link.active:hover {
+    color: #007bff;
+}
+
+nav[data-toggle=toc] .nav>li>a {
+    font-weight: unset;
+    font-size: 14px;
+}
+
+nav[data-toggle=toc] .nav .nav>li>a {
+    font-size: 13px;
 }
 
 /* style to add line number into codeblock */

@@ -61,6 +61,10 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/css/bootstrap.min.css">
         -->
         <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/bootstrap.min.css">
+        <!--
+        <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css">
+        -->
+        <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/bootstrap-toc.min.css">
         <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/friendly.min.css">
         <!--
         <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/admonition.css">
@@ -88,7 +92,7 @@
 </head>
 
 <!-- Body -->
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" data-spy="scroll" data-target="#toc" style="position: relative;">
     <!-- Google tag manager -->
 
     <!-- Navigation -->
@@ -216,8 +220,9 @@
                 <!-- Sharing -->
 
                 <!-- Content -->
-    <div>
-        <h3 id="show-update-data">Show update&nbsp;data</h3>
+        <!-- Article -->
+        <div>
+            <h3 id="show-update-data">Show update&nbsp;data</h3>
 <div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card-link text-success&quot;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;post-date&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Post date&quot;</span><span class="p">&gt;</span>{{ article.locale_date }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-info modified-date&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Updated date&quot;</span><span class="p">&gt;</span>{{ article.locale_modified }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -229,7 +234,18 @@
 <span class="nt">span</span><span class="p">:</span><span class="nd">hover</span> <span class="p">.</span><span class="nc">post-date</span> <span class="p">{</span> <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> <span class="p">}</span>
 <span class="nt">span</span><span class="p">:</span><span class="nd">hover</span> <span class="p">.</span><span class="nc">modified-date</span> <span class="p">{</span> <span class="k">display</span><span class="p">:</span> <span class="kc">inline</span><span class="p">;</span> <span class="p">}</span>
 </pre></div>
-    </div>
+        </div>
+
+    <!-- Releated posts -->
+        <hr>
+        <div>
+            <h5>Related posts:</h5>
+            <ul>
+                <li><a href="https://vuquangtrong.github.io/blog/setup-blog-with-bootstrap-and-pelican.html">Setup blog with Bootstrap and&nbsp;Pelican</a></li>
+                <li><a href="https://vuquangtrong.github.io/blog/simplify-article.html">Simplify&nbsp;Article</a></li>
+                <li><a href="https://vuquangtrong.github.io/blog/advanced-markdown-with-bootstrap-theme.html">Advanced Markdown with Bootstrap&nbsp;theme</a></li>
+            </ul>
+        </div>
 
                 <!-- Google Adsense -->
             </div>
@@ -252,6 +268,10 @@
     <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/bootstrap.min.js"></script>
     -->
     <script type="text/javascript" src="https://vuquangtrong.github.io/theme/bootstrap.min.js"></script>
+    <!--
+    <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
+    -->
+    <script type="text/javascript" src="https://vuquangtrong.github.io/theme/bootstrap-toc.min.js"></script>
     <script type="text/javascript" src="https://vuquangtrong.github.io/theme/style.js"></script>
 
     <!-- Sharing -->

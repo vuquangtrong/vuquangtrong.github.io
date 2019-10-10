@@ -30,3 +30,10 @@ $(window).scroll(function(e) {
 /* add classes into tables */
 $("table:not(.highlighttable)").addClass("table table-hover table-sm table-bordered");
 $("thead").addClass("thead-light");
+
+
+/* add highlight for TOC */ 
+/*
+$("#toc")
+<nav id="navbarToC" class="nav navbar sticky-top">
+*/
