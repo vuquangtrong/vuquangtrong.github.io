@@ -95,7 +95,7 @@ ga('send', 'pageview');
 </head>
 
 <!-- Body -->
-<body class="d-flex flex-column" data-spy="scroll" data-target="#toc" style="position: relative;">
+<body class="d-flex flex-column" data-spy="scroll" data-target="#toc" data-offset="0" style="position: relative;">
     <!-- Google tag manager -->
 
     <!-- Navigation -->
@@ -203,7 +203,7 @@ ga('send', 'pageview');
                             Oct 10, 2019
                     </span>
                 </span>
-                <span class="card-link text-secondary" title="Read time">30 mins</span>
+                    <span class="card-link text-secondary" title="~188 words">~1 min read</span>
             </div>
             <div class=" float-right">
                 <a class="badge badge-success" href="https://vuquangtrong.github.io/category/tutorial.html">tutorial</a>
@@ -225,14 +225,31 @@ ga('send', 'pageview');
                 <!-- Content -->
         <!-- Article -->
         <div>
-            <p>First of all, you should read the manual of <a href="https://docs.getpelican.com/en/stable/settings.html">Pelican Settings</a>. There are many settings to configure how Pelican will render your article. You can use <code>plugin</code>, <code>theme</code>, <code>extension</code> too. Read more&nbsp;in:</p>
+            <h3 id="installing-pelican">Installing&nbsp;Pelican</h3>
+<p>It&#8217;s very simple to install Pelican and write your first&nbsp;post:</p>
+<ol>
+<li><a href="https://docs.getpelican.com/en/stable/install.html">Install&nbsp;Pelican</a></li>
+<li><a href="https://docs.getpelican.com/en/stable/content.html">Write&nbsp;content</a></li>
+</ol>
+<p>You may need to read the manual of <a href="https://docs.getpelican.com/en/stable/settings.html">Pelican Settings</a>.<br>
+There are many settings to configure how Pelican will render your article. You can use <code>plugin</code>, <code>theme</code>, <code>extension</code> too. Read more&nbsp;in:</p>
 <ul>
 <li><a href="https://github.com/getpelican/pelican-plugins">Pelican&nbsp;Plugins</a></li>
 <li><a href="https://github.com/getpelican/pelican-themes">Pelican&nbsp;Themes</a></li>
 <li><a href="https://jinja.palletsprojects.com/en/master/extensions">jinja2&nbsp;Extensions</a></li>
 <li><a href="https://python-markdown.github.io/extensions">Markdown&nbsp;Extensions</a> </li>
 </ul>
-<p>Start to create a simple page with <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction">Bootstrap</a>.</p>
+<h3 id="apply-theme">Apply&nbsp;theme</h3>
+<p>You will need to apply a theme or create a new theme.<br>
+By default, Pelican provides <code>simple</code> as a base theme, but you probaly want to change your blog&nbsp;appearance.</p>
+<ol>
+<li><a href="https://docs.getpelican.com/en/stable/themes.html">Theme folder&nbsp;structure</a></li>
+<li><a href="https://github.com/getpelican/pelican-themes">Pelican&nbsp;Themes</a></li>
+</ol>
+<h3 id="create-a-theme">Create a&nbsp;theme</h3>
+<p>This a the main purpose of this article. If there is no theme that&#8217;s fit to your need, <strong class="badge badge-danger">Do it&nbsp;yourself!</strong></p>
+<p>Start to create a simple page with <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction">Bootstrap</a>. <a class="small text-info" data-toggle="collapse" data-target="#codeTemplate" aria-controls="codeTemplate" aria-expanded="false" aria-label="Toggle code tmeplate" href="#">toggle code&nbsp;template</a></p>
+<div class="collapse" id="codeTemplate">
 <div class="highlight"><pre><span></span><span class="o">&lt;!</span><span class="nv">doctype</span> <span class="nv">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nv">html</span> <span class="nv">lang</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">en</span><span class="s2">&quot;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nv">head</span><span class="o">&gt;</span>
@@ -258,7 +275,7 @@ ga('send', 'pageview');
 </pre></div>
 
 
-<p>You will apply a theme or create a new&nbsp;theme.</p>
+</div>
         </div>
 
     <!-- Releated posts -->
@@ -268,10 +285,26 @@ ga('send', 'pageview');
             <ul>
                 <li><a href="https://vuquangtrong.github.io/blog/simplify-theme.html">Simplify&nbsp;Theme</a></li>
                 <li><a href="https://vuquangtrong.github.io/blog/simplify-article.html">Simplify&nbsp;Article</a></li>
-                <li><a href="https://vuquangtrong.github.io/blog/advanced-markdown-with-bootstrap-theme.html">Advanced Markdown with Bootstrap&nbsp;theme</a></li>
             </ul>
         </div>
 
+    <!-- Comments -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function() {
+    this.page.url = 'https://vuquangtrong.github.io/blog/setup-blog-with-bootstrap-and-pelican.html'; // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'blog/setup-blog-with-bootstrap-and-pelican.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document,
+        s = d.createElement('script');
+    s.src = 'https://vuquangtrong-github-io.disqus.com';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 <!-- Google Adsense -->
             </div>
     </main>
@@ -299,6 +332,19 @@ ga('send', 'pageview');
     <script type="text/javascript" src="https://vuquangtrong.github.io/theme/style.js"></script>
 
     <!-- Sharing -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d9ffca0db80069e"></script>
+
+    <!-- JSON LD -->
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Blog",
+    "name": " Simplify ",
+    "url": "https://vuquangtrong.github.io",
+    "image": "https://vuquangtrong.github.io/logo.png",
+    "description": "A simple theme for blog, powered by Bootstrap and Pelican"
+}
+</script>
 </body>
 
 </html>

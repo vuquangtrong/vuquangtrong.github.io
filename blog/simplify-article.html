@@ -95,7 +95,7 @@ ga('send', 'pageview');
 </head>
 
 <!-- Body -->
-<body class="d-flex flex-column" data-spy="scroll" data-target="#toc" style="position: relative;">
+<body class="d-flex flex-column" data-spy="scroll" data-target="#toc" data-offset="0" style="position: relative;">
     <!-- Google tag manager -->
 
     <!-- Navigation -->
@@ -203,7 +203,7 @@ ga('send', 'pageview');
                             Oct 10, 2019
                     </span>
                 </span>
-                <span class="card-link text-secondary" title="Read time">30 mins</span>
+                    <span class="card-link text-secondary" title="~1492 words">~6 min read</span>
             </div>
             <div class=" float-right">
                 <a class="badge badge-success" href="https://vuquangtrong.github.io/category/tutorial.html">tutorial</a>
@@ -225,7 +225,13 @@ ga('send', 'pageview');
         <div class="row">
             <!-- Article -->
             <div class="col-xs-12 col-sm-12 col-md-9">
-                <p>Following content is for testing Markdown-to-<span class="caps">HTML</span> generator with various Markdown settings including standard syntax and extended <a href="https://python-markdown.github.io/extensions">Markdown Extensions</a>. To setup Markdown settings in Pelican, please check this article: <a href="https://vuquangtrong.github.io/blog/setup-blog-with-bootstrap-and-pelican.html" title="Setup blog with Pelican">Setup blog with Pelican</a>.</p>
+
+                    <div class="text-right mb-2 small">
+                        <p>Share with your friends!</p>
+                        <div class="addthis_inline_share_toolbox"></div>
+                    </div>
+
+                <p>Following content is for testing Markdown-to-<span class="caps">HTML</span> generator with various Markdown settings including standard syntax and extended <a href="https://python-markdown.github.io/extensions">Markdown Extensions</a>. To setup Markdown settings in Pelican, please check this article: <a href="{filename}./setup_blog_with_bootstrap_and_pelican.md" title="Setup blog with Pelican">Setup blog with Pelican</a>.</p>
 <p class="alert alert-info">You should know about <strong><span class="caps">HTML</span></strong>, <strong><span class="caps">CSS</span></strong> and probably <strong class="text-danger">Markdown</strong><br></p>
 <hr>
 <h3 id="markdown-settings">Markdown&nbsp;Settings</h3>
@@ -313,7 +319,7 @@ Use attr_list extension
 </pre></div>
 
 
-<p><img alt="icon" class="icon mx-auto" id="icon" src="https://vuquangtrong.github.io/blog/tutorial/icon.png" style="display:block" title="icon"></p>
+<p><img alt="icon" class="icon mx-auto" id="icon" src="https://vuquangtrong.github.io/blog/tutorial/simplify_article/icon.png" style="display:block" title="icon"></p>
 <div class="highlight"><pre><span></span>This is a sample sentence in green.
 {class=&quot;text-success text-center&quot;}
 </pre></div>
@@ -387,7 +393,7 @@ or
 </pre></div>
 
 
-<p><img alt="my code doesn't work" class="img-fluid" src="https://vuquangtrong.github.io/blog/tutorial/my-code-doesn_t-work.jpg" title="my code doesn't work"><em class="img-caption">my code doesn&#8217;t work &copy; <a href="https://nerd4life.studio/blogs/nerd4life-comic/my-code-doesnt-work">nerd4life.studio</a></em></p>
+<p><img alt="my code doesn't work" class="img-fluid" src="https://vuquangtrong.github.io/blog/tutorial/simplify_article/my-code-doesn_t-work.jpg" title="my code doesn't work"><em class="img-caption">my code doesn&#8217;t work &copy; <a href="https://nerd4life.studio/blogs/nerd4life-comic/my-code-doesnt-work">nerd4life.studio</a></em></p>
 <hr>
 <h3 id="standard-codeblock">Standard&nbsp;Codeblock</h3>
 <p>Using <em>Standard Codeblock</em> with correct indent, code can be shown as below type of&nbsp;paragraph</p>
@@ -491,9 +497,9 @@ but this won&#8217;t support to show codeblock in list item or blockquote, and w
 
 <p>This is how codeblok looks line in <code>SublimeText 3</code> using <code>MarkdownExtended</code> and <code>MonokaiExtended</code> packages<br>
 <em>Standard Codeblock</em><br>
-<img alt="standard_codeblock" class="img-fluid" src="https://vuquangtrong.github.io/blog/tutorial/standard_codeblock.jpg" title="standard_codeblock"><br>
+<img alt="standard_codeblock" class="img-fluid" src="https://vuquangtrong.github.io/blog/tutorial/simplify_article/standard_codeblock.jpg" title="standard_codeblock"><br>
 <em>Fenced Codenlock</em><br>
-<img alt="fenced_codeblock" class="img-fluid" src="https://vuquangtrong.github.io/blog/tutorial/fenced_codeblock.jpg" title="fenced_codeblock"></p>
+<img alt="fenced_codeblock" class="img-fluid" src="https://vuquangtrong.github.io/blog/tutorial/simplify_article/fenced_codeblock.jpg" title="fenced_codeblock"></p>
 <p>To add line number, a small <code>jQuery</code> code will be used to generate texts and few <code>CCS</code> styles will be used to format&nbsp;them</p>
 <div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">pre</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;pre&#39;</span><span class="p">),</span>
@@ -675,12 +681,7 @@ The list item indicators still show, so add some <code>CSS</code> style to hide&
             </div>
 
             <!-- ToC -->
-            <div class="col-md-3 d-none d-md-block">
-                <!--
-                <nav id="navbarToC" class="nav navbar sticky-top">
-                    show
-                </nav>
-                -->
+            <div class="col-md-3 d-none d-md-block small">
                 <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
             </div>
         </div>
@@ -692,10 +693,26 @@ The list item indicators still show, so add some <code>CSS</code> style to hide&
             <ul>
                 <li><a href="https://vuquangtrong.github.io/blog/simplify-theme.html">Simplify&nbsp;Theme</a></li>
                 <li><a href="https://vuquangtrong.github.io/blog/setup-blog-with-bootstrap-and-pelican.html">Setup blog with Bootstrap and&nbsp;Pelican</a></li>
-                <li><a href="https://vuquangtrong.github.io/blog/advanced-markdown-with-bootstrap-theme.html">Advanced Markdown with Bootstrap&nbsp;theme</a></li>
             </ul>
         </div>
 
+    <!-- Comments -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function() {
+    this.page.url = 'https://vuquangtrong.github.io/blog/simplify-article.html'; // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'blog/simplify-article.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document,
+        s = d.createElement('script');
+    s.src = 'https://vuquangtrong-github-io.disqus.com';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 <!-- Google Adsense -->
             </div>
     </main>
@@ -724,6 +741,19 @@ The list item indicators still show, so add some <code>CSS</code> style to hide&
     <script type="text/javascript" src="https://vuquangtrong.github.io/theme/style.js"></script>
 
     <!-- Sharing -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d9ffca0db80069e"></script>
+
+    <!-- JSON LD -->
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Blog",
+    "name": " Simplify ",
+    "url": "https://vuquangtrong.github.io",
+    "image": "https://vuquangtrong.github.io/logo.png",
+    "description": "A simple theme for blog, powered by Bootstrap and Pelican"
+}
+</script>
 </body>
 
 </html>

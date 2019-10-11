@@ -1,7 +1,6 @@
-/* 
- * Theme for <Code/theHeck> blog
- * vuquangtrong.github.io
- */
+/*! 
+ * Theme for Simplify blog
+ * vuquangtrong.github.io */
 
 /* function to add line number into codeblock */
 /*
@@ -30,10 +29,3 @@ $(window).scroll(function(e) {
 /* add classes into tables */
 $("table:not(.highlighttable)").addClass("table table-hover table-sm table-bordered");
 $("thead").addClass("thead-light");
-
-
-/* add highlight for TOC */ 
-/*
-$("#toc")
-<nav id="navbarToC" class="nav navbar sticky-top">
-*/
