@@ -64,7 +64,7 @@
         <!--
         <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css">
         -->
-        <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/bootstrap-toc.min.css">
+            <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/bootstrap-toc.min.css">
         <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/friendly.min.css">
         <!--
         <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/admonition.css">
@@ -224,12 +224,23 @@ ga('send', 'pageview');
                 <!-- Sharing -->
 
                 <!-- Content -->
-        <!-- Article -->
-        <div>
-            <h3 id="show-update-data">Show update&nbsp;data</h3>
+        <div class="row">
+            <!-- Article -->
+            <div class="col-xs-12 col-sm-12 col-md-9">
+                <h3 id="layout">Layout</h3>
+<h3 id="plugins">Plugins</h3>
+<h3 id="extensions">Extensions</h3>
+<h3 id="features">Features</h3>
+<h3 id="show-update-data">Show update&nbsp;data</h3>
 <div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card-link text-success&quot;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;post-date&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Post date&quot;</span><span class="p">&gt;</span>{{ article.locale_date }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-info modified-date&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Updated date&quot;</span><span class="p">&gt;</span>{{ article.locale_modified }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-info modified-date&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Updated date&quot;</span><span class="p">&gt;</span>
+        {% if article.modified %}
+            {{ article.locale_modified }}
+        {% else %}
+            {{ article.locale_date }}
+        {% endif %}
+    <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
 
@@ -238,6 +249,20 @@ ga('send', 'pageview');
 <span class="nt">span</span><span class="p">:</span><span class="nd">hover</span> <span class="p">.</span><span class="nc">post-date</span> <span class="p">{</span> <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> <span class="p">}</span>
 <span class="nt">span</span><span class="p">:</span><span class="nd">hover</span> <span class="p">.</span><span class="nc">modified-date</span> <span class="p">{</span> <span class="k">display</span><span class="p">:</span> <span class="kc">inline</span><span class="p">;</span> <span class="p">}</span>
 </pre></div>
+
+
+<h3 id="preview">Preview</h3>
+            </div>
+
+            <!-- ToC -->
+            <div class="col-md-3 d-none d-md-block">
+                <!--
+                <nav id="navbarToC" class="nav navbar sticky-top">
+                    show
+                </nav>
+                -->
+                <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
+            </div>
         </div>
 
     <!-- Releated posts -->
@@ -267,7 +292,7 @@ ga('send', 'pageview');
     <!--
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     -->
-    <script type="text/javascript" src="https://vuquangtrong.github.io/theme/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://vuquangtrong.github.io/theme/jquery-3.4.1.slim.min.js"></script>
     <!--
     <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/bootstrap.min.js"></script>
     -->
@@ -275,7 +300,7 @@ ga('send', 'pageview');
     <!--
     <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
     -->
-    <script type="text/javascript" src="https://vuquangtrong.github.io/theme/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="https://vuquangtrong.github.io/theme/bootstrap-toc.min.js"></script>
     <script type="text/javascript" src="https://vuquangtrong.github.io/theme/style.js"></script>
 
     <!-- Sharing -->
