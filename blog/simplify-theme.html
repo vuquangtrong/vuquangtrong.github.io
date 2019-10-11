@@ -232,7 +232,7 @@ _paq.push(['enableLinkTracking']);
                             Oct 10, 2019
                     </span>
                 </span>
-                    <span class="card-link text-secondary" title="~215 words">1 mins</span>
+                    <span class="card-link text-secondary" title="~352 words">2 mins</span>
             </div>
             <div class=" float-right">
                 <a class="badge badge-success" href="https://vuquangtrong.github.io/category/tutorial.html">tutorial</a>
@@ -251,7 +251,7 @@ _paq.push(['enableLinkTracking']);
 
                 <!-- Content -->
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-9">
+            <div class="col-xs-12 col-sm-12 col-md-10">
 
                 <!-- Sharing -->
                     <div class="text-right mb-2 small">
@@ -260,7 +260,9 @@ _paq.push(['enableLinkTracking']);
 
                 <!-- Article -->
                 <p>A simple, clean, contentful <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction">Bootstrap 4</a> theme for Pelican blogger.<br>
-Live demo on theme creator&#8217;s blog: <a href="https://vuquangtrong.github.io">https://vuquangtrong.github.io</a><br>
+You can use this theme to host programming articles, journals, or&nbsp;galeries.</p>
+<h3 id="live-demo">Live&nbsp;Demo</h3>
+<p>Visit the live blog of the theme creator&#8217;s blog: <a href="https://vuquangtrong.github.io">https://vuquangtrong.github.io</a> to see theme in action, which is also has some articles about theme&#8217;s documents.<br>
 Source code <a href="https://github.com/vuquangtrong/simplify-bootstrap-theme">simplify-bootstrap-theme</a></p>
 <h3 id="features">Features</h3>
 <ul>
@@ -292,26 +294,35 @@ You may need to check the included example <code>pelicanconf.py</code> and <code
 <li><a href="https://github.com/getpelican/pelican-plugins/tree/master/post_stats">post_stats</a>: generate post statistics: words, estimated read time, tag&nbsp;cloud</li>
 <li><a href="https://github.com/getpelican/pelican-plugins/tree/master/related_posts">related_posts</a>: find relate posts to the reading&nbsp;article</li>
 <li><a href="https://github.com/getpelican/pelican-plugins/tree/master/neighbors">neighbors</a>: find next/preivious&nbsp;article</li>
+<li><a href="https://github.com/getpelican/pelican-plugins/tree/master/share_post">share_post</a>: share article via static buttons if don&#8217;t use <a href="http://www.addthis.com/">AddThis</a></li>
 </ul>
 <h3 id="markdown-extensions">Markdown&nbsp;extensions</h3>
 <p>By default Pelican enables below extensions to process your markdown&nbsp;files:</p>
 <ul>
-<li><code>markdown.extensions.extra</code> included <code>abbr</code>, <code>attr_list</code>, <code>def_list</code>, <code>fenced_code</code>, <code>footnotes</code>, and <code>tables</code></li>
+<li><code>markdown.extensions.extra</code> includes <code>abbr</code>, <code>attr_list</code>, <code>def_list</code>, <code>fenced_code</code>, <code>footnotes</code>, and <code>tables</code></li>
 <li><code>markdown.extensions.codehilite</code></li>
 <li><code>markdown.extensions.meta</code> </li>
 </ul>
-<p><strong>Simplify</strong> theme has some style configs to work with extra extenstion to render your page&nbsp;better:</p>
+<p><strong>Simplify</strong> theme has some style configs to work with extra extenstions to render your page&nbsp;better:</p>
 <ul>
 <li><code>markdown.extensions.sane_lists</code></li>
 <li><code>markdown.extensions.toc</code></li>
 <li><code>markdown.extensions.nl2br</code></li>
-<li><code>markdown_checklist.extension</code>.</li>
+<li><code>markdown_checklist.extension</code></li>
 </ul>
 <h3 id="customized-styles">Customized&nbsp;styles</h3>
 <p>The theme also bring to you a clean, simple, but contenful layout.<br>
 This <a href="https://vuquangtrong.github.io/blog/simplify-article.html">Simplify Article</a> will guide you how to write content in markdown and how it will be rendered on your&nbsp;page.</p>
 <h3 id="preview">Preview</h3>
 <p><img alt="screenshot_homepage" class="img-fluid" src="https://vuquangtrong.github.io/blog/tutorial/simplify_theme/screenshot_homepage.png"></p>
+<h3 id="how-to-contribute">How to&nbsp;contribute</h3>
+<p>Developing Simplify is my effort in some weekends. You are invited to help develop it further.<br>
+Feel free to fork the [repository][], and submit pull requests.<br>
+If you find any issues, or have a suggestion, then please open an&nbsp;[issue][].</p>
+<h3 id="license">License</h3>
+<p>Simplify is released under the <a href="https://spdx.org/licenses/CC-BY-4.0.html">Creative Commons Attribution 4.0 International</a> license.<br>
+All contributors will be listed in <a href="AUTHORS.md">Authors</a> page. It&#8217;d be imcomplete but it is to honor in all they did.<br>
+I would like you to have some words to refer to authors work in your page&#8217;s footer. Thank you in&nbsp;advanced! </p>
 
                 <!-- Neighbors -->
                     <br>
@@ -324,9 +335,33 @@ This <a href="https://vuquangtrong.github.io/blog/simplify-article.html">Simplif
     </a>
 </div>            </div>
 
-            <!-- ToC -->
-            <div class="col-md-3 d-none d-md-block small">
-                <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
+            <!-- Sidebar -->
+            <div class="col-md-2 d-none d-md-block small">
+                <div class="sticky-top">
+                    <!-- ToC -->
+                    <nav id="toc" data-toggle="toc" ></nav>
+
+                    <!-- Share post -->
+                    <hr>
+                    <div id="post-share-links" style="display: flex;">
+                        Share on: 
+                        <a class="mx-auto" href="https://twitter.com/intent/tweet?text=Simplify%C2%A0Theme&url=https%3A//vuquangtrong.github.io/blog/simplify-theme.html&hashtags=pelican,bootstrap,markdown" target="_blank" title="Share on Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z" fill="currentColor"></path>
+                            </svg>
+                        </a>
+                        <a class="mx-auto" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//vuquangtrong.github.io/blog/simplify-theme.html" target="_blank" title="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z" fill="currentColor"></path>
+                            </svg>
+                        </a>
+                        <a class="mx-auto" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//vuquangtrong.github.io/blog/simplify-theme.html&title=Simplify%C2%A0Theme&summary=A%20simple%20and%20clean%20Bootstrap%204%20based%20theme%20for%20Pelican%C2%A0users&source=https%3A//vuquangtrong.github.io/blog/simplify-theme.html" target="_blank" title="Share on LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" fill="currentColor"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
