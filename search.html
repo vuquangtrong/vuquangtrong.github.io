@@ -26,7 +26,8 @@
 
         <!-- Title -->
         <title>
-Simplify - markdown tag        </title>
+    Search &ndash; Simplify
+        </title>
         
         <!-- Icon -->
         <link rel="shortcut icon" href="https://vuquangtrong.github.io/favicon.ico" type="image/x-icon">
@@ -57,6 +58,7 @@ Simplify - markdown tag        </title>
         <!--
         <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/extra/admonition.css">
         -->
+            <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/tipuesearch/tipuesearch.css">
         <link rel="stylesheet" href="https://vuquangtrong.github.io/theme/style.css">
 
         <!-- Google Analytics -->
@@ -163,10 +165,6 @@ _paq.push(['enableLinkTracking']);
                 </li>
             </ul>
 
-            <!-- Search form -->
-            <form class="form-inline text-center" action="https://vuquangtrong.github.io/search.html">
-                <input class="form-control w-100 bg-dark text-light text-center border-0 p-2" type="text" name="q" pattern=".{3,}" title="At least 3 characters" required="" placeholder="Type here to search" aria-label="Search">
-            </form>
 
             <!-- Social links -->
             <ul class="navbar-nav text-center">
@@ -212,8 +210,16 @@ _paq.push(['enableLinkTracking']);
         <!-- Header -->
         <header class="bg-dark text-light shadow-sm pt-3 pb-2" style="display: flow-root;">
     <div class="container">
-        <h1 id="Simplify">Simplify</h1>
-        <p style="font-size: larger; color: orange;">A simple theme for blog, powered by Bootstrap and Pelican</p>
+        <div class="row">
+            <div class="col-8">
+                <h3 id="Search in Simplify" style="color: orange;">Search in Simplify</h3>
+            </div>
+            <div class="col-4 small" style="margin-top: 0.5rem;">
+                    <div class="text-right mb-2 small">
+                        <div class="addthis_inline_share_toolbox"></div>
+                    </div>
+            </div>
+        </div>
     </div>
         </header>
 
@@ -221,78 +227,19 @@ _paq.push(['enableLinkTracking']);
         <main class="py-3">
                 <div class="container">
                     <!-- Sharing -->
-                        <div class="text-right mb-2 small">
-                            <div class="addthis_inline_share_toolbox"></div>
-                        </div>
 
                     <!-- Content -->
-    <!-- List of article -->
-        <div class="card mb-2 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title" style="margin-bottom: 0;">
-                    <a href="https://vuquangtrong.github.io/blog/simplify-article.html">Simplify&nbsp;Article</a>
-                </h5>
-                <span class="small">by <a href="https://vuquangtrong.github.io/author/vuquangtrong.html">vuquangtrong</a>, post on <span class="text-success">Oct 08, 2019</span></span>
-                <p>Show how an article is rendered by&nbsp;Markdown</p>
-                <div class="flex-row mx-auto mt-3 small">
-                    <div class="float-left">
-                            <span class="card-link text-secondary" title="~1492 words">Read in 6 mins</span>
-                            <span class="card-link"><a href="https://vuquangtrong.github.io/blog/simplify-article.html#disqus_thread"></a></span>
-                    </div>
-                    <div class=" float-right">
-                        <a class="badge badge-success" href="https://vuquangtrong.github.io/category/tutorial.html">tutorial</a>
-                            <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/pelican.html">pelican</a>
-                            <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/markdown.html">markdown</a>
-                    </div>
-                </div>
-            </div>
+    <form>
+        <div class="tipue_search_group">
+            <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters" required>
+            <button type="submit" class="tipue_search_button">
+                <div class="tipue_search_icon">&#9906;</div>
+            </button>
         </div>
-        <div class="card mb-2 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title" style="margin-bottom: 0;">
-                    <a href="https://vuquangtrong.github.io/blog/simplify-theme.html">Simplify&nbsp;Theme</a>
-                </h5>
-                <span class="small">by <a href="https://vuquangtrong.github.io/author/vuquangtrong.html">vuquangtrong</a>, post on <span class="text-success">Oct 02, 2019</span></span>
-                <p>A simple and clean Bootstrap 4 based theme for Pelican&nbsp;users</p>
-                <div class="flex-row mx-auto mt-3 small">
-                    <div class="float-left">
-                            <span class="card-link text-secondary" title="~354 words">Read in 2 mins</span>
-                            <span class="card-link"><a href="https://vuquangtrong.github.io/blog/simplify-theme.html#disqus_thread"></a></span>
-                    </div>
-                    <div class=" float-right">
-                        <a class="badge badge-success" href="https://vuquangtrong.github.io/category/tutorial.html">tutorial</a>
-                            <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/pelican.html">pelican</a>
-                            <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/bootstrap.html">bootstrap</a>
-                            <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/markdown.html">markdown</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-2 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title" style="margin-bottom: 0;">
-                    <a href="https://vuquangtrong.github.io/blog/setup-blog-with-bootstrap-and-pelican.html">Setup blog with Bootstrap and&nbsp;Pelican</a>
-                </h5>
-                <span class="small">by <a href="https://vuquangtrong.github.io/author/vuquangtrong.html">vuquangtrong</a>, post on <span class="text-success">Oct 01, 2019</span></span>
-                <p>How to create a blog with a simple Bootstrap theme and configure Pelican to generate your own&nbsp;site</p>
-                <div class="flex-row mx-auto mt-3 small">
-                    <div class="float-left">
-                            <span class="card-link text-secondary" title="~188 words">Read in 1 mins</span>
-                            <span class="card-link"><a href="https://vuquangtrong.github.io/blog/setup-blog-with-bootstrap-and-pelican.html#disqus_thread"></a></span>
-                    </div>
-                    <div class=" float-right">
-                        <a class="badge badge-success" href="https://vuquangtrong.github.io/category/tutorial.html">tutorial</a>
-                            <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/pelican.html">pelican</a>
-                            <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/bootstrap.html">bootstrap</a>
-                            <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/markdown.html">markdown</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </form>
 
-    <!-- Pagination -->
-<div class="pagination px-2">
-</div>                </div>
+    <div id="tipue_search_content"></div>
+                </div>
         </main>
 
     </div>
@@ -318,6 +265,14 @@ _paq.push(['enableLinkTracking']);
     <!--
     <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
     -->
+        <script type="text/javascript" src="https://vuquangtrong.github.io/theme/tipuesearch/tipuesearch.min.js"></script>
+        <script type="text/javascript" src="https://vuquangtrong.github.io/theme/tipuesearch/tipuesearch_set.js"></script>
+        <script src="https://vuquangtrong.github.io//tipuesearch_content.js"></script>
+        <script>
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+        </script>
     <script type="text/javascript" src="https://vuquangtrong.github.io/theme/style.js"></script>
 
     <!-- Sharing -->
