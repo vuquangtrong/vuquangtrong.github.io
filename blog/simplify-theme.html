@@ -88,7 +88,8 @@ ga('send', 'pageview');
         <!-- Google Tag Manager -->
 
         <!-- Google Adsense -->
-<script data-ad-client="ca-pub-9105473411342324" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script>
+            <script data-ad-client="ca-pub-9105473411342324" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
         <!-- Heap Analytic -->
 
         <!-- Piwik Tracking -->
@@ -117,6 +118,9 @@ _paq.push(['enableLinkTracking']);
 
 <!-- Body -->
 <body class="d-flex flex-column" data-spy="scroll" data-target="#toc" data-offset="0" style="position: relative;">
+    <!-- Top anchor -->
+    <a href="#" id="backToTop" style="display: block; z-index: 1;" title="Back to top"><span></span></a>
+
     <!-- Google tag manager -->
 
     <!-- Navigation -->
@@ -222,12 +226,12 @@ _paq.push(['enableLinkTracking']);
     <div class="flex-shrink-0 flex-grow-1">
 
         <!-- Header -->
-        <header class="bg-dark text-light shadow-sm pt-3 pb-2" style="display: flow-root;">
+        <header class="bg-dark text-light shadow-sm pt-3 pb-2">
 	<div class="container">
 		<h3 id="simplify-theme">Simplify&nbsp;Theme</h1>
 		<p style="font-size:larger;">A simple and clean Bootstrap 4 based theme for Pelican&nbsp;users</p>
-        <div class="flex-row mx-auto mt-3">
-            <div class="float-left">
+        <div class="row mx-auto mt-3">
+            <div class="col-xs-12 col-sm-12 col-md-6 text-left" style="padding: 0">
                 <a href="https://vuquangtrong.github.io/author/vuquangtrong.html" class="card-link">vuquangtrong</a>
                 <span class="card-link text-success">
                     <span class="post-date" title="Post date">Oct 02, 2019</span>
@@ -235,9 +239,9 @@ _paq.push(['enableLinkTracking']);
                             Oct 10, 2019
                     </span>
                 </span>
-                    <span class="card-link text-secondary" title="~354 words">2 mins</span>
+                    <span class="card-link text-secondary" title="~361 words">2 mins</span>
             </div>
-            <div class=" float-right">
+            <div class="col-xs-12 col-sm-12 col-md-6 text-right" style="padding: 0">
                 <a class="badge badge-success" href="https://vuquangtrong.github.io/category/tutorial.html">tutorial</a>
                     <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/pelican.html">pelican</a>
                     <a class="badge badge-info" href="https://vuquangtrong.github.io/tag/bootstrap.html">bootstrap</a>
@@ -274,12 +278,13 @@ Source code <a href="https://github.com/vuquangtrong/simplify-bootstrap-theme">s
 <li>Quick&nbsp;Search</li>
 <li>OpenGraph&nbsp;support</li>
 <li><span class="caps">SEO</span>&nbsp;ready</li>
-<li>Multiple&nbsp;layouts</li>
 <li>Table of Content&nbsp;sidebar</li>
-<li>Realted posts, next/previous&nbsp;article</li>
-<li>Social&nbsp;Sharing </li>
-<li>Comments</li>
+<li>Back to Top floating&nbsp;button</li>
+<li>Realted posts, next/previous&nbsp;articles</li>
+<li>Social Sharing&nbsp;(dynamic/static)</li>
+<li>Comments on&nbsp;articles</li>
 <li>Rich Snippets (<span class="caps">JSON</span>-<span class="caps">LD</span>)</li>
+<li>Sitemap</li>
 </ul>
 <h3 id="install">Install</h3>
 <p>Download the theme from <a href="https://github.com/vuquangtrong/simplify-bootstrap-theme">simplify-bootstrap-theme</a> or from <a href="https://github.com/getpelican/pelican-themes">pelican-themes</a>.<br>
@@ -326,16 +331,17 @@ Feel free to fork the [repository][], and submit pull requests.<br>
 If you find any issues, or have a suggestion, then please open an&nbsp;[issue][].</p>
 <h3 id="license">License</h3>
 <p>Simplify is released under the <a href="https://spdx.org/licenses/CC-BY-4.0.html">Creative Commons Attribution 4.0 International</a> license.<br>
-All contributors will be listed in <a href="AUTHORS.md">Authors</a> page. It&#8217;d be imcomplete but it is to honor in all they did.<br>
-I would like you to have some words to refer to authors work in your page&#8217;s footer. Thank you in&nbsp;advanced! </p>
+All contributors will be listed in <a href="AUTHORS.md">Authors</a> page. It maybe imcomplete but it is to honor in all they did.<br>
+I would like you to <strong>have some words to refer to authors work in your page&#8217;s footer</strong>. Thank you in&nbsp;advanced!</p>
 
                 <!-- Neighbors -->
                     <br>
+                    <b>Read more:</b><br>
 <div class="pagination px-2">
-    <a class="float-left" href="https://vuquangtrong.github.io/blog/setup-blog-with-bootstrap-and-pelican.html">
+    <a class="w-50" href="https://vuquangtrong.github.io/blog/setup-blog-with-bootstrap-and-pelican.html">
         &ll; Setup blog with Bootstrap and&nbsp;Pelican
     </a>
-    <a class="float-right" href="https://vuquangtrong.github.io/blog/simplify-article.html">
+    <a class="w-50 text-right" href="https://vuquangtrong.github.io/blog/simplify-article.html">
         Simplify&nbsp;Article &gg;
     </a>
 </div>            </div>
@@ -366,6 +372,20 @@ I would like you to have some words to refer to authors work in your page&#8217;
                             </svg>
                         </a>
                     </div>
+
+                    <!-- Google Adsense -->
+                        <br>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- ad-sidebar -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-9105473411342324"
+                             data-ad-slot="5458247602"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
                 </div>
             </div>
         </div>
