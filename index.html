@@ -1,262 +1,853 @@
-<!DOCTYPE html>
-<html class="no-js d-block" lang="en">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Metadata -->
-    <meta name="description" content="Trong Q. Vu is an embedded automotive software engineer.">
-    <meta name="author" content="vuquangtrong">
-    <meta name="robots" content="index, follow">
-    <meta name="keywords" content="vuquangtrong, homepage, embedded, automotive, software, engineer, blog, fullstack, sharing">
-    <!-- Shortcut icon -->
-    <link rel="canonical" href="#">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Vu Quang Trong - Embedded Automotive Software Engineer</title>
-    <!-- Fonts -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"> -->
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="theme/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="theme/index.css">
-</head>
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Understand how your code runs">
+      
+      
+        <link rel="canonical" href="https://www.codeinsideout.com/">
+      
+      
+        <meta name="author" content="vqtrong">
+      
+      <link rel="shortcut icon" href="assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Code Inside Out</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab28b872.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="stylesheets/progressbar.css">
+    
+      <link rel="stylesheet" href="stylesheets/kbd.css">
+    
+      <link rel="stylesheet" href="stylesheets/blog.css">
+    
+    
+  
+      
+    
 
-<body class="d-block">
-    <!-- Navigation bar, hide on landing section, show when user scrolls down -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top main-menu" style="display: none;">
-        <a class="navbar-brand text-warning" href="https://codeinsideout.com">Code Inside Out</a>
-        <button class="navbar-toggler collapsed" aria-expanded="false" aria-controls="navbarMenu" aria-label="Toggle navigation" type="button" data-target="#navbarMenu" data-toggle="collapse">
-            <span class="text-light navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse justify-content-end" id="navbarMenu">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="#blog">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="#projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="#contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center text-warning" href="#">Resume</a>
-                </li>
-            </ul>
+  
+
+    
+
+  <!-- Determine title -->
+  
+
+  
+  
+  <!-- Get the description -->
+  
+
+  
+
+  <!-- Get the banner image -->
+  
+  
+  
+
+  <!-- The image needs to have an absolute URL -->
+  
+
+  <!-- Open graph meta tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Code Inside Out" />
+  <meta property="og:description" content="Understand how your code runs" />
+  <meta property="og:url" content="https://www.codeinsideout.com/" />
+  <meta property="og:image" content="https://www.codeinsideout.com/assets/images/banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1080" />
+  <meta property="og:image:height" content="568" />
+
+  <!-- Twitter meta tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@vqtrong" />
+  <meta name="twitter:creator" content="@vqtrong" />
+  <meta name="twitter:title" content="Code Inside Out" />
+  <meta name="twitter:description" content="Understand how your code runs" />
+  <meta name="twitter:image" content="https://www.codeinsideout.com/assets/images/banner.png" />
+
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.codeinsideout.com/" title="Code Inside Out" class="md-header-nav__button md-logo" aria-label="Code Inside Out">
+      
+  <img src="assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Code Inside Out
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Home
+            
+          </span>
         </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="blog/" class="md-tabs__link">
+          Blog
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="projects/" class="md-tabs__link">
+          Projects
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="about/" class="md-tabs__link">
+          About
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="tags/" class="md-tabs__link">
+          Tags
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.codeinsideout.com/" title="Code Inside Out" class="md-nav__button md-logo" aria-label="Code Inside Out">
+      
+  <img src="assets/logo.png" alt="logo">
+
+    </a>
+    Code Inside Out
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="." class="md-nav__link md-nav__link--active">
+      Home
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Blog
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Blog" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Blog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="blog/" class="md-nav__link">
+      Recent Posts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="blog/setup/" class="md-nav__link">
+      Setup blog
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Embedded
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Embedded" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        Embedded
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="blog/embedded/bootloader/" class="md-nav__link">
+      Bootloader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="blog/embedded/firmware-update/" class="md-nav__link">
+      Firmware Update
+    </a>
+  </li>
+
+        
+      </ul>
     </nav>
-    <!-- Fullscreen landing section -->
-    <header class="header" id="home">
-        <!--
-        <div class="navbar">
-            <a class="navbar-brand text-light" href="index.html">Code Inside Out</a>
-        </div>
-        -->
-        <div class="container vh-100 w-100 d-flex flex-column justify-content-center text-left">
-            <!-- Intro text -->
-            <div class="text-white">
-                <h3>
-                    <small class="text-light">Hi there!</small><br />
-                    I'm <span class="typed">Vũ Quang Trọng.</span>
-                </h3>
-                <p class="text-gray-800">Embedded Automotive Software, Mobile Application, Freelancer, Photographer</p>
-            </div>
-            <!-- Buttons -->
-            <div class="py-3">
-                <a class="btn btn-success mr-1" href="#blog">Blog</a>
-                <a class="btn btn-primary mx-1" href="#projects">Projects</a>
-                <a class="btn btn-danger mx-1" href="#about">About</a>
-                <a class="btn btn-info ml-1" href="#contact">Contact</a>
-            </div>
-            <!-- Social links -->
-            <div class=" py-3">
-                <a class="text-light text-decoration-none mr-1" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
-                        <title>https://facebook.com/trong.q.vu</title>
-                        <path fill="currentColor" d="M 12 0 c -6.627 0 -12 5.373 -12 12 s 5.373 12 12 12 s 12 -5.373 12 -12 s -5.373 -12 -12 -12 Z m 3 8 h -1.35 c -0.538 0 -0.65 0.221 -0.65 0.778 v 1.222 h 2 l -0.209 2 h -1.791 v 7 h -3 v -7 h -2 v -2 h 2 v -2.308 c 0 -1.769 0.931 -2.692 3.029 -2.692 h 1.971 v 3 Z" />
-                    </svg>
-                </a>
-                <a class="text-light text-decoration-none mx-1" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
-                        <title>https://github.com/vuquangtrong</title>
-                        <path fill="currentColor" d="M 12 0 c -6.626 0 -12 5.373 -12 12 c 0 5.302 3.438 9.8 8.207 11.387 c 0.599 0.111 0.793 -0.261 0.793 -0.577 v -2.234 c -3.338 0.726 -4.033 -1.416 -4.033 -1.416 c -0.546 -1.387 -1.333 -1.756 -1.333 -1.756 c -1.089 -0.745 0.083 -0.729 0.083 -0.729 c 1.205 0.084 1.839 1.237 1.839 1.237 c 1.07 1.834 2.807 1.304 3.492 0.997 c 0.107 -0.775 0.418 -1.305 0.762 -1.604 c -2.665 -0.305 -5.467 -1.334 -5.467 -5.931 c 0 -1.311 0.469 -2.381 1.236 -3.221 c -0.124 -0.303 -0.535 -1.524 0.117 -3.176 c 0 0 1.008 -0.322 3.301 1.23 c 0.957 -0.266 1.983 -0.399 3.003 -0.404 c 1.02 0.005 2.047 0.138 3.006 0.404 c 2.291 -1.552 3.297 -1.23 3.297 -1.23 c 0.653 1.653 0.242 2.874 0.118 3.176 c 0.77 0.84 1.235 1.911 1.235 3.221 c 0 4.609 -2.807 5.624 -5.479 5.921 c 0.43 0.372 0.823 1.102 0.823 2.222 v 3.293 c 0 0.319 0.192 0.694 0.801 0.576 c 4.765 -1.589 8.199 -6.086 8.199 -11.386 c 0 -6.627 -5.373 -12 -12 -12 Z" />
-                    </svg>
-                </a>
-                <a class="text-light text-decoration-none mx-1" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
-                        <title>https://www.linkedin.com/in/vqtrong</title>
-                        <path fill="currentColor" d="M 12 0 c -6.627 0 -12 5.373 -12 12 s 5.373 12 12 12 s 12 -5.373 12 -12 s -5.373 -12 -12 -12 Z m -2 16 h -2 v -6 h 2 v 6 Z m -1 -6.891 c -0.607 0 -1.1 -0.496 -1.1 -1.109 c 0 -0.612 0.492 -1.109 1.1 -1.109 s 1.1 0.497 1.1 1.109 c 0 0.613 -0.493 1.109 -1.1 1.109 Z m 8 6.891 h -1.998 v -2.861 c 0 -1.881 -2.002 -1.722 -2.002 0 v 2.861 h -2 v -6 h 2 v 1.093 c 0.872 -1.616 4 -1.736 4 1.548 v 3.359 Z" />
-                    </svg>
-                </a>
-                <a class="text-light text-decoration-none ml-1" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
-                        <title>https://twitter.com/trongvq</title>
-                        <path fill="currentColor" d="M 12 0 c -6.627 0 -12 5.373 -12 12 s 5.373 12 12 12 s 12 -5.373 12 -12 s -5.373 -12 -12 -12 Z m 6.066 9.645 c 0.183 4.04 -2.83 8.544 -8.164 8.544 c -1.622 0 -3.131 -0.476 -4.402 -1.291 c 1.524 0.18 3.045 -0.244 4.252 -1.189 c -1.256 -0.023 -2.317 -0.854 -2.684 -1.995 c 0.451 0.086 0.895 0.061 1.298 -0.049 c -1.381 -0.278 -2.335 -1.522 -2.304 -2.853 c 0.388 0.215 0.83 0.344 1.301 0.359 c -1.279 -0.855 -1.641 -2.544 -0.889 -3.835 c 1.416 1.738 3.533 2.881 5.92 3.001 c -0.419 -1.796 0.944 -3.527 2.799 -3.527 c 0.825 0 1.572 0.349 2.096 0.907 c 0.654 -0.128 1.27 -0.368 1.824 -0.697 c -0.215 0.671 -0.67 1.233 -1.263 1.589 c 0.581 -0.07 1.135 -0.224 1.649 -0.453 c -0.384 0.578 -0.87 1.084 -1.433 1.489 Z" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </header>
-    <!-- Blog featured posts -->
-    <section class="featured-posts py-5" id="blog">
-        <div class="container">
-            <!-- Blog intro -->
-            <div class="row text-white py-3">
-                <div class="col-lg-9">
-                    <h2>Featured posts</h2>
-                    <p class="lead">My blog is a place to store some tips, notes I've collected</p>
-                </div>
-                <div class="go-to-blog col-lg-3 d-flex justify-content-center">
-                    <a class="btn btn-primary my-auto" href="#" role="button">Go to Blog</a>
-                </div>
-            </div>
-            <!-- Post -->
-            <div class="post row shadow-lg p-3 mb-3">
-                <div class="text col-lg-9">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <div class="category">
-                                <a href="#">News</a>
-                                <a href="#">Technology</a>
-                            </div>
-                            <h3>Blog will be online soon</h3>
-                            <p>I'm doing my best to bring up my personal blog. It will be online soon, please stay tunned.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="image col-lg-3">
-                    <img alt="..." src="images/featured-pic-1.jpeg">
-                </div>
-            </div>
-            <!-- Post -->
-            <div class="post row shadow-lg p-3 mb-3">
-                <div class="image col-lg-3">
-                    <img alt="..." src="images/featured-pic-2.jpeg">
-                </div>
-                <div class="text col-lg-9">
-                    <div class="d-flex align-items-center text-inner">
-                        <div>
-                            <div class="category">
-                                <a href="#">Photograph</a>
-                                <a href="#">Lifestyle</a>
-                            </div>
-                            <h3>Blog will be online soon</h3>
-                            <p>I'm doing my best to bring up my personal blog. It will be online soon, please stay tunned.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Post -->
-            <div class="post row shadow-lg p-3 mb-3">
-                <div class="text col-lg-9">
-                    <div class="d-flex align-items-center text-inner">
-                        <div>
-                            <div class="category">
-                                <a href="#">Programming</a>
-                                <a href="#">Tutorials</a>
-                            </div>
-                            <h3>Blog will be online soon</h3>
-                            <p>I'm doing my best to bring up my personal blog. It will be online soon, please stay tunned.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="image col-lg-3">
-                    <img alt="..." src="images/featured-pic-3.jpeg">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Project Showcase -->
-    <section class="projects bg-info py-5" id="projects">
-        <div class="container">
-            <!-- Blog intro -->
-            <div class="row text-light py-3">
-                <div class="col-lg-9">
-                    <h2>Projects</h2>
-                    <p class="lead">My code doesn't run, I don't know why!</p>
-                </div>
-                <div class="go-to-blog col-lg-3 d-flex justify-content-center">
-                    <a class="btn btn-dark my-auto" href="https://github.com/vuquangtrong" role="button">Go to Github</a>
-                </div>
-            </div>
-            <!-- Project -->
-        </div>
-    </section>
-    <!-- Contact -->
-    <section class="contact bg-dark py-5" id="contact">
-        <div class="container text-light">
-            <div class="row py-3">
-                <div class="col-md-6 mb-5">
-                    <h4 class="mb-3">Send me a message</h4>
-                    <div>
-                        <form class="contactForm" role="form" action="" method="post">
-                            <div id="sendmessage">Your message has been sent. Thank you!</div>
-                            <div id="errormessage">Cannot send message! Please try again later. Thank you!</div>
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <input name="name" class="form-control" id="name" type="text" placeholder="Your Name" data-msg="Please enter at least 4 chars" data-rule="minlen:4">
-                                        <div class="validation"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <input name="email" class="form-control" id="email" type="email" placeholder="Your Email" data-msg="Please enter a valid email" data-rule="email">
-                                        <div class="validation"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <input name="subject" class="form-control" id="subject" type="text" placeholder="Subject" data-msg="Please enter at least 8 chars of subject" data-rule="minlen:4">
-                                        <div class="validation"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <textarea name="message" class="form-control" placeholder="Message" rows="5" data-msg="Please write something for us" data-rule="required"></textarea>
-                                        <div class="validation"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="button button-a button-big button-rouded" type="submit">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-5">
-                    <h4 class="mb-3 ">Get in Touch</h4>
-                    <p class="lead text-center">
-                        Thanks for a good day ^^
-                    </p>
-                    <div class="text-center">
-                        <p>Hanoi, Vietnam</p>
-                        <p>(84) 973750337</p>
-                        <p>contact@example.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer class="footer bg-dark text-light text-center p-3">
-        <p>&copy; 2019 Vu Quang Trong.</p>
-    </footer>
-    <!-- Back to top button, show only when user scrolls down -->
-    <a class="back-to-top" href="#home"></a>
-    <!-- Scripts -->
-    <script type="text/javascript" src="theme/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="theme/bootstrap.min.js"></script>
-    <script type="text/javascript" src="theme/typed.js"></script>
-    <script type="text/javascript" src="theme/index.js"></script>
-</body>
+  </li>
 
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Mobile
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Mobile" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        <span class="md-nav__icon md-icon"></span>
+        Mobile
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="blog/mobile/newapp/" class="md-nav__link">
+      New App
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="blog/mobile/smshub/" class="md-nav__link">
+      Sms Hubs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Projects
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Projects" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Projects
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="projects/" class="md-nav__link">
+      Projects
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      About
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="About" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="about/" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Tags
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tags" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Tags
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="tags/" class="md-nav__link">
+      Tags
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+    
+    <!-- Page Styles -->
+    
+  
+
+  <!-- Additional styles for pages -->
+  <style>
+    /* Hide table of contents */
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--secondary {
+        display: none;
+      }
+    }
+
+    /* Hide navigation */
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary {
+        display: none;
+      }
+    }
+
+    /* Center the content area */
+    @media screen and (min-width: 76.25em) {
+      .md-content {
+          margin: auto;
+      }
+    }
+  </style>
+
+
+  <!-- Make index page clean -->
+  <style>
+    /* Set background cover image */
+    body {
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), 
+        url("assets/images/markus-spiske-68ZlATaVYIo-unsplash.jpg"); 
+        /* url("https://source.unsplash.com/random"); */
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    
+    /* Header should be transparent when loaded */
+    .md-header {
+      background-color: transparent;
+    }
+  
+    /* Header should be highlighted when scroll down */
+    .md-header[data-md-state=shadow] {
+      background-color: var(--md-primary-fg-color);
+    }
+    
+    /* Search box looks better */
+    .md-search__input {
+      background-color: transparent;
+    }
+    
+    /* Navigation looks better */
+    .md-tabs {
+      background-color: transparent;
+      font-size: 1.2em;
+    }
+
+    /* Make main content fill up the screen */
+    .md-main {
+      display: flex;
+    }
+    
+    .md-main__inner {
+      height: unset;
+      flex-grow: 1;
+    }
+
+    .md-content {
+      display: flex;
+    }
+
+    .md-content__inner {
+      flex-grow: 1;
+      display: flex;
+    }
+    
+    /* Stick intro-links to the bottom of intro block */
+    /* so that when text is typed too long in mobile, the intro-links block does not jump */
+    .intro {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .intro-text {
+      flex-grow: 1;
+    }
+
+    .intro-links svg:hover {
+      color: gold;
+    }
+
+    /* Footer looks better */
+    .md-footer {
+      background-color: transparent;
+    }
+
+    /* hide social links in footer */
+    @media screen and (max-width: 76.1875em) {
+      .md-footer-social {
+        display: none;
+      }
+    }
+
+    .glow {
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #2196f3, 0 0 30px #2196f3, 0 0 40px #2196f3 /* , 0 0 50px #2196f3, 0 0 60px #2196f3, 0 0 70px #2196f3 */ ;
+      }
+      
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #3f51b5, 0 0 40px #3f51b5, 0 0 50px #3f51b5 /* , 0 0 60px #3f51b5, 0 0 70px #3f51b5, 0 0 80px #3f51b5 */ ;
+      }
+    }
+
+  </style>
+
+
+    <!-- Page Content -->
+    
+
+<!-- Introduction -->
+<div class="intro text-white">
+  <h1 class="intro-text text-white">
+      <span class="text-tiny">Nice to meet you! </span> <br />
+      <span class="text-tiny">I'm</span>&nbsp;<span class="glow typed">Vũ Quang Trọng.</span>
+  </h1>
+
+  <div class="intro-links">
+    <div class="pt-3 text-medium">
+      <a class="btn btn-success mr-1 text-white" href="/blog">Blog</a>
+      <a class="btn btn-primary mx-1 text-white" href="/projects">Projects</a>
+      <a class="btn btn-danger mx-1 text-white" href="/about">About</a>
+      <a class="btn btn-info ml-1 text-white" href="/contact">Contact</a>
+    </div>
+
+    <div class="pt-3">
+      <a class="text-white text-decoration-none mr-1" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+              <title>https://facebook.com/trong.q.vu</title>
+              <path fill="currentColor" d="M 12 0 c -6.627 0 -12 5.373 -12 12 s 5.373 12 12 12 s 12 -5.373 12 -12 s -5.373 -12 -12 -12 Z m 3 8 h -1.35 c -0.538 0 -0.65 0.221 -0.65 0.778 v 1.222 h 2 l -0.209 2 h -1.791 v 7 h -3 v -7 h -2 v -2 h 2 v -2.308 c 0 -1.769 0.931 -2.692 3.029 -2.692 h 1.971 v 3 Z"></path>
+          </svg>
+      </a>
+      <a class="text-white text-decoration-none mx-1" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+              <title>https://github.com/vuquangtrong</title>
+              <path fill="currentColor" d="M 12 0 c -6.626 0 -12 5.373 -12 12 c 0 5.302 3.438 9.8 8.207 11.387 c 0.599 0.111 0.793 -0.261 0.793 -0.577 v -2.234 c -3.338 0.726 -4.033 -1.416 -4.033 -1.416 c -0.546 -1.387 -1.333 -1.756 -1.333 -1.756 c -1.089 -0.745 0.083 -0.729 0.083 -0.729 c 1.205 0.084 1.839 1.237 1.839 1.237 c 1.07 1.834 2.807 1.304 3.492 0.997 c 0.107 -0.775 0.418 -1.305 0.762 -1.604 c -2.665 -0.305 -5.467 -1.334 -5.467 -5.931 c 0 -1.311 0.469 -2.381 1.236 -3.221 c -0.124 -0.303 -0.535 -1.524 0.117 -3.176 c 0 0 1.008 -0.322 3.301 1.23 c 0.957 -0.266 1.983 -0.399 3.003 -0.404 c 1.02 0.005 2.047 0.138 3.006 0.404 c 2.291 -1.552 3.297 -1.23 3.297 -1.23 c 0.653 1.653 0.242 2.874 0.118 3.176 c 0.77 0.84 1.235 1.911 1.235 3.221 c 0 4.609 -2.807 5.624 -5.479 5.921 c 0.43 0.372 0.823 1.102 0.823 2.222 v 3.293 c 0 0.319 0.192 0.694 0.801 0.576 c 4.765 -1.589 8.199 -6.086 8.199 -11.386 c 0 -6.627 -5.373 -12 -12 -12 Z"></path>
+          </svg>
+      </a>
+      <a class="text-white text-decoration-none mx-1" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+              <title>https://www.linkedin.com/in/vqtrong</title>
+              <path fill="currentColor" d="M 12 0 c -6.627 0 -12 5.373 -12 12 s 5.373 12 12 12 s 12 -5.373 12 -12 s -5.373 -12 -12 -12 Z m -2 16 h -2 v -6 h 2 v 6 Z m -1 -6.891 c -0.607 0 -1.1 -0.496 -1.1 -1.109 c 0 -0.612 0.492 -1.109 1.1 -1.109 s 1.1 0.497 1.1 1.109 c 0 0.613 -0.493 1.109 -1.1 1.109 Z m 8 6.891 h -1.998 v -2.861 c 0 -1.881 -2.002 -1.722 -2.002 0 v 2.861 h -2 v -6 h 2 v 1.093 c 0.872 -1.616 4 -1.736 4 1.548 v 3.359 Z"></path>
+          </svg>
+      </a>
+      <a class="text-white text-decoration-none ml-1" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+              <title>https://twitter.com/trongvq</title>
+              <path fill="currentColor" d="M 12 0 c -6.627 0 -12 5.373 -12 12 s 5.373 12 12 12 s 12 -5.373 12 -12 s -5.373 -12 -12 -12 Z m 6.066 9.645 c 0.183 4.04 -2.83 8.544 -8.164 8.544 c -1.622 0 -3.131 -0.476 -4.402 -1.291 c 1.524 0.18 3.045 -0.244 4.252 -1.189 c -1.256 -0.023 -2.317 -0.854 -2.684 -1.995 c 0.451 0.086 0.895 0.061 1.298 -0.049 c -1.381 -0.278 -2.335 -1.522 -2.304 -2.853 c 0.388 0.215 0.83 0.344 1.301 0.359 c -1.279 -0.855 -1.641 -2.544 -0.889 -3.835 c 1.416 1.738 3.533 2.881 5.92 3.001 c -0.419 -1.796 0.944 -3.527 2.799 -3.527 c 0.825 0 1.572 0.349 2.096 0.907 c 0.654 -0.128 1.27 -0.368 1.824 -0.697 c -0.215 0.671 -0.67 1.233 -1.263 1.589 c 0.581 -0.07 1.135 -0.224 1.649 -0.453 c -0.384 0.578 -0.87 1.084 -1.433 1.489 Z"></path>
+          </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+              
+  <!-- Remove Disqus on the pages -->
+
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="blog/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Recent Posts
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <span>2020 © Code Inside Out</span>
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/vuquangtrong" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://facebook.com/trongvq" target="_blank" rel="noopener" title="facebook.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="javascripts/jquery-3.4.1.min.js"></script>
+      
+        <script src="javascripts/typed.js"></script>
+      
+        <script src="javascripts/extra.js"></script>
+      
+    
+  </body>
 </html>
