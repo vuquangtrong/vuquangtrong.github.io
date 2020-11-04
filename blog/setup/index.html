@@ -54,8 +54,25 @@
     
   
       
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
     
 
+  
+    <!-- Track external links -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        document.body.addEventListener("click", function(ev) {
+          if (ev.target instanceof HTMLElement) {
+            var el = ev.target.closest("a[href^=http]")
+            if (el)
+              ga("send", "event", "outbound", "click", el.href)
+          }
+        })
+      })
+    </script>
   
 
     
@@ -87,7 +104,7 @@
   <meta property="og:title" content="Code Inside Out - Setup blog" />
   <meta property="og:description" content="How to customize Material for MkDocs with extensions to quickly write blog articles, and add templates for the list of articles and tags." />
   <meta property="og:url" content="https://www.codeinsideout.com/blog/setup/" />
-  <meta property="og:image" content="https://www.codeinsideout.com/assets/images/banner.png" />
+  <meta property="og:image" content="https://www.codeinsideout.comassets/images/banner.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1080" />
   <meta property="og:image:height" content="568" />
@@ -98,7 +115,7 @@
   <meta name="twitter:creator" content="@vqtrong" />
   <meta name="twitter:title" content="Code Inside Out - Setup blog" />
   <meta name="twitter:description" content="How to customize Material for MkDocs with extensions to quickly write blog articles, and add templates for the list of articles and tags." />
-  <meta name="twitter:image" content="https://www.codeinsideout.com/assets/images/banner.png" />
+  <meta name="twitter:image" content="https://www.codeinsideout.comassets/images/banner.png" />
 
 
   </head>
@@ -131,7 +148,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://www.codeinsideout.com/" title="Code Inside Out" class="md-header-nav__button md-logo" aria-label="Code Inside Out">
+    <a href="https://www.codeinsideout.com" title="Code Inside Out" class="md-header-nav__button md-logo" aria-label="Code Inside Out">
       
   <img src="../../assets/logo.png" alt="logo">
 
@@ -278,7 +295,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://www.codeinsideout.com/" title="Code Inside Out" class="md-nav__button md-logo" aria-label="Code Inside Out">
+    <a href="https://www.codeinsideout.com" title="Code Inside Out" class="md-nav__button md-logo" aria-label="Code Inside Out">
       
   <img src="../../assets/logo.png" alt="logo">
 
@@ -1302,14 +1319,14 @@
 
     <!-- Page Content -->
     
-      <h1 id="setup-a-blog-with-material-for-mkdocs">Setup a blog with Material for MkDocs<a class="headerlink" href="#setup-a-blog-with-material-for-mkdocs" title="Permanent link">&para;</a></h1>
-<h2 id="install-material-for-mkdocs">Install Material For MkDocs<a class="headerlink" href="#install-material-for-mkdocs" title="Permanent link">&para;</a></h2>
-<h3 id="install-python">Install Python<a class="headerlink" href="#install-python" title="Permanent link">&para;</a></h3>
+      <h1 id="setup-a-blog-with-material-for-mkdocs">Setup a blog with Material for MkDocs<a class="headerlink" href="#setup-a-blog-with-material-for-mkdocs" title="Permanent link">⚓︎</a></h1>
+<h2 id="install-material-for-mkdocs">Install Material For MkDocs<a class="headerlink" href="#install-material-for-mkdocs" title="Permanent link">⚓︎</a></h2>
+<h3 id="install-python">Install Python<a class="headerlink" href="#install-python" title="Permanent link">⚓︎</a></h3>
 <p>Download <strong>Python</strong> from <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> and install it.</p>
 <div class="admonition hint">
 <p>Make sure to add Python installation folder into environmental variable <code>PATH</code></p>
 </div>
-<h3 id="prepare-environment">Prepare environment<a class="headerlink" href="#prepare-environment" title="Permanent link">&para;</a></h3>
+<h3 id="prepare-environment">Prepare environment<a class="headerlink" href="#prepare-environment" title="Permanent link">⚓︎</a></h3>
 <ol>
 <li>
 <p>Create a new folder and initialize a virtual environment </p>
@@ -1347,7 +1364,7 @@ tornado
 </details>
 </li>
 </ol>
-<h3 id="initialize-your-site">Initialize your site<a class="headerlink" href="#initialize-your-site" title="Permanent link">&para;</a></h3>
+<h3 id="initialize-your-site">Initialize your site<a class="headerlink" href="#initialize-your-site" title="Permanent link">⚓︎</a></h3>
 <ol>
 <li>
 <p>Create a new MkDocs site</p>
@@ -1373,8 +1390,8 @@ tornado
 <p>Point your browser to <localhost:8000> and see your page.</p>
 </li>
 </ol>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
-<h3 id="color-palette">Color Palette<a class="headerlink" href="#color-palette" title="Permanent link">&para;</a></h3>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">⚓︎</a></h2>
+<h3 id="color-palette">Color Palette<a class="headerlink" href="#color-palette" title="Permanent link">⚓︎</a></h3>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Pre-defined</label><div class="tabbed-content">
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
@@ -1402,14 +1419,14 @@ tornado
 </code></pre></div>
 </div>
 </div>
-<h3 id="font">Font<a class="headerlink" href="#font" title="Permanent link">&para;</a></h3>
+<h3 id="font">Font<a class="headerlink" href="#font" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
   <span class="nt">font</span><span class="p">:</span>
     <span class="nt">text</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Roboto</span>
     <span class="nt">code</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Roboto Mono</span>
 </code></pre></div>
-<h3 id="logo-and-icon">Logo and Icon<a class="headerlink" href="#logo-and-icon" title="Permanent link">&para;</a></h3>
+<h3 id="logo-and-icon">Logo and Icon<a class="headerlink" href="#logo-and-icon" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
   <span class="nt">icon</span><span class="p">:</span>
@@ -1421,7 +1438,7 @@ tornado
       <span class="nt">emoji_index</span><span class="p">:</span> <span class="kt">!!python/name:materialx.emoji.twemoji</span>
       <span class="nt">emoji_generator</span><span class="p">:</span> <span class="kt">!!python/name:materialx.emoji.to_svg</span>
 </code></pre></div>
-<h3 id="navigation">Navigation<a class="headerlink" href="#navigation" title="Permanent link">&para;</a></h3>
+<h3 id="navigation">Navigation<a class="headerlink" href="#navigation" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
   <span class="nt">features</span><span class="p">:</span>
@@ -1434,18 +1451,18 @@ tornado
       <span class="nt">slugify</span><span class="p">:</span> <span class="kt">!!python/name:pymdownx.slugs.uslugify</span>
       <span class="nt">toc_depth</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
-<h3 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h3>
+<h3 id="search">Search<a class="headerlink" href="#search" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">search</span>
 </code></pre></div>
-<h3 id="analytics">Analytics<a class="headerlink" href="#analytics" title="Permanent link">&para;</a></h3>
+<h3 id="analytics">Analytics<a class="headerlink" href="#analytics" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">google_analytics</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UA-XXXXXXXX-X</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
 </code></pre></div>
-<h3 id="header">Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h3>
+<h3 id="header">Header<a class="headerlink" href="#header" title="Permanent link">⚓︎</a></h3>
 <p>Create a new file in <code>overrides\main.html</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;base.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">announce</span> <span class="cp">%}</span><span class="x"></span>
@@ -1457,14 +1474,14 @@ tornado
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">site_announcement</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Blog is coming</span>
 </code></pre></div>
-<h3 id="footer">Footer<a class="headerlink" href="#footer" title="Permanent link">&para;</a></h3>
+<h3 id="footer">Footer<a class="headerlink" href="#footer" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">extra</span><span class="p">:</span>
   <span class="nt">social</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="nt">icon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/github</span>
       <span class="nt">link</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/vuquangtrong</span>
 </code></pre></div>
-<h3 id="comment">Comment<a class="headerlink" href="#comment" title="Permanent link">&para;</a></h3>
+<h3 id="comment">Comment<a class="headerlink" href="#comment" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">meta</span>
@@ -1472,8 +1489,8 @@ tornado
 <span class="nt">extra</span><span class="p">:</span>
   <span class="nt">disqus</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;shortname&gt;</span>
 </code></pre></div>
-<h2 id="markdown">Markdown<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h2>
-<h3 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Permanent link">&para;</a></h3>
+<h2 id="markdown">Markdown<a class="headerlink" href="#markdown" title="Permanent link">⚓︎</a></h2>
+<h3 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">abbr</span>
@@ -1486,7 +1503,7 @@ tornado
 *[W3C]: World Wide Web Consortium
 </code></pre></div>
 <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
-<h3 id="admonitions">Admonitions<a class="headerlink" href="#admonitions" title="Permanent link">&para;</a></h3>
+<h3 id="admonitions">Admonitions<a class="headerlink" href="#admonitions" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>"</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">admonition</span>
@@ -1583,7 +1600,7 @@ tornado
 </div>
 </div>
 </div>
-<h3 id="collapse">Collapse<a class="headerlink" href="#collapse" title="Permanent link">&para;</a></h3>
+<h3 id="collapse">Collapse<a class="headerlink" href="#collapse" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>"</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.details</span>
@@ -1604,7 +1621,7 @@ tornado
 </details>
 </div>
 </div>
-<h3 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h3>
+<h3 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">attr_list</span>
@@ -1649,7 +1666,7 @@ justo purus auctor massa, nec semper lorem quam in massa.</p>
 <p><a class="md-button md-button--primary" href="#">Submit <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg></span></a></p>
 </div>
 </div>
-<h3 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h3>
+<h3 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.keys</span>
@@ -1658,7 +1675,7 @@ justo purus auctor massa, nec semper lorem quam in massa.</p>
 <div class="highlight"><pre><span></span><code>Press ++ctrl+alt+del++ to open <span class="gs">**Task Manager**</span>
 </code></pre></div>
 <p>Press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span> to open <strong>Task Manager</strong></p>
-<h3 id="code-blocks">Code blocks<a class="headerlink" href="#code-blocks" title="Permanent link">&para;</a></h3>
+<h3 id="code-blocks">Code blocks<a class="headerlink" href="#code-blocks" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.highlight</span>
@@ -1711,7 +1728,7 @@ The <span class="sb">`#!cpp int main(void)`</span> function is the entry point o
 The <code class="highlight"><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span></code> function is the entry point of user application.</p>
 </div>
 </div>
-<h3 id="tabs">Tabs<a class="headerlink" href="#tabs" title="Permanent link">&para;</a></h3>
+<h3 id="tabs">Tabs<a class="headerlink" href="#tabs" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.tabbed</span>
@@ -1851,7 +1868,7 @@ The <code class="highlight"><span class="kt">int</span> <span class="n">main</sp
 </div>
 </div>
 </div>
-<h3 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">&para;</a></h3>
+<h3 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">⚓︎</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tables</span>
 </code></pre></div>
@@ -1884,7 +1901,7 @@ The <code class="highlight"><span class="kt">int</span> <span class="n">main</sp
 </tr>
 </tbody>
 </table>
-<h3 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h3>
+<h3 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">footnotes</span>
@@ -1899,7 +1916,7 @@ The <code class="highlight"><span class="kt">int</span> <span class="n">main</sp
     massa, nec semper lorem quam in massa.
 </code></pre></div>
 <p>Lorem ipsum<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> dolor sit amet, consectetur adipiscing elit.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
-<h3 id="caret-mark--tilde">Caret, Mark &amp; Tilde<a class="headerlink" href="#caret-mark--tilde" title="Permanent link">&para;</a></h3>
+<h3 id="caret-mark--tilde">Caret, Mark &amp; Tilde<a class="headerlink" href="#caret-mark--tilde" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.caret</span>
@@ -1920,7 +1937,7 @@ The <code class="highlight"><span class="kt">int</span> <span class="n">main</sp
 <li>H<sub>2</sub>0</li>
 <li>A<sup>T</sup>A</li>
 </ul>
-<h3 id="critic">Critic<a class="headerlink" href="#critic" title="Permanent link">&para;</a></h3>
+<h3 id="critic">Critic<a class="headerlink" href="#critic" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">pymdownx.critic</span><span class="p">:</span>
@@ -1943,7 +1960,7 @@ possible <span class="critic comment">and comments can be added inline</span>.</
 <p>Formatting can also be applied to blocks, by putting the opening and closing
 tags on separate lines and adding new lines between the tags and the content.</p>
 </mark>
-<h3 id="icons--emojis">Icons &amp; Emojis<a class="headerlink" href="#icons--emojis" title="Permanent link">&para;</a></h3>
+<h3 id="icons--emojis">Icons &amp; Emojis<a class="headerlink" href="#icons--emojis" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">pymdownx.emoji</span><span class="p">:</span>
@@ -1958,13 +1975,14 @@ tags on separate lines and adding new lines between the tags and the content.</p
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.232 7.232 0 01-6 3.2M12 5a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3m0-3A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10c0-5.53-4.5-10-10-10z"/></svg></span> – <code>.icons/material/account-circle.svg</code><br />
 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm141.4 389.4c-37.8 37.8-88 58.6-141.4 58.6s-103.6-20.8-141.4-58.6C68.8 359.6 48 309.4 48 256s20.8-103.6 58.6-141.4C144.4 76.8 194.6 56 248 56s103.6 20.8 141.4 58.6c37.8 37.8 58.6 88 58.6 141.4s-20.8 103.6-58.6 141.4zM328 164c-25.7 0-55.9 16.9-59.9 42.1-1.7 11.2 11.5 18.2 19.8 10.8l9.5-8.5c14.8-13.2 46.2-13.2 61 0l9.5 8.5c8.5 7.4 21.6.3 19.8-10.8-3.8-25.2-34-42.1-59.7-42.1zm-160 60c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm194.4 64H133.6c-8.2 0-14.5 7-13.5 15 7.5 59.2 58.9 105 121.1 105h13.6c62.2 0 113.6-45.8 121.1-105 1-8-5.3-15-13.5-15z"/></svg></span> – <code>.icons/fontawesome/regular/laugh-wink.svg</code><br />
 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.326 1.973a1.2 1.2 0 011.49-.832c.387.112.977.307 1.575.602.586.291 1.243.71 1.7 1.296.022.027.042.056.061.084A13.22 13.22 0 018 3c.67 0 1.289.037 1.861.108l.051-.07c.457-.586 1.114-1.004 1.7-1.295a9.654 9.654 0 011.576-.602 1.2 1.2 0 011.49.832c.14.493.356 1.347.479 2.29.079.604.123 1.28.07 1.936.541.977.773 2.11.773 3.301C16 13 14.5 15 8 15s-8-2-8-5.5c0-1.034.238-2.128.795-3.117-.08-.712-.034-1.46.052-2.12.122-.943.34-1.797.479-2.29zM8 13.065c6 0 6.5-2 6-4.27C13.363 5.905 11.25 5 8 5s-5.363.904-6 3.796c-.5 2.27 0 4.27 6 4.27z"/><path d="M4 8a1 1 0 012 0v1a1 1 0 01-2 0V8zm2.078 2.492c-.083-.264.146-.492.422-.492h3c.276 0 .505.228.422.492C9.67 11.304 8.834 12 8 12c-.834 0-1.669-.696-1.922-1.508zM10 8a1 1 0 112 0v1a1 1 0 11-2 0V8z"/></svg></span> – <code>.icons/octicons/octoface-16.svg</code></p>
+<p><span class="twemoji" style="color:#4267B2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"/></svg></span></p>
 <div class="highlight"><pre><span></span><code>:smile: 
 </code></pre></div>
 <p><img alt="😄" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f604.svg" title=":smile:" /> </p>
 <div class="highlight"><pre><span></span><code>:fontawesome-brands-facebook:{: style=&quot;color:#4267B2&quot;} – Medium
 </code></pre></div>
 <p><span class="twemoji" style="color:#4267B2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></span> – Medium</p>
-<h3 id="lists">Lists<a class="headerlink" href="#lists" title="Permanent link">&para;</a></h3>
+<h3 id="lists">Lists<a class="headerlink" href="#lists" title="Permanent link">⚓︎</a></h3>
 <div class="tabbed-set" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Unordered</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>* Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
 accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
@@ -2055,7 +2073,7 @@ ut eros sed sapien ullamcorper consequat. Nunc ligula ante.</p>
 </dl>
 </div>
 </div>
-<h3 id="tasklist">Tasklist<a class="headerlink" href="#tasklist" title="Permanent link">&para;</a></h3>
+<h3 id="tasklist">Tasklist<a class="headerlink" href="#tasklist" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">pymdownx.tasklist</span><span class="p">:</span>
@@ -2079,7 +2097,7 @@ ut eros sed sapien ullamcorper consequat. Nunc ligula ante.</p>
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque</li>
 </ul>
-<h3 id="markdown-in-html">Markdown in <abbr title="Hyper Text Markup Language">HTML</abbr><a class="headerlink" href="#markdown-in-html" title="Permanent link">&para;</a></h3>
+<h3 id="markdown-in-html">Markdown in <abbr title="Hyper Text Markup Language">HTML</abbr><a class="headerlink" href="#markdown-in-html" title="Permanent link">⚓︎</a></h3>
 <p>All <abbr title="Hyper Text Markup Language">HTML</abbr> blocks is merged as-is to the output.</p>
 <blockquote>
 <p>Should not have empty line(s) inside <abbr title="Hyper Text Markup Language">HTML</abbr> blocks</p>
@@ -2178,7 +2196,7 @@ nec semper lorem quam in massa
    nec semper lorem quam in massa
    </div></p>
 </blockquote>
-<h3 id="images">Images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h3>
+<h3 id="images">Images<a class="headerlink" href="#images" title="Permanent link">⚓︎</a></h3>
 <div class="highlight"><pre><span></span><code>![<span class="nt">Alt 300x200</span>](<span class="na">https://dummyimage.com/300x200 &quot;Title 300x200&quot;</span>)
 </code></pre></div>
 <p>
@@ -2220,17 +2238,17 @@ feugiat, tortor non consequat finibus, justo purus auctor massa, nec semper lore
 </figure>
 </p>
 </div>
-<h3 id="internal-links">Internal links<a class="headerlink" href="#internal-links" title="Permanent link">&para;</a></h3>
+<h3 id="internal-links">Internal links<a class="headerlink" href="#internal-links" title="Permanent link">⚓︎</a></h3>
 <p>Create a simple <strong>About</strong> page at <code>docs/about.md</code>.
 Link to internal page can be done by Markdown Link <code class="highlight">[<span class="nt">About</span>](<span class="na">../about.md</span>)</code>:  <a href="../../about/">About</a>.</p>
-<h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
-<h3 id="code-color">Code color<a class="headerlink" href="#code-color" title="Permanent link">&para;</a></h3>
+<h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">⚓︎</a></h2>
+<h3 id="code-color">Code color<a class="headerlink" href="#code-color" title="Permanent link">⚓︎</a></h3>
 <p>Make unformatted code block look better</p>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">code</span> <span class="p">{</span>
     <span class="k">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">md</span><span class="o">-</span><span class="n">code</span><span class="o">-</span><span class="n">hl</span><span class="o">-</span><span class="n">special</span><span class="o">-</span><span class="kc">color</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
+<h3 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">meta</span>
@@ -2241,7 +2259,7 @@ Link to internal page can be done by Markdown Link <code class="highlight">[<spa
 <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Nullam urna elit, malesuada eget finibus ut, ac tortor.</span>
 <span class="nn">---</span>
 </code></pre></div>
-<h3 id="progress-bar">Progress Bar<a class="headerlink" href="#progress-bar" title="Permanent link">&para;</a></h3>
+<h3 id="progress-bar">Progress Bar<a class="headerlink" href="#progress-bar" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">pymdownx.progressbar</span><span class="p">:</span>
@@ -2392,7 +2410,7 @@ Link to internal page can be done by Markdown Link <code class="highlight">[<spa
   <span class="p">}</span>
 </code></pre></div>
 </details>
-<h3 id="sane-header">Sane Header<a class="headerlink" href="#sane-header" title="Permanent link">&para;</a></h3>
+<h3 id="sane-header">Sane Header<a class="headerlink" href="#sane-header" title="Permanent link">⚓︎</a></h3>
 <p>This require headers to have spaces after the hashes (<code>#</code>) in order to be recognized as headers.</p>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
@@ -2402,7 +2420,7 @@ Link to internal page can be done by Markdown Link <code class="highlight">[<spa
 
 <span class="gu">####Not a Header</span>
 </code></pre></div>
-<h3 id="escapeall">EscapeAll<a class="headerlink" href="#escapeall" title="Permanent link">&para;</a></h3>
+<h3 id="escapeall">EscapeAll<a class="headerlink" href="#escapeall" title="Permanent link">⚓︎</a></h3>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">pymdownx.escapeall</span><span class="p">:</span>
@@ -2421,7 +2439,7 @@ This is a line with some spaces <mark class="critic">          </mark> in this l
 <p>A new line is here<br />
 A new line is here
 The last line!</p>
-<h3 id="magic-link">Magic Link<a class="headerlink" href="#magic-link" title="Permanent link">&para;</a></h3>
+<h3 id="magic-link">Magic Link<a class="headerlink" href="#magic-link" title="Permanent link">⚓︎</a></h3>
 <p>MagicLink supports auto-linking HTTP, FTP and email links. You can specify these links in raw text and they should get auto-linked. There are some limitations placed on MagicLink to keep it from aggressively auto-linking text that is not part of links. If you have a link that cannot be detected, you can always use the old style angle bracketed link format: <a href="https://www.link.com">https://www.link.com</a></p>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
@@ -2433,7 +2451,7 @@ vuquangtrong@gmail.com
 </code></pre></div>
 <p><a href="https://codeinsideout.com">https://codeinsideout.com</a> <br />
 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#117;&#113;&#117;&#97;&#110;&#103;&#116;&#114;&#111;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#118;&#117;&#113;&#117;&#97;&#110;&#103;&#116;&#114;&#111;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
-<h3 id="kbdextention">KbdExtention<a class="headerlink" href="#kbdextention" title="Permanent link">&para;</a></h3>
+<h3 id="kbdextention">KbdExtention<a class="headerlink" href="#kbdextention" title="Permanent link">⚓︎</a></h3>
 <p>The KBD Extension is an inline processor for adding markdown syntax for inline <code>&lt;kbd&gt;</code> tags. Text wrapped in <em class="newspan text-green">double brackets [[ button ]]</em>, <em class="newspan text-blue">double braces {{ menu }}</em>, or <em class="newspan text-purple">double parenthesis (( action ))</em> will be wrapped with an <abbr title="Hyper Text Markup Language">HTML</abbr> <code>&lt;kbd&gt;</code> tag.</p>
 <p>Install</p>
 <div class="highlight"><pre><span></span><code>pip install kbdextension
@@ -2483,7 +2501,7 @@ Action: {{Double click}} or {{Long press}}
 Button: <kbd class="button">Download</kbd> or <kbd class="button">Details</kbd> <br />
 Menu: <kbd class="menu">Save</kbd> or <kbd class="menu">Run &gt; Run As</kbd> <br />
 Action: <kbd class="action">Double click</kbd> or <kbd class="action">Long press</kbd></p>
-<h3 id="colors">Colors<a class="headerlink" href="#colors" title="Permanent link">&para;</a></h3>
+<h3 id="colors">Colors<a class="headerlink" href="#colors" title="Permanent link">⚓︎</a></h3>
 <p>Include defined colors for custom formatting with custom span</p>
 <p>Set in <code>mkdocs.yml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">extra_css</span><span class="p">:</span>
@@ -2897,7 +2915,7 @@ Action: <kbd class="action">Double click</kbd> or <kbd class="action">Long press
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<h3 id="custom-span">Custom span<a class="headerlink" href="#custom-span" title="Permanent link">&para;</a></h3>
+<h3 id="custom-span">Custom span<a class="headerlink" href="#custom-span" title="Permanent link">⚓︎</a></h3>
 <p>Make it easy to create new span for formattting by using an itallic block and remove its font style.</p>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">newspan</span> <span class="p">{</span>
     <span class="k">font-style</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
@@ -2955,7 +2973,7 @@ Do not hover on this. I dare you to do that !
 </tr>
 </tbody>
 </table>
-<h3 id="custom-block">Custom block<a class="headerlink" href="#custom-block" title="Permanent link">&para;</a></h3>
+<h3 id="custom-block">Custom block<a class="headerlink" href="#custom-block" title="Permanent link">⚓︎</a></h3>
 <p>This extension parses markup structures like this one:</p>
 <div class="highlight"><pre><span></span><code>::: mytype &quot;value 1&quot; param2=value2
     Indented content
@@ -3021,7 +3039,7 @@ Do not hover on this. I dare you to do that !
 ::: vimeo 139579122
 </code></pre></div>
 </div>
-<h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
+<h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">⚓︎</a></h2>
 <div class="highlight"><pre><span></span><code>pip install mkdocs-awesome-pages-plugin
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>pip install mkdocs-exclude
@@ -3051,6 +3069,14 @@ massa, nec semper lorem quam in massa.&#160;<a class="footnote-backref" href="#f
 </div>
     
 
+    <!-- Back to top -->
+    <a id="back-to-top">
+      <span class="twemoji" id="back-top-top-indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path>
+        </svg>
+      </span>
+    </a>
 
               
 
@@ -3063,7 +3089,7 @@ massa, nec semper lorem quam in massa.&#160;<a class="footnote-backref" href="#f
 
   <h2 id="__comments">Comments</h2>
   <div id="disqus_thread"></div>
-  <script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/setup/",this.page.identifier="blog/setup/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+  <script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/setup/",this.page.identifier="/blog/setup/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
 
               
 
@@ -3116,13 +3142,11 @@ massa, nec semper lorem quam in massa.&#160;<a class="footnote-backref" href="#f
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            <span>2020 © Code Inside Out</span>
+            © 2020 <a href="https://www.codeinsideout.com/">Code Inside Out</a>
           </div>
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        <!-- Change to Blog theme URL -->
+        using <a href="https://github.com/vuquangtrong/mkdocs-material-blog">Blog for Material MkDocs</a> theme
       </div>
       
   <div class="md-footer-social">

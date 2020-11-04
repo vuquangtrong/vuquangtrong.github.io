@@ -2,11 +2,12 @@ var typed = $(".typed");
 $(function() {
     typed.typed({
         strings: ["Vũ Quang Trọng",
-            "an Embeded Automotive Software Engineer",
+            "an Automotive Software Engineer",
             "a Mobile Application Developer",
             "a Photographer",
             "a Freelancer",
         ],
+        showCursor: false,
         typeSpeed: 20,
         backSpeed: 0,
         backDelay: 1000,
@@ -15,12 +16,17 @@ $(function() {
 });
 
 // Back to top button
+var backToTop = $('#back-to-top');
+
 $(window).scroll(function() {
-    if ($(this).scrollTop() > 40) {
-        $('.back-to-top').fadeIn('slow');
-        $('.main-menu').fadeIn('slow');
-    } else {
-        $('.back-to-top').fadeOut('slow');
-        $('.main-menu').fadeOut('slow');
-    }
+  if ($(window).scrollTop() > 100) {
+    backToTop.addClass('show');
+  } else {
+    backToTop.removeClass('show');
+  }
+});
+
+backToTop.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '1000');
 });
