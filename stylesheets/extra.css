@@ -21,22 +21,18 @@
 .md-nav__title .md-nav__button.md-logo img, 
 .md-nav__title .md-nav__button.md-logo svg {
     display: unset;
-    width: unset;
-    height: unset;
+    width: 32px;
+    height: 32px;
 }
 
-/* Display navigation header */
-@media screen and (max-width: 76.1875em) {
-    .md-nav--primary .md-nav__title {
-        color: var(--md-code-hl-keyword-color);
-    }
+/* remove margin from the first element in the page */
+.md-content__inner *:first-child {
+    margin-top: 0;
 }
 
 /* h2 header should be seen clearly */
 .md-typeset h2 {
     font-weight: 400;
-    font-size: 1.8em;
-    padding-top: 1em;
 }
 
 /* unformatted code should be highlighted */
@@ -80,6 +76,16 @@
     background-color: transparent;
 }
 
+/* emoji */
+.md-typeset span.twemoji {
+    vertical-align: middle;
+}
+
+/* repository */
+.md-source__repository {
+    font-weight: unset;
+}
+
 /* for custom blocks */
 .videowrapper {
     position: relative;
@@ -97,42 +103,29 @@
     height: 100%;
 }
 
-/* back to top */
-#back-to-top {
-    display: flex;
-    background-color: #FF9800;
-    width: 48px;
-    height: 48px;
-    text-align: center;
-    border-radius: 0.5em;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    transition: background-color .3s, opacity .5s, visibility .5s;
-    opacity: 0.4;
-    visibility: hidden;
-    z-index: 1000;
-}
-
-#back-to-top:hover {
-    opacity: 1;
-}
-
-#back-to-top.show {
-    visibility: visible;
-}
-
-#back-top-top-indicator {
-    height: 1.5em;
-    margin: auto;
-    color: white;
-}
-
-/* for better printing */
 @media print {
+    /* hide some stuff */
+    #back-to-top,
+    #disqus_section {
+        visibility: hidden !important;
+    }
 
-    /* break pages at H2 */
-    .md-typeset h2 {
-        page-break-before: always !important;
+    /* do not braek progress graphic */
+    .progress {
+        page-break-inside: avoid !important;
+    }
+
+    /* expand tab content */
+    .md-typeset .tabbed-set {
+        border: none !important;
+    }
+
+    .md-typeset .tabbed-set>input:checked+label {
+        border: none !important;
+    }
+
+    .md-typeset .tabbed-set>label {
+        color: unset !important;
+        padding-left: 0 !important;  
     }
 }

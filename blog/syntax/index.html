@@ -1,0 +1,967 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Quick reference of supported syntax for faster Writing and beautiful Output"><link href=https://www.codeinsideout.com/blog/syntax/ rel=canonical><meta name=author content=vuquangtrong@gmail.com><link rel="shortcut icon" href=../../assets/favicon.ico><meta name=generator content="mkdocs-1.1.2, mkdocs-material-6.1.2"><title>Writing Syntax - Code Inside Out</title><link rel=stylesheet href=../../assets/stylesheets/main.19190aaf.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.24b84193.min.css><link href=https://fonts.gstatic.com rel=preconnect crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style><link rel=stylesheet href=../../stylesheets/colors.css><link rel=stylesheet href=../../stylesheets/progressbar.css><link rel=stylesheet href=../../stylesheets/kbd.css><link rel=stylesheet href=../../stylesheets/blog.css><link rel=stylesheet href=../../stylesheets/extra.css><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script><script async src=https://www.google-analytics.com/analytics.js></script><script>
+      document.addEventListener("DOMContentLoaded", function() {
+        document.body.addEventListener("click", function(ev) {
+          if (ev.target instanceof HTMLElement) {
+            var el = ev.target.closest("a[href^=http]")
+            if (el)
+              ga("send", "event", "outbound", "click", el.href)
+          }
+        })
+      })
+    </script><meta property=og:type content=website><meta property=og:title content="Code Inside Out - Writing Syntax"><meta property=og:description content="Quick reference of supported syntax for faster Writing and beautiful Output"><meta content=https://www.codeinsideout.com/blog/syntax/ property=og:url><meta property=og:image content=https://www.codeinsideout.com/assets/images/banner.png><meta property=og:image:type content=image/png><meta property=og:image:width content=1080><meta property=og:image:height content=568><meta name=twitter:card content=summary_large_image><meta name=twitter:site content=@vqtrong><meta name=twitter:creator content=@vqtrong><meta name=twitter:title content="Code Inside Out - Writing Syntax"><meta name=twitter:description content="Quick reference of supported syntax for faster Writing and beautiful Output"><meta name=twitter:image content=https://www.codeinsideout.com/assets/images/banner.png></head> <body dir=ltr data-md-color-scheme data-md-color-primary=none data-md-color-accent=none> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#metadata class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://www.codeinsideout.com/ title="Code Inside Out" class="md-header-nav__button md-logo" aria-label="Code Inside Out"> <img src=../../assets/logo.png alt=logo> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> Code Inside Out </span> <span class="md-header-nav__topic md-ellipsis"> Writing Syntax </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> </nav> </header> <div class=md-container data-md-component=container> <nav class="md-tabs md-tabs--active" aria-label=Tabs data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=../.. class=md-tabs__link> Home </a> </li> <li class=md-tabs__item> <a href=../../projects/ class=md-tabs__link> Projects </a> </li> <li class=md-tabs__item> <a href=../ class="md-tabs__link md-tabs__link--active"> Blog </a> </li> <li class=md-tabs__item> <a href=../../about/ class=md-tabs__link> About </a> </li> <li class=md-tabs__item> <a href=../../tags/ class=md-tabs__link> Tags </a> </li> </ul> </div> </nav> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://www.codeinsideout.com/ title="Code Inside Out" class="md-nav__button md-logo" aria-label="Code Inside Out"> <img src=../../assets/logo.png alt=logo> </a> Code Inside Out </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. class=md-nav__link> Home </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-2 type=checkbox id=nav-2> <label class=md-nav__link for=nav-2> Projects <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Projects data-md-level=1> <label class=md-nav__title for=nav-2> <span class="md-nav__icon md-icon"></span> Projects </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../projects/ class=md-nav__link> Projects </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3 type=checkbox id=nav-3 checked> <label class=md-nav__link for=nav-3> Blog <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Blog data-md-level=1> <label class=md-nav__title for=nav-3> <span class="md-nav__icon md-icon"></span> Blog </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../ class=md-nav__link> Featured Posts </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> Writing Syntax <span class="md-nav__icon md-icon"></span> </label> <a href=./ class="md-nav__link md-nav__link--active"> Writing Syntax </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#metadata class=md-nav__link> Metadata </a> </li> <li class=md-nav__item> <a href=#internal-links class=md-nav__link> Internal links </a> </li> <li class=md-nav__item> <a href=#abbreviations class=md-nav__link> Abbreviations </a> </li> <li class=md-nav__item> <a href=#admonitions class=md-nav__link> Admonitions </a> </li> <li class=md-nav__item> <a href=#collapse class=md-nav__link> Collapse </a> </li> <li class=md-nav__item> <a href=#attributes class=md-nav__link> Attributes </a> </li> <li class=md-nav__item> <a href=#kbdextention class=md-nav__link> KbdExtention </a> </li> <li class=md-nav__item> <a href=#code-blocks class=md-nav__link> Code blocks </a> </li> <li class=md-nav__item> <a href=#tabs class=md-nav__link> Tabs </a> </li> <li class=md-nav__item> <a href=#tables class=md-nav__link> Tables </a> </li> <li class=md-nav__item> <a href=#footnotes class=md-nav__link> Footnotes </a> </li> <li class=md-nav__item> <a href=#caret-mark--tilde class=md-nav__link> Caret, Mark &amp; Tilde </a> </li> <li class=md-nav__item> <a href=#critic class=md-nav__link> Critic </a> </li> <li class=md-nav__item> <a href=#icons--emojis class=md-nav__link> Icons &amp; Emojis </a> </li> <li class=md-nav__item> <a href=#lists class=md-nav__link> Lists </a> </li> <li class=md-nav__item> <a href=#tasklist class=md-nav__link> Tasklist </a> </li> <li class=md-nav__item> <a href=#html-block class=md-nav__link> HTML block </a> <nav class=md-nav aria-label="HTML block"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#markdown-in-html class=md-nav__link> Markdown in HTML </a> </li> <li class=md-nav__item> <a href=#note class=md-nav__link> Note </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#images class=md-nav__link> Images </a> </li> <li class=md-nav__item> <a href=#progress-bar class=md-nav__link> Progress Bar </a> </li> <li class=md-nav__item> <a href=#sane-header class=md-nav__link> Sane Header </a> </li> <li class=md-nav__item> <a href=#escapeall class=md-nav__link> EscapeAll </a> </li> <li class=md-nav__item> <a href=#magic-link class=md-nav__link> Magic Link </a> </li> <li class=md-nav__item> <a href=#colors class=md-nav__link> Colors </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3-3 type=checkbox id=nav-3-3> <label class=md-nav__link for=nav-3-3> Bootloader <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Bootloader data-md-level=2> <label class=md-nav__title for=nav-3-3> <span class="md-nav__icon md-icon"></span> Bootloader </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../embedded/bootloader/bootloader-1/ class=md-nav__link> Bootloader - Part 1 </a> </li> </ul> </nav> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-4 type=checkbox id=nav-4> <label class=md-nav__link for=nav-4> About <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=About data-md-level=1> <label class=md-nav__title for=nav-4> <span class="md-nav__icon md-icon"></span> About </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../about/ class=md-nav__link> About </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5> <label class=md-nav__link for=nav-5> Tags <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Tags data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"></span> Tags </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../tags/ class=md-nav__link> Tags </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#metadata class=md-nav__link> Metadata </a> </li> <li class=md-nav__item> <a href=#internal-links class=md-nav__link> Internal links </a> </li> <li class=md-nav__item> <a href=#abbreviations class=md-nav__link> Abbreviations </a> </li> <li class=md-nav__item> <a href=#admonitions class=md-nav__link> Admonitions </a> </li> <li class=md-nav__item> <a href=#collapse class=md-nav__link> Collapse </a> </li> <li class=md-nav__item> <a href=#attributes class=md-nav__link> Attributes </a> </li> <li class=md-nav__item> <a href=#kbdextention class=md-nav__link> KbdExtention </a> </li> <li class=md-nav__item> <a href=#code-blocks class=md-nav__link> Code blocks </a> </li> <li class=md-nav__item> <a href=#tabs class=md-nav__link> Tabs </a> </li> <li class=md-nav__item> <a href=#tables class=md-nav__link> Tables </a> </li> <li class=md-nav__item> <a href=#footnotes class=md-nav__link> Footnotes </a> </li> <li class=md-nav__item> <a href=#caret-mark--tilde class=md-nav__link> Caret, Mark &amp; Tilde </a> </li> <li class=md-nav__item> <a href=#critic class=md-nav__link> Critic </a> </li> <li class=md-nav__item> <a href=#icons--emojis class=md-nav__link> Icons &amp; Emojis </a> </li> <li class=md-nav__item> <a href=#lists class=md-nav__link> Lists </a> </li> <li class=md-nav__item> <a href=#tasklist class=md-nav__link> Tasklist </a> </li> <li class=md-nav__item> <a href=#html-block class=md-nav__link> HTML block </a> <nav class=md-nav aria-label="HTML block"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#markdown-in-html class=md-nav__link> Markdown in HTML </a> </li> <li class=md-nav__item> <a href=#note class=md-nav__link> Note </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#images class=md-nav__link> Images </a> </li> <li class=md-nav__item> <a href=#progress-bar class=md-nav__link> Progress Bar </a> </li> <li class=md-nav__item> <a href=#sane-header class=md-nav__link> Sane Header </a> </li> <li class=md-nav__item> <a href=#escapeall class=md-nav__link> EscapeAll </a> </li> <li class=md-nav__item> <a href=#magic-link class=md-nav__link> Magic Link </a> </li> <li class=md-nav__item> <a href=#colors class=md-nav__link> Colors </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <style>
+        /* back to top */
+        #back-to-top {
+          display: flex;
+          background-color: #FF9800;
+          width: 48px;
+          height: 48px;
+          text-align: center;
+          border-radius: 0.5em;
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          transition: background-color .3s, opacity .5s, visibility .5s;
+          opacity: 0.4;
+          visibility: hidden;
+          z-index: 1000;
+        }
+
+        #back-to-top:hover {
+          opacity: 1;
+        }
+
+        #back-to-top.show {
+          visibility: visible;
+        }
+
+        #back-top-top-indicator {
+          height: 1.5em;
+          margin: auto;
+          color: white;
+        }
+      </style> <h2 id=metadata>Metadata<a class=headerlink href=#metadata title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">meta</span>
+</code></pre></div> <p>In the markdown file, add <em>metadata</em> in YAML format:</p> <div class=highlight><pre><span></span><code><span class=nn>---</span>
+<span class=nt>title</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">Lorem ipsum dolor sit amet</span>
+<span class=nt>description</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">Nullam urna elit, malesuada eget finibus ut, ac tortor.</span>
+<span class=nt>tags</span><span class=p>:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tag1</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tag2</span>
+<span class=nn>---</span>
+</code></pre></div> <h2 id=internal-links>Internal links<a class=headerlink href=#internal-links title="Permanent link">⚓︎</a></h2> <p>Create a simple <strong>About</strong> page at <code>docs/about.md</code>. Link to internal page can be done by Markdown Link <code class=highlight>[<span class=nt>About</span>](<span class=na>../../about.md</span>)</code>: <a href=../../about/ >About</a>.</p> <h2 id=abbreviations>Abbreviations<a class=headerlink href=#abbreviations title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">abbr</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.snippets</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code>The HTML specification is maintained by the W3C.
+
+*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+</code></pre></div> <h4>Preview</h4> <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p> <h2 id=admonitions>Admonitions<a class=headerlink href=#admonitions title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>"</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">admonition</span>
+</code></pre></div> <h4>Usage and Preview</h4> <div class=tabbed-set data-tabs=1:5><input checked=checked id=__tabbed_1_1 name=__tabbed_1 type=radio><label for=__tabbed_1_1>Default title</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>!!! note
+    Default title
+</code></pre></div> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Default title</p> </div> </div> <input id=__tabbed_1_2 name=__tabbed_1 type=radio><label for=__tabbed_1_2>Custom title</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>!!! note &quot;Custom title&quot;
+    Custom title
+</code></pre></div> <div class="admonition note"> <p class=admonition-title>Custom title</p> <p>Custom title</p> </div> </div> <input id=__tabbed_1_3 name=__tabbed_1 type=radio><label for=__tabbed_1_3>No title</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>!!! note &quot;&quot;
+    No title
+</code></pre></div> <div class="admonition note"> <p>No title</p> </div> </div> <input id=__tabbed_1_4 name=__tabbed_1 type=radio><label for=__tabbed_1_4>More content</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>!!! note
+    Embedded code
+
+<span class=sb>    ``` python</span>
+<span class=sb>    def bubble_sort(items):</span>
+<span class=sb>        for i in range(len(items)):</span>
+<span class=sb>            for j in range(len(items) - 1 - i):</span>
+<span class=sb>                if items[j] &gt; items[j + 1]:</span>
+<span class=sb>                    items[j], items[j + 1] = items[j + 1], items[j]</span>
+<span class=sb>    ```</span>
+
+    in side
+</code></pre></div> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Embedded code</p> <div class=highlight><pre><span></span><code><span class=k>def</span> <span class=nf>bubble_sort</span><span class=p>(</span><span class=n>items</span><span class=p>):</span>
+    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)):</span>
+        <span class=k>for</span> <span class=n>j</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)</span> <span class=o>-</span> <span class=mi>1</span> <span class=o>-</span> <span class=n>i</span><span class=p>):</span>
+            <span class=k>if</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>&gt;</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]:</span>
+                <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span>
+</code></pre></div> <p>in side</p> </div> </div> <input id=__tabbed_1_5 name=__tabbed_1 type=radio><label for=__tabbed_1_5>Other types</label><div class=tabbed-content> <div class="admonition note"> <p class=admonition-title>note, seealso</p> </div> <div class="admonition abstract"> <p class=admonition-title>abstract, summary, tldr</p> </div> <div class="admonition info"> <p class=admonition-title>info, todo</p> </div> <div class="admonition tip"> <p class=admonition-title>tip, hint, important</p> </div> <div class="admonition success"> <p class=admonition-title>success, check, done</p> </div> <div class="admonition question"> <p class=admonition-title>question, help, faq</p> </div> <div class="admonition warning"> <p class=admonition-title>warning, caution, attention</p> </div> <div class="admonition failure"> <p class=admonition-title>failure, fail, missing</p> </div> <div class="admonition danger"> <p class=admonition-title>danger, error</p> </div> <div class="admonition bug"> <p class=admonition-title>bug</p> </div> <div class="admonition example"> <p class=admonition-title>example</p> </div> <div class="admonition quote"> <p class=admonition-title>quote, cite</p> </div> </div> </div> <h2 id=collapse>Collapse<a class=headerlink href=#collapse title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>"</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.details</span>
+</code></pre></div> <h4>Usage and Preview</h4> <div class=tabbed-set data-tabs=2:2><input checked=checked id=__tabbed_2_1 name=__tabbed_2 type=radio><label for=__tabbed_2_1>Collapsed</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>??? note
+    Details
+</code></pre></div> <details class=note><summary>Note</summary><p>Details</p> </details> </div> <input id=__tabbed_2_2 name=__tabbed_2 type=radio><label for=__tabbed_2_2>Expanded</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>???+ note
+    Expanded details
+</code></pre></div> <details class=note open=open><summary>Note</summary><p>Expanded details</p> </details> </div> </div> <h2 id=attributes>Attributes<a class=headerlink href=#attributes title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">attr_list</span>
+</code></pre></div> <h4>Usage and Preview</h4> <div class=tabbed-set data-tabs=3:2><input checked=checked id=__tabbed_3_1 name=__tabbed_3 type=radio><label for=__tabbed_3_1>Text</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>&lt;style&gt;
+.text-green {
+    color: green
+}
+.bg-lightyellow {
+    background: lightyellow
+}
+&lt;/style&gt;
+
+<span class=gs>**Lorem ipsum**</span>{: .text-green} dolor sit amet, consectetur adipiscing elit. 
+Nulla et euismod nulla. Curabitur feugiat, tortor non consequat finibus, 
+justo purus auctor massa, nec semper lorem quam in massa.
+{: .bg-lightyellow}
+</code></pre></div> <p><style>
+.text-green {
+    color: green
+}
+.bg-lightyellow {
+    background: lightyellow
+}
+</style></p> <p class=bg-lightyellow><strong class=text-green>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit. Nulla et euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor massa, nec semper lorem quam in massa.</p> </div> <input id=__tabbed_3_2 name=__tabbed_3 type=radio><label for=__tabbed_3_2>Button</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>[<span class=nt>Subscribe to our mailing list</span>](<span class=na>#</span>){: .md-button }
+</code></pre></div> <p><a class=md-button href=#>Subscribe to our mailing list</a></p> <div class=highlight><pre><span></span><code>[<span class=nt>Subscribe to our mailing list</span>](<span class=na>#</span>){: .md-button .md-button--primary }
+</code></pre></div> <p><a class="md-button md-button--primary" href=#>Subscribe to our mailing list</a></p> <div class=highlight><pre><span></span><code>[<span class=nt>Submit :fontawesome-solid-paper-plane:</span>](<span class=na>#</span>){: .md-button .md-button--primary }
+</code></pre></div> <p><a class="md-button md-button--primary" href=#>Submit <span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg></span></a></p> </div> </div> <h2 id=kbdextention>KbdExtention<a class=headerlink href=#kbdextention title="Permanent link">⚓︎</a></h2> <p>The KBD Extension is an inline processor for adding markdown syntax for inline <code>&lt;kbd&gt;</code> tags. Text wrapped in <em class="newspan text-green">double brackets [[button]]</em>, <em class="newspan text-blue">double braces {{menu}}</em>, or <em class="newspan text-purple">double parenthesis ((action))</em> will be wrapped with an <abbr title="Hyper Text Markup Language">HTML</abbr> <code>&lt;kbd&gt;</code> tag with different classes.</p> <p>Install the extension:</p> <div class=highlight><pre><span></span><code>pip install kbdextension
+</code></pre></div> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>pymdownx.keys</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>kbdextension</span><span class=p>:</span>
+      <span class=nt>brackets_css</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">button</span> <span class=c1># [[button]]</span>
+      <span class=nt>enable_parens</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class=nt>parens_css</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">menu</span> <span class=c1># ((menu))</span>
+      <span class=nt>enable_braces</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class=nt>braces_css</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">action</span> <span class=c1># {{action}} or {{ &quot;{{action}}&quot; }}when using marcro</span>
+</code></pre></div> <details class=hint><summary>KBD Extention CSS</summary><div class=highlight><pre><span></span><code><span class=c>/* use with kbdextension */</span>
+
+<span class=p>.</span><span class=nc>md-typeset</span> <span class=nt>kbd</span> <span class=p>{</span>
+    <span class=k>padding</span><span class=p>:</span> <span class=mi>0</span> <span class=mf>0.5</span><span class=kt>em</span><span class=p>;</span>
+    <span class=k>font-size</span><span class=p>:</span> <span class=mf>.80</span><span class=kt>em</span><span class=p>;</span>
+    <span class=k>box-shadow</span><span class=p>:</span> <span class=kc>unset</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>md-typeset</span> <span class=nt>kbd</span><span class=o>[</span><span class=nt>class</span><span class=o>^=</span><span class=nt>key</span><span class=o>]</span> <span class=p>{</span>
+    <span class=k>color</span><span class=p>:</span> <span class=kc>white</span><span class=p>;</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=kc>dimgray</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>md-typeset</span> <span class=nt>kbd</span><span class=p>.</span><span class=nc>menu</span> <span class=p>{</span>
+    <span class=k>color</span><span class=p>:</span> <span class=kc>dodgerblue</span><span class=p>;</span>
+    <span class=k>border</span><span class=p>:</span> <span class=mi>1</span><span class=kt>px</span> <span class=kc>dotted</span>  <span class=kc>dodgerblue</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>md-typeset</span> <span class=nt>kbd</span><span class=p>.</span><span class=nc>button</span> <span class=p>{</span>
+    <span class=k>color</span><span class=p>:</span> <span class=kc>white</span><span class=p>;</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=kc>dodgerblue</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>md-typeset</span> <span class=nt>kbd</span><span class=p>.</span><span class=nc>action</span> <span class=p>{</span>
+    <span class=k>color</span><span class=p>:</span> <span class=kc>indigo</span><span class=p>;</span>
+    <span class=k>border-bottom</span><span class=p>:</span> <span class=mi>1</span><span class=kt>px</span> <span class=kc>dotted</span>  <span class=kc>dodgerblue</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div> </details> <h4>Usage</h4> <div class=highlight><pre><span></span><code>Keys: ++ctrl+alt+del++ or ++shift+a++ \
+Button: [[Download]] or [[Details]] \
+Menu: ((Save)) or ((Run &gt; Run As)) \
+Action: {{Double click}} or {{Long press}}
+</code></pre></div> <h4>Preview</h4> <p>Keys: <span class=keys><kbd class=key-control>Ctrl</kbd><span>+</span><kbd class=key-alt>Alt</kbd><span>+</span><kbd class=key-delete>Del</kbd></span> or <span class=keys><kbd class=key-shift>Shift</kbd><span>+</span><kbd class=key-a>A</kbd></span> <br> Button: <kbd class=button>Download</kbd> or <kbd class=button>Details</kbd> <br> Menu: <kbd class=menu>Save</kbd> or <kbd class=menu>Run &gt; Run As</kbd> <br> Action: <kbd class=action>Double click</kbd> or <kbd class=action>Long press</kbd></p> <h2 id=code-blocks>Code blocks<a class=headerlink href=#code-blocks title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.highlight</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.superfences</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.inlinehilite</span>
+</code></pre></div> <h4>Usage and Preview</h4> <div class=tabbed-set data-tabs=4:3><input checked=checked id=__tabbed_4_1 name=__tabbed_4 type=radio><label for=__tabbed_4_1>Numbered</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>``` python linenums=&quot;1&quot;
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] &gt; items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+</code></pre></div> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class=code><div class=highlight><pre><span></span><code><span class=k>def</span> <span class=nf>bubble_sort</span><span class=p>(</span><span class=n>items</span><span class=p>):</span>
+    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)):</span>
+        <span class=k>for</span> <span class=n>j</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)</span> <span class=o>-</span> <span class=mi>1</span> <span class=o>-</span> <span class=n>i</span><span class=p>):</span>
+            <span class=k>if</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>&gt;</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]:</span>
+                <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span>
+</code></pre></div> </td></tr></table> </div> <input id=__tabbed_4_2 name=__tabbed_4 type=radio><label for=__tabbed_4_2>Highlighted</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>``` python hl_lines=&quot;2 3&quot;
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] &gt; items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+</code></pre></div> <div class=highlight><pre><span></span><code><span class=k>def</span> <span class=nf>bubble_sort</span><span class=p>(</span><span class=n>items</span><span class=p>):</span>
+<span class=hll>    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)):</span>
+</span><span class=hll>        <span class=k>for</span> <span class=n>j</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)</span> <span class=o>-</span> <span class=mi>1</span> <span class=o>-</span> <span class=n>i</span><span class=p>):</span>
+</span>            <span class=k>if</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>&gt;</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]:</span>
+                <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span>
+</code></pre></div> </div> <input id=__tabbed_4_3 name=__tabbed_4 type=radio><label for=__tabbed_4_3>Inline</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>The <span class=sb>`#!python range()`</span> function is used to generate a sequence of numbers.
+The <span class=sb>`#!cpp int main(void)`</span> function is the entry point of user application.
+</code></pre></div> <p>The <code class=highlight><span class=nb>range</span><span class=p>()</span></code> function is used to generate a sequence of numbers.<br> The <code class=highlight><span class=kt>int</span> <span class=n>main</span><span class=p>(</span><span class=kt>void</span><span class=p>)</span></code> function is the entry point of user application.</p> </div> </div> <p>Make unformatted code block look better</p> <div class=highlight><pre><span></span><code><span class=p>.</span><span class=nc>md-typeset</span> <span class=nt>code</span> <span class=p>{</span>
+    <span class=k>color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>md</span><span class=o>-</span><span class=n>code</span><span class=o>-</span><span class=n>hl</span><span class=o>-</span><span class=n>special</span><span class=o>-</span><span class=kc>color</span><span class=p>);</span>
+<span class=p>}</span>
+</code></pre></div> <h2 id=tabs>Tabs<a class=headerlink href=#tabs title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.tabbed</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code>=== &quot;C&quot;
+
+    ``` c
+    #include &lt;stdio.h&gt;
+
+    int main(void) {
+    printf(&quot;Hello world!\n&quot;);
+    return 0;
+    }
+    ```
+
+=== &quot;C++&quot;
+
+    ``` c++
+    #include &lt;iostream&gt;
+
+    int main(void) {
+    std::cout &lt;&lt; &quot;Hello world!&quot; &lt;&lt; std::endl;
+    return 0;
+    }
+    ```
+</code></pre></div> <h4>Preview</h4> <div class=tabbed-set data-tabs=5:2><input checked=checked id=__tabbed_5_1 name=__tabbed_5 type=radio><label for=__tabbed_5_1>C</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=cp>#include</span> <span class=cpf>&lt;stdio.h&gt;</span><span class=cp></span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>void</span><span class=p>)</span> <span class=p>{</span>
+  <span class=n>printf</span><span class=p>(</span><span class=s>&quot;Hello world!</span><span class=se>\n</span><span class=s>&quot;</span><span class=p>);</span>
+  <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div> </div> <input id=__tabbed_5_2 name=__tabbed_5 type=radio><label for=__tabbed_5_2>C++</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp></span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>void</span><span class=p>)</span> <span class=p>{</span>
+  <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&quot;Hello world!&quot;</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+  <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div> </div> </div> <h2 id=tables>Tables<a class=headerlink href=#tables title="Permanent link">⚓︎</a></h2> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tables</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code>| Method   | Description                          |
+| -------- | ------------------------------------ |
+| <span class=sb>`GET`</span>    | :material-check:     Fetch resource  |
+| <span class=sb>`PUT`</span>    | :material-check-all: Update resource |
+| <span class=sb>`DELETE`</span> | :material-close:     Delete resource |
+</code></pre></div> <h4>Preview</h4> <table> <thead> <tr> <th>Method</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>GET</code></td> <td><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M21 7L9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7z"/></svg></span> Fetch resource</td> </tr> <tr> <td><code>PUT</code></td> <td><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M.41 13.41L6 19l1.41-1.42L1.83 12m20.41-6.42L11.66 16.17 7.5 12l-1.43 1.41L11.66 19l12-12M18 7l-1.41-1.42-6.35 6.35 1.42 1.41L18 7z"/></svg></span> Update resource</td> </tr> <tr> <td><code>DELETE</code></td> <td><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></span> Delete resource</td> </tr> </tbody> </table> <h2 id=footnotes>Footnotes<a class=headerlink href=#footnotes title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">footnotes</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code>Lorem ipsum[^1] dolor sit amet, consectetur adipiscing elit.[^2]
+
+[<span class=nl>^1</span>]: <span class=na>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+[<span class=nl>^2</span>]: <span class=na>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod</span>
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+</code></pre></div> <h4>Preview</h4> <p>Lorem ipsum<sup id=fnref:1><a class=footnote-ref href=#fn:1>1</a></sup> dolor sit amet, consectetur adipiscing elit.<sup id=fnref:2><a class=footnote-ref href=#fn:2>2</a></sup></p> <h2 id=caret-mark--tilde>Caret, Mark &amp; Tilde<a class=headerlink href=#caret-mark--tilde title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.caret</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.mark</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.tilde</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code><span class=k>*</span> ==This was marked==
+<span class=k>*</span> ^^This was inserted^^
+<span class=k>*</span> <span class=gd>~~This was deleted~~</span>
+<span class=k>*</span> H~2~0
+<span class=k>*</span> A^T^A
+</code></pre></div> <h4>Preview</h4> <ul> <li><mark>This was marked</mark></li> <li><ins>This was inserted</ins></li> <li><del>This was deleted</del></li> <li>H<sub>2</sub>0</li> <li>A<sup>T</sup>A</li> </ul> <h2 id=critic>Critic<a class=headerlink href=#critic title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>pymdownx.critic</span><span class=p>:</span>
+      <span class=nt>mode</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">view</span>
+</code></pre></div> <h4>Usage</h4> <div style="background-color: var(--md-code-bg-color); font-size: .85em; padding: .7em 1.2em;"> <p>Text can be {--deleted--} and replacement text {++added++}. This can also be combined into {~~one~&gt;a single~~} operation. {==Highlighting==} is also possible {&gt;&gt;and comments can be added inline&lt;&lt;}.</p> <p>{==</p> <p>Formatting can also be applied to blocks, by putting the opening and closing tags on separate lines and adding new lines between the tags and the content.</p> <p>==}</p> </div> <h4>Preview</h4> <p>Text can be <del class=critic>deleted</del> and replacement text <ins class=critic>added</ins>. This can also be combined into <del class=critic>one</del><ins class=critic>a single</ins> operation. <mark class=critic>Highlighting</mark> is also possible <span class="critic comment">and comments can be added inline</span>.</p> <mark class="critic block"> <p>Formatting can also be applied to blocks, by putting the opening and closing tags on separate lines and adding new lines between the tags and the content.</p> </mark> <h2 id=icons--emojis>Icons &amp; Emojis<a class=headerlink href=#icons--emojis title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>pymdownx.emoji</span><span class=p>:</span>
+      <span class=nt>emoji_index</span><span class=p>:</span> <span class=kt>!!python/name:materialx.emoji.twemoji</span>
+      <span class=nt>emoji_generator</span><span class=p>:</span> <span class=kt>!!python/name:materialx.emoji.to_svg</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code>:material-account-circle: – <span class=sb>`.icons/material/account-circle.svg`</span>
+:fontawesome-regular-laugh-wink: – <span class=sb>`.icons/fontawesome/regular/laugh-wink.svg`</span>
+:octicons-octoface-16: – <span class=sb>`.icons/octicons/octoface-16.svg`</span>
+:fontawesome-brands-facebook:{: style=&quot;color:#4267B2&quot;} – Medium
+:smile: 
+</code></pre></div> <h4>Preview</h4> <p><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.232 7.232 0 01-6 3.2M12 5a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3m0-3A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10c0-5.53-4.5-10-10-10z"/></svg></span> – <code>.icons/material/account-circle.svg</code> <br> <span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm141.4 389.4c-37.8 37.8-88 58.6-141.4 58.6s-103.6-20.8-141.4-58.6C68.8 359.6 48 309.4 48 256s20.8-103.6 58.6-141.4C144.4 76.8 194.6 56 248 56s103.6 20.8 141.4 58.6c37.8 37.8 58.6 88 58.6 141.4s-20.8 103.6-58.6 141.4zM328 164c-25.7 0-55.9 16.9-59.9 42.1-1.7 11.2 11.5 18.2 19.8 10.8l9.5-8.5c14.8-13.2 46.2-13.2 61 0l9.5 8.5c8.5 7.4 21.6.3 19.8-10.8-3.8-25.2-34-42.1-59.7-42.1zm-160 60c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm194.4 64H133.6c-8.2 0-14.5 7-13.5 15 7.5 59.2 58.9 105 121.1 105h13.6c62.2 0 113.6-45.8 121.1-105 1-8-5.3-15-13.5-15z"/></svg></span> – <code>.icons/fontawesome/regular/laugh-wink.svg</code> <br> <span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 16 16"><path fill-rule=evenodd d="M1.326 1.973a1.2 1.2 0 011.49-.832c.387.112.977.307 1.575.602.586.291 1.243.71 1.7 1.296.022.027.042.056.061.084A13.22 13.22 0 018 3c.67 0 1.289.037 1.861.108l.051-.07c.457-.586 1.114-1.004 1.7-1.295a9.654 9.654 0 011.576-.602 1.2 1.2 0 011.49.832c.14.493.356 1.347.479 2.29.079.604.123 1.28.07 1.936.541.977.773 2.11.773 3.301C16 13 14.5 15 8 15s-8-2-8-5.5c0-1.034.238-2.128.795-3.117-.08-.712-.034-1.46.052-2.12.122-.943.34-1.797.479-2.29zM8 13.065c6 0 6.5-2 6-4.27C13.363 5.905 11.25 5 8 5s-5.363.904-6 3.796c-.5 2.27 0 4.27 6 4.27z"/><path d="M4 8a1 1 0 012 0v1a1 1 0 01-2 0V8zm2.078 2.492c-.083-.264.146-.492.422-.492h3c.276 0 .505.228.422.492C9.67 11.304 8.834 12 8 12c-.834 0-1.669-.696-1.922-1.508zM10 8a1 1 0 112 0v1a1 1 0 11-2 0V8z"/></svg></span> – <code>.icons/octicons/octoface-16.svg</code> <br> <span class=twemoji style=color:#4267B2><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></span> – Medium <br> <img alt=😄 class=twemoji src=https://twemoji.maxcdn.com/v/latest/svg/1f604.svg title=:smile:></p> <h2 id=lists>Lists<a class=headerlink href=#lists title="Permanent link">⚓︎</a></h2> <p>This is natively supported in Markdown.</p> <h4>Usage and Preview</h4> <div class=tabbed-set data-tabs=6:3><input checked=checked id=__tabbed_6_1 name=__tabbed_6 type=radio><label for=__tabbed_6_1>Unordered</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>* Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
+accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
+lacinia sed. Aenean in finibus diam.
+
+    * Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis.
+    * Nam vulputate tincidunt fringilla.
+    * Nullam dignissim ultrices urna non auctor.
+</code></pre></div> <ul> <li> <p>Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh lacinia sed. Aenean in finibus diam.</p> <ul> <li>Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis.</li> <li>Nam vulputate tincidunt fringilla.</li> <li>Nullam dignissim ultrices urna non auctor.</li> </ul> </li> </ul> </div> <input id=__tabbed_6_2 name=__tabbed_6 type=radio><label for=__tabbed_6_2>Ordered</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>1. Vivamus id mi enim. Integer id turpis sapien. Ut condimentum lobortis
+sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis venenatis
+nulla. Vivamus a pharetra leo.
+
+    1. Vivamus venenatis porttitor tortor sit amet rutrum. Pellentesque aliquet
+    quam enim, eu volutpat urna rutrum a. Nam vehicula nunc mauris, a
+    ultricies libero efficitur sed.
+
+    2. Morbi eget dapibus felis. Vivamus venenatis porttitor tortor sit amet
+    rutrum. Pellentesque aliquet quam enim, eu volutpat urna rutrum a.
+
+        1. Mauris dictum mi lacus
+        2. Ut sit amet placerat ante
+        3. Suspendisse ac eros arcu
+</code></pre></div> <ol> <li> <p>Vivamus id mi enim. Integer id turpis sapien. Ut condimentum lobortis sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis venenatis nulla. Vivamus a pharetra leo.</p> <ol> <li> <p>Vivamus venenatis porttitor tortor sit amet rutrum. Pellentesque aliquet quam enim, eu volutpat urna rutrum a. Nam vehicula nunc mauris, a ultricies libero efficitur sed.</p> </li> <li> <p>Morbi eget dapibus felis. Vivamus venenatis porttitor tortor sit amet rutrum. Pellentesque aliquet quam enim, eu volutpat urna rutrum a.</p> <ol> <li>Mauris dictum mi lacus</li> <li>Ut sit amet placerat ante</li> <li>Suspendisse ac eros arcu</li> </ol> </li> </ol> </li> </ol> </div> <input id=__tabbed_6_3 name=__tabbed_6 type=radio><label for=__tabbed_6_3>Definition</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>`Lorem ipsum dolor sit amet`
+:   Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus
+    tellus non sem sollicitudin, quis rutrum leo facilisis.
+
+`Cras arcu libero`
+:   Aliquam metus eros, pretium sed nulla venenatis, faucibus auctor ex. Proin
+    ut eros sed sapien ullamcorper consequat. Nunc ligula ante.
+
+    Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis.
+    Nam vulputate tincidunt fringilla.
+    Nullam dignissim ultrices urna non auctor.
+</code></pre></div> <dl> <dt><code>Lorem ipsum dolor sit amet</code></dt> <dd>Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus tellus non sem sollicitudin, quis rutrum leo facilisis.</dd> <dt><code>Cras arcu libero</code></dt> <dd> <p>Aliquam metus eros, pretium sed nulla venenatis, faucibus auctor ex. Proin ut eros sed sapien ullamcorper consequat. Nunc ligula ante.</p> <p>Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis. Nam vulputate tincidunt fringilla. Nullam dignissim ultrices urna non auctor.</p> </dd> </dl> </div> </div> <h2 id=tasklist>Tasklist<a class=headerlink href=#tasklist title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>pymdownx.tasklist</span><span class=p>:</span>
+      <span class=nt>custom_checkbox</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code><span class=k>* [x]</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit
+<span class=k>* [ ]</span> Vestibulum convallis sit amet nisi a tincidunt
+    <span class=k>* [x]</span> In hac habitasse platea dictumst
+    <span class=k>* [x]</span> In scelerisque nibh non dolor mollis congue sed et metus
+    <span class=k>* [ ]</span> Praesent sed risus massa
+<span class=k>* [ ]</span> Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
+</code></pre></div> <h4>Preview</h4> <ul class=task-list> <li class=task-list-item><label class=task-list-control><input type=checkbox disabled checked><span class=task-list-indicator></span></label> Lorem ipsum dolor sit amet, consectetur adipiscing elit</li> <li class=task-list-item><label class=task-list-control><input type=checkbox disabled><span class=task-list-indicator></span></label> Vestibulum convallis sit amet nisi a tincidunt<ul class=task-list> <li class=task-list-item><label class=task-list-control><input type=checkbox disabled checked><span class=task-list-indicator></span></label> In hac habitasse platea dictumst</li> <li class=task-list-item><label class=task-list-control><input type=checkbox disabled checked><span class=task-list-indicator></span></label> In scelerisque nibh non dolor mollis congue sed et metus</li> <li class=task-list-item><label class=task-list-control><input type=checkbox disabled><span class=task-list-indicator></span></label> Praesent sed risus massa</li> </ul> </li> <li class=task-list-item><label class=task-list-control><input type=checkbox disabled><span class=task-list-indicator></span></label> Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque</li> </ul> <h2 id=html-block><abbr title="Hyper Text Markup Language">HTML</abbr> block<a class=headerlink href=#html-block title="Permanent link">⚓︎</a></h2> <p>All <abbr title="Hyper Text Markup Language">HTML</abbr> blocks is translated as-is to the output. <br> You <mark>should NOT have empty line(s) inside <abbr title="Hyper Text Markup Language">HTML</abbr> blocks</mark>.</p> <h4>Example</h4> <div class=highlight><pre><span></span><code><span class=p>&lt;</span><span class=nt>style</span><span class=p>&gt;</span>
+<span class=p>@</span><span class=k>keyframes</span> <span class=nt>heart</span> <span class=p>{</span>
+<span class=nt>0</span><span class=o>%,</span> <span class=nt>40</span><span class=o>%,</span> <span class=nt>80</span><span class=o>%,</span> <span class=nt>100</span><span class=o>%</span> <span class=p>{</span>
+    <span class=k>transform</span><span class=p>:</span> <span class=nb>scale</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+<span class=p>}</span>
+<span class=nt>20</span><span class=o>%,</span> <span class=nt>60</span><span class=o>%</span> <span class=p>{</span>
+    <span class=k>transform</span><span class=p>:</span> <span class=nb>scale</span><span class=p>(</span><span class=mf>1.15</span><span class=p>);</span>
+<span class=p>}</span>
+<span class=p>}</span>
+<span class=p>.</span><span class=nc>heart</span> <span class=p>{</span>
+<span class=k>animation</span><span class=p>:</span> <span class=n>heart</span> <span class=mi>1000</span><span class=kt>ms</span> <span class=kc>infinite</span><span class=p>;</span>
+<span class=p>}</span>
+<span class=p>&lt;/</span><span class=nt>style</span><span class=p>&gt;</span>
+
+:octicons-heart-fill-24:{: .heart }
+</code></pre></div> <h4>Preview</h4> <style>
+@keyframes heart {
+  0%, 40%, 80%, 100% {
+    transform: scale(1);
+  }
+  20%, 60% {
+    transform: scale(1.15);
+  }
+}
+.heart {
+  animation: heart 1000ms infinite;
+}
+</style> <p><span class="twemoji heart"><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 01-.686 0 16.709 16.709 0 01-.465-.252 31.147 31.147 0 01-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0114 20.408z"/></svg></span></p> <h3 id=markdown-in-html>Markdown in <abbr title="Hyper Text Markup Language">HTML</abbr><a class=headerlink href=#markdown-in-html title="Permanent link">⚓︎</a></h3> <p>To enable Markdown syntax inside a <abbr title="Hyper Text Markup Language">HTML</abbr> block, enable it and add attribute <code>markdown="1"</code></p> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">md_in_html</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code><span class=hll>&lt;div markdown=&quot;1&quot; style=&quot;color: darkred&quot;&gt;
+</span><span class=gs>**Lorem**</span> ipsum dolor sit amet, <span class=ge>*consectetur*</span> adipiscing ==elit==.
+
+Nulla et euismod nulla
+&lt;/div&gt;
+</code></pre></div> <h4>Preview</h4> <div style="color: darkred"> <p><strong>Lorem</strong> ipsum dolor sit amet, <em>consectetur</em> adipiscing <mark>elit</mark>.</p> <p>Nulla et euismod nulla</p> </div> <h3 id=note>Note<a class=headerlink href=#note title="Permanent link">⚓︎</a></h3> <div class="admonition note"> <p>Should not have empty line(s) inside pure <abbr title="Hyper Text Markup Language">HTML</abbr> blocks if that block is at root. If <abbr title="Hyper Text Markup Language">HTML</abbr> block is inside a wrapper, it is considered as markdown block</p> </div> <div class=highlight><pre><span></span><code>&lt;div style=&quot;color: darkred&quot;&gt;
+<span class=gs>**Lorem**</span> ipsum dolor sit amet, <span class=ge>*consectetur*</span> adipiscing ==elit==.
+
+Nulla et euismod nulla
+&lt;/div&gt;
+</code></pre></div> <div style="color: darkred"> **Lorem** ipsum dolor sit amet, *consectetur* adipiscing ==elit==. Nulla et euismod nulla </div> <blockquote> <p>All <abbr title="Hyper Text Markup Language">HTML</abbr> block is considered as Markdown block if it is inside a quote or tab <div class=highlight><pre><span></span><code>&gt; All HTML block is considered as Markdown block if it is inside a quote or tab 
+    &lt;div markdown=&quot;1&quot; style=&quot;color: darkred&quot;&gt;
+    **Lorem** ipsum dolor sit amet, *consectetur* adipiscing ==elit==.
+
+    Nulla et euismod nullaa
+    &lt;/div&gt;
+</code></pre></div></p> <p><div markdown=1 style="color: darkred"> <strong>Lorem</strong> ipsum dolor sit amet, <em>consectetur</em> adipiscing <mark>elit</mark>.</p> <p>Nulla et euismod nulla </div></p> </blockquote> <h2 id=images>Images<a class=headerlink href=#images title="Permanent link">⚓︎</a></h2> <p>Image is natively support in Markdown, however, additional extension will help to show Image Caption</p> <p>Install extension:</p> <div class=highlight><pre><span></span><code>pip install markdown-captions
+</code></pre></div> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>markdown_captions</span><span class=p>:</span>
+</code></pre></div> <h4>Usage and Preview</h4> <div class=highlight><pre><span></span><code>![<span class=nt>Alt title 300x200</span>](<span class=na>https://dummyimage.com/300x200 &quot;Title 300x200&quot;</span>)
+</code></pre></div> <p> <figure><img src=https://dummyimage.com/300x200 title="Title 300x200"><figcaption>Alt title 300x200</figcaption> </figure> </p> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor massa, nec semper lorem quam in massa.</p> <div class=highlight><pre><span></span><code>![<span class=nt>Alt title WQXGA</span>](<span class=na>https://dummyimage.com/wqxga &quot;Title WQXGA&quot;</span>)
+</code></pre></div> <p> <figure><img src=https://dummyimage.com/wqxga title="Title WQXGA"><figcaption>Alt title WQXGA</figcaption> </figure> </p> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor massa, nec semper lorem quam in massa.</p> <div class=highlight><pre><span></span><code>![<span class=nt>Alt title HD720</span>](<span class=na>https://dummyimage.com/hd720 &quot;Title HD720&quot;</span>)
+</code></pre></div> <p> <figure><img src=https://dummyimage.com/hd720 title="Title HD720"><figcaption>Alt title HD720</figcaption> </figure> </p> </div> <h2 id=progress-bar>Progress Bar<a class=headerlink href=#progress-bar title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>pymdownx.progressbar</span><span class=p>:</span>
+
+<span class=nt>extra_css</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stylesheets/progressbar.css</span>
+</code></pre></div> <details class=hint><summary>Progress Bar CSS</summary><div class=highlight><pre><span></span><code><span class=c>/* use with pymdownx.progressbar */</span>
+
+<span class=p>.</span><span class=nc>progress-label</span> <span class=p>{</span>
+    <span class=k>position</span><span class=p>:</span> <span class=kc>absolute</span><span class=p>;</span>
+    <span class=k>text-align</span><span class=p>:</span> <span class=kc>center</span><span class=p>;</span>
+    <span class=c>/* font-weight: 700; */</span>
+    <span class=k>width</span><span class=p>:</span> <span class=mi>100</span><span class=kt>%</span><span class=p>;</span>
+    <span class=k>margin</span><span class=p>:</span> <span class=mi>0</span> <span class=cp>!important</span><span class=p>;</span>
+    <span class=k>line-height</span><span class=p>:</span> <span class=mf>1.2</span><span class=kt>rem</span><span class=p>;</span>
+    <span class=k>white-space</span><span class=p>:</span> <span class=kc>nowrap</span><span class=p>;</span>
+    <span class=k>overflow</span><span class=p>:</span> <span class=kc>hidden</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress-bar</span> <span class=p>{</span>
+    <span class=k>height</span><span class=p>:</span> <span class=mf>1.2</span><span class=kt>rem</span><span class=p>;</span>
+    <span class=k>float</span><span class=p>:</span> <span class=kc>left</span><span class=p>;</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#2979ff</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress</span> <span class=p>{</span>
+    <span class=k>display</span><span class=p>:</span> <span class=kc>block</span><span class=p>;</span>
+    <span class=k>width</span><span class=p>:</span> <span class=mi>100</span><span class=kt>%</span><span class=p>;</span>
+    <span class=k>margin</span><span class=p>:</span> <span class=mf>0.5</span><span class=kt>rem</span> <span class=mi>0</span><span class=p>;</span>
+    <span class=k>height</span><span class=p>:</span> <span class=mf>1.2</span><span class=kt>rem</span><span class=p>;</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#eeeeee</span><span class=p>;</span>
+    <span class=k>position</span><span class=p>:</span> <span class=kc>relative</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress</span><span class=p>.</span><span class=nc>thin</span> <span class=p>{</span>
+    <span class=k>margin-top</span><span class=p>:</span> <span class=mf>0.9</span><span class=kt>rem</span><span class=p>;</span>
+    <span class=k>height</span><span class=p>:</span> <span class=mf>0.4</span><span class=kt>rem</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress</span><span class=p>.</span><span class=nc>thin</span> <span class=p>.</span><span class=nc>progress-label</span> <span class=p>{</span>
+    <span class=k>margin-top</span><span class=p>:</span> <span class=mf>-0.4</span><span class=kt>rem</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress</span><span class=p>.</span><span class=nc>thin</span> <span class=p>.</span><span class=nc>progress-bar</span> <span class=p>{</span>
+    <span class=k>height</span><span class=p>:</span> <span class=mf>0.4</span><span class=kt>rem</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress-100plus</span> <span class=p>.</span><span class=nc>progress-bar</span> <span class=p>{</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#00e676</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress-80plus</span> <span class=p>.</span><span class=nc>progress-bar</span> <span class=p>{</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#fbc02d</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress-60plus</span> <span class=p>.</span><span class=nc>progress-bar</span> <span class=p>{</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ff9100</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress-40plus</span> <span class=p>.</span><span class=nc>progress-bar</span> <span class=p>{</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ff5252</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress-20plus</span> <span class=p>.</span><span class=nc>progress-bar</span> <span class=p>{</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ff1744</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=p>.</span><span class=nc>progress-0plus</span> <span class=p>.</span><span class=nc>progress-bar</span> <span class=p>{</span>
+    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#f50057</span><span class=p>;</span>
+  <span class=p>}</span>
+</code></pre></div> </details> <h4>Usage</h4> <div class=highlight><pre><span></span><code>[=0% &quot;0%&quot;]
+[=20% &quot;20%&quot;]
+[=40% &quot;40%&quot;]
+[=60% &quot;60%&quot;]
+[=80% &quot;80%&quot;]
+[=100% &quot;100%&quot;]
+
+[=0%]{: .thin}
+[=20%]{: .thin}
+[=40%]{: .thin}
+[=60%]{: .thin}
+[=80%]{: .thin}
+[=100%]{: .thin}
+</code></pre></div> <h4>Preview</h4> <p> <div class="progress progress-0plus"> <div class=progress-bar style=width:0.00%> <p class=progress-label>0%</p> </div> </div> <div class="progress progress-20plus"> <div class=progress-bar style=width:20.00%> <p class=progress-label>20%</p> </div> </div> <div class="progress progress-40plus"> <div class=progress-bar style=width:40.00%> <p class=progress-label>40%</p> </div> </div> <div class="progress progress-60plus"> <div class=progress-bar style=width:60.00%> <p class=progress-label>60%</p> </div> </div> <div class="progress progress-80plus"> <div class=progress-bar style=width:80.00%> <p class=progress-label>80%</p> </div> </div> <div class="progress progress-100plus"> <div class=progress-bar style=width:100.00%> <p class=progress-label>100%</p> </div> </div> </p> <p> <div class="progress progress-0plus thin"> <div class=progress-bar style=width:0.00%> <p class=progress-label></p> </div> </div> <div class="progress progress-20plus thin"> <div class=progress-bar style=width:20.00%> <p class=progress-label></p> </div> </div> <div class="progress progress-40plus thin"> <div class=progress-bar style=width:40.00%> <p class=progress-label></p> </div> </div> <div class="progress progress-60plus thin"> <div class=progress-bar style=width:60.00%> <p class=progress-label></p> </div> </div> <div class="progress progress-80plus thin"> <div class=progress-bar style=width:80.00%> <p class=progress-label></p> </div> </div> <div class="progress progress-100plus thin"> <div class=progress-bar style=width:100.00%> <p class=progress-label></p> </div> </div> </p> <h2 id=sane-header>Sane Header<a class=headerlink href=#sane-header title="Permanent link">⚓︎</a></h2> <p>This require headers to have spaces after the hashes (<code>#</code>) in order to be recognized as headers.</p> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>pymdownx.saneheaders</span><span class=p>:</span>
+</code></pre></div> <div class=highlight><pre><span></span><code><span class=gu>### Header</span>
+
+<span class=gu>####Not a Header</span>
+</code></pre></div> <h2 id=escapeall>EscapeAll<a class=headerlink href=#escapeall title="Permanent link">⚓︎</a></h2> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>pymdownx.escapeall</span><span class=p>:</span>
+</code></pre></div> <p>There are two special escapes among all of these escapes though: escaping "space" characters and escaping "newline" characters. In <code>mkdocs.yml</code>, if <code>pymdownx.escapeall.nbsp</code> is enabled, an escaped space <mark class=critic>\ </mark> will be converted into a non-breaking space: <code>&amp;nbsp;</code>. If <code>pymdownx.escapeall.hardbreak</code> is enabled, an escaped newline <mark class=critic>\n</mark> will be converted to a hard break <code>&lt;br&gt;</code>. The advantage of hardbreak is that you can visually see the hard break opposed to Markdown's default method of two spaces at the end of a line.</p> <h4>Usage</h4> <div class=highlight><pre><span></span><code>This is a line with some spaces <mark class=critic>\ \ \ \ \ </mark> in the sentence. <mark class=critic>\</mark>
+This is a line with some spaces <mark class=critic>          </mark> in the sentence but they are not rendered.
+
+A line is here. <mark class=critic>\</mark>
+A new line is here, thanks to the escaped newline.<mark class=critic>  </mark>
+Another new line thanks to two space at the end of last line.  
+The last line is not put on a new line!
+</code></pre></div> <h4>Preview</h4> <p>This is a line with some spaces <mark class=critic>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark> in the sentence. <br> This is a line with some spaces <mark class=critic> </mark> in the sentence but they are not rendered.</p> <p>A line is here. <br> A new line is here, thanks to the escaped newline.<br> Another new line thanks to two space at the end of last line.<br> The last line is not put on a new line!</p> <h2 id=magic-link>Magic Link<a class=headerlink href=#magic-link title="Permanent link">⚓︎</a></h2> <p>MagicLink supports auto-linking HTTP, FTP and email links. You can specify these links in raw text and they should get auto-linked. There are some limitations placed on MagicLink to keep it from aggressively auto-linking text that is not part of links. If you have a link that cannot be detected, you can always use the old style angle bracketed <code>&lt;&gt;</code> link format.</p> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>pymdownx.magiclink</span><span class=p>:</span>
+</code></pre></div> <h4>Usage</h4> <div class=highlight><pre><span></span><code>&lt;https://codeinsideout.com&gt; \
+https://codeinsideout.com \
+vuquangtrong@gmail.com
+</code></pre></div> <h4>Preview</h4> <p><a href=https://codeinsideout.com>https://codeinsideout.com</a> <br> <a href=https://codeinsideout.com>https://codeinsideout.com</a> <br> <a href=mailto:vuquangtrong@gmail.com>&#118;&#117;&#113;&#117;&#97;&#110;&#103;&#116;&#114;&#111;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p> <h2 id=colors>Colors<a class=headerlink href=#colors title="Permanent link">⚓︎</a></h2> <p>Include defined colors for custom formatting with custom span</p> <p>Setting in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>extra_css</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stylesheets/colors.css</span>
+</code></pre></div> <details class=hint><summary>W3.CSS Colors</summary><div class=highlight><pre><span></span><code><span class=c>/* Extract from W3.CSS 4.13 Colors */</span>
+
+<span class=p>.</span><span class=nc>amber</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-amber</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ffc107</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>aqua</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-aqua</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#00ffff</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>blue</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-blue</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#2196f3</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>light-blue</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-light-blue</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#87ceeb</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>brown</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-brown</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#795548</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>cyan</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-cyan</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#00bcd4</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>blue-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-blue-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>blue-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-blue-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#607d8b</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>green</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-green</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#4caf50</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>light-green</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-light-green</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#8bc34a</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>indigo</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-indigo</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#3f51b5</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>khaki</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-khaki</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#f0e68c</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>lime</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-lime</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#cddc39</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>orange</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-orange</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ff9800</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>deep-orange</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-deep-orange</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ff5722</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>pink</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-pink</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#e91e63</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>purple</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-purple</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#9c27b0</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>deep-purple</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-deep-purple</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#673ab7</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>red</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-red</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#f44336</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>sand</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-sand</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#fdf5e6</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>teal</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-teal</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#009688</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>yellow</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-yellow</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ffeb3b</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>white</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-white</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>black</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-black</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#9e9e9e</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>light-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-light-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>light-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-light-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#f1f1f1</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>dark-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-dark-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>dark-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-dark-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#616161</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>pale-red</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-pale-red</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ffdddd</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>pale-green</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-pale-green</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ddffdd</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>pale-yellow</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-pale-yellow</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ffffcc</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>pale-blue</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-pale-blue</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#ddffff</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-amber</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-amber</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#ffc107</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-aqua</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-aqua</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#00ffff</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-blue</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-blue</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#2196f3</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-light-blue</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-light-blue</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#87ceeb</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-brown</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-brown</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#795548</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-cyan</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-cyan</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#00bcd4</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-blue-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-blue-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>text-blue-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-blue-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#607d8b</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-green</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-green</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#4caf50</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-light-green</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-light-green</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#8bc34a</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-indigo</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-indigo</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#3f51b5</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-khaki</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-khaki</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#b4aa50</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-lime</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-lime</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#cddc39</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-orange</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-orange</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#ff9800</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-deep-orange</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-deep-orange</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#ff5722</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-pink</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-pink</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#e91e63</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-purple</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-purple</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#9c27b0</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-deep-purple</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-deep-purple</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#673ab7</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-red</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-red</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#f44336</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-sand</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-sand</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fdf5e6</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-teal</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-teal</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#009688</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-yellow</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-yellow</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#d2be0e</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-white</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-white</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-black</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-black</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>text-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#757575</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-light-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-light-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>text-light-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-light-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#f1f1f1</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>text-dark-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-dark-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>text-dark-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-text-dark-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>color</span><span class=p>:</span> <span class=mh>#3a3a3a</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-amber</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-amber</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#ffc107</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-aqua</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-aqua</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#00ffff</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-blue</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-blue</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#2196f3</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-light-blue</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-light-blue</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#87ceeb</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-brown</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-brown</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#795548</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-cyan</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-cyan</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#00bcd4</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-blue-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-blue-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>border-blue-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-blue-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#607d8b</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-green</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-green</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#4caf50</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-light-green</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-light-green</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#8bc34a</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-indigo</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-indigo</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#3f51b5</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-khaki</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-khaki</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#f0e68c</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-lime</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-lime</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#cddc39</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-orange</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-orange</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#ff9800</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-deep-orange</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-deep-orange</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#ff5722</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-pink</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-pink</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#e91e63</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-purple</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-purple</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#9c27b0</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-deep-purple</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-deep-purple</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#673ab7</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-red</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-red</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#f44336</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-sand</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-sand</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#fdf5e6</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-teal</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-teal</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#009688</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-yellow</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-yellow</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#ffeb3b</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-white</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-white</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#fff</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-black</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-black</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#000</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>border-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#9e9e9e</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-light-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-light-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>border-light-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-light-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#f1f1f1</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-dark-grey</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-dark-grey</span><span class=p>:</span><span class=nd>hover</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>border-dark-gray</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-dark-gray</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#616161</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-pale-red</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-pale-red</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#ffe7e7</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-pale-green</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-pale-green</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#e7ffe7</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-pale-yellow</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-pale-yellow</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#ffffcc</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=p>.</span><span class=nc>border-pale-blue</span><span class=o>,</span>
+<span class=p>.</span><span class=nc>hover-border-pale-blue</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+  <span class=k>border-color</span><span class=p>:</span> <span class=mh>#e7ffff</span> <span class=cp>!important</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div> </details> <h4>Usage</h4> <div class=highlight><pre><span></span><code><span class=ge>_Text in green, but in red when horvering_</span>{: .newspan .text-green .hover-text-red} \
+<span class=ge>_Background in yellow, but in cyan when hovering_</span>{: .newspan .yellow .hover-cyan}
+</code></pre></div> <h4>Preview</h4> <p><em class="newspan text-green hover-text-red">Text in green, but in red when horvering</em> <br> <em class="newspan yellow hover-cyan">Background in yellow, but in cyan when hovering</em></p> <div class=footnote> <hr> <ol> <li id=fn:1> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#160;<a class=footnote-backref href=#fnref:1 title="Jump back to footnote 1 in the text">&#8617;</a></p> </li> <li id=fn:2> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor massa, nec semper lorem quam in massa.&#160;<a class=footnote-backref href=#fnref:2 title="Jump back to footnote 2 in the text">&#8617;</a></p> </li> </ol> </div> <a id=back-to-top> <span class=twemoji id=back-top-top-indicator> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"> <path d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path> </svg> </span> </a> <div style="height: 10vh;"></div> <div id=disqus_section> <h2 id=__comments>Comments</h2> <div id=disqus_thread></div> <script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/syntax/",this.page.identifier="blog/syntax/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script> </div> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid" aria-label=Footer> <a href=../ class="md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Previous </span> Featured Posts </div> </div> </a> <a href=../embedded/bootloader/bootloader-1/ class="md-footer-nav__link md-footer-nav__link--next" rel=next> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Next </span> Bootloader - Part 1 </div> </div> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> © 2020 <a href=https://www.codeinsideout.com/ >Code Inside Out</a> </div> using <a href=https://github.com/vuquangtrong/mkdocs-material-blog>Blog for Material MkDocs</a> theme </div> <div class=md-footer-social> <a href=https://github.com/vuquangtrong target=_blank rel=noopener title=github.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> </a> <a href=https://facebook.com/trongvq target=_blank rel=noopener title=facebook.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg> </a> <a href=https://www.linkedin.com/in/vqtrong target=_blank rel=noopener title=www.linkedin.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> </a> </div> </div> </div> </footer> </div> <script src=../../assets/javascripts/vendor.7e0ee788.min.js></script> <script src=../../assets/javascripts/bundle.c1ccee15.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script> <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script> <script src=../../javascripts/jquery-3.4.1.min.js></script> <script src=../../javascripts/extra.js></script> <script type=text/javascript>
+    var backToTop = $('#back-to-top');
+
+    $(window).scroll(function() {
+      if ($(window).scrollTop() > 100) {
+        backToTop.addClass('show');
+      } else {
+        backToTop.removeClass('show');
+      }
+    });
+
+    backToTop.on('click', function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop:0}, '1000');
+    });
+  </script> </body> </html>
