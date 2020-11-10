@@ -21,6 +21,7 @@
       
     
     
+  
       <link rel="stylesheet" href="/assets/stylesheets/main.19190aaf.min.css">
       
         
@@ -28,6 +29,79 @@
         
       
     
+
+  <!-- Page Styles -->
+  
+  
+  <style>
+    /* back to top */
+    #back-to-top {
+      display: flex;
+      float: right;
+      background-color: #FF9800;
+      width: 48px;
+      height: 48px;
+      text-align: center;
+      border-radius: 24px;
+      position: sticky;
+      bottom: 30px;
+      right: 30px;
+      transition: background-color .3s, opacity .5s, visibility .5s;
+      opacity: 0.4;
+      visibility: hidden;
+      z-index: 1000;
+    }
+
+    #back-to-top:hover {
+      opacity: 1;
+    }
+
+    #back-to-top.show {
+      visibility: visible;
+    }
+
+    #back-top-top-indicator {
+      height: 1.5em;
+      margin: auto;
+      color: white;
+    }
+  </style>
+  
+  
+  <!-- Additional styles for pages -->
+  <style>
+    /* Hide table of contents */
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--secondary {
+        display: none;
+      }
+    }
+
+    /* Hide navigation */
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary {
+        display: none;
+      }
+    }
+
+    /* Center the content area */
+    @media screen and (min-width: 76.25em) {
+      .md-content {
+          margin-left: auto;
+          margin-right: auto;
+      }
+    }
+
+    @media screen and (max-width: 76.1875em) and (min-width: 60em) {
+      .md-content {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+
+
+
     
     
       
@@ -232,7 +306,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="/blog/" class="md-tabs__link">
+        <a href="/posts/" class="md-tabs__link">
           Blog
         </a>
       
@@ -369,7 +443,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/blog/" class="md-nav__link">
+    <a href="/posts/" class="md-nav__link">
       Featured Posts
     </a>
   </li>
@@ -381,47 +455,9 @@
 
 
   <li class="md-nav__item">
-    <a href="/blog/syntax/" class="md-nav__link">
+    <a href="/posts/syntax/" class="md-nav__link">
       Writing Syntax
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
-    
-    <label class="md-nav__link" for="nav-3-3">
-      Bootloader
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Bootloader" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-3">
-        <span class="md-nav__icon md-icon"></span>
-        Bootloader
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="/blog/embedded/bootloader/bootloader-1/" class="md-nav__link">
-      Bootloader - Part 1
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
         
@@ -517,79 +553,6 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-    
-    <!-- Page Styles -->
-    
-  
-      <style>
-        /* back to top */
-        #back-to-top {
-          display: flex;
-          background-color: #FF9800;
-          width: 48px;
-          height: 48px;
-          text-align: center;
-          border-radius: 0.5em;
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          transition: background-color .3s, opacity .5s, visibility .5s;
-          opacity: 0.4;
-          visibility: hidden;
-          z-index: 1000;
-        }
-
-        #back-to-top:hover {
-          opacity: 1;
-        }
-
-        #back-to-top.show {
-          visibility: visible;
-        }
-
-        #back-top-top-indicator {
-          height: 1.5em;
-          margin: auto;
-          color: white;
-        }
-      </style>
-    
-  
-  <!-- Additional styles for pages -->
-  <style>
-    /* Hide table of contents */
-    @media screen and (min-width: 76.25em) {
-      .md-sidebar--secondary {
-        display: none;
-      }
-    }
-
-    /* Hide navigation */
-    @media screen and (min-width: 76.25em) {
-      .md-sidebar--primary {
-        display: none;
-      }
-    }
-
-    /* Center the content area */
-    @media screen and (min-width: 76.25em) {
-      .md-content {
-          margin-left: auto;
-          margin-right: auto;
-      }
-    }
-
-    @media screen and (max-width: 76.1875em) and (min-width: 60em) {
-      .md-content {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  </style>
-
-
-    <!-- Page Content -->
-    
   <div style="text-align: center;">
     <h1 style="color: red;">Oops! Something went wrong.</h1>
     <p style="font-size: 1.2em;">
@@ -597,16 +560,6 @@
       Please go back to the <a href="/">Home page</a>, or press <span class="keys"><kbd class="key-s">S</kbd></span> to search on this site.
     </p>
   </div>
-
-
-    <!-- Back to top -->
-    <a id="back-to-top">
-      <span class="twemoji" id="back-top-top-indicator">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path>
-        </svg>
-      </span>
-    </a>
 
               
   <!-- Remove Disqus on the pages -->
@@ -630,7 +583,8 @@
         <!-- Change to Blog theme URL -->
         using <a href="https://github.com/vuquangtrong/mkdocs-material-blog">Blog for Material MkDocs</a> theme
       </div>
-      
+      <div class="md-footer-links">
+        
   <div class="md-footer-social">
     
       
@@ -662,6 +616,8 @@
     
   </div>
 
+        
+      </div>
     </div>
   </div>
 </footer>
