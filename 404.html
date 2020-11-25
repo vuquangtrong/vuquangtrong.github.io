@@ -6,14 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Hi, I'm Trọng, this is a personal blog to take notes, and share tutorials about Embedded Systems and Software Applications. It also helps me keep motivation of learning new things.">
+        <meta name="description" content="A personal blog to take notes about Embedded Systems and IoT Applications. Share tutorials on ARM, MCU; in C / C++ / JS / Python and other languages.">
+      
       
       
       
         <meta name="author" content="vuquangtrong@gmail.com">
       
       <link rel="shortcut icon" href="/assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
     
     
       
@@ -21,85 +22,22 @@
       
     
     
-  
-      <link rel="stylesheet" href="/assets/stylesheets/main.19190aaf.min.css">
+    
+      <link rel="stylesheet" href="/assets/stylesheets/main.6910b76c.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.24b84193.min.css">
+        <link rel="stylesheet" href="/assets/stylesheets/palette.196e0c26.min.css">
         
       
     
+    <link rel="stylesheet" href="/stylesheets/base.css">
+    
+    
+    
+    
+    <link rel="stylesheet" href="/stylesheets/page.css">
 
-  <!-- Page Styles -->
-  
-  
-  <style>
-    /* back to top */
-    #back-to-top {
-      display: flex;
-      float: right;
-      background-color: #FF9800;
-      width: 48px;
-      height: 48px;
-      text-align: center;
-      border-radius: 24px;
-      position: sticky;
-      bottom: 30px;
-      right: 30px;
-      transition: background-color .3s, opacity .5s, visibility .5s;
-      opacity: 0.4;
-      visibility: hidden;
-      z-index: 1000;
-    }
-
-    #back-to-top:hover {
-      opacity: 1;
-    }
-
-    #back-to-top.show {
-      visibility: visible;
-    }
-
-    #back-top-top-indicator {
-      height: 1.5em;
-      margin: auto;
-      color: white;
-    }
-  </style>
-  
-  
-  <!-- Additional styles for pages -->
-  <style>
-    /* Hide table of contents */
-    @media screen and (min-width: 76.25em) {
-      .md-sidebar--secondary {
-        display: none;
-      }
-    }
-
-    /* Hide navigation */
-    @media screen and (min-width: 76.25em) {
-      .md-sidebar--primary {
-        display: none;
-      }
-    }
-
-    /* Center the content area */
-    @media screen and (min-width: 76.25em) {
-      .md-content {
-          margin-left: auto;
-          margin-right: auto;
-      }
-    }
-
-    @media screen and (max-width: 76.1875em) and (min-width: 60em) {
-      .md-content {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  </style>
-
+    <link rel="stylesheet" href="/stylesheets/404.css">
 
 
     
@@ -113,79 +51,14 @@
     
     
     
-      <link rel="stylesheet" href="/stylesheets/colors.css">
     
-      <link rel="stylesheet" href="/stylesheets/progressbar.css">
-    
-      <link rel="stylesheet" href="/stylesheets/kbd.css">
-    
-      <link rel="stylesheet" href="/stylesheets/blog.css">
-    
-      <link rel="stylesheet" href="/stylesheets/extra.css">
-    
-    
-  
       
         
 <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
-
-  
-    <!-- Track external links -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        document.body.addEventListener("click", function(ev) {
-          if (ev.target instanceof HTMLElement) {
-            var el = ev.target.closest("a[href^=http]")
-            if (el)
-              ga("send", "event", "outbound", "click", el.href)
-          }
-        })
-      })
-    </script>
-  
-
     
-
-  <!-- Determine title -->
-  
-
-  
-  
-  <!-- Get the description -->
-  
-
-  
-
-  <!-- Get the banner image -->
-  
-  
-  
-
-  <!-- The image needs to have an absolute URL -->
-  
-
-  <!-- Open graph meta tags -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Code Inside Out" />
-  <meta property="og:description" content="Hi, I'm Trọng, this is a personal blog to take notes, and share tutorials about Embedded Systems and Software Applications. It also helps me keep motivation of learning new things." />
-  <meta property="og:url" content="" />
-  <meta property="og:image" content="https://www.codeinsideout.com/assets/images/banner.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1080" />
-  <meta property="og:image:height" content="568" />
-
-  <!-- Twitter meta tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@vqtrong" />
-  <meta name="twitter:creator" content="@vqtrong" />
-  <meta name="twitter:title" content="Code Inside Out" />
-  <meta name="twitter:description" content="Hi, I'm Trọng, this is a personal blog to take notes, and share tutorials about Embedded Systems and Software Applications. It also helps me keep motivation of learning new things." />
-  <meta name="twitter:image" content="https://www.codeinsideout.com/assets/images/banner.png" />
-
-
   </head>
   
   
@@ -242,7 +115,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
@@ -281,10 +154,12 @@
         
   <li class="md-tabs__item">
     
-      <a href="/." class="md-tabs__link md-tabs__link--active">
-        Home
-      </a>
     
+      
+    
+    <a href="/." class="md-tabs__link md-tabs__link--active">
+      Home
+    </a>
   </li>
 
       
@@ -293,10 +168,10 @@
   
     <li class="md-tabs__item">
       
-        <a href="/projects/" class="md-tabs__link">
-          Projects
-        </a>
       
+      <a href="/projects/" class="md-tabs__link">
+        Projects
+      </a>
     </li>
   
 
@@ -306,10 +181,10 @@
   
     <li class="md-tabs__item">
       
-        <a href="/posts/" class="md-tabs__link">
-          Blog
-        </a>
       
+      <a href="/posts/" class="md-tabs__link">
+        Posts
+      </a>
     </li>
   
 
@@ -319,10 +194,10 @@
   
     <li class="md-tabs__item">
       
-        <a href="/about/" class="md-tabs__link">
-          About
-        </a>
       
+      <a href="/about/" class="md-tabs__link">
+        About
+      </a>
     </li>
   
 
@@ -332,10 +207,10 @@
   
     <li class="md-tabs__item">
       
-        <a href="/tags/" class="md-tabs__link">
-          Tags
-        </a>
       
+      <a href="/tags/" class="md-tabs__link">
+        Tags
+      </a>
     </li>
   
 
@@ -385,8 +260,7 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
     <label class="md-nav__link" for="nav-2">
       Projects
       <span class="md-nav__icon md-icon"></span>
@@ -423,16 +297,15 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
     <label class="md-nav__link" for="nav-3">
-      Blog
+      Posts
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Blog" data-md-level="1">
+    <nav class="md-nav" aria-label="Posts" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
         <span class="md-nav__icon md-icon"></span>
-        Blog
+        Posts
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -444,7 +317,7 @@
 
   <li class="md-nav__item">
     <a href="/posts/" class="md-nav__link">
-      Featured Posts
+      Blog
     </a>
   </li>
 
@@ -455,8 +328,8 @@
 
 
   <li class="md-nav__item">
-    <a href="/posts/syntax/" class="md-nav__link">
-      Writing Syntax
+    <a href="/posts/markdown_syntax/" class="md-nav__link">
+      Markdown Syntax
     </a>
   </li>
 
@@ -473,8 +346,7 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
     <label class="md-nav__link" for="nav-4">
       About
       <span class="md-nav__icon md-icon"></span>
@@ -511,8 +383,7 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
     <label class="md-nav__link" for="nav-5">
       Tags
       <span class="md-nav__icon md-icon"></span>
@@ -553,16 +424,14 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <div style="text-align: center;">
-    <h1 style="color: red;">Oops! Something went wrong.</h1>
-    <p style="font-size: 1.2em;">
-      We couldn't hanlde your request. <br>
-      Please go back to the <a href="/">Home page</a>, or press <span class="keys"><kbd class="key-s">S</kbd></span> to search on this site.
-    </p>
-  </div>
+    
+    <h1>Oops! Something went wrong!</h1>
+    <p>We couldn't hanlde your request. <br>
+    Please go back to the <a href="https://www.codeinsideout.com/">Code Inside Out</a> homepage, <br>
+    or press <kbd class="button"> S </kbd> to search on this site.</p>
+
 
               
-  <!-- Remove Disqus on the pages -->
 
             </article>
           </div>
@@ -570,21 +439,22 @@
       </main>
       
         
+
 <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            © 2020 <a href="https://www.codeinsideout.com/">Code Inside Out</a>
-          </div>
-        
-        <!-- Change to Blog theme URL -->
-        using <a href="https://github.com/vuquangtrong/mkdocs-material-blog">Blog for Material MkDocs</a> theme
-      </div>
-      <div class="md-footer-links">
-        
+    
+    <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+            <div class="md-footer-copyright">
+                
+                    <div class="md-footer-copyright__highlight">
+                        © 2020 <a href="https://www.codeinsideout.com/">Code Inside Out</a>
+                    </div>
+                
+                <!-- Change to Blog theme URL -->
+                using <a href="https://github.com/vuquangtrong/mkdocs-material-blog">Blog for Material MkDocs</a> theme
+            </div>
+            <div class="md-footer-links">
+                
   <div class="md-footer-social">
     
       
@@ -616,17 +486,18 @@
     
   </div>
 
-        
-      </div>
+                
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
       
     </div>
     
-  
-      <script src="/assets/javascripts/vendor.7e0ee788.min.js"></script>
-      <script src="/assets/javascripts/bundle.c1ccee15.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+      <script src="/assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="/assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
@@ -638,28 +509,16 @@
         })
       </script>
       
-        <script src="/javascripts/jquery-3.4.1.min.js"></script>
-      
-        <script src="/javascripts/extra.js"></script>
-      
     
-  
-  <script type="text/javascript">
-    var backToTop = $('#back-to-top');
+    <script type="application/javascript" src="/javascripts/base.js"></script>
+    
+    
+    
+    
+    <script type="application/javascript" src="/javascripts/page.js"></script>
 
-    $(window).scroll(function() {
-      if ($(window).scrollTop() > 100) {
-        backToTop.addClass('show');
-      } else {
-        backToTop.removeClass('show');
-      }
-    });
+    <script type="application/javascript" src="/javascripts/404.js"></script>
 
-    backToTop.on('click', function(e) {
-      e.preventDefault();
-      $('html, body').animate({scrollTop:0}, '1000');
-    });
-  </script>
 
   </body>
 </html>
