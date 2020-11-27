@@ -40,8 +40,18 @@
     font-weight: 400;
 }
 
+/* filename before a code block */
+.file {
+    margin-bottom: -1em !important;
+    font-family: monospace;
+    background: aliceblue;
+    color: darkred;
+}
+
 /* highlight code */
-.md-typeset code {
+.md-typeset code,
+.md-typeset .admonition-title code, 
+.md-typeset summary code {
     color: var(--md-code-hl-special-color);
 }
 
