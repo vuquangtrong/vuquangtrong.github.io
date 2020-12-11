@@ -26,11 +26,11 @@ monitor() (
     
     # use top to monitor the process
     # use grep to catch useful lines, using line buffered mode to send output in lines
-    # use awk to extract data colums, reading input in line buffered mode
+    # use awk to extract data columns, reading input in line buffered mode
     (top -b -d 1 -p $pid & echo $! > pid.txt) \
       | grep --line-buffered $pid \
-      | awk -W interactive '{printf "CPU= %d MEM= %d\n", $9, $10}' \
-      | tee "${title}/${title}_usage.txt" &
+      | awk -W interactive '{printf "\nCPU= %d MEM= %d\n", $9, $10}' \
+      | tee >(grep CPU > "${title}/${title}_usage.txt") &
     sleep 1
     # save top's PID to control it
     toppid=$(<pid.txt)
@@ -59,6 +59,7 @@ monitor() (
     # draw to terminal
     gnuplot -e " \
       set term dumb; \
+      set yrange [0:100]; \
       plot \
         '${title}/${title}_usage.txt' using 2 title 'CPU' with lines, \
         '' using 4 title 'MEM' with lines \
@@ -68,6 +69,7 @@ monitor() (
     gnuplot -e " \
       set term png size 640, 480; \
       set output '${title}/${title}_usage.png'; \
+      set yrange [0:100]; \
       set grid xtics lc rgb '#bbbbbb' lw 1 lt 1; \
       set grid ytics lc rgb '#bbbbbb' lw 1 lt 1; \
       plot \
