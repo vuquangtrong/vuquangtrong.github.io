@@ -2,15 +2,15 @@
 # vuquangtrong@gmail.com
 #
 # usage:
-#     monitor "title" "command"
+#     monitor title command params
 # example
-#     monitor "test" "ffmpeg -y -hide_banner -i /dev/video0 -c:v h264_omx -t 10 test.mp4"
+#     monitor test ffmpeg -y -hide_banner -i /dev/video0 -c:v h264_omx -t 10 test.mp4
 #
 
 monitor() (
     # extract params
     title=$1
-    command=${@:2} # get params from the 2nd one
+    command=${@:2} # get command and params from the 2nd one
     
     # create result folder if not existed
     [ ! -d $title ] && mkdir $title
