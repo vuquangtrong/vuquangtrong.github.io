@@ -1,0 +1,1639 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Understand about GPIO hardware, working modes and speeds, alternative function and input interrupts. Steps to control a GPIO using HAL. Example to blink LEDs and get input from a button." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/stm32/gpio/" rel="canonical"/>
+<link href="../../../favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
+<title>General Purpose Input/Output pins - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<meta content="website" property="og:type"/>
+<meta content="Code Inside Out - General Purpose Input/Output pins" property="og:title"/>
+<meta content="Understand about GPIO hardware, working modes and speeds, alternative function and input interrupts. Steps to control a GPIO using HAL. Example to blink LEDs and get input from a button." property="og:description"/>
+<meta content="https://www.codeinsideout.com/blog/stm32/gpio/" property="og:url"/>
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1080" property="og:image:width"/>
+<meta content="568" property="og:image:height"/>
+</head>
+<body data-md-color-accent="" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-hardware">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              GPIO
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+        Blog
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Blog
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+        Recent posts
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+        Stm32
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Stm32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Stm32
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../toolchain/">
+        Tools and Docs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          GPIO
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        GPIO
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-hardware">
+    1. Hardware
+  </a>
+<nav aria-label="1. Hardware" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-voltage-and-current">
+    1.1. Voltage and Current
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-input-mode">
+    1.2. Input mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-output-mode">
+    1.3. Output mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-output-speed">
+    1.4. Output Speed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-bit-atomic-operation">
+    1.5. Bit atomic operation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-input-interrupt">
+    1.6. Input interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-alternate-function">
+    1.7. Alternate function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-analog-inputoutput">
+    1.8. Analog input/output
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-locking-pin">
+    1.9. Locking pin
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-memory-map">
+    2. Memory Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-register-map">
+    3. Register Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-hal-software">
+    4. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-toggle-leds">
+    5. Lab: Toggle LEDs
+  </a>
+<nav aria-label="5. Lab: Toggle LEDs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-create-project">
+    5.1. Create project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-setup-buttons-interrupt">
+    5.2. Setup button's interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-generated-code">
+    5.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-user-code">
+    5.4. User code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-build-and-run">
+    5.5. Build and Run
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-appendix">
+    6. Appendix
+  </a>
+<nav aria-label="6. Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-bare-metal">
+    6.1. Bare-metal
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../usart/">
+        USART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../timer/">
+        Timer
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Raspberry Pi
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Raspberry Pi
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup_sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check_camera_i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile_ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource_usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_ffmpeg_hls_dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_picamera_mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_picamera_h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_headless/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_wifi_ap/">
+        Wifi Access Point
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/save_power/">
+        Save Power
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+        Setup blog
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Setup blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/install_and_configure/">
+        Install and configure
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/markdown_syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/mkdocs_plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/customize_theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/print_to_pdf/">
+        Print to PDF
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<br/>
+<br/>
+<br/>
+<div style="font-weight:700; font-size:.7rem; margin:0 0.6rem;">
+<label>Tag cloud</label>
+</div>
+<div style="padding: 0.4rem 0.6rem;">
+<div class="tag-cloud">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.5rem;color:DarkSlateBlue;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:1.0rem;color:DarkGoldenrod;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.7rem;color:DarkViolet;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">notes
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:1.0rem;color:DarkMagenta;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.8rem;color:DarkGoldenrod;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">access point
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.8rem;color:DarkSlateGray;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.9rem;color:DarkSlateGray;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.2rem;color:DarkCyan;">arm
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.2rem;color:DarkOrchid;">stm32
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">uart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-hardware">
+    1. Hardware
+  </a>
+<nav aria-label="1. Hardware" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-voltage-and-current">
+    1.1. Voltage and Current
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-input-mode">
+    1.2. Input mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-output-mode">
+    1.3. Output mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-output-speed">
+    1.4. Output Speed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-bit-atomic-operation">
+    1.5. Bit atomic operation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-input-interrupt">
+    1.6. Input interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-alternate-function">
+    1.7. Alternate function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-analog-inputoutput">
+    1.8. Analog input/output
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-locking-pin">
+    1.9. Locking pin
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-memory-map">
+    2. Memory Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-register-map">
+    3. Register Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-hal-software">
+    4. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-toggle-leds">
+    5. Lab: Toggle LEDs
+  </a>
+<nav aria-label="5. Lab: Toggle LEDs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-create-project">
+    5.1. Create project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-setup-buttons-interrupt">
+    5.2. Setup button's interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-generated-code">
+    5.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-user-code">
+    5.4. User code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-build-and-run">
+    5.5. Build and Run
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-appendix">
+    6. Appendix
+  </a>
+<nav aria-label="6. Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-bare-metal">
+    6.1. Bare-metal
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<br/>
+<br/>
+<br/>
+<div style="font-weight:700; font-size:.7rem; margin:0 0.6rem;">
+<label>Tag cloud</label>
+</div>
+<div style="padding: 0.4rem 0.6rem;">
+<div class="tag-cloud">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.5rem;color:DarkCyan;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:1.0rem;color:DarkBlue;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.7rem;color:DarkSlateBlue;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">notes
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:1.0rem;color:DarkSlateGray;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.8rem;color:DarkOliveGreen;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">access point
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.8rem;color:DarkCyan;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.9rem;color:DarkGreen;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.2rem;color:DarkSlateBlue;">arm
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.2rem;color:DarkOrange;">stm32
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">uart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="page-cover">
+<h1 class="page-title">General Purpose Input/Output pins</h1>
+<p class="page-description">Understand about GPIO hardware, working modes and speeds, alternative function and input interrupts. Steps to control a GPIO using HAL. Example to blink LEDs and get input from a button.</p>
+<p>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="color:DarkBlue;">
+                        #arm
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="color:DarkCyan;">
+                        #stm32
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="color:DarkOrchid;">
+                        #gpio
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr class="print-only"/>
+<small>
+                                
+                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 26, 2021</span><br/>
+</small>
+</p>
+</div>
+<div class="btn-actions screen-only"><div id="btn-download"><a class="md-button" href="..\..\..\pdfs\blog\stm32\gpio\stm32__GPIO.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></div>
+<p></p>
+</div>
+<div class="toc print-only">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-hardware">
+    1. Hardware
+  </a>
+<nav aria-label="1. Hardware" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-voltage-and-current">
+    1.1. Voltage and Current
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-input-mode">
+    1.2. Input mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-output-mode">
+    1.3. Output mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-output-speed">
+    1.4. Output Speed
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-bit-atomic-operation">
+    1.5. Bit atomic operation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-input-interrupt">
+    1.6. Input interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-alternate-function">
+    1.7. Alternate function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-analog-inputoutput">
+    1.8. Analog input/output
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-locking-pin">
+    1.9. Locking pin
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-memory-map">
+    2. Memory Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-register-map">
+    3. Register Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-hal-software">
+    4. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-toggle-leds">
+    5. Lab: Toggle LEDs
+  </a>
+<nav aria-label="5. Lab: Toggle LEDs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-create-project">
+    5.1. Create project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-setup-buttons-interrupt">
+    5.2. Setup button's interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-generated-code">
+    5.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-user-code">
+    5.4. User code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-build-and-run">
+    5.5. Build and Run
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-appendix">
+    6. Appendix
+  </a>
+<nav aria-label="6. Appendix" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-bare-metal">
+    6.1. Bare-metal
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+<!--
+![Bus architecture of an STM32F0](hw_bus_architecture.png)
+-->
+<div class="admonition note">
+<p class="admonition-title">GPIO notes</p>
+<ul>
+<li>Enable clock source on GPIO port when use it</li>
+<li>APB2 bus speed determines the sampling rate of all GPIO inputs</li>
+<li>Can select mode, speed, alternative function on a GPIO pin</li>
+<li>Can have external interruption</li>
+<li>Can lock a GPIO after initializing</li>
+<li>Disconnect a GPIO pin by setting it into input floating mode</li>
+<li>Save power by setting GPIO pins to Analog mode (<a href="st">Schmitt trigger</a> is disabled)</li>
+</ul>
+</div>
+<h2 id="1-hardware">1. Hardware<a class="headerlink" href="#1-hardware" title="Permanent link">⚓︎</a></h2>
+<p>Each GPIO Pin has a complex structure to function as both input and output:</p>
+<ul>
+<li>Protection Diodes</li>
+<li><a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html">Pull-up and Pull-down</a> resistors on input</li>
+<li><a href="https://en.wikipedia.org/wiki/Schmitt_trigger">Schmitt trigger</a> to convert input to digital value</li>
+<li><a href="https://open4tech.com/open-drain-output-vs-push-pull-output/">Open-Drain or Push-Pull</a> gate on output</li>
+<li><a href="https://en.wikipedia.org/wiki/Multiplexer">Multiplexer</a> for Alternate Function</li>
+<li>Input and Output data registers</li>
+<li>Control registers</li>
+</ul>
+<p>
+<figure><img src="hw_gpio_pin_structure.png"/><figcaption>A GPIO pin structure</figcaption>
+</figure>
+</p>
+<h3 id="11-voltage-and-current">1.1. Voltage and Current<a class="headerlink" href="#11-voltage-and-current" title="Permanent link">⚓︎</a></h3>
+<p><mark>Always assume that all GPIO pins are <strong>NOT 5V tolerant</strong> by default</mark> until find out in the datasheet (such as DS8668 for STM32F0x) that a specific pin is 5V tolerant, only then it can be used as a 5V pin. </p>
+<p>The <mark>maximum current</mark> that could be sourced or sunk into any GPIO pin is <mark><em>25mA</em></mark> as mentioned in the datasheet.</p>
+<h3 id="12-input-mode">1.2. Input mode<a class="headerlink" href="#12-input-mode" title="Permanent link">⚓︎</a></h3>
+<ul>
+<li>Input Floating (Hi-Z)</li>
+<li>Input Pull-Up</li>
+<li>Input Pull-Down</li>
+</ul>
+<p>Read about <a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html">Pull-Up/ Pull-Down</a></p>
+<p>When a GPIO pin is set to the input mode, the data present on the I/O pin is sampled into the Input Data Register (IDR) every APB2 clock cycle. This means the APB2 bus speed determines the input sampling speed for the GPIO pins.</p>
+<h3 id="13-output-mode">1.3. Output mode<a class="headerlink" href="#13-output-mode" title="Permanent link">⚓︎</a></h3>
+<ul>
+<li>Output Open-Drain</li>
+<li>Output Push-Pull</li>
+</ul>
+<p>Read about <a href="https://open4tech.com/open-drain-output-vs-push-pull-output/">Open-Drain and Push-pull</a></p>
+<p>When a GPIO pin is set to the output mode, there is an option to configure the pin speed mode. Refer to datasheet (e.g. DS8668) to check the I/O AC characteristics table to note the maximum frequency in different conditions.</p>
+<h3 id="14-output-speed">1.4. Output Speed<a class="headerlink" href="#14-output-speed" title="Permanent link">⚓︎</a></h3>
+<p>GPIO speed is not related to switching frequency, it defines the slew rate of a GPIO, that is how fast it goes from the 0V level to VDD one, and vice versa.</p>
+<p>Below image shows the slew rate of 2 speed modes:</p>
+<ul>
+<li>Red line: high speed</li>
+<li>Blue line: low speed</li>
+</ul>
+<p>
+<figure class="w80"><img src="gpio_slew_rate.png"/><figcaption>Slew rate of 2 speed modes</figcaption></figure>
+</p>
+<h3 id="15-bit-atomic-operation">1.5. Bit atomic operation<a class="headerlink" href="#15-bit-atomic-operation" title="Permanent link">⚓︎</a></h3>
+<p>There is no need for the software to disable interrupts when programming the Output Data Register (ODR) at bit level. Use Bit Set/Reset Register (BSRR) to select individual bit operation.</p>
+<h3 id="16-input-interrupt">1.6. Input interrupt<a class="headerlink" href="#16-input-interrupt" title="Permanent link">⚓︎</a></h3>
+<p>When in input mode, all ports have external interrupt capability. Read more about <a href="../interrupt/">Interrupt</a>.</p>
+<h3 id="17-alternate-function">1.7. Alternate function<a class="headerlink" href="#17-alternate-function" title="Permanent link">⚓︎</a></h3>
+<ul>
+<li>Alternate Function Push-Pull</li>
+<li>Alternate Function Open-Drain</li>
+</ul>
+<p>Pin can be used for an alternate function from a peripheral by setting the Alternate Function register (AF).</p>
+<h3 id="18-analog-inputoutput">1.8. Analog input/output<a class="headerlink" href="#18-analog-inputoutput" title="Permanent link">⚓︎</a></h3>
+<p>In analog mode, pin is directly wired to a analog module (ADC, DAC)</p>
+<h3 id="19-locking-pin">1.9. Locking pin<a class="headerlink" href="#19-locking-pin" title="Permanent link">⚓︎</a></h3>
+<p>The locking mechanism allows the IO configuration to be frozen. When the LOCK sequence has been applied on a port bit, it is no longer possible to modify the value of the port bit until the next reset.</p>
+<div class="new-page"></div>
+<h2 id="2-memory-map">2. Memory Map<a class="headerlink" href="#2-memory-map" title="Permanent link">⚓︎</a></h2>
+<p>Program memory, data memory, registers and I/O ports are organized within the same linear 4GB address space. <mark>The bytes are coded in memory in Little Endian format</mark>.</p>
+<p>Refer to the document RM0091 for STM32F0xto see the memory map for GPIO ports:</p>
+<div class="highlight"><pre><span></span><code>Boundary Address            Size    Peripheral
+----------------------------------------------
+0x4800 1400 - 0x4800 17FF   1KB     GPIOF     
+0x4800 1000 - 0x4800 13FF   1KB     GPIOE     
+0x4800 0C00 - 0x4800 0FFF   1KB     GPIOD     
+0x4800 0800 - 0x4800 0BFF   1KB     GPIOC     
+0x4800 0400 - 0x4800 07FF   1KB     GPIOB     
+0x4800 0000 - 0x4800 03FF   1KB     GPIOA     
+</code></pre></div>
+<h2 id="3-register-map">3. Register Map<a class="headerlink" href="#3-register-map" title="Permanent link">⚓︎</a></h2>
+<div class="highlight"><pre><span></span><code>Register        Offset  Description
+-----------------------------------
+GPIOx_MODER     0x00    I/O mode: 
+                            00: Input mode (reset state)
+                            01: General purpose output mode
+                            10: Alternate function mode
+                            11: Analog mode
+GPIOx_OTYPER    0x04    Output type:
+                            0: Output push-pull (reset state)
+                            1: Output open-drain
+GPIOx_OSPEEDR   0x08    Output speed:
+                            x0: Low speed
+                            01: Medium speed
+                            11: High speed
+GPIOx_PUPDR     0x0C    Pull-up/ pull-down
+                            00: No pull-up, pull-down
+                            01: Pull-up
+                            10: Pull-down
+                            11: Reserved
+GPIOx_IDR       0x10    Input data
+GPIOx_ODR       0x14    Output data
+GPIOx_BSRR      0x18    Bit Set/Reset
+                            0: No action on the corresponding ODRx bit
+                            1: Set/Reset the corresponding ODRx bit
+GPIOx_LCKR      0x1C    Configuration lock
+GPIOx_AFRL      0x20    Alternate Function low register
+GPIOx_AFRH      0x24    Alternate Function high register
+                            0000: AF0
+                            0001: AF1
+                            0010: AF2
+                            0011: AF3
+                            0100: AF4
+                            0101: AF5
+                            0110: AF6
+                            0111: AF7
+GPIOx_BRR       0x28    Bit Reset
+                            0: No action on the corresponding ODx bit
+                            1: Reset the corresponding ODx bit
+</code></pre></div>
+<h2 id="4-hal-software">4. HAL Software<a class="headerlink" href="#4-hal-software" title="Permanent link">⚓︎</a></h2>
+<p>The Hardware Abstract Layer (HAL) is designed so that it abstracts from the specific peripheral memory mapping. But, it also provides a general and more user-friendly way to configure the peripheral, without forcing the programmers to now how to configure its registers in detail.</p>
+<blockquote>
+<p>excerpt from <a href="https://www.st.com/resource/en/user_manual/dm00122015-description-of-stm32f0-hal-and-lowlayer-drivers-stmicroelectronics.pdf">Description of STM32F0 HAL and low-layer drivers</a></p>
+</blockquote>
+<p><strong>How to use GPIO HAL</strong></p>
+<ol>
+<li>
+<p>Enable the GPIO AHB clock using the following function : <code>__HAL_RCC_GPIOx_CLK_ENABLE()</code>.</p>
+</li>
+<li>
+<p>Configure the GPIO pin(s) using <code>HAL_GPIO_Init()</code>.</p>
+<ul>
+<li>
+<p>Configure the IO mode using <code>Mode</code> member from <code>GPIO_InitTypeDef</code> structure</p>
+<ul>
+<li>
+<p>Analog mode is required when a pin is to be used as ADC channel or DAC output.</p>
+</li>
+<li>
+<p>In case of external interrupt/event, select the type (interrupt or event) and the corresponding trigger event (rising or falling or both).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Activate Pull-up, Pull-down resistor using <code>Pull</code> member from <code>GPIO_InitTypeDef</code> structure.</p>
+</li>
+<li>
+<p>In case of Output or alternate function mode selection: the speed is configured through <code>Speed</code> member from <code>GPIO_InitTypeDef</code> structure.</p>
+</li>
+<li>
+<p>In alternate mode is selection, the alternate function connected to the IO is configured through <code>Alternate</code> member from <code>GPIO_InitTypeDef</code> structure.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In case of external interrupt/event mode selection, configure NVIC IRQ priority mapped to the EXTI line using <code>HAL_NVIC_SetPriority()</code> and enable it using <code>HAL_NVIC_EnableIRQ()</code>.</p>
+</li>
+<li>
+<p><code>HAL_GPIO_DeInit</code> allows to set register values to their reset value. It's also recommended to use it to unconfigure pin which was used as an external interrupt or in event mode. That's the only way to reset corresponding bit in <code>EXTI</code> &amp; <code>SYSCFG</code> registers.</p>
+</li>
+<li>
+<p>To get the level of a pin configured in input mode use <code>HAL_GPIO_ReadPin()</code>.</p>
+</li>
+<li>
+<p>To set/reset the level of a pin configured in output mode use <code>HAL_GPIO_WritePin()</code> or <code>HAL_GPIO_TogglePin()</code>.</p>
+</li>
+<li>
+<p>To lock pin configuration until next reset use <code>HAL_GPIO_LockPin()</code>.</p>
+</li>
+<li>
+<p>During and just after reset, the alternate functions are not active and the GPIO pins are configured in input floating mode (except JTAG pins).</p>
+</li>
+<li>
+<p>The LSE oscillator pins <code>OSC32_IN</code> and <code>OSC32_OUT</code> can be used as general purpose (<code>PC14</code> and <code>PC15</code>,respectively) when the LSE oscillator is off. The LSE has priority over the GPIO function.</p>
+</li>
+<li>
+<p>The HSE oscillator pins <code>OSC_IN</code> and <code>OSC_OUT</code> can be used as general purpose <code>PF0</code> and <code>PF1</code>, respectively, when the HSE oscillator is off. The HSE has priority over the GPIO function.</p>
+</li>
+</ol>
+<h2 id="5-lab-toggle-leds">5. Lab: Toggle LEDs<a class="headerlink" href="#5-lab-toggle-leds" title="Permanent link">⚓︎</a></h2>
+<p>This project aims to learn how to configure GPIO via STM32CubeIDE and STM32CubeMX.</p>
+<p>Target board: STM32F0 Discovery</p>
+<p>Application requirements:</p>
+<ul>
+<li>Turn on Green LED and Blue LED at startup</li>
+<li>In main loop, toggle Green LED every 500ms</li>
+<li>If user press User button, toggle the Blue LED</li>
+</ul>
+<h3 id="51-create-project">5.1. Create project<a class="headerlink" href="#51-create-project" title="Permanent link">⚓︎</a></h3>
+<p>Create new project via CubeMX and setup GPIO for LEDs and button.</p>
+<ul>
+<li>Green Led is on PC9, select <em>GPIO_Output</em></li>
+<li>Blue Led is on PC8, select <em>GPIO_Output</em></li>
+<li>Button is on PA0, select <em>GPIO_EXTI0</em> <span class="critic comment"> do not select GPIO_Input </span> to detect interruption</li>
+</ul>
+<h3 id="52-setup-buttons-interrupt">5.2. Setup button's interrupt<a class="headerlink" href="#52-setup-buttons-interrupt" title="Permanent link">⚓︎</a></h3>
+<p>Select <strong>GPIO</strong> in <em>Pinout and Configuration</em> tab, then click on PA0 pin config:</p>
+<ul>
+<li>GPIO Mode: External Interrupt Mode with Rising Edge trigger</li>
+<li>GPIO PU/PD: No</li>
+</ul>
+<p>Move to <strong>NVIC</strong> tab:</p>
+<ul>
+<li>Check on EXTI line 0 and 1 interrupts</li>
+</ul>
+<p>
+<figure class="w80"><img src="lab_init_gpio.png"/><figcaption>Assign GPIO to Leds and button</figcaption></figure>
+</p>
+<p>
+<figure class="w90"><img src="lab_enable_exti.png"/><figcaption>Enable interrupt on button</figcaption></figure>
+</p>
+<div class="new-page"></div>
+<h3 id="53-generated-code">5.3. Generated code<a class="headerlink" href="#53-generated-code" title="Permanent link">⚓︎</a></h3>
+<p>Generate code with <kbd class="menu">alt</kbd> + <kbd class="menu">k</kbd>.</p>
+<p><strong>Custom defines</strong></p>
+<p>Any custom name for a pin will be defined in <em>main.h</em>:</p>
+<div class="file">
+<p>main.h</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cp">#define B1_Pin GPIO_PIN_0</span>
+<span class="cp">#define B1_GPIO_Port GPIOA</span>
+<span class="cp">#define LD4_Pin GPIO_PIN_8</span>
+<span class="cp">#define LD4_GPIO_Port GPIOC</span>
+<span class="cp">#define LD3_Pin GPIO_PIN_9</span>
+<span class="cp">#define LD3_GPIO_Port GPIOC</span>
+</code></pre></div>
+<p><strong>Init functions</strong></p>
+<p>In the <em>main.c</em>, IDE generates <code>SystemClock_Config()</code> to setup system clocks, and <code>MX_GPIO_Init()</code> to initialize GPIOs.</p>
+<div class="file">
+<p>main.c</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="n">MX_GPIO_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">GPIO_InitTypeDef</span> <span class="n">GPIO_InitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+  <span class="cm">/* GPIO Ports Clock Enable */</span>
+<span class="hll">  <span class="n">__HAL_RCC_GPIOA_CLK_ENABLE</span><span class="p">();</span>
+</span><span class="hll">  <span class="n">__HAL_RCC_GPIOC_CLK_ENABLE</span><span class="p">();</span>
+</span>
+  <span class="cm">/*Configure GPIO pin Output Level */</span>
+  <span class="n">HAL_GPIO_WritePin</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">LD4_Pin</span><span class="o">|</span><span class="n">LD3_Pin</span><span class="p">,</span> <span class="n">GPIO_PIN_RESET</span><span class="p">);</span>
+
+  <span class="cm">/*Configure GPIO pin : B1_Pin */</span>
+<span class="hll">  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pin</span> <span class="o">=</span> <span class="n">B1_Pin</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">GPIO_MODE_IT_RISING</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pull</span> <span class="o">=</span> <span class="n">GPIO_NOPULL</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">HAL_GPIO_Init</span><span class="p">(</span><span class="n">B1_GPIO_Port</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">GPIO_InitStruct</span><span class="p">);</span>
+</span>
+  <span class="cm">/*Configure GPIO pins : LD4_Pin LD3_Pin */</span>
+<span class="hll">  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pin</span> <span class="o">=</span> <span class="n">LD4_Pin</span><span class="o">|</span><span class="n">LD3_Pin</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">GPIO_MODE_OUTPUT_PP</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pull</span> <span class="o">=</span> <span class="n">GPIO_NOPULL</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Speed</span> <span class="o">=</span> <span class="n">GPIO_SPEED_FREQ_LOW</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">HAL_GPIO_Init</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">GPIO_InitStruct</span><span class="p">);</span>
+</span>
+  <span class="cm">/* EXTI interrupt init*/</span>
+<span class="hll">  <span class="n">HAL_NVIC_SetPriority</span><span class="p">(</span><span class="n">EXTI0_1_IRQn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class="hll">  <span class="n">HAL_NVIC_EnableIRQ</span><span class="p">(</span><span class="n">EXTI0_1_IRQn</span><span class="p">);</span>
+</span><span class="p">}</span>
+</code></pre></div>
+<div class="new-page"></div>
+<p><strong>Interrupt handlers</strong></p>
+<p>The the override function of the EXTI0 interrupt handler is implemented in <code>_it.c</code> file:</p>
+<div class="file">
+<p>stm32f0xx_it.c</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">EXTI0_1_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">HAL_GPIO_EXTI_IRQHandler</span><span class="p">(</span><span class="n">GPIO_PIN_0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>When tracing the code of the function <code>HAL_GPIO_EXTI_IRQHandler()</code>,  it will call to the callback function <code>HAL_GPIO_EXTI_Callback()</code> which should be overridden in <em>main.c</em>.</p>
+<h3 id="54-user-code">5.4. User code<a class="headerlink" href="#54-user-code" title="Permanent link">⚓︎</a></h3>
+<p>Add some lines of code to implement the application requirements:</p>
+<p><strong>Turn on all leds at startup</strong></p>
+<p>Before main while loop:</p>
+<div class="highlight"><pre><span></span><code><span class="n">HAL_GPIO_WritePin</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">GPIO_PIN_8</span> <span class="o">|</span> <span class="n">GPIO_PIN_9</span><span class="p">,</span> <span class="n">GPIO_PIN_SET</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Toggle the green led every 500ms</strong></p>
+<p>Inside the main while loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">GPIO_PIN_9</span><span class="p">);</span>
+    <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Toggle the blue led when press on button</strong></p>
+<p>Override <code>HAL_GPIO_EXTI_Callback</code> and call to HAL function to toggle the pin state:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_GPIO_EXTI_Callback</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">GPIO_Pin</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">GPIO_PIN_0</span> <span class="o">==</span> <span class="n">GPIO_Pin</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOC</span><span class="p">,</span> <span class="n">GPIO_PIN_8</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="new-page"></div>
+<h3 id="55-build-and-run">5.5. Build and Run<a class="headerlink" href="#55-build-and-run" title="Permanent link">⚓︎</a></h3>
+<p>Press <kbd class="menu">ctrl</kbd>+<kbd class="menu">b</kbd> to build the project and run on the target board.</p>
+<blockquote>
+<p>If having multiple boards connected, select the target board by selecting its ST-LINK Serial Number</p>
+</blockquote>
+<p>
+<figure class="w90"><img src="lab_select_target_board.png"/><figcaption>Select target board</figcaption></figure>
+</p>
+<div class="admonition warning">
+<p class="admonition-title">Bouncing input</p>
+<p>Sometimes, the blue led does not toggle correctly. It toggles more than once. This happens because of input bouncing: the logic level is unstable during the transition.</p>
+<p>
+<figure><img src="lab_input_bouncing.png"/><figcaption>Bouncing input on button</figcaption>
+</figure>
+</p>
+<p>To eliminate it, debounce the input by additional hardware or internal timer.</p>
+</div>
+<h2 id="6-appendix">6. Appendix<a class="headerlink" href="#6-appendix" title="Permanent link">⚓︎</a></h2>
+<h3 id="61-bare-metal">6.1. Bare-metal<a class="headerlink" href="#61-bare-metal" title="Permanent link">⚓︎</a></h3>
+<p>Bare-metal means accessing to the registers directly to read or write value.</p>
+<p>Here is an example to turn on PC9 pin <span class="critic comment">GPIO C, pin 9</span>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define GPIOC_BASE  (0x48000800UL)</span>
+<span class="cp">#define GPIOx_ODR   0x14</span>
+<span class="hll"><span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">GPIOC_ODR</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="o">*</span><span class="p">)(</span><span class="n">GPIOC_BASE</span> <span class="o">+</span> <span class="n">GPIOx_ODR</span><span class="p">);</span>
+</span><span class="hll"><span class="o">*</span><span class="n">GPIOC_ODR</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">9</span><span class="p">);</span>
+</span></code></pre></div>
+<p>However, it should be better to use <em>struct</em> to manage a GPIO port. ST HAL library has defined <code>GPIO_TypeDef</code> struct as below:</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">MODER</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">OTYPER</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">OSPEEDR</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">PUPDR</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">IDR</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">ODR</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">BSRR</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">LCKR</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">AFR</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="k">volatile</span> <span class="kt">uint32_t</span> <span class="n">BRR</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">GPIO_TypeDef</span><span class="p">;</span>
+</code></pre></div>
+<p>Then, define a struct pointer pointing to the base address of the target GPIO port, and use it as a GPIO object:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define GPIOC_BASE  (0x48000800UL)</span>
+<span class="hll"><span class="cp">#define GPIOC       ((GPIO_TypeDef *) GPIOC_BASE)</span>
+</span><span class="hll"><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">ODR</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span><span class="p">);</span>
+</span></code></pre></div>
+<h2 id="__comments">Comments</h2>
+<div id="disqus_thread"></div>
+<script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/stm32/gpio/",this.page.identifier="blog/stm32/gpio/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../interrupt/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Interrupt
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../usart/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              USART
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div style="color: var(--md-footer-fg-color--lighter);">
+        using
+        <a href="https://github.com/vuquangtrong/mkdocs-material-blog" rel="noopener" target="_blank">
+            MkDocs Material Blog
+        </a>
+        theme
+    </div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="facebook.com">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

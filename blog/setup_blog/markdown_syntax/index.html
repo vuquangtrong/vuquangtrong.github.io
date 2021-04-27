@@ -1,0 +1,1688 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Install markdown extensions, use new markdown syntax, create better layout, write content faster." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/setup_blog/markdown_syntax/" rel="canonical"/>
+<link href="../../../favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
+<title>Markdown syntax for writing documents - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<meta content="website" property="og:type"/>
+<meta content="Code Inside Out - Markdown syntax for writing documents" property="og:title"/>
+<meta content="Install markdown extensions, use new markdown syntax, create better layout, write content faster." property="og:description"/>
+<meta content="https://www.codeinsideout.com/blog/setup_blog/markdown_syntax/" property="og:url"/>
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1080" property="og:image:width"/>
+<meta content="568" property="og:image:height"/>
+</head>
+<body data-md-color-accent="" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-meta-data">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Markdown syntax
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+        Blog
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Blog
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+        Recent posts
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+        Stm32
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Stm32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Stm32
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/toolchain/">
+        Tools and Docs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/usart/">
+        USART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/timer/">
+        Timer
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Raspberry Pi
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Raspberry Pi
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup_sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check_camera_i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile_ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource_usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_ffmpeg_hls_dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_picamera_mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_picamera_h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_headless/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_wifi_ap/">
+        Wifi Access Point
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/save_power/">
+        Save Power
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+        Setup blog
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Setup blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../install_and_configure/">
+        Install and configure
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Markdown syntax
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Markdown syntax
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-meta-data">
+    1. Meta-data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-admonition">
+    2. Admonition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-attribute">
+    3. Attribute
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lists">
+    4. Lists
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-code-blocks">
+    5. Code blocks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-inline-code">
+    6. Inline code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-images">
+    7. Images
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-tabs">
+    8. Tabs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-tables">
+    9. Tables
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-formatting">
+    10. Formatting
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-critic">
+    11. Critic
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-html-block">
+    12. HTML block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-icons--emojis">
+    13. Icons &amp; Emojis
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-custom-block">
+    14. Custom block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-footnotes">
+    15. Footnotes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mkdocs_plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../customize_theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../print_to_pdf/">
+        Print to PDF
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<br/>
+<br/>
+<br/>
+<div style="font-weight:700; font-size:.7rem; margin:0 0.6rem;">
+<label>Tag cloud</label>
+</div>
+<div style="padding: 0.4rem 0.6rem;">
+<div class="tag-cloud">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.5rem;color:DarkMagenta;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:1.0rem;color:DarkOrchid;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.7rem;color:DarkSlateGray;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">notes
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:1.0rem;color:DarkGreen;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.8rem;color:DarkOliveGreen;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">access point
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.8rem;color:DarkGreen;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.9rem;color:DarkOliveGreen;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.2rem;color:DarkGreen;">arm
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.2rem;color:DarkTurquoise;">stm32
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">uart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-meta-data">
+    1. Meta-data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-admonition">
+    2. Admonition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-attribute">
+    3. Attribute
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lists">
+    4. Lists
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-code-blocks">
+    5. Code blocks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-inline-code">
+    6. Inline code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-images">
+    7. Images
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-tabs">
+    8. Tabs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-tables">
+    9. Tables
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-formatting">
+    10. Formatting
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-critic">
+    11. Critic
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-html-block">
+    12. HTML block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-icons--emojis">
+    13. Icons &amp; Emojis
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-custom-block">
+    14. Custom block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-footnotes">
+    15. Footnotes
+  </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<br/>
+<br/>
+<br/>
+<div style="font-weight:700; font-size:.7rem; margin:0 0.6rem;">
+<label>Tag cloud</label>
+</div>
+<div style="padding: 0.4rem 0.6rem;">
+<div class="tag-cloud">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.5rem;color:DarkSlateGray;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:1.0rem;color:DarkCyan;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.7rem;color:DarkBlue;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">notes
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:1.0rem;color:DarkOliveGreen;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.8rem;color:DarkSlateBlue;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">access point
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.8rem;color:DarkSlateGray;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.9rem;color:DarkOrange;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.2rem;color:DarkGoldenrod;">arm
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.2rem;color:DarkGreen;">stm32
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">uart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="page-cover">
+<h1 class="page-title">Markdown syntax for writing documents</h1>
+<p class="page-description">Install markdown extensions, use new markdown syntax, create better layout, write content faster.</p>
+<p>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="color:DarkViolet;">
+                        #markdown
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr class="print-only"/>
+<small>
+                                
+                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2021</span><br/>
+</small>
+</p>
+</div>
+<div class="btn-actions screen-only"><div id="btn-download"><a class="md-button" href="..\..\..\pdfs\blog\setup_blog\markdown_syntax\setup_blog__Markdown_syntax.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></div>
+<p></p>
+</div>
+<div class="toc print-only">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-meta-data">
+    1. Meta-data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-admonition">
+    2. Admonition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-attribute">
+    3. Attribute
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lists">
+    4. Lists
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-code-blocks">
+    5. Code blocks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-inline-code">
+    6. Inline code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-images">
+    7. Images
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-tabs">
+    8. Tabs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-tables">
+    9. Tables
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-formatting">
+    10. Formatting
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-critic">
+    11. Critic
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-html-block">
+    12. HTML block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-icons--emojis">
+    13. Icons &amp; Emojis
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-custom-block">
+    14. Custom block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-footnotes">
+    15. Footnotes
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+<blockquote>
+<p>For basic markdown syntax, refer to <a href="https://www.markdownguide.org/basic-syntax/">Markdown Guide</a>.</p>
+</blockquote>
+<h2 id="1-meta-data">1. Meta-data<a class="headerlink" href="#1-meta-data" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://python-markdown.github.io/extensions/meta_data/">Meta-Data extension</a> adds a syntax for defining meta-data about a document. It is inspired by and follows the syntax of <a href="https://fletcherpenney.net/multimarkdown/#metadata">MultiMarkdown</a>.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">meta</span>
+</code></pre></div>
+<p>Meta-data consists of a series of keywords and values defined at the beginning of a markdown document like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The page title</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The summary of the page content</span>
+<span class="nt">tags</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">page</span>
+    <span class="l l-Scalar l-Scalar-Plain">markdown</span>
+</code></pre></div>
+<p>Alternatively, YAML style, using triple-dash <code>---</code>, can be used to mark the start and the end of the meta-data section:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The page title</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The summary of the page content</span>
+<span class="nt">tags</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">page</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">markdown</span>
+<span class="nn">---</span>
+</code></pre></div>
+<p>The metadata can be used in the template and page content. In jinja syntax, each page is represented as a <em>page</em> object, then <code>Markdown syntax</code> will be replaced by the page's title.</p>
+<p>Read more about using metadata in page content, and customize the theme.</p>
+<h2 id="2-admonition">2. Admonition<a class="headerlink" href="#2-admonition" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://python-markdown.github.io/extensions/admonition/">Admonition extension</a> adds <a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions">rST-style admonitions</a> to Markdown documents.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">admonition</span>
+</code></pre></div>
+<p>Admonitions are created using the following syntax:</p>
+<div class="highlight"><pre><span></span><code>!!! type "Title"
+    Content of the admonition is indented.
+</code></pre></div>
+<div class="admonition type">
+<p class="admonition-title">Title</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<p>Using custom class and style to make admonition which does not have title but still have icon:</p>
+<div class="highlight"><pre><span></span><code>!!! type notitle "&amp;nbsp;"
+    Content of the admonition is indented.
+</code></pre></div>
+<div class="admonition type notitle">
+<p class="admonition-title"> </p>
+<p>Content of the admonition is indented.</p>
+</div>
+<dl>
+<dt>Other <em>types</em>:</dt>
+<dd>
+<div class="admonition note">
+<p class="admonition-title">note, seealso</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">abstract, summary, tldr</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">info, todo</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">tip, hint, important</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">success, check, done</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">question, help, faq</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">warning, caution, attention</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">failure, fail, missing</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">danger, error</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">bug</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">example</p>
+<p>Content of the admonition is indented.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">quote, cite</p>
+<p>Content of the admonition is indented.</p>
+</div>
+</dd>
+</dl>
+<h2 id="3-attribute">3. Attribute<a class="headerlink" href="#3-attribute" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://python-markdown.github.io/extensions/attr_list/">Attribute Lists extension</a> adds a syntax to define attributes on the various HTML elements in markdown’s output.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">attr_list</span>
+</code></pre></div>
+<p>An example attribute list might look like this:</p>
+<div class="highlight"><pre><span></span><code>{ <span class="ni">#someid</span> .someclass somekey='somevalue' }
+</code></pre></div>
+<dl>
+<dt><strong>Block attribute</strong>:</dt>
+<dd>
+<p>To define attributes for a block level element, the attribute list should be defined on the last line of the block by itself.</p>
+<div class="highlight"><pre><span></span><code>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+{style="font-style:italic;"}
+</code></pre></div>
+<p style="font-style:italic;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+</dd>
+<dt><strong>Element attribute</strong>:</dt>
+<dd>
+<p>To define attributes on inline elements, the attribute list should be defined immediately after the inline element generated by markdown with no white space.</p>
+<div class="highlight"><pre><span></span><code>This is a <span class="ge">_green_</span>{style="color:green"} word.
+This is a &lt;span&gt;green&lt;/span&gt;{style="color:green"} word.
+</code></pre></div>
+<p>This is a <em style="color:green">green</em> word.
+This is a <span>non-green</span>{style="color:green"} word.</p>
+</dd>
+</dl>
+<h2 id="4-lists">4. Lists<a class="headerlink" href="#4-lists" title="Permanent link">⚓︎</a></h2>
+<p>Markdown supports Ordered and Unordered lists. Extensions provide 2 more kinds of list as <a href="https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/">Tasks</a> and <a href="https://python-markdown.github.io/extensions/definition_lists">Definitions</a>. The <a href="https://python-markdown.github.io/extensions/sane_lists/">Sane Lists extension</a> alters the behavior of the Markdown List syntax to be less surprising. Sane Lists do not allow the mixing of list types. In other words, an ordered list will not continue when an unordered list item is encountered and vice versa. </p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.tasklist</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">def_list</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sane_lists</span>
+</code></pre></div>
+<div class="new-page"></div>
+<dl>
+<dt><strong>Ordered list</strong>:</dt>
+<dd>
+<div class="highlight"><pre><span></span><code><span class="k">1.</span> Ordered item 1
+    <span class="k">1.</span> Child 1
+    <span class="k">2.</span> Child 2
+<span class="k">2.</span> Ordered item 2
+</code></pre></div>
+<ol>
+<li>Ordered item 1<ol>
+<li>Child 1</li>
+<li>Child 2</li>
+</ol>
+</li>
+<li>Ordered item 2</li>
+</ol>
+</dd>
+<dt><strong>Unordered list</strong>:</dt>
+<dd>
+<div class="highlight"><pre><span></span><code><span class="k">*</span> Unordered item 1
+    <span class="k">*</span> Child 1
+    <span class="k">*</span> Child 2
+<span class="k">*</span> Unordered item 2
+</code></pre></div>
+<ul>
+<li>Unordered item 1<ul>
+<li>Child 1</li>
+<li>Child 2</li>
+</ul>
+</li>
+<li>Unordered item 2</li>
+</ul>
+</dd>
+<dt><strong>Sane list</strong>:</dt>
+<dd>
+<div class="highlight"><pre><span></span><code><span class="k">1.</span> Ordered item 1
+<span class="k">2.</span> Ordered item 2
+
+<span class="k">*</span> Unordered item 1
+<span class="k">*</span> Unordered item 2
+</code></pre></div>
+<ol>
+<li>Ordered item 1</li>
+<li>Ordered item 2</li>
+</ol>
+<ul>
+<li>Unordered item 1</li>
+<li>Unordered item 2</li>
+</ul>
+</dd>
+<dt><strong>Tasks</strong>:</dt>
+<dd>
+<div class="highlight"><pre><span></span><code><span class="k">- [x]</span> item 1
+    <span class="k">* [x]</span> item A
+    <span class="k">* [ ]</span> item B
+<span class="k">- [ ]</span> item 2
+</code></pre></div>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input checked="" disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> item 1<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input checked="" disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> item A</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> item B</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> item 2</li>
+</ul>
+</dd>
+<dt><strong>Definitions</strong>:</dt>
+<dd>
+<div class="highlight"><pre><span></span><code>Roses
+:   are red
+
+Violets
+:   are blue
+</code></pre></div>
+<dl>
+<dt>Roses</dt>
+<dd>are red</dd>
+<dt>Violets</dt>
+<dd>are blue</dd>
+</dl>
+</dd>
+</dl>
+<h2 id="5-code-blocks">5. Code blocks<a class="headerlink" href="#5-code-blocks" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://facelessuser.github.io/pymdown-extensions/extensions/superfences/">SuperFences extension</a> provides a number of features including allowing the nesting of fences, and ability to specify custom fences to provide features like flowcharts, sequence diagrams, or other custom blocks.</p>
+<p>Highlighting can be further controlled via the <a href="https://facelessuser.github.io/pymdown-extensions/extensions/highlight/">Highlight extension</a>.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.superfences</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.highlight</span>
+</code></pre></div>
+<p>The format is as below: </p>
+<div class="highlight"><pre><span></span><code>```{ .language  <span class="ni">#id</span> .class key="value" linenums="n" hl_lines="x y-z"}
+codeblock content
+```
+</code></pre></div>
+<p>or in simpler syntax which does not support <em>id</em>, <em>class</em> or custom <em>key=value</em>:</p>
+<div class="highlight"><pre><span></span><code>``` language  linenums="n" hl_lines="x y-z"
+codeblock content
+```
+</code></pre></div>
+<p>Option <code class="highlight"><span class="nt">linenums</span><span class="o">=</span><span class="s2">"n"</span></code> creates line numbers starting from <em>n</em>.</p>
+<p>Option <code class="highlight"><span class="nt">hl_lines</span><span class="o">=</span><span class="s2">"x y-z"</span></code> highlights the <em>x-th</em> line and lines in the range from <em>y</em> to <em>z</em>. Line numbers are always referenced starting at 1 ignoring what the line number is labeled by the option <code class="highlight"><span class="nt">linenums</span><span class="o">=</span><span class="s2">"n"</span></code>.</p>
+<div class="highlight"><pre><span></span><code>``` c linenums="2" hl_lines="1 4-5" 
+<span class="gh">#include &lt;stdio.h&gt;</span>
+
+int main(void) {
+    printf("Hello world!\n");
+    return 0;
+}
+```
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="2 "></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+</span><span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll"><span class="linenos" data-linenos="5 "></span>    <span class="n">printf</span><span class="p">(</span><span class="s">"Hello world!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos" data-linenos="6 "></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="7 "></span><span class="p">}</span>
+</code></pre></div>
+<h2 id="6-inline-code">6. Inline code<a class="headerlink" href="#6-inline-code" title="Permanent link">⚓︎</a></h2>
+<p>the <a href="https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/">InlineHilite extension</a> is an inline code highlighter inspired by <a href="https://python-markdown.github.io/extensions/code_hilite/">CodeHilite</a>. </p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.inlinehilite</span>
+</code></pre></div>
+<p>Borrowing from CodeHilite's existing syntax, InlineHilite utilizes the following syntax to insert inline highlighted code: </p>
+<p><div class="highlight"><pre><span></span><code><span class="sb">`:::language mycode`</span>
+</code></pre></div>
+or </p>
+<div class="highlight"><pre><span></span><code>`#!language mycode`
+</code></pre></div>
+<p>This will render as below example:</p>
+<div class="highlight"><pre><span></span><code>A line of python code: <span class="sb">`#!python [x for x in range(1, 10) if x % 2]`</span>.
+</code></pre></div>
+<p>A line of python code: <code class="highlight"><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span></code>.</p>
+<h2 id="7-images">7. Images<a class="headerlink" href="#7-images" title="Permanent link">⚓︎</a></h2>
+<p>There are some extensions to add a caption to an image. After testing, <a href="https://github.com/evidlo/markdown_captions">markdown-captions</a> is a good one that uses alt text to make caption, accepts markdown in alt text.</p>
+<div class="highlight"><pre><span></span><code>![<span class="nt">Caption</span>](<span class="na">link to image</span>)
+</code></pre></div>
+<p>Some images have big size that does not show the detail, therefore, it's better to zoom in by clicking on them, and pan the image on the screen. The <a href="https://github.com/newming/view-bigimg">view-bigimg</a> library do that requirement well. Enable it by following <a href="../customize_theme/#23-zoom-in-image">Customize theme</a>.</p>
+<dl>
+<dt>For example:</dt>
+<dd>
+<div class="highlight"><pre><span></span><code>![<span class="nt">Lorem Picsum</span>](<span class="na">https://picsum.photos/1280/720</span>)
+</code></pre></div>
+<p>
+<figure><img src="https://picsum.photos/1280/720"/><figcaption>Lorem Picsum</figcaption>
+</figure>
+</p>
+</dd>
+</dl>
+<h2 id="8-tabs">8. Tabs<a class="headerlink" href="#8-tabs" title="Permanent link">⚓︎</a></h2>
+<p><a href="https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/">Tabbed extension</a> provides a syntax to easily add tabbed Markdown content. </p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.tabbed</span>
+</code></pre></div>
+<p>Tabs start with <code>===</code> to signify a tab followed by a quoted title. Consecutive tabs are grouped into a tab set.</p>
+<div class="highlight"><pre><span></span><code>=== "Tab 1"
+    Some texts
+
+=== "Tab 2"
+    Some other texts
+
+    Inner tabs:
+    === "Tab A"
+        Text A
+
+    === "Tab B"
+        Text B
+</code></pre></div>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><label for="__tabbed_1_1">Tab 1</label><div class="tabbed-content">
+<p>Some texts</p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><label for="__tabbed_1_2">Tab 2</label><div class="tabbed-content">
+<p>Some other texts</p>
+<p>Inner tabs:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/><label for="__tabbed_2_1">Tab A</label><div class="tabbed-content">
+<p>Text A</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio"/><label for="__tabbed_2_2">Tab B</label><div class="tabbed-content">
+<p>Text B</p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="9-tables">9. Tables<a class="headerlink" href="#9-tables" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://python-markdown.github.io/extensions/tables/">Tables extension</a> adds the ability to create tables in Markdown documents.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tables</span>
+</code></pre></div>
+<p>Markdown Tables are written in pipe-line format: row is on one line, cell is inline text only. The 1<sup>st</sup> line contains the column headers. The 2<sup>nd</sup> line is to control text alignment in a column: <code>:---</code>, <code>:---:</code> and <code>---:</code> are left, center, and right alignment.</p>
+<div class="highlight"><pre><span></span><code>| Syntax     | Description  |   Test Text |
+| :--------- | :----------: | ----------: |
+| Left align | Center align | Right align |
+| Some texts |  Some texts  |  Some texts |
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Syntax</th>
+<th align="center">Description</th>
+<th align="right">Test Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Left align</td>
+<td align="center">Center align</td>
+<td align="right">Right align</td>
+</tr>
+<tr>
+<td align="left">Some texts</td>
+<td align="center">Some texts</td>
+<td align="right">Some texts</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-formatting">10. Formatting<a class="headerlink" href="#10-formatting" title="Permanent link">⚓︎</a></h2>
+<dl>
+<dt><strong>Carets</strong>:</dt>
+<dd>
+<p><a href="https://facelessuser.github.io/pymdown-extensions/extensions/caret/">Caret</a> optionally adds two different features which are syntactically built around the <code>^</code> character. </p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.caret</span>
+</code></pre></div>
+<p>The double carets <code>^^</code> inserts <code>&lt;ins&gt;&lt;/ins&gt;</code> tags, and the single caret <code>^</code> inserts <code>&lt;sup&gt;&lt;/sup&gt;</code> tags.</p>
+<div class="highlight"><pre><span></span><code>^^Insert me^^
+H^2^0
+</code></pre></div>
+<p><ins>Insert me</ins><br/>
+H<sup>2</sup>0</p>
+</dd>
+<dt><strong>Marks</strong>:</dt>
+<dd>
+<p><a href="https://facelessuser.github.io/pymdown-extensions/extensions/mark/">Mark</a> adds the ability to insert <code>&lt;mark&gt;&lt;/mark&gt;</code> tags. </p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.mark</span>
+</code></pre></div>
+<p>The syntax requires the text to be surrounded by double equal signs <code>==</code>.</p>
+<div class="highlight"><pre><span></span><code>==mark me==
+==smart==mark==
+</code></pre></div>
+<p><mark>mark me</mark><br/>
+<mark>smart==mark</mark></p>
+</dd>
+<dt><strong>Tildes</strong>:</dt>
+<dd>
+<p>The PyMdown extension optionally adds two different features which are syntactically built around the <code>~</code> character: delete using double tildes <code>~~</code> which inserts <code>&lt;del&gt;&lt;/del&gt;</code> tags and subscript using single tilde <code>~</code> which inserts <code>&lt;sub&gt;&lt;/sub&gt;</code> tags.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.tilde</span>
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>~~Delete me~~
+CH~3~CH~2~OH
+</code></pre></div>
+<p><del>Delete me</del><br/>
+CH<sub>3</sub>CH<sub>2</sub>OH</p>
+</dd>
+</dl>
+<h2 id="11-critic">11. Critic<a class="headerlink" href="#11-critic" title="Permanent link">⚓︎</a></h2>
+<p><a href="https://facelessuser.github.io/pymdown-extensions/extensions/critic/">Critic</a> is an extension that adds handling and support of <a href="http://criticmarkup.com/">Critic Markup</a> which uses a special syntax to represent edits to a Markdown document. This extension runs before all other extensions to parse the critic edits.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.critic</span>
+</code></pre></div>
+<p>Critic Markup uses special markup to insert, delete, substitute, highlight, and comment.</p>
+<div class="highlight"><pre><span></span><code>To insert or remove text you can use {​++insert me++} and {​--remove me--} respectively. You can also denote a substitution with {​~~substitute this~&gt;with this~~}.
+
+You can also highlight specific text with {​==highlight me==}. Or even comment, which is generally done by highlighting text and following it with a comment: {​==highlight me==}{​&gt;&gt;Add a comment&lt;&lt;}.
+</code></pre></div>
+<p>To insert or remove text you can use <ins class="critic">insert me</ins> and <del class="critic">remove me</del> respectively. You can also denote a substitution with <del class="critic">substitute this</del><ins class="critic">with this</ins>.</p>
+<p>You can also highlight specific text with <mark class="critic">highlight me</mark>. Or even comment, which is generally done by highlighting text and following it with a comment: <mark class="critic">highlight me</mark><span class="critic comment">Add a comment</span>.</p>
+<h2 id="12-html-block">12. HTML block<a class="headerlink" href="#12-html-block" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://python-markdown.github.io/extensions/md_in_html/">Markdown in HTML</a> extension that parses Markdown inside of HTML block tags.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">md_in_html</span>
+</code></pre></div>
+<p>By default, Markdown ignores any content within a raw HTML block-level element. With the <em>md-in-html</em> extension enabled, the content of a raw HTML block-level element can be parsed as Markdown by including a markdown attribute on the opening tag.</p>
+<div class="highlight"><pre><span></span><code>&lt;div&gt;
+This is <span class="gs">__not parsed__</span> by Markdown.
+&lt;/div&gt;
+&lt;div markdown="1"&gt;
+This is a <span class="gs">__bold__</span> word parsed by Markdown.
+&lt;/div&gt;
+</code></pre></div>
+<div>
+This is __not parsed__ by Markdown.
+</div>
+<div>
+<p>This is a <strong>bold</strong> word parsed by Markdown.</p>
+</div>
+<h2 id="13-icons--emojis">13. Icons &amp; Emojis<a class="headerlink" href="#13-icons--emojis" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://facelessuser.github.io/pymdown-extensions/extensions/emoji/">Emoji extension</a> </p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">pymdownx.emoji</span><span class="p">:</span>
+        <span class="nt">emoji_index</span><span class="p">:</span> <span class="kt">!!python/name:materialx.emoji.twemoji</span>
+        <span class="nt">emoji_generator</span><span class="p">:</span> <span class="kt">!!python/name:materialx.emoji.to_svg</span>
+</code></pre></div>
+<dl>
+<dt><strong>Emojis</strong>:</dt>
+<dd>
+<p>Emojis can be written by putting the shortcode of the emoji between two colons. Look up the shortcodes at <a href="https://emojipedia.org/twitter/">Emojipedia</a>.</p>
+<p><code>:smile:</code> <img alt="😄" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f604.svg" title=":smile:"/>
+<code>:heart:</code> <img alt="❤" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg" title=":heart:"/></p>
+</dd>
+<dt><strong>Icons</strong>:</dt>
+<dd>
+<p>Icons can be used similarly to emojis, by referencing a valid path to any icon bundled with the theme, which are located in the <em>.icons</em> directory, and replacing <code>/</code> with <code>-</code>:</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">-</span> :material-account-circle: – <span class="sb">`.icons/material/account-circle.svg`</span>
+<span class="k">-</span> :fontawesome-regular-laugh-wink: – <span class="sb">`.icons/fontawesome/regular/laugh-wink.svg`</span>
+<span class="k">-</span> :octicons-octoface-24: – <span class="sb">`.icons/octicons/octoface-24.svg`</span>
+</code></pre></div>
+<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.232 7.232 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"></path></svg></span> <span class="twemoji"><svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm141.4 389.4c-37.8 37.8-88 58.6-141.4 58.6s-103.6-20.8-141.4-58.6C68.8 359.6 48 309.4 48 256s20.8-103.6 58.6-141.4C144.4 76.8 194.6 56 248 56s103.6 20.8 141.4 58.6c37.8 37.8 58.6 88 58.6 141.4s-20.8 103.6-58.6 141.4zM328 164c-25.7 0-55.9 16.9-59.9 42.1-1.7 11.2 11.5 18.2 19.8 10.8l9.5-8.5c14.8-13.2 46.2-13.2 61 0l9.5 8.5c8.5 7.4 21.6.3 19.8-10.8-3.8-25.2-34-42.1-59.7-42.1zm-160 60c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm194.4 64H133.6c-8.2 0-14.5 7-13.5 15 7.5 59.2 58.9 105 121.1 105h13.6c62.2 0 113.6-45.8 121.1-105 1-8-5.3-15-13.5-15z"></path></svg></span> <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.75 11c-.69 0-1.25.56-1.25 1.25v1.5a1.25 1.25 0 1 0 2.5 0v-1.5C9 11.56 8.44 11 7.75 11zm1.27 4.5a.469.469 0 0 1 .48-.5h5a.47.47 0 0 1 .48.5c-.116 1.316-.759 2.5-2.98 2.5s-2.864-1.184-2.98-2.5zm7.23-4.5c-.69 0-1.25.56-1.25 1.25v1.5a1.25 1.25 0 1 0 2.5 0v-1.5c0-.69-.56-1.25-1.25-1.25z"></path><path d="M21.255 3.82a1.725 1.725 0 0 0-2.141-1.195c-.557.16-1.406.44-2.264.866-.78.386-1.647.93-2.293 1.677A18.442 18.442 0 0 0 12 5c-.93 0-1.784.059-2.569.17-.645-.74-1.505-1.28-2.28-1.664a13.876 13.876 0 0 0-2.265-.866 1.725 1.725 0 0 0-2.141 1.196 23.645 23.645 0 0 0-.69 3.292c-.125.97-.191 2.07-.066 3.112C1.254 11.882 1 13.734 1 15.527 1 19.915 3.13 23 12 23c8.87 0 11-3.053 11-7.473 0-1.794-.255-3.647-.99-5.29.127-1.046.06-2.15-.066-3.125a23.652 23.652 0 0 0-.689-3.292zM20.5 14c.5 3.5-1.5 6.5-8.5 6.5s-9-3-8.5-6.5c.583-4 3-6 8.5-6s7.928 2 8.5 6z" fill-rule="evenodd"></path></svg></span></p>
+</dd>
+<dt><strong>Include in theme</strong>:</dt>
+<dd>Using <code>include</code> function of Jinja to add an icon wrapped in a <code>twemoji</code> class:
+<div class="highlight"><pre><span></span><code><span class="x">&lt;span class="twemoji"&gt;</span>
+<span class="cp">{%</span> <span class="k">include</span> <span class="s2">".icons/fontawesome/brands/twitter.svg"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;/span&gt;</span>
+</code></pre></div></dd>
+</dl>
+<h2 id="14-custom-block">14. Custom block<a class="headerlink" href="#14-custom-block" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://pypi.org/project/markdown-customblocks/">Custom Blocks extension</a> defines a common markup to create parametrizable and nestable custom blocks.</p>
+<p>Install the extension:</p>
+<div class="highlight"><pre><span></span><code>pip install -U markdown-customblocks
+</code></pre></div>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">customblocks</span>
+</code></pre></div>
+<p>This extension parses markup structures like this one:</p>
+<div class="highlight"><pre><span></span><code>::: mytype "value 1" param2=value2
+    Indented content
+</code></pre></div>
+<div class="new-page"></div>
+<p><strong>Example usage</strong>: Add the filename of a codeblock, to show where the it belongs.</p>
+<p>Syntax:</p>
+<div class="highlight"><pre><span></span><code>::: file
+    main.c
+
+``` cpp
+int main(void) {
+    return 0;
+}
+```
+</code></pre></div>
+<p>with style:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">file</span> <span class="o">&gt;</span> <span class="nt">p</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mf">.9</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">font-style</span><span class="p">:</span> <span class="kc">italic</span><span class="p">;</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">darkred</span><span class="p">;</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mf">-1.2</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>will generate:</p>
+<div class="file">
+<p>main.c</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="15-footnotes">15. Footnotes<a class="headerlink" href="#15-footnotes" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="https://python-markdown.github.io/extensions/footnotes/">Footnotes extension</a> adds syntax for defining footnotes in Markdown documents.</p>
+<p>Enable the extension:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">footnotes</span>
+</code></pre></div>
+<p>And use the following syntax:</p>
+<p><div class="highlight"><pre><span></span><code>Footnotes[^1] have a label[^fn] and the footnote's content.
+
+[<span class="nl">^1</span>]: <span class="na">This is a footnote content.</span>
+[<span class="nl">^fn</span>]: <span class="na">A footnote on the label _fn_.</span>
+</code></pre></div>
+to get:</p>
+<p>Footnotes<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> have a label<sup id="fnref:fn"><a class="footnote-ref" href="#fn:fn">2</a></sup> and the footnote's content.</p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>This is a footnote content. <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:fn">
+<p>A footnote on the label <em>fn</em>. <a class="footnote-backref" href="#fnref:fn" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+<h2 id="__comments">Comments</h2>
+<div id="disqus_thread"></div>
+<script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/setup_blog/markdown_syntax/",this.page.identifier="blog/setup_blog/markdown_syntax/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../install_and_configure/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Install and configure
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../mkdocs_plugins/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              MkDocs plugins
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div style="color: var(--md-footer-fg-color--lighter);">
+        using
+        <a href="https://github.com/vuquangtrong/mkdocs-material-blog" rel="noopener" target="_blank">
+            MkDocs Material Blog
+        </a>
+        theme
+    </div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="facebook.com">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

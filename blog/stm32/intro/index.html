@@ -1,0 +1,1689 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Overview about ARM Cortex and STM32 MCUs, with general information about registers, memory, interrupts and CMSIS. Different types of STM32 MCUs." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/stm32/intro/" rel="canonical"/>
+<link href="../../../favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
+<title>Introduction to ARM Cortex-M and STM32 MCU - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<meta content="website" property="og:type"/>
+<meta content="Code Inside Out - Introduction to ARM Cortex-M and STM32 MCU" property="og:title"/>
+<meta content="Overview about ARM Cortex and STM32 MCUs, with general information about registers, memory, interrupts and CMSIS. Different types of STM32 MCUs." property="og:description"/>
+<meta content="https://www.codeinsideout.com/blog/stm32/intro/" property="og:url"/>
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1080" property="og:image:width"/>
+<meta content="568" property="og:image:height"/>
+</head>
+<body data-md-color-accent="" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-arm-cortex-microcontrollers">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+        Blog
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+        Blog
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+        Recent posts
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+        Stm32
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Stm32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Stm32
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Introduction
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-arm-cortex-microcontrollers">
+    1. ARM Cortex microcontrollers
+  </a>
+<nav aria-label="1. ARM Cortex microcontrollers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-core-registers">
+    1.1. Core Registers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-memory-map">
+    1.2. Memory Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-bit-banding">
+    1.3. Bit-Banding
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-thumb-instruction-set">
+    1.4. Thumb Instruction Set
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-instruction-pipeline">
+    1.5. Instruction pipeline
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-memory-alignment">
+    1.6. Memory alignment
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-interrupts-and-exceptions">
+    1.7. Interrupts and Exceptions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-system-timer">
+    1.8. System Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-clock-source-and-power-mode">
+    1.9. Clock source and power mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#110-cmsis-for-sw-development">
+    1.10. CMSIS for SW development
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stm32-microcontrollers">
+    2. STM32 Microcontrollers
+  </a>
+<nav aria-label="2. STM32 Microcontrollers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-cortex-m-comparison">
+    2.1. Cortex-M comparison
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-stm32-mcus-comparison">
+    2.2. STM32 MCUs comparison
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../toolchain/">
+        Tools and Docs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../usart/">
+        USART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../timer/">
+        Timer
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+        Raspberry Pi
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Raspberry Pi
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup_sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check_camera_i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile_ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource_usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_ffmpeg_hls_dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_picamera_mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream_picamera_h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_headless/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup_wifi_ap/">
+        Wifi Access Point
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/save_power/">
+        Save Power
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+        Setup blog
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Setup blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/install_and_configure/">
+        Install and configure
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/markdown_syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/mkdocs_plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/customize_theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup_blog/print_to_pdf/">
+        Print to PDF
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<br/>
+<br/>
+<br/>
+<div style="font-weight:700; font-size:.7rem; margin:0 0.6rem;">
+<label>Tag cloud</label>
+</div>
+<div style="padding: 0.4rem 0.6rem;">
+<div class="tag-cloud">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.5rem;color:DarkOliveGreen;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:1.0rem;color:DarkRed;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.7rem;color:DarkOrange;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">notes
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:1.0rem;color:DarkGoldenrod;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.8rem;color:DarkCyan;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">access point
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.8rem;color:DarkRed;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.9rem;color:DarkCyan;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.2rem;color:DarkMagenta;">arm
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.2rem;color:DarkSlateBlue;">stm32
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">uart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-arm-cortex-microcontrollers">
+    1. ARM Cortex microcontrollers
+  </a>
+<nav aria-label="1. ARM Cortex microcontrollers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-core-registers">
+    1.1. Core Registers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-memory-map">
+    1.2. Memory Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-bit-banding">
+    1.3. Bit-Banding
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-thumb-instruction-set">
+    1.4. Thumb Instruction Set
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-instruction-pipeline">
+    1.5. Instruction pipeline
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-memory-alignment">
+    1.6. Memory alignment
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-interrupts-and-exceptions">
+    1.7. Interrupts and Exceptions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-system-timer">
+    1.8. System Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-clock-source-and-power-mode">
+    1.9. Clock source and power mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#110-cmsis-for-sw-development">
+    1.10. CMSIS for SW development
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stm32-microcontrollers">
+    2. STM32 Microcontrollers
+  </a>
+<nav aria-label="2. STM32 Microcontrollers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-cortex-m-comparison">
+    2.1. Cortex-M comparison
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-stm32-mcus-comparison">
+    2.2. STM32 MCUs comparison
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<br/>
+<br/>
+<br/>
+<div style="font-weight:700; font-size:.7rem; margin:0 0.6rem;">
+<label>Tag cloud</label>
+</div>
+<div style="padding: 0.4rem 0.6rem;">
+<div class="tag-cloud">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.5rem;color:DarkGoldenrod;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:1.0rem;color:DarkMagenta;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.7rem;color:DarkOliveGreen;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">notes
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:1.0rem;color:DarkRed;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.8rem;color:DarkViolet;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">access point
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.8rem;color:DarkGreen;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.9rem;color:DarkGreen;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.2rem;color:DarkSlateBlue;">arm
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.2rem;color:DarkGoldenrod;">stm32
+            </span>
+<sup class="tag-count">7</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">uart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="page-cover">
+<h1 class="page-title">Introduction to ARM Cortex-M and STM32 MCU</h1>
+<p class="page-description">Overview about ARM Cortex and STM32 MCUs, with general information about registers, memory, interrupts and CMSIS. Different types of STM32 MCUs.</p>
+<p>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="color:DarkBlue;">
+                        #arm
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="color:DarkGoldenrod;">
+                        #stm32
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr class="print-only"/>
+<small>
+                                
+                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2021</span><br/>
+</small>
+</p>
+</div>
+<div class="btn-actions screen-only"><div id="btn-download"><a class="md-button" href="..\..\..\pdfs\blog\stm32\intro\stm32__Introduction.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></div>
+<p></p>
+</div>
+<div class="toc print-only">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-arm-cortex-microcontrollers">
+    1. ARM Cortex microcontrollers
+  </a>
+<nav aria-label="1. ARM Cortex microcontrollers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-core-registers">
+    1.1. Core Registers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-memory-map">
+    1.2. Memory Map
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-bit-banding">
+    1.3. Bit-Banding
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-thumb-instruction-set">
+    1.4. Thumb Instruction Set
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-instruction-pipeline">
+    1.5. Instruction pipeline
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-memory-alignment">
+    1.6. Memory alignment
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-interrupts-and-exceptions">
+    1.7. Interrupts and Exceptions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-system-timer">
+    1.8. System Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-clock-source-and-power-mode">
+    1.9. Clock source and power mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#110-cmsis-for-sw-development">
+    1.10. CMSIS for SW development
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stm32-microcontrollers">
+    2. STM32 Microcontrollers
+  </a>
+<nav aria-label="2. STM32 Microcontrollers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-cortex-m-comparison">
+    2.1. Cortex-M comparison
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-stm32-mcus-comparison">
+    2.2. STM32 MCUs comparison
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+<h2 id="1-arm-cortex-microcontrollers">1. ARM Cortex microcontrollers<a class="headerlink" href="#1-arm-cortex-microcontrollers" title="Permanent link">⚓︎</a></h2>
+<p>ARM processors use <em>Reduced Instruction Set Computing</em> (RISC) architectures, and nowadays have many revisions (ARMv6, ARMv6-M, ARMv7, ARMv7-A, etc.). ARM means <em>Advanced RISC Machines</em>.</p>
+<p><a href="https://www.arm.com/products/silicon-ip-cpu">ARM Cortex</a> is a wide set of 32/64-bit core architectures, which are based on ARM architecture revision. For example, a processor based on the Cortex-M4 core is designed on the ARMv7-M architecture.</p>
+<p>ARM Cortex microcontrollers are divided into three main subfamilies:</p>
+<style>
+    .red {
+        color: red;
+    }
+</style>
+<ul>
+<li><strong>Cortex-A</strong> which stands for <strong class="red">A</strong>pplication</li>
+<li><strong>Cortex-R</strong> which stand for <strong class="red">R</strong>eal-Time</li>
+<li><strong>Cortex-M</strong> which stands for E<strong class="red">M</strong>bedded</li>
+</ul>
+<h3 id="11-core-registers">1.1. Core Registers<a class="headerlink" href="#11-core-registers" title="Permanent link">⚓︎</a></h3>
+<p>Like all RISC architectures, Cortex-M processors are load/store machines, which perform operations only on CPU registers except for two categories of instructions: <code>load</code> and <code>store</code>, used to transfer data between CPU registers and memory locations</p>
+<p>
+<figure class="w70"><img src="arm_cortex_m_registers.png"/><figcaption>ARM Cortex-M registers</figcaption></figure>
+</p>
+<ul>
+<li>
+<p><code>R0</code>~ <code>R12</code> are general-purpose registers, and can be used as operands for ARM instructions. Some general-purpose registers, however, can be used by the compiler as registers with special functions.</p>
+</li>
+<li>
+<p><code>R13</code> is the <em>Stack Pointer (SP)</em> register, which is also said to be banked. This means that the register content changes according to the current CPU mode(<em>privileged</em> or <em>unprivileged</em>). This function is typically used by <em>Real Time Operating Systems (RTOS)</em> to do context switching.</p>
+</li>
+<li>
+<p><code>R14</code> is the <em>Link Register (LR)</em> register, which is a special-purpose register which holds the address to return to when a function call completes. This is more efficient than the more traditional scheme of storing return addresses on a call stack, sometimes called a machine stack. The link register does not require the writes and reads of the memory containing the stack which can save a considerable percentage of execution time with repeated calls of small subroutines.</p>
+</li>
+<li>
+<p><code>R15</code> is the <em>Program Counter (PC)</em> register, which has the address of the next instruction to be executed from memory. Usually, the PC is incremented after fetching an instruction. However, control transfer instructions can change the sequence by placing a new value in the PC register.</p>
+</li>
+</ul>
+<h3 id="12-memory-map">1.2. Memory Map<a class="headerlink" href="#12-memory-map" title="Permanent link">⚓︎</a></h3>
+<p>ARM defines a standardized memory address space common to all Cortex-M cores, which ensures code portability among different silicon manufacturer. The address space is 4GB wide, and it is organized in several sub-regions with different logical functionalities.</p>
+<p>
+<figure class="w70"><img src="arm_cortex_m_fixed_memory_map.png"/><figcaption>Fixed memory map for ARM cores</figcaption></figure>
+</p>
+<ul>
+<li>
+<p>The first 512MB are dedicated to code area:</p>
+<ul>
+<li>
+<p>All Cortex-M processors map the code area starting at address <code>0x0000 0000</code>. This area also includes the pointer to the beginning of the stack (usually placed in SRAM) and the system interrupt vector table.</p>
+</li>
+<li>
+<p>An area starting at address <code>0x0800 0000</code> is bound to the internal MCU flash memory, and it is the area where program code resides. With a specific boot configuration,  this area is also <em>aliased</em> from address <code>0x0000 0000</code>. This means that it is perfectly possible to refer to the content of the flash memory both starting at address <code>0x0800 0000</code> and <code>0x0000 0000</code>.</p>
+</li>
+<li>
+<p><em>System Memory</em> is a ROM region filled with official pre-programmed Boot Loader which can be used to load code from several peripherals, including USARTs, USB and CAN bus.</p>
+</li>
+<li>
+<p><em>Option Bytes</em> region contains a series of bit flags which can be used to configure several aspects of the MCU (such as flash read protection, hardware watchdog, boot mode and so on) and are related to a specific microcontroller.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Next 512MB is mapped to Internal SRAM:</p>
+<ul>
+<li>
+<p>It starts at address <code>0x2000 0000</code> and can potentially extend to <code>0x3FFF FFFF</code>.</p>
+</li>
+<li>
+<p>This area also can be aliased to the start up address at <code>0x0000 0000</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Other memory regions are mapped to external RAM, peripherals and the internal core registers. All Cortex processor registers are at fixed locations for all Cortex-based microcontrollers. This allows code to be more easily ported between different STM32 variants and indeed other vendors’ Cortex-based microcontrollers.</p>
+</li>
+</ul>
+<p>
+<figure class="w70"><img src="arm_cortex_m_memory_map_code_area.png"/><figcaption>Memory Map for Code Area</figcaption></figure>
+</p>
+<h3 id="13-bit-banding">1.3. Bit-Banding<a class="headerlink" href="#13-bit-banding" title="Permanent link">⚓︎</a></h3>
+<p>In embedded applications, it is quite common to work with a single bit of a word using bit masking. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint8_t</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">flags</span> <span class="o">|=</span> <span class="mh">0x4</span><span class="p">;</span> <span class="c1">// set the 4-th bit</span>
+</code></pre></div>
+<p>generates assembly code :</p>
+<div class="highlight"><pre><span></span><code><span class="err">0</span><span class="nl">x0a:</span> <span class="err">79</span><span class="nf">fb</span> <span class="nv">ldrb</span> <span class="nb">r3</span><span class="p">,</span> <span class="p">[</span><span class="nb">r7</span><span class="p">,</span> <span class="err">#</span><span class="mi">7</span><span class="p">]</span>
+<span class="err">0</span><span class="nl">x0c:</span> <span class="nf">f043</span> <span class="mi">0304</span> <span class="nv">orr.w</span> <span class="nb">r3</span><span class="p">,</span> <span class="nb">r3</span><span class="p">,</span> <span class="err">#</span><span class="mi">4</span>
+<span class="err">0</span><span class="nl">x10:</span> <span class="err">71</span><span class="nf">fb</span> <span class="nv">strb</span> <span class="nb">r3</span><span class="p">,</span> <span class="p">[</span><span class="nb">r7</span><span class="p">,</span> <span class="err">#</span><span class="mi">7</span><span class="p">]</span>
+</code></pre></div>
+<p>Such a simple operation requires three assembly instructions (fetch, modify, save). This leads to a problem if an interruption happens between processing bit mask.</p>
+<p><mark class="critic">
+Bit-banding is the ability to map each bit of a given area of memory to a whole word in the aliased bit-banding memory region, allowing atomic access to such bit.
+</mark></p>
+<p>
+<figure class="w70"><img src="memory_map_of_bitbanding.png"/><figcaption>Memory Map of an address in a bit-banding region</figcaption></figure>
+</p>
+<p>ARM defines two bit-band regions for Cortex-M based MCUs, each one is 1MB wide and mapped to a 32Mbit bit-band alias region.</p>
+<ul>
+<li>
+<p>The first one starts at <code>0x2000 0000</code> and ends at <code>0x200F FFFF</code>, and it is aliased from <code>0x2200 0000</code> to <code>0x23FF FFFF</code>. It is dedicated to the bit access of SRAM memory locations.</p>
+</li>
+<li>
+<p>Another bit-banding region starts at <code>0x4000 0000</code> and ends at <code>0x400F FFFF</code>, which is dedicated to the memory mapping of peripherals, from <code>0x4200 0000</code> to <code>0x43FF FFFF</code>.</p>
+</li>
+</ul>
+<p>Define two macros in C that allow to easily compute bit-band alias addresses:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* MEMORY BIT-BANDING */</span>
+<span class="c1">// Define base address of bit-band</span>
+<span class="cp">#define BITBAND_SRAM_BASE 0x20000000</span>
+<span class="c1">// Define base address of alias band</span>
+<span class="cp">#define ALIAS_SRAM_BASE 0x22000000</span>
+<span class="c1">// Convert SRAM address to alias region</span>
+<span class="cp">#define BITBAND_SRAM(a,b) ((ALIAS_SRAM_BASE + ((uint32_t)&amp;(a)-BITBAND_SRAM_BASE)*32 + (b*4)))</span>
+
+<span class="cm">/* PERIPHERAL BIT-BANDING */</span>
+<span class="c1">// Define base address of peripheral bit-band</span>
+<span class="cp">#define BITBAND_PERI_BASE 0x40000000</span>
+<span class="c1">// Define base address of peripheral alias band</span>
+<span class="cp">#define ALIAS_PERI_BASE 0x42000000</span>
+<span class="c1">// Convert PERI address to alias region</span>
+<span class="cp">#define BITBAND_PERI(a,b) ((ALIAS_PERI_BASE + ((uint32_t)a-BITBAND_PERI_BASE)*32 + (b*4)))</span>
+</code></pre></div>
+<p>Example that quickly modifies the state of <em>PIN5</em> of the <em>GPIOA</em> port as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define GPIOA_PERH_ADDR 0x40020000</span>
+<span class="cp">#define ODR_ADDR_OFF 0x14</span>
+
+<span class="kt">uint32_t</span> <span class="o">*</span><span class="n">GPIOA_ODR</span> <span class="o">=</span> <span class="n">GPIOA_PERH_ADDR</span> <span class="o">+</span> <span class="n">ODR_ADDR_OFF</span>
+<span class="kt">uint32_t</span> <span class="o">*</span><span class="n">GPIOA_PIN5</span> <span class="o">=</span> <span class="n">BITBAND_PERI</span><span class="p">(</span><span class="n">GPIOA_ODR</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+<span class="o">*</span><span class="n">GPIOA_PIN5</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span> <span class="c1">// Turns GPIO HIGH</span>
+</code></pre></div>
+<p>
+<figure class="w70"><img src="arm_cortex_m_memory_map_bitbanding_area.png"/><figcaption>Memory Map for Bit-banding Area</figcaption></figure>
+</p>
+<h3 id="14-thumb-instruction-set">1.4. <em>Thumb</em> Instruction Set<a class="headerlink" href="#14-thumb-instruction-set" title="Permanent link">⚓︎</a></h3>
+<p>ARM Cortext-M processors provide a 32-bit instructions set, not only allows for a rich set of instructions, but also guarantees the best performance. However, memory footprint of the firmware has bigger cost. To address such issues, ARM introduced the <em>Thumb</em> 16-bit instruction set which is transparently expanded to full 32-bit ARM instructions in real time, without performance loss. Afterwards, ARM introduced the <em>Thumb-2</em> instruction set, which is a mix of 16 and 32-bit instruction sets in one operation state.</p>
+<h3 id="15-instruction-pipeline">1.5. Instruction pipeline<a class="headerlink" href="#15-instruction-pipeline" title="Permanent link">⚓︎</a></h3>
+<p>Before an instruction is executed, the CPU has to fetch it from memory and decode it. So, it has 3 stages to complete an instruction. Modern CPUs introduce a way to parallelize these operations in order to increase their instructions throughput. The basic instruction cycle is broken up into a series of steps, as if the instructions traveled along a <em>pipeline</em>.</p>
+<p>
+<figure class="w70"><img src="instruction_pipeline.png"/><figcaption>3-stage instruction pipeline</figcaption></figure>
+</p>
+<p>When dealing with pipelines, branching is an issue to be addressed. When branching causes the invalidation of pipeline streams, the last two instructions which have been loaded into the pipeline will be discarded.</p>
+<h3 id="16-memory-alignment">1.6. Memory alignment<a class="headerlink" href="#16-memory-alignment" title="Permanent link">⚓︎</a></h3>
+<p>
+<figure><img src="memory_alignment_access.png"/><figcaption>Aligned and Unaligned memory access</figcaption>
+</figure>
+</p>
+<p>ARM based CPUs are traditionally capable of accessing byte (8-bit), half word (16-bit) and word (32-bit) signed and unsigned variables, without increasing the number of assembly instructions as it happens on 8-bit MCU architectures which reads byte by byte. Aligned memory access causes a waste of memory locations.</p>
+<h3 id="17-interrupts-and-exceptions">1.7. Interrupts and Exceptions<a class="headerlink" href="#17-interrupts-and-exceptions" title="Permanent link">⚓︎</a></h3>
+<p>Interrupts and exceptions are asynchronous events that alter the program flow. When an exception or an interrupt occurs, the CPU suspends the execution of the current task, saves its context (that is, its stack pointer) and starts the execution of a routine designed to handle the interrupting event. This routine is called Exception Handler in case of exceptions and Interrupt Service Routine (ISR) in case of an interrupt. After the exception or interrupt has been handled, the CPU resumes the previous execution flow, and the previous task can continue its execution. In the ARM architecture, interrupts are one type of exception.</p>
+<ul>
+<li>
+<p>Interrupts are usually generated from on-chip peripherals (e.g., a timer) or external inputs (e.g. a tactile switch connected to a GPIO), and in some cases they can be triggered by software.</p>
+</li>
+<li>
+<p>Exceptions are, instead, related to software execution, and the CPU itself can be a source of exceptions.</p>
+</li>
+</ul>
+<p>Each exception (and hence interrupt) has a number which uniquely identifies it. Cortex-M cores has pre-defined exception table which contains the addresses of function to handle those exceptions.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Number</th>
+<th>Exception Type</th>
+<th align="center">Priority</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td>Reset</td>
+<td align="center">-3</td>
+<td>Reset</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>NMI</td>
+<td align="center">-2</td>
+<td>Non-Maskable Interrupt</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>Hard Fault</td>
+<td align="center">-1</td>
+<td>All faults that hang the processor</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>Memory Fault</td>
+<td align="center">Configurable</td>
+<td>Memory issue</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>Bus Fault</td>
+<td align="center">Configurable</td>
+<td>Data bus issue</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>Usage Fault</td>
+<td align="center">Configurable</td>
+<td>Data bus issue</td>
+</tr>
+<tr>
+<td align="center">7 ~ 10</td>
+<td>Reserved</td>
+<td align="center">-</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td>SVCall</td>
+<td align="center">Configurable</td>
+<td>System service call (SVC instruction)</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td>Debug</td>
+<td align="center">Configurable</td>
+<td>Debug monitor (via SWD)</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td>Reserved</td>
+<td align="center">-</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td>PendSV</td>
+<td align="center">Configurable</td>
+<td>Pending request for System Service call</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td>SysTick</td>
+<td align="center">Configurable</td>
+<td>System Timer</td>
+</tr>
+<tr>
+<td align="center">16 ~ 240</td>
+<td>IRQ</td>
+<td align="center">Configurable</td>
+<td>Interrupt Request</td>
+</tr>
+</tbody>
+</table>
+<h3 id="18-system-timer">1.8. System Timer<a class="headerlink" href="#18-system-timer" title="Permanent link">⚓︎</a></h3>
+<p>Cortex-M based processors can optionally provide a System Timer, also known as <em>SysTick</em> which is a 24-bit down-counting timer used to provide a system tick for Real Time Operating Systems (RTOS). It is used to generate periodic interrupts to scheduled tasks, or measure delay. When the timer reach zero, it fires an interrupt number 15, as seen the be Interrupt Table above.</p>
+<div class="new-page"></div>
+<h3 id="19-clock-source-and-power-mode">1.9. Clock source and power mode<a class="headerlink" href="#19-clock-source-and-power-mode" title="Permanent link">⚓︎</a></h3>
+<p>Cortex-M processors provide several levels of power management which can be set via <em>System Control Register</em> (SCR).</p>
+<ul>
+<li>Run mode: full clock speed, all using peripherals are activated</li>
+<li>Sleep mode: reduced clock speed, some peripherals are suspended</li>
+<li>Deep sleep mode: clock is stopped, need external event to wake-up</li>
+</ul>
+<h3 id="110-cmsis-for-sw-development">1.10. CMSIS for SW development<a class="headerlink" href="#110-cmsis-for-sw-development" title="Permanent link">⚓︎</a></h3>
+<p><em>Cortex Microcontroller Software Interface Standard</em> (CMSIS) is a vendor-independent hardware abstraction layer for the Cortex-M processor series and specifies debugger interfaces. The CMSIS consists of the following components:</p>
+<ul>
+<li>CMSIS-CORE: API for the Cortex-M processor core and peripherals</li>
+<li>CMSIS-Driver: defines generic peripheral driver interfaces for middleware making them reusable across supported devices</li>
+<li>CMSIS-DSP: API for process signal and data such as fixed-point, single precision floating-point</li>
+<li>CMSIS-RTOS API: Common API for Real-Time Operating Systems</li>
+<li>CMSIS-Pack: a set of collections which includes source, header, library files, documentation, flash programming algorithms, source code templates and example projects</li>
+<li>CMSIS-SVD: System View Description for Peripherals</li>
+<li>CMSIS-DAP: Debug Access Port</li>
+</ul>
+<h2 id="2-stm32-microcontrollers">2. STM32 Microcontrollers<a class="headerlink" href="#2-stm32-microcontrollers" title="Permanent link">⚓︎</a></h2>
+<p>STM32 is a broad range of ARM Cortex-M microcontrollers divided in nine sub-families. Internally, each microcontroller consists of the processor core, static RAM, flash memory, debugging interface, and various peripherals.</p>
+<p>Here are advantages of using STM32 MCUs:</p>
+<ul>
+<li>
+<p>Cortex-M based MCUs with large community, free tool-chain, and many shared knowledge articles</p>
+</li>
+<li>
+<p>Pin-to-Pin compatibility for most of STM32 MCUs, which helps to change the MCU while keeping pin assignments</p>
+</li>
+<li>
+<p>5V tolerant means it can interface with other devices which do not use 3.3V without using level shifter</p>
+</li>
+<li>
+<p>Cheap is an advantage of using STM32 MCUs with ARM based processors and supported RTOS</p>
+</li>
+<li>
+<p>Integrated boot loader is shipped with internal ROM which allows to reprogram the internal flash memory using some communication peripherals</p>
+</li>
+</ul>
+<p>
+<figure class="w60"><img src="stm32f051_disco_board.png"/><figcaption>STM32 F051 Discovery Board</figcaption></figure>
+</p>
+<p>
+<figure class="w60"><img src="stm32l0538_disco_board.png"/><figcaption>STM32 L0538 Discovery Board</figcaption></figure>
+</p>
+<p>
+<figure><img src="stm32_nucleo_boards.png"/><figcaption>STM32 Nucleo family boards</figcaption>
+</figure>
+</p>
+<h3 id="21-cortex-m-comparison">2.1. Cortex-M comparison<a class="headerlink" href="#21-cortex-m-comparison" title="Permanent link">⚓︎</a></h3>
+<blockquote>
+<p>A <a href="https://developer.arm.com/ip-products/processors/cortex-m">table</a> from ARM.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Cortex-M0</th>
+<th>Cortex-M0+</th>
+<th>Cortex-M3</th>
+<th>Cortex-M4</th>
+<th>Cortex-M33</th>
+<th>Cortex-M7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2">ISA</td>
+<td>Armv6-M</td>
+<td>Armv6-M</td>
+<td>Armv7-M</td>
+<td>Armv7-M</td>
+<td>Armv8-M Mainline</td>
+<td>Armv7-M</td>
+</tr>
+<tr>
+<td colspan="6" style="text-align:center">Thumb, Thumb-2</td>
+</tr>
+<tr>
+<td>Pipeline stages</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Memory Protection Unit</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Maximum MPU regions</td>
+<td>0</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Trace<br/>(ETM or MTB)</td>
+<td>No</td>
+<td>MTB</td>
+<td>ETMv3</td>
+<td>ETMv3</td>
+<td>MTB and/or ETMv4</td>
+<td>ETMv4</td>
+</tr>
+<tr>
+<td>DSP</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Floating point hardware</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Bus protocol</td>
+<td>AHB Lite</td>
+<td>AHB Lite</td>
+<td>AHB Lite, APB</td>
+<td>AHB Lite, APB</td>
+<td>AHB5</td>
+<td>AXI4, AHB Lite, APB, TCM</td>
+</tr>
+<tr>
+<td>Maximum # external interrupts</td>
+<td>32</td>
+<td>32</td>
+<td>240</td>
+<td>240</td>
+<td>480</td>
+<td>240</td>
+</tr>
+<tr>
+<td>CMSIS Support</td>
+<td colspan="6" style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-stm32-mcus-comparison">2.2. STM32 MCUs comparison<a class="headerlink" href="#22-stm32-mcus-comparison" title="Permanent link">⚓︎</a></h3>
+<blockquote>
+<p>Compare the core, frequency and memory</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Family</th>
+<th>Core</th>
+<th>Max Frequency</th>
+<th>Flash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="4">High Performance</td>
+<td>STM32H7</td>
+<td>Cortex-M7 - Corte -M4</td>
+<td>480 MHz - 240 MHz</td>
+<td>1 to 2 Mbytes</td>
+</tr>
+<tr>
+<td>STM32F7</td>
+<td>Cortex-M7</td>
+<td>216 MHz</td>
+<td>256 Kbytes to 2 Mbytes</td>
+</tr>
+<tr>
+<td>STM32F4</td>
+<td>Cortex-M4</td>
+<td>180 MHz</td>
+<td>64 Kbytes to 2 Mbytes</td>
+</tr>
+<tr>
+<td>STM32F2</td>
+<td>Cortex-M3</td>
+<td>120 MHz</td>
+<td>128 Kbytes to 1 Mbyte</td>
+</tr>
+<tr>
+<td rowspan="5">Mainstream</td>
+<td>STM32G4</td>
+<td>Cortex-M4</td>
+<td>170 MHz</td>
+<td>32 to 512 Kbytes</td>
+</tr>
+<tr>
+<td>STM32F3</td>
+<td>Cortex-M4</td>
+<td>72 MHz</td>
+<td>16 to 512 Kbytes</td>
+</tr>
+<tr>
+<td>STM32F1</td>
+<td>Cortex-M3</td>
+<td>72 MHz</td>
+<td>16 Kbytes to 1 Mbyte</td>
+</tr>
+<tr>
+<td>STM32G0</td>
+<td>Cortex-M0+</td>
+<td>64 MHz</td>
+<td>16 to 512 Kbytes</td>
+</tr>
+<tr>
+<td>STM32F0</td>
+<td>Cortex-M0</td>
+<td>48 MHz</td>
+<td>16 to 256 Kbytes</td>
+</tr>
+<tr>
+<td rowspan="5">Ultra-low-power</td>
+<td>STM32L5</td>
+<td>Cortex-M33</td>
+<td>110 MHz</td>
+<td>256 to 512 Kbytes</td>
+</tr>
+<tr>
+<td>STM32L4+</td>
+<td>Cortex-M4</td>
+<td>120 MHz</td>
+<td>512 Kbytes to 2 Mbytes</td>
+</tr>
+<tr>
+<td>STM32L4</td>
+<td>Cortex-M4</td>
+<td>80 MHz</td>
+<td>64 Kbytes to 1 Mbyte</td>
+</tr>
+<tr>
+<td>STM32L1</td>
+<td>Cortex-M3</td>
+<td>32 MHz</td>
+<td>32 to 512 Kbytes</td>
+</tr>
+<tr>
+<td>STM32L0</td>
+<td>Cortex-M0+</td>
+<td>32 MHz</td>
+<td>8 to 192 Kbytes</td>
+</tr>
+<tr>
+<td rowspan="2">Wireless</td>
+<td>STM32WB</td>
+<td>Cortex-M4 - Cortex-M0+</td>
+<td>64 MHz - 32 MHz</td>
+<td>256 Kbytes to 1 Mbyte</td>
+</tr>
+<tr>
+<td>STM32WL</td>
+<td>Cortex-M4</td>
+<td>48 MHz</td>
+<td>64 Kbytes to 256 Kbytes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="__comments">Comments</h2>
+<div id="disqus_thread"></div>
+<script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/stm32/intro/",this.page.identifier="blog/stm32/intro/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../../" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Recent posts
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../toolchain/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Tools and Docs
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div style="color: var(--md-footer-fg-color--lighter);">
+        using
+        <a href="https://github.com/vuquangtrong/mkdocs-material-blog" rel="noopener" target="_blank">
+            MkDocs Material Blog
+        </a>
+        theme
+    </div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="facebook.com">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>
