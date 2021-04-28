@@ -5,13 +5,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Select the clock source and the frequency, enable and setup timers" name="description"/>
+<meta content="Understand about the clock source and the frequency. Select the main clock source and its clock tree to enable, disable, and configure the clock on peripherals." name="description"/>
 <meta content="embedded systems application programming" name="keywords"/>
 <meta content="vqtrong" name="author"/>
-<link href="https://www.codeinsideout.com/blog/stm32/timer/" rel="canonical"/>
+<link href="https://www.codeinsideout.com/blog/stm32/clock/" rel="canonical"/>
 <link href="../../../favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
-<title>Clock source and Timer module - Code Inside Out</title>
+<title>Clock sources and configure peripheral clock - Code Inside Out</title>
 <link href="../../../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
 <meta content="#ffffff" name="theme-color"/>
@@ -22,9 +22,9 @@
 <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <meta content="website" property="og:type"/>
-<meta content="Code Inside Out - Clock source and Timer module" property="og:title"/>
-<meta content="Select the clock source and the frequency, enable and setup timers" property="og:description"/>
-<meta content="https://www.codeinsideout.com/blog/stm32/timer/" property="og:url"/>
+<meta content="Code Inside Out - Clock sources and configure peripheral clock" property="og:title"/>
+<meta content="Understand about the clock source and the frequency. Select the main clock source and its clock tree to enable, disable, and configure the clock on peripherals." property="og:description"/>
+<meta content="https://www.codeinsideout.com/blog/stm32/clock/" property="og:url"/>
 <meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image"/>
 <meta content="image/png" property="og:image:type"/>
 <meta content="1080" property="og:image:width"/>
@@ -60,7 +60,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Timer
+              Clock
             
           </span>
 </div>
@@ -190,24 +190,14 @@
         Interrupt
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../gpio/">
-        GPIO
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../usart/">
-        USART
-      </a>
-</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Timer
+          Clock
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Timer
+        Clock
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -226,12 +216,61 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#3-timers">
-    3. Timers
+<a class="md-nav__link" href="#3-get-clock-frequency">
+    3. Get Clock Frequency
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-configure-clock">
+    4. Configure clock
+  </a>
+<nav aria-label="4. Configure clock" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-external-clock-source">
+    4.1. External clock source
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-master-clock-output">
+    4.2. Master Clock Output
   </a>
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-hal-software">
+    5. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-clock-security-system">
+    6. Clock Security System
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../usart/">
+        USART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uart_redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../notes/">
+        Notes
+      </a>
 </li>
 </ul>
 </nav>
@@ -375,73 +414,163 @@
 </div>
 <div style="padding: 0.4rem 0.6rem;">
 <div class="tag-cloud">
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.8rem;color:DarkCyan;">notes
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">sdcard
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">sdcard
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">backup
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">restore
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">jinja
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="font-size:1.5rem;color:DarkMagenta;">pi
+<span class="tag-name" style="font-size:1.5rem;color:DarkCyan;">pi
             </span>
 <sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.7rem;color:DarkCyan;">uart
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.4rem;color:DarkGoldenrod;">arm
+            </span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.4rem;color:DarkOliveGreen;">stm32
+            </span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.9rem;color:DarkBlue;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">gpio
+            </span>
+<sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
 <span class="tag-name" style="font-size:1.0rem;color:DarkMagenta;">camera
             </span>
 <sup class="tag-count">5</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">i2c
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">redirect
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="font-size:0.7rem;color:DarkOliveGreen;">ffmpeg
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">i2c
             </span>
-<sup class="tag-count">2</sup>
+<sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">hardware accelerator
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">c
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">omx
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">omx
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">notes
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.8rem;color:DarkOrchid;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">access point
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">c++
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">h264
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">bash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">top
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">grep
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">awk
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">bash
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -450,138 +579,58 @@
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">gnuplot
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.7rem;color:DarkRed;">ffmpeg
             </span>
-<sup class="tag-count">1</sup>
+<sup class="tag-count">2</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#power">
-<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">power
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.8rem;color:DarkViolet;">picamera
             </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">v4l2
-            </span>
-<sup class="tag-count">1</sup>
+<sup class="tag-count">3</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="font-size:1.0rem;color:DarkViolet;">python
+<span class="tag-name" style="font-size:1.0rem;color:DarkSlateGray;">python
             </span>
 <sup class="tag-count">5</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="font-size:0.8rem;color:DarkSlateBlue;">picamera
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">headless
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">interrupt
             </span>
 <sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">wifi
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">access point
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="font-size:0.8rem;color:DarkGreen;">stream
-            </span>
-<sup class="tag-count">3</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">hls
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">dash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">h264
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">hls
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">mjpeg
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">mjpeg
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="font-size:0.9rem;color:DarkSlateGray;">mkdocs
-            </span>
-<sup class="tag-count">4</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">jinja
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">grep
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">markdown
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">power
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="font-size:1.2rem;color:DarkSlateBlue;">arm
-            </span>
-<sup class="tag-count">7</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="font-size:1.2rem;color:DarkGoldenrod;">stm32
-            </span>
-<sup class="tag-count">7</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">gpio
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">gnuplot
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">interrupt
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">restore
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">debug
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">semihosting
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">clock
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">timer
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">toolchain
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">usart
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">uart
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">debug
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -611,8 +660,37 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#3-timers">
-    3. Timers
+<a class="md-nav__link" href="#3-get-clock-frequency">
+    3. Get Clock Frequency
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-configure-clock">
+    4. Configure clock
+  </a>
+<nav aria-label="4. Configure clock" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-external-clock-source">
+    4.1. External clock source
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-master-clock-output">
+    4.2. Master Clock Output
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-hal-software">
+    5. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-clock-security-system">
+    6. Clock Security System
   </a>
 </li>
 </ul>
@@ -626,153 +704,183 @@
 </div>
 <div style="padding: 0.4rem 0.6rem;">
 <div class="tag-cloud">
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">sdcard
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">clock
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">backup
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.4rem;color:DarkOrchid;">arm
             </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">restore
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="font-size:1.5rem;color:DarkOrchid;">pi
-            </span>
-<sup class="tag-count">10</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="font-size:1.0rem;color:DarkCyan;">camera
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">i2c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="font-size:0.7rem;color:DarkSlateGray;">ffmpeg
-            </span>
-<sup class="tag-count">2</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">hardware accelerator
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">omx
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">notes
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">bash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">top
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">grep
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">awk
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">performance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">gnuplot
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#power">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">power
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGoldenrod;">v4l2
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="font-size:1.0rem;color:DarkRed;">python
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="font-size:0.8rem;color:DarkViolet;">picamera
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">headless
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">wifi
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
-<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">access point
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="font-size:0.8rem;color:DarkCyan;">stream
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">hls
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">dash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">h264
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">mjpeg
-            </span>
-<sup class="tag-count">1</sup>
+<sup class="tag-count">9</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
 <span class="tag-name" style="font-size:0.9rem;color:DarkGreen;">mkdocs
             </span>
 <sup class="tag-count">4</sup>
 </a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">c++
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.7rem;color:DarkGreen;">uart
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.7rem;color:DarkMagenta;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:1.0rem;color:DarkRed;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">redirect
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.6rem;color:DarkBlue;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.5rem;color:DarkCyan;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">access point
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.4rem;color:DarkOliveGreen;">stm32
+            </span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
 <span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.6rem;color:DarkOliveGreen;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.6rem;color:DarkViolet;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.8rem;color:DarkSlateBlue;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">interrupt
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -781,60 +889,40 @@
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="font-size:1.2rem;color:DarkRed;">arm
-            </span>
-<sup class="tag-count">7</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="font-size:1.2rem;color:DarkSlateGray;">stm32
-            </span>
-<sup class="tag-count">7</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">gpio
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.6rem;color:DarkMagenta;">i2c
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">interrupt
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">wifi
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrange;">debug
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">debug
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="font-size:0.6rem;color:DarkRed;">semihosting
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.8rem;color:DarkOrange;">notes
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:1.0rem;color:DarkCyan;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.6rem;color:DarkTurquoise;">power
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="font-size:0.6rem;color:DarkCyan;">clock
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.8rem;color:DarkBlue;">picamera
             </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="font-size:0.6rem;color:DarkOrchid;">timer
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateGray;">toolchain
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="font-size:0.6rem;color:DarkGreen;">usart
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="font-size:0.6rem;color:DarkSlateBlue;">uart
-            </span>
-<sup class="tag-count">1</sup>
+<sup class="tag-count">3</sup>
 </a>
 </div>
 </div>
@@ -845,27 +933,22 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <div class="page-cover">
-<h1 class="page-title">Clock source and Timer module</h1>
-<p class="page-description">Select the clock source and the frequency, enable and setup timers</p>
+<h1 class="page-title">Clock sources and configure peripheral clock</h1>
+<p class="page-description">Understand about the clock source and the frequency. Select the main clock source and its clock tree to enable, disable, and configure the clock on peripherals.</p>
 <p>
 <a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="color:DarkMagenta;">
+<span class="tag-name" style="color:DarkRed;">
                         #arm
                     </span>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="color:DarkRed;">
+<span class="tag-name" style="color:DarkOrchid;">
                         #stm32
                     </span>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="color:DarkGreen;">
+<span class="tag-name" style="color:DarkGoldenrod;">
                         #clock
-                    </span>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="color:DarkGreen;">
-                        #timer
                     </span>
 </a>
 </p>
@@ -873,12 +956,9 @@
 <hr class="print-only"/>
 <small>
                                 
-                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 20, 2021</span><br/>
+                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 28, 2021</span><br/>
 </small>
 </p>
-</div>
-<div class="btn-actions screen-only"><div id="btn-download"><a class="md-button" href="..\..\..\pdfs\blog\stm32\timer\stm32__Timer.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></div>
-<p></p>
 </div>
 <div class="toc print-only">
 <h2>Table of Content</h2>
@@ -899,13 +979,42 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#3-timers">
-    3. Timers
+<a class="md-nav__link" href="#3-get-clock-frequency">
+    3. Get Clock Frequency
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-configure-clock">
+    4. Configure clock
+  </a>
+<nav aria-label="4. Configure clock" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-external-clock-source">
+    4.1. External clock source
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-master-clock-output">
+    4.2. Master Clock Output
   </a>
 </li>
 </ul>
 </nav>
-</div>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-hal-software">
+    5. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-clock-security-system">
+    6. Clock Security System
+  </a>
+</li>
+</ul>
+</nav>
+</div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\stm32\clock\stm32__Clock.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
 <h2 id="1-clock-source">1. Clock source<a class="headerlink" href="#1-clock-source" title="Permanent link">⚓︎</a></h2>
 <p>Almost every digital circuit needs a way to synchronize its internal circuitry or to synchronize itself with other circuits. </p>
 <p>A <em>clock</em> is a device that usually generates a periodical square wave signal, with a 50% duty cycle. A clock signal oscillates between <em>V<sub>L</sub></em> and <em>V<sub>H</sub></em> voltage levels, which for STM32 microcontrollers are a fraction of the <em>V<sub>DD</sub></em> supply voltage.</p>
@@ -934,6 +1043,7 @@
 <li>the internal dedicated RC oscillator (<strong>Low Speed Internal</strong> (LSI)). </li>
 </ul>
 <p>The low-speed oscillator is used to drive the <em>Real Time Clock</em> (RTC) and the <em>Independent Watchdog</em> (IWDT) peripheral.</p>
+<div class="new-page"></div>
 <p>Using several <strong>Programmable Phase-Locked Loops</strong> (PLL) and pre-scalers, it is possible to increase/decrease the source frequency at needs, depending on the requested performances, the maximum speed for a given peripheral or bus and the overall global power consumption.</p>
 <p>
 <figure><img src="clock_pll_prescaler.png"/><figcaption>PLL is used to increased/ decrease clock frequency</figcaption>
@@ -952,18 +1062,103 @@
 <p>The System Clock Switch (SW) is configured to choose the system clock source from HSI, HSE, or <code>PLLCLK</code>. Then select the AHB, APB1 and APB2 (if available) pre-scaler settings to reach the wanted frequency of the High-speed clock (<code>HCLK</code> - that is the one that feeds the core, DMAs and AHB bus),and the frequencies of Advanced Peripheral Bus 1 (APB1) and APB2 (if available) buses.</p>
 </li>
 </ol>
-<p>
-<figure><img src="clock_tree.png"/><figcaption>Clock tree of STM32F0</figcaption>
-</figure>
-</p>
 <div class="admonition info">
 <p class="admonition-title">SysTick</p>
 <p>The System Tick Time <code>SysTick</code> generates interrupt requests on a regular basis. This allows an OS to carry out context switching to support multiple tasking. For applications that do not require an OS, the SysTick can be used for time keeping, time measurement, or as an interrupt source for tasks that need to be executed regularly.</p>
 </div>
-<h2 id="3-timers">3. Timers<a class="headerlink" href="#3-timers" title="Permanent link">⚓︎</a></h2>
+<p>
+<figure><img src="clock_tree.png"/><figcaption>Example of a clock tree</figcaption>
+</figure>
+</p>
+<h2 id="3-get-clock-frequency">3. Get Clock Frequency<a class="headerlink" href="#3-get-clock-frequency" title="Permanent link">⚓︎</a></h2>
+<p>Sometimes it is important to know how fast the CPU core is running. The CubeHAL provides a function that can be used to compute the SYSCLK frequency: the <code>HAL_RCC_GetSysClockFreq()</code>. However, this function must be handled with special care.</p>
+<p>The <code>HAL_RCC_GetSysClockFreq()</code> does not return the real <code>SYSCLK</code> frequency (it could never do this in a reliable way without having a known and precise external reference), but it bases the result on the following algorithm:</p>
+<div class="new-page"></div>
+<ul>
+<li>if <code>SYSCLK</code> source is the <em>HSI</em> oscillator, then returns the value based on the <code>HSI_VALUE</code> macro;</li>
+<li>if <code>SYSCLK</code> source is the <em>HSE</em> oscillator, then returns the value based on the <code>HSE_VALUE</code> macro;</li>
+<li>if <code>SYSCLK</code> source is the <em>PLLCLK</em>, then returns a value based on <code>HSI_VALUE</code> or <code>HSE_VALUE</code> multiplied by the <code>PLL</code> factor, according the specific STM32 MCU implementation.</li>
+</ul>
+<p><code>HSI_VALUE</code> and <code>HSE_VALUE</code> macros are defined inside the <code>stm32xxx_hal_conf.h</code> file, and they are hardcoded values. The <code>HSI_VALUE</code> is defined by ST during chip design, with 1% of accuracy. <code>HSE_VALUE</code> macro is defined by programmer, so it could be wrong.</p>
+<h2 id="4-configure-clock">4. Configure clock<a class="headerlink" href="#4-configure-clock" title="Permanent link">⚓︎</a></h2>
+<p>The clock path starts from the internal 8MHz oscillator. If the microcontroller relies on an external HSE/LSE crystal, then clock source has to be enabled in the RCC peripheral before it can be used as the main clock source.</p>
+<p>
+<figure><img src="clock_tree_f051.png"/><figcaption>Clock tree of STM32F0</figcaption>
+</figure>
+</p>
+<div class="new-page"></div>
+<h3 id="41-external-clock-source">4.1. External clock source<a class="headerlink" href="#41-external-clock-source" title="Permanent link">⚓︎</a></h3>
+<p>For both <code>HSE</code> and <code>LSE</code> oscillators, CubeMX offers three configuration options:</p>
+<ul>
+<li><strong>Disable</strong>: the external oscillator is not available/used, and the corresponding internal oscillator is used.</li>
+<li><strong>Crystal/Ceramic Resonator</strong>: an external crystal/ceramic resonator is used and the corresponding main frequency is derived from it. This implies that <code>RCC_OSC_IN</code> and <code>RCC_OSC_OUT</code> pins are used to interface the HSE, and the corresponding signal I/Os are unavailable for other usages (if use an external low-speed crystal, then the corresponding <code>RCC_OSC32_IN</code> and <code>RCC_OSC32_OUT</code> I/Os are used too).</li>
+<li><strong>BYPASS Clock Source</strong>: an external clock source is used. The clock source is generated by another active device. This means that the <code>RCC_OSC_OUT</code> is leaved unused, and it is possible to use it as regular GPIO. In almost all development board from ST (included the Nucleo ones) the Master Clock Output (MCO) pin of the ST-LINK interface is used as external clock source for the target STM32 MCU. Enabling this option allows to use the ST-LINK MCO as HSE.</li>
+</ul>
+<p>
+<figure><img src="clock_enable_external_source.png"/><figcaption>Enable external clock source</figcaption>
+</figure>
+</p>
+<h3 id="42-master-clock-output">4.2. Master Clock Output<a class="headerlink" href="#42-master-clock-output" title="Permanent link">⚓︎</a></h3>
+<p>The RCC peripheral also allows to enable the <em>Master Clock Output</em> (MCO), which is a pin that can be connected to a clock source. It can be used to clock another external device, allowing to save on the external crystal for this other IC. Once the MCO is enabled, it is possible to choose its clock source using the Clock Configuration view.</p>
+<p>
+<figure class="w70"><img src="clock_mco.png"/><figcaption>Select clock source to be output</figcaption></figure>
+</p>
+<h2 id="5-hal-software">5. HAL Software<a class="headerlink" href="#5-hal-software" title="Permanent link">⚓︎</a></h2>
+<p><em>Reset and Clock Control</em> (RCC) peripheral is responsible of the configuration for the whole clock tree of an STM32 MCU. The most relevant C struct to configure the clock tree are <code>RCC_OscInitTypeDef</code> and <code>RCC_ClkInitTypeDef</code>.</p>
+<p>CubeMX is designed to generate the right code initialization for the clock tree of our MCU. All the necessary code is packed inside the <code>SystemClock_Config()</code> routine in the file <em>main.c</em>.</p>
+<p>To configure the Master Clock Output, use the function <code>HAL_RCC_MCOConfig()</code> to select the clock source and its dividing factor.</p>
+<p>Note that when configuring the MCO pin as output GPIO, its speed (that is, the slew rate) affects the quality of the output clock.</p>
+<p>
+<figure><img src="lab_set_mco.png"/><figcaption>Enable MCO ouput</figcaption>
+</figure>
+</p>
+<p>Above config should give a generated code as below:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SystemClock_Config</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">RCC_OscInitTypeDef</span> <span class="n">RCC_OscInitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">RCC_ClkInitTypeDef</span> <span class="n">RCC_ClkInitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+  <span class="cm">/** Initializes the RCC Oscillators according to the specified parameters in the RCC_OscInitTypeDef structure.*/</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">OscillatorType</span> <span class="o">=</span> <span class="n">RCC_OSCILLATORTYPE_HSI</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">HSIState</span> <span class="o">=</span> <span class="n">RCC_HSI_ON</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">HSICalibrationValue</span> <span class="o">=</span> <span class="n">RCC_HSICALIBRATION_DEFAULT</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLState</span> <span class="o">=</span> <span class="n">RCC_PLL_ON</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLSource</span> <span class="o">=</span> <span class="n">RCC_PLLSOURCE_HSI</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLMUL</span> <span class="o">=</span> <span class="n">RCC_PLL_MUL12</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PREDIV</span> <span class="o">=</span> <span class="n">RCC_PREDIV_DIV1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_RCC_OscConfig</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RCC_OscInitStruct</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** Initializes the CPU, AHB and APB buses clocks */</span>
+  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">ClockType</span> <span class="o">=</span> <span class="n">RCC_CLOCKTYPE_HCLK</span> <span class="o">|</span><span class="n">RCC_CLOCKTYPE_SYSCLK</span> <span class="o">|</span> <span class="n">RCC_CLOCKTYPE_PCLK1</span><span class="p">;</span>
+  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">SYSCLKSource</span> <span class="o">=</span> <span class="n">RCC_SYSCLKSOURCE_PLLCLK</span><span class="p">;</span>
+  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">AHBCLKDivider</span> <span class="o">=</span> <span class="n">RCC_SYSCLK_DIV1</span><span class="p">;</span>
+  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">APB1CLKDivider</span> <span class="o">=</span> <span class="n">RCC_HCLK_DIV1</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_RCC_ClockConfig</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RCC_ClkInitStruct</span><span class="p">,</span> <span class="n">FLASH_LATENCY_1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">HAL_RCC_MCOConfig</span><span class="p">(</span><span class="n">RCC_MCO</span><span class="p">,</span> <span class="n">RCC_MCO1SOURCE_SYSCLK</span><span class="p">,</span> <span class="n">RCC_MCODIV_1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="6-clock-security-system">6. Clock Security System<a class="headerlink" href="#6-clock-security-system" title="Permanent link">⚓︎</a></h2>
+<p>The Clock Security System (CSS) is a feature of the RCC peripheral used to detect malfunctions of the external HSE. The CSS is an important feature in some critical applications, and the detection of a failure is noticed through the NMI exception, a Cortex-M exception that cannot be disabled.</p>
+<p>When the failure of HSE is detected, the MCU automatically switch to the HSI clock, which is selected as source for the SYSCLK clock. So, if a higher core frequency is needed, it needs to perform proper initializations inside the NMI exception handler.</p>
+<p><code>HAL_RCC_EnableCSS()</code> function will enable the CSS feature, and define a handling callback:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_RCC_CSSCallback</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//Catch the HSE failure and take proper actions</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>which is called from the NMI interrupt handler:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">NMI_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">HAL_RCC_NMI_IRQHandler</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="__comments">Comments</h2>
 <div id="disqus_thread"></div>
-<script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/stm32/timer/",this.page.identifier="blog/stm32/timer/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+<script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/stm32/clock/",this.page.identifier="blog/stm32/clock/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
 </article>
 </div>
 </div>
@@ -973,7 +1168,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a class="md-footer__link md-footer__link--prev" href="../usart/" rel="prev">
+<a class="md-footer__link md-footer__link--prev" href="../interrupt/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -982,17 +1177,17 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              USART
+              Interrupt
             </div>
 </div>
 </a>
-<a class="md-footer__link md-footer__link--next" href="../../pi/notes/" rel="next">
+<a class="md-footer__link md-footer__link--next" href="../gpio/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Notes
+              GPIO
             </div>
 </div>
 <div class="md-footer__button md-icon">
