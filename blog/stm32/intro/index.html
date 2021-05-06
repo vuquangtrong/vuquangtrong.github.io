@@ -5,13 +5,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Overview about ARM Cortex and STM32 MCUs, with general information about registers, memory, interrupts and CMSIS. Different types of STM32 MCUs." name="description"/>
+<meta content="Overview about ARM Cortex-M cores, with general information about registers, memory map, interrupts, clock source and the CMSIS SW library. Overview about different types of STM32 MCUs." name="description"/>
 <meta content="embedded systems application programming" name="keywords"/>
 <meta content="vqtrong" name="author"/>
 <link href="https://www.codeinsideout.com/blog/stm32/intro/" rel="canonical"/>
 <link href="../../../favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
-<title>Introduction to ARM Cortex-M and STM32 MCU - Code Inside Out</title>
+<title>Introduction to ARM Cortex-M and STM32 MCUs - Code Inside Out</title>
 <link href="../../../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
 <meta content="#ffffff" name="theme-color"/>
@@ -22,8 +22,8 @@
 <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
 <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 <meta content="website" property="og:type"/>
-<meta content="Code Inside Out - Introduction to ARM Cortex-M and STM32 MCU" property="og:title"/>
-<meta content="Overview about ARM Cortex and STM32 MCUs, with general information about registers, memory, interrupts and CMSIS. Different types of STM32 MCUs." property="og:description"/>
+<meta content="Code Inside Out - Introduction to ARM Cortex-M and STM32 MCUs" property="og:title"/>
+<meta content="Overview about ARM Cortex-M cores, with general information about registers, memory map, interrupts, clock source and the CMSIS SW library. Overview about different types of STM32 MCUs." property="og:description"/>
 <meta content="https://www.codeinsideout.com/blog/stm32/intro/" property="og:url"/>
 <meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image"/>
 <meta content="image/png" property="og:image:type"/>
@@ -36,7 +36,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#1-arm-cortex-microcontrollers">
+<a class="md-skip" href="#1-arm-cortex-m-processors">
           Skip to content
         </a>
 </div>
@@ -186,10 +186,10 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#1-arm-cortex-microcontrollers">
-    1. ARM Cortex microcontrollers
+<a class="md-nav__link" href="#1-arm-cortex-m-processors">
+    1. ARM Cortex-M processors
   </a>
-<nav aria-label="1. ARM Cortex microcontrollers" class="md-nav">
+<nav aria-label="1. ARM Cortex-M processors" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#11-core-registers">
@@ -307,13 +307,13 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../distance_us-100/">
-        US-100
+<a class="md-nav__link" href="../timers/">
+        Timer
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../timers/">
-        Timer
+<a class="md-nav__link" href="../distance_us-100/">
+        US-100
       </a>
 </li>
 <li class="md-nav__item">
@@ -463,58 +463,48 @@
 </div>
 <div style="padding: 0.4rem 0.6rem;">
 <div class="tag-cloud">
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">bash
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">distance
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">clock
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">clock
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#power">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">power
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkViolet;">stream
             </span>
-<sup class="tag-count">1</sup>
+<sup class="tag-count">3</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">pwm
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkBlue;">mkdocs
-            </span>
-<sup class="tag-count">4</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">gnuplot
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">h264
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">c
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">c
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">v4l2
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkOrange;">python
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">i2c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">mjpeg
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">performance
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -523,203 +513,213 @@
             </span>
 <sup class="tag-count">1</sup>
 </a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">capture
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkMagenta;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">dma
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">sensor
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkSlateBlue;">notes
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">redirect
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkGreen;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.5rem;color:DarkMagenta;">arm
+            </span>
+<sup class="tag-count">11</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">c++
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkBlue;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkBlue;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">pwm
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkRed;">uart
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
 <span class="tag-name" style="font-size:1.5rem;color:DarkSlateGray;">stm32
             </span>
 <sup class="tag-count">11</sup>
 </a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">pulse
+            </span>
+<sup class="tag-count">1</sup>
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">vcp
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">vcp
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">semihosting
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkTurquoise;">python
             </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">performance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOliveGreen;">notes
-            </span>
-<sup class="tag-count">3</sup>
+<sup class="tag-count">5</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">jinja
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">jinja
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkOrange;">pi
+<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkSlateBlue;">pi
             </span>
 <sup class="tag-count">10</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">capture
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">semihosting
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">wifi
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">gpio
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">hardware accelerator
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">c++
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">restore
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkCyan;">picamera
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">top
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">redirect
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">timer
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkOliveGreen;">camera
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkOliveGreen;">ffmpeg
-            </span>
-<sup class="tag-count">2</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">h264
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">dma
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">access point
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">sensor
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">pulse
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">dash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">interrupt
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">grep
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkViolet;">uart
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">distance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">debug
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">awk
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">usart
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="font-size:1.5rem;color:DarkOrange;">arm
-            </span>
-<sup class="tag-count">11</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">hls
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">i2c
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">backup
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">backup
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOrange;">stream
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">toolchain
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">sdcard
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">headless
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">omx
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">access point
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -739,10 +739,10 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#1-arm-cortex-microcontrollers">
-    1. ARM Cortex microcontrollers
+<a class="md-nav__link" href="#1-arm-cortex-m-processors">
+    1. ARM Cortex-M processors
   </a>
-<nav aria-label="1. ARM Cortex microcontrollers" class="md-nav">
+<nav aria-label="1. ARM Cortex-M processors" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#11-core-registers">
@@ -827,143 +827,8 @@
 </div>
 <div style="padding: 0.4rem 0.6rem;">
 <div class="tag-cloud">
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="font-size:1.5rem;color:DarkCyan;">arm
-            </span>
-<sup class="tag-count">11</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkGreen;">picamera
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">clock
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkSlateGray;">mkdocs
-            </span>
-<sup class="tag-count">4</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">h264
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">hls
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="font-size:1.5rem;color:DarkGreen;">stm32
-            </span>
-<sup class="tag-count">11</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkOrange;">pi
-            </span>
-<sup class="tag-count">10</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkTurquoise;">notes
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkRed;">python
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">interrupt
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">usart
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">debug
-            </span>
-<sup class="tag-count">1</sup>
-</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">sensor
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOrange;">uart
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">awk
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">i2c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">sdcard
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">performance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkOliveGreen;">ffmpeg
-            </span>
-<sup class="tag-count">2</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#power">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">power
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">grep
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">access point
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">dash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">dma
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">gnuplot
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">omx
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">sensor
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -972,73 +837,23 @@
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">v4l2
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">pwm
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">toolchain
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">jinja
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">headless
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">gpio
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">hardware accelerator
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">vcp
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">mjpeg
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">bash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">c++
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">c++
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">distance
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkViolet;">pi
             </span>
-<sup class="tag-count">1</sup>
+<sup class="tag-count">10</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">redirect
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOrange;">notes
             </span>
-<sup class="tag-count">1</sup>
+<sup class="tag-count">3</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">semihosting
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">access point
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -1047,13 +862,203 @@
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">backup
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">capture
             </span>
 <sup class="tag-count">1</sup>
 </a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">vcp
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">awk
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkBlue;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkBlue;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">pulse
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkMagenta;">ffmpeg
+            </span>
+<sup class="tag-count">2</sup>
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">timer
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.5rem;color:DarkRed;">stm32
+            </span>
+<sup class="tag-count">11</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkOrange;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">distance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkCyan;">uart
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOliveGreen;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">redirect
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkSlateGray;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">pwm
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">mjpeg
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">dma
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -1062,30 +1067,25 @@
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">capture
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">performance
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">pulse
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.5rem;color:DarkCyan;">arm
+            </span>
+<sup class="tag-count">11</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">headless
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">markdown
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">usart
             </span>
 <sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkGoldenrod;">camera
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkSlateGray;">stream
-            </span>
-<sup class="tag-count">3</sup>
 </a>
 </div>
 </div>
@@ -1096,16 +1096,16 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <div class="page-cover">
-<h1 class="page-title">Introduction to ARM Cortex-M and STM32 MCU</h1>
-<p class="page-description">Overview about ARM Cortex and STM32 MCUs, with general information about registers, memory, interrupts and CMSIS. Different types of STM32 MCUs.</p>
+<h1 class="page-title">Introduction to ARM Cortex-M and STM32 MCUs</h1>
+<p class="page-description">Overview about ARM Cortex-M cores, with general information about registers, memory map, interrupts, clock source and the CMSIS SW library. Overview about different types of STM32 MCUs.</p>
 <p>
 <a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="color:DarkSlateGray;">
+<span class="tag-name" style="color:DarkRed;">
                         #arm
                     </span>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="color:DarkGoldenrod;">
+<span class="tag-name" style="color:DarkViolet;">
                         #stm32
                     </span>
 </a>
@@ -1114,7 +1114,7 @@
 <hr class="print-only"/>
 <small>
                                 
-                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2021</span><br/>
+                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 4, 2021</span><br/>
 </small>
 </p>
 </div>
@@ -1127,10 +1127,10 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#1-arm-cortex-microcontrollers">
-    1. ARM Cortex microcontrollers
+<a class="md-nav__link" href="#1-arm-cortex-m-processors">
+    1. ARM Cortex-M processors
   </a>
-<nav aria-label="1. ARM Cortex microcontrollers" class="md-nav">
+<nav aria-label="1. ARM Cortex-M processors" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#11-core-registers">
@@ -1207,9 +1207,9 @@
 </ul>
 </nav>
 </div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\stm32\intro\stm32__Introduction.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
-<h2 id="1-arm-cortex-microcontrollers">1. ARM Cortex microcontrollers<a class="headerlink" href="#1-arm-cortex-microcontrollers" title="Permanent link">⚓︎</a></h2>
-<p>ARM processors use <em>Reduced Instruction Set Computing</em> (RISC) architectures, and nowadays have many revisions (ARMv6, ARMv6-M, ARMv7, ARMv7-A, etc.). ARM means <em>Advanced RISC Machines</em>.</p>
-<p><a href="https://www.arm.com/products/silicon-ip-cpu">ARM Cortex</a> is a wide set of 32/64-bit core architectures, which are based on ARM architecture revision. For example, a processor based on the Cortex-M4 core is designed on the ARMv7-M architecture.</p>
+<h2 id="1-arm-cortex-m-processors">1. ARM Cortex-M processors<a class="headerlink" href="#1-arm-cortex-m-processors" title="Permanent link">⚓︎</a></h2>
+<p>ARM processors use <em>Reduced Instruction Set Computing (RISC)</em> architectures, and nowadays have many revisions (ARMv6, ARMv6-M, ARMv7, ARMv7-A, etc.). ARM means <em><strong class="red">A</strong>dvanced <strong class="red">R</strong>ISC <strong class="red">M</strong>achines</em>.</p>
+<p><a href="https://www.arm.com/products/silicon-ip-cpu">ARM Cortex</a> is a wide set of 32/64-bit core architectures, which are based on ARM architecture revisions. For example, a processor based on the Cortex-M4 core is designed on the ARMv7-M architecture.</p>
 <p>ARM Cortex microcontrollers are divided into three main subfamilies:</p>
 <style>
     .red {
@@ -1241,7 +1241,7 @@
 </li>
 </ul>
 <h3 id="12-memory-map">1.2. Memory Map<a class="headerlink" href="#12-memory-map" title="Permanent link">⚓︎</a></h3>
-<p>ARM defines a standardized memory address space common to all Cortex-M cores, which ensures code portability among different silicon manufacturer. The address space is 4GB wide, and it is organized in several sub-regions with different logical functionalities.</p>
+<p>ARM defines a standardized memory address space common to all Cortex-M cores, which ensures code portability among different silicon manufacturer. The address space is 4GB wide (due to 32-bit address line), and it is organized in several sub-regions with different logical functionalities.</p>
 <p>
 <figure class="w70"><img src="arm_cortex_m_fixed_memory_map.png"/><figcaption>Fixed memory map for ARM cores</figcaption></figure>
 </p>
@@ -1275,7 +1275,7 @@
 </ul>
 </li>
 <li>
-<p>Other memory regions are mapped to external RAM, peripherals and the internal core registers. All Cortex processor registers are at fixed locations for all Cortex-based microcontrollers. This allows code to be more easily ported between different STM32 variants and indeed other vendors’ Cortex-based microcontrollers.</p>
+<p>Other memory regions are mapped to external RAM, peripherals and the internal core registers. All Cortex processor registers are at fixed locations for all Cortex-based microcontrollers. This allows code to be more easily ported between different core variants and indeed other vendors’ Cortex-based microcontrollers.</p>
 </li>
 </ul>
 <p>
@@ -1455,22 +1455,22 @@ Bit-banding is the ability to map each bit of a given area of memory to a whole 
 <p>Cortex-M based processors can optionally provide a System Timer, also known as <em>SysTick</em> which is a 24-bit down-counting timer used to provide a system tick for Real Time Operating Systems (RTOS). It is used to generate periodic interrupts to scheduled tasks, or measure delay. When the timer reach zero, it fires an interrupt number 15, as seen the be Interrupt Table above.</p>
 <div class="new-page"></div>
 <h3 id="19-clock-source-and-power-mode">1.9. Clock source and power mode<a class="headerlink" href="#19-clock-source-and-power-mode" title="Permanent link">⚓︎</a></h3>
-<p>Cortex-M processors provide several levels of power management which can be set via <em>System Control Register</em> (SCR).</p>
+<p>Cortex-M processors provide several levels of power management which can be set via <em>System Control Register (SCR)</em>.</p>
 <ul>
-<li>Run mode: full clock speed, all using peripherals are activated</li>
-<li>Sleep mode: reduced clock speed, some peripherals are suspended</li>
-<li>Deep sleep mode: clock is stopped, need external event to wake-up</li>
+<li><strong>Run mode</strong>: full clock speed, all using peripherals are activated</li>
+<li><strong>Sleep mode</strong>: reduced clock speed, some peripherals are suspended</li>
+<li><strong>Deep sleep mode</strong>: clock is stopped, need external event to wake-up</li>
 </ul>
 <h3 id="110-cmsis-for-sw-development">1.10. CMSIS for SW development<a class="headerlink" href="#110-cmsis-for-sw-development" title="Permanent link">⚓︎</a></h3>
-<p><em>Cortex Microcontroller Software Interface Standard</em> (CMSIS) is a vendor-independent hardware abstraction layer for the Cortex-M processor series and specifies debugger interfaces. The CMSIS consists of the following components:</p>
+<p><em>Cortex Microcontroller Software Interface Standard (CMSIS)</em> is a vendor-independent hardware abstraction layer for the Cortex-M processor series and specifies debugger interfaces. The CMSIS consists of the following components:</p>
 <ul>
-<li>CMSIS-CORE: API for the Cortex-M processor core and peripherals</li>
-<li>CMSIS-Driver: defines generic peripheral driver interfaces for middleware making them reusable across supported devices</li>
-<li>CMSIS-DSP: API for process signal and data such as fixed-point, single precision floating-point</li>
-<li>CMSIS-RTOS API: Common API for Real-Time Operating Systems</li>
-<li>CMSIS-Pack: a set of collections which includes source, header, library files, documentation, flash programming algorithms, source code templates and example projects</li>
-<li>CMSIS-SVD: System View Description for Peripherals</li>
-<li>CMSIS-DAP: Debug Access Port</li>
+<li><strong>CMSIS-CORE</strong>: API for the Cortex-M processor core and peripherals</li>
+<li><strong>CMSIS-Driver</strong>: defines generic peripheral driver interfaces for middleware making them reusable across supported devices</li>
+<li><strong>CMSIS-DSP</strong>: API for process signal and data such as fixed-point, single precision floating-point</li>
+<li><strong>CMSIS-RTOS</strong> API: Common API for Real-Time Operating Systems</li>
+<li><strong>CMSIS-Pack</strong>: a set of collections which includes source, header, library files, documentation, flash programming algorithms, source code templates and example projects</li>
+<li><strong>CMSIS-SVD</strong>: System View Description for Peripherals</li>
+<li><strong>CMSIS-DAP</strong>: Debug Access Port</li>
 </ul>
 <h2 id="2-stm32-microcontrollers">2. STM32 Microcontrollers<a class="headerlink" href="#2-stm32-microcontrollers" title="Permanent link">⚓︎</a></h2>
 <p>STM32 is a broad range of ARM Cortex-M microcontrollers divided in nine sub-families. Internally, each microcontroller consists of the processor core, static RAM, flash memory, debugging interface, and various peripherals.</p>
@@ -1504,7 +1504,7 @@ Bit-banding is the ability to map each bit of a given area of memory to a whole 
 </p>
 <h3 id="21-cortex-m-comparison">2.1. Cortex-M comparison<a class="headerlink" href="#21-cortex-m-comparison" title="Permanent link">⚓︎</a></h3>
 <blockquote>
-<p>A <a href="https://developer.arm.com/ip-products/processors/cortex-m">table</a> from ARM.</p>
+<p>A <a href="https://developer.arm.com/ip-products/processors/cortex-m">table</a> excerpted from ARM website.</p>
 </blockquote>
 <table>
 <thead>

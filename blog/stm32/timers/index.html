@@ -215,11 +215,6 @@
         DMA
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../distance_us-100/">
-        US-100
-      </a>
-</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -240,8 +235,110 @@
     1. Timer overview
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-timer-modes">
+    2. Timer modes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-hal-software">
+    3. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-basic-timer">
+    4. Lab: Basic Timer
+  </a>
+<nav aria-label="4. Lab: Basic Timer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-configure-io">
+    4.1. Configure IO
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-enable-timer">
+    4.2. Enable Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-generated-code">
+    4.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-user-code">
+    4.4. User code
+  </a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-timer-interrupt">
+    5. Lab: Timer interrupt
+  </a>
+<nav aria-label="5. Lab: Timer interrupt" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-add-a-timer">
+    5.1. Add a timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-handle-callback">
+    5.2. Handle callback
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-start-timer">
+    5.3. Start timer
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-lab-pwm">
+    6. Lab: PWM
+  </a>
+<nav aria-label="6. Lab: PWM" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-duty">
+    6.1. Duty
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-drive-the-brightness">
+    6.2. Drive the brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#63-setup-pwm-on-timer">
+    6.3. Setup PWM on Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#64-generated-code">
+    6.4. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#65-user-code">
+    6.5. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../distance_us-100/">
+        US-100
+      </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../notes/">
@@ -390,263 +487,263 @@
 </div>
 <div style="padding: 0.4rem 0.6rem;">
 <div class="tag-cloud">
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkGoldenrod;">ffmpeg
+<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkRed;">ffmpeg
             </span>
 <sup class="tag-count">2</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">c
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkViolet;">python
             </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">pwm
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">clock
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOliveGreen;">stream
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">h264
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">awk
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">interrupt
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">semihosting
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">redirect
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">gpio
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">debug
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">usart
-            </span>
-<sup class="tag-count">1</sup>
+<sup class="tag-count">5</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">hls
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">jinja
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">sdcard
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">performance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkMagenta;">pi
-            </span>
-<sup class="tag-count">10</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">distance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">omx
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOrange;">picamera
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">v4l2
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">capture
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#power">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">power
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">pulse
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkGreen;">notes
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkOliveGreen;">camera
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkOrange;">python
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">backup
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">hls
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">headless
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">headless
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">markdown
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkOliveGreen;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">gpio
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkOliveGreen;">mkdocs
-            </span>
-<sup class="tag-count">4</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">restore
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">c++
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">vcp
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">sensor
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">capture
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">top
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">top
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="font-size:1.5rem;color:DarkMagenta;">stm32
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">vcp
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">redirect
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkTurquoise;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">gnuplot
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">jinja
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">pulse
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkSlateGray;">notes
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">dma
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">h264
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkGreen;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkGoldenrod;">uart
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.5rem;color:DarkCyan;">arm
             </span>
 <sup class="tag-count">11</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">debug
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">omx
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">restore
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkOrange;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOliveGreen;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">pwm
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">awk
+            </span>
+<sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#access point">
 <span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">access point
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">i2c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">gnuplot
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkRed;">uart
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">dma
-            </span>
-<sup class="tag-count">1</sup>
-</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">mjpeg
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">wifi
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="font-size:1.5rem;color:DarkSlateBlue;">arm
-            </span>
-<sup class="tag-count">11</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">grep
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">toolchain
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">dash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">timer
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">hardware accelerator
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">mjpeg
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">bash
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">distance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">hardware accelerator
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">sensor
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="font-size:1.5rem;color:DarkSlateBlue;">stm32
+            </span>
+<sup class="tag-count">11</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">c++
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">c
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -670,6 +767,103 @@
     1. Timer overview
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-timer-modes">
+    2. Timer modes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-hal-software">
+    3. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-basic-timer">
+    4. Lab: Basic Timer
+  </a>
+<nav aria-label="4. Lab: Basic Timer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-configure-io">
+    4.1. Configure IO
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-enable-timer">
+    4.2. Enable Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-generated-code">
+    4.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-user-code">
+    4.4. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-timer-interrupt">
+    5. Lab: Timer interrupt
+  </a>
+<nav aria-label="5. Lab: Timer interrupt" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-add-a-timer">
+    5.1. Add a timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-handle-callback">
+    5.2. Handle callback
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-start-timer">
+    5.3. Start timer
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-lab-pwm">
+    6. Lab: PWM
+  </a>
+<nav aria-label="6. Lab: PWM" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-duty">
+    6.1. Duty
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-drive-the-brightness">
+    6.2. Drive the brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#63-setup-pwm-on-timer">
+    6.3. Setup PWM on Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#64-generated-code">
+    6.4. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#65-user-code">
+    6.5. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 <div class="tag-cloud-toc">
@@ -681,263 +875,263 @@
 </div>
 <div style="padding: 0.4rem 0.6rem;">
 <div class="tag-cloud">
-<a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">vcp
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">pulse
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">interrupt
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">h264
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">sensor
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkOrchid;">camera
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">hardware accelerator
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">bash
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">capture
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="font-size:1.5rem;color:DarkViolet;">arm
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">distance
             </span>
-<sup class="tag-count">11</sup>
+<sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="font-size:1.5rem;color:DarkSlateGray;">stm32
+<span class="tag-name" style="font-size:1.5rem;color:DarkRed;">stm32
             </span>
 <sup class="tag-count">11</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">gpio
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">restore
-            </span>
-<sup class="tag-count">1</sup>
-</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkGoldenrod;">ffmpeg
+<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkViolet;">ffmpeg
             </span>
 <sup class="tag-count">2</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">i2c
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">restore
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">c++
+<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">access point
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">dash
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">gnuplot
             </span>
 <sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">hardware accelerator
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">backup
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">usart
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">omx
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkOrchid;">python
-            </span>
-<sup class="tag-count">5</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
 <span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">jinja
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">awk
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">debug
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">hls
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">c++
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">pulse
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">performance
+<a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">vcp
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">mjpeg
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">mjpeg
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">grep
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">sdcard
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOliveGreen;">uart
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkTurquoise;">pi
-            </span>
-<sup class="tag-count">10</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">toolchain
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkOrchid;">stream
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">top
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">clock
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">debug
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">timer
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">v4l2
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">pwm
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">capture
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkOrchid;">mkdocs
-            </span>
-<sup class="tag-count">4</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#power">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">power
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">markdown
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">semihosting
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">h264
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">access point
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkGreen;">picamera
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">headless
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkViolet;">notes
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkTurquoise;">camera
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">dma
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">gnuplot
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">wifi
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">awk
             </span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">redirect
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">redirect
             </span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">distance
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">dma
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkOliveGreen;">python
+            </span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">top
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkRed;">stream
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkSlateBlue;">uart
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">markdown
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">timer
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#power">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">power
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">semihosting
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">pwm
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">usart
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkRed;">pi
+            </span>
+<sup class="tag-count">10</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">clock
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkCyan;">mkdocs
+            </span>
+<sup class="tag-count">4</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">hls
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">gpio
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">v4l2
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">bash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">dash
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">headless
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">interrupt
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">backup
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">i2c
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">sensor
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkBlue;">notes
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">performance
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="font-size:1.5rem;color:DarkGreen;">arm
+            </span>
+<sup class="tag-count">11</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">wifi
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">grep
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">sdcard
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">toolchain
+            </span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkCyan;">picamera
+            </span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">omx
             </span>
 <sup class="tag-count">1</sup>
 </a>
@@ -954,17 +1148,17 @@
 <p class="page-description">Understand about timers and working modes to configure the periodic tasks, Pulse-width modulation, and Capture mode.</p>
 <p>
 <a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="color:DarkRed;">
+<span class="tag-name" style="color:DarkOrange;">
                         #arm
                     </span>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="color:DarkOrange;">
+<span class="tag-name" style="color:DarkTurquoise;">
                         #stm32
                     </span>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="color:DarkBlue;">
+<span class="tag-name" style="color:DarkMagenta;">
                         #timer
                     </span>
 </a>
@@ -974,7 +1168,7 @@
                     </span>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="color:DarkRed;">
+<span class="tag-name" style="color:DarkGreen;">
                         #capture
                     </span>
 </a>
@@ -983,7 +1177,7 @@
 <hr class="print-only"/>
 <small>
                                 
-                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 3, 2021</span><br/>
+                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 6, 2021</span><br/>
 </small>
 </p>
 </div>
@@ -1000,9 +1194,110 @@
     1. Timer overview
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-timer-modes">
+    2. Timer modes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-hal-software">
+    3. HAL Software
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-basic-timer">
+    4. Lab: Basic Timer
+  </a>
+<nav aria-label="4. Lab: Basic Timer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-configure-io">
+    4.1. Configure IO
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-enable-timer">
+    4.2. Enable Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-generated-code">
+    4.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-user-code">
+    4.4. User code
+  </a>
+</li>
 </ul>
 </nav>
-</div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\stm32\timers\stm32__Timer.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-timer-interrupt">
+    5. Lab: Timer interrupt
+  </a>
+<nav aria-label="5. Lab: Timer interrupt" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-add-a-timer">
+    5.1. Add a timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-handle-callback">
+    5.2. Handle callback
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-start-timer">
+    5.3. Start timer
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-lab-pwm">
+    6. Lab: PWM
+  </a>
+<nav aria-label="6. Lab: PWM" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-duty">
+    6.1. Duty
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-drive-the-brightness">
+    6.2. Drive the brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#63-setup-pwm-on-timer">
+    6.3. Setup PWM on Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#64-generated-code">
+    6.4. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#65-user-code">
+    6.5. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+<div class="btn-actions screen-only">
+<p><a class="md-button" href="..\..\..\pdfs\blog\stm32\timers\stm32__Timer.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a><a class="md-button" href="https://github.com/vuquangtrong/STM32_Tutorials/tree/main/f051_disco_timer_basic"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> Basic Timer</a>
+<a class="md-button" href="https://github.com/vuquangtrong/STM32_Tutorials/tree/main/f051_disco_timer_pwm"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> PWM</a></p>
+</div>
 <h2 id="1-timer-overview">1. Timer overview<a class="headerlink" href="#1-timer-overview" title="Permanent link">⚓︎</a></h2>
 <p>A timer is a free-running counter with a counting frequency that is a fraction of its source clock. The counting speed can be reduced using a dedicated pre-scaler for each timer. Depending on the timer type, it can be clocked by the internal clock (which is derived from the bus where it is connected), by an external clock source or by another timer used as "master".</p>
 <p>The F<sub>sys</sub> is not the frequency that is incrementing the timer module, but it gets divided by the Pre-scaler, then it gets fed to the timer. Every clock cycle, the value of the timer is incremented by 1.</p>
@@ -1017,9 +1312,413 @@
 </div>
 <p>A timer can have additional pre-load register, therefore, timer will count from 0 to the pre-load value, or vice-versa.</p>
 <p>When driven by an external input, such as external pulse or button, timer can be used to count the number of events happened, and measure the frequency.</p>
+<p>STM32 timers can mainly grouped in categories:</p>
+<ul>
+<li>
+<p><strong>Basic timers</strong>: 16-bit timers used as time base generator; do not have output/input pins; used as a master of other timers or used to feed the DAC peripherals.</p>
+</li>
+<li>
+<p><strong>General purpose timers</strong>: 16/32-bit timers with multiple purposes; have four-programmable input/output channels; used in any application for output compare (timing and delay generation), One-Pulse Mode, input capture (for external signal frequency measurement), sensor interface (encoder, hall sensor), etc. This type has sub-groups: 1-channel/2-channels, or 1-channel/2-channels with one complimentary output ( a dead time generator on one channel).</p>
+</li>
+<li>
+<p><strong>Advanced timers</strong>: have more features than General purpose timers such as features related to motor control and digital power conversion applications: three complementary signals with dead time insertion, emergency shut-down input.</p>
+</li>
+<li>
+<p><strong>High resolution timer</strong>: a timer allows generating digital signals with high-accuracy timings, such as PWM or phase-shifted pulses. It has Delay lines with closed loop control guarantee a very small resolution whatever the voltage, temperature or chip-to-chip manufacturing process deviation.</p>
+</li>
+<li>
+<p><strong>Low-power timers</strong>: have a diversity of clock sources to run in low frequencies, or from external clock-like inputs, and have the capability to wake up the system from low-power modes.</p>
+</li>
+</ul>
+<h2 id="2-timer-modes">2. Timer modes<a class="headerlink" href="#2-timer-modes" title="Permanent link">⚓︎</a></h2>
+<p>An STM32 timer module can operate in any of the following modes, however, have to check the datasheet to figure out which modes are supported by which timers.</p>
+<p><strong>Timer Mode</strong></p>
+<p>In timer mode, the timer module gets clocked from an internal clock source with a known frequency. Hence the clocking frequency is known, the overflow time can also be calculated and controlled by the preload register to get any arbitrarily chosen time interval. Each timer overflow, the timer signals the CPU with an interrupt that indicates the end of the specified time interval.</p>
+<p>This mode of operation is usually used to get a specific operation done at each specific time interval, and to achieve timing &amp; synchronization between various tasks and events in the system. It can also replace delays in various situations for better system response.</p>
+<p><strong>Counter Mode</strong></p>
+<p>In counter mode, the timer module gets clocked from an external source (timer input pin). So the timer counts up or down on each rising or falling edge of the external input. This mode is really helpful in numerous situations when need to implement a digital counter without polling input pins or periodically reading a GPIO or continuously interrupt the CPU when hooking with an EXTI pin. If using another timer as an interval, this mode can be used to measure frequency.</p>
+<p><strong>PWM Mode</strong></p>
+<p>In <em>Pulse-Width Modulation (PWM)</em> mode, the timer module is clocked from an internal clock source and produces a digital waveform on the output channel pin called the PWM signal. By using output compare registers (OCR), the incrementing timer’s register value is constantly compared against this OCR register. When a match occurs the output pin state is flipped until the end of the period and the whole process is repeated.</p>
+<p><strong>Advanced PWM Mode</strong></p>
+<p>The advanced PWM signal generation refers to the hardware ability to control more parameters and add some hardware circuitry to support extra features for the PWM signal generation. Which includes:</p>
+<ul>
+<li>The ability to produce a complementary PWM signal that is typically the same as the PWM on the main channel but logically inverted</li>
+<li>The ability to inject dead-time band in the PWM signal for motor driving applications to prevent shoot-through currents that result from PWM signals overlapping</li>
+<li>The ability to perform auto-shutdown for the PWM signal, it’s also called “auto brake” which an important feature for safety-critical applications</li>
+<li>The ability to phase-adjust the PWM signal</li>
+</ul>
+<p><strong>Output Compare Mode</strong></p>
+<p>In output compare mode, a timer module controls an output waveform or indicates when a period of time has elapsed. When a match is detected between the output compare register (OCR) and the counter, the output compare function assigns the corresponding output pin to a programmable value.</p>
+<p><strong>One-Pulse Mode</strong></p>
+<p>One-pulse mode (OPM) is a particular case of the previous modes. It allows the counter to be started in response to a stimulus and to generate a pulse with a programmable length after a programmable delay. Starting the counter can be controlled through the slave mode controller. Generating the waveform can be done in output compare mode or PWM mode.</p>
+<p><strong>Input Capture Mode</strong></p>
+<p>In Input capture mode, the Capture/Compare Registers (TIMx_CCRx) are used to latch the value of the counter after a transition detected by the corresponding ICx signal. When a capture occurs, the corresponding CCXIF flag (TIMx_SR register) is set and an interrupt or a DMA request can be sent if they are enabled.</p>
+<p>This mode is extremely important for external signal measurement or external event timing detection. The current value of the timer counts is captured when an external event occurs and an interrupt is fired.</p>
+<p><strong>Encoder Mode</strong></p>
+<p>In the encoder interface mode, the timer module operates as a digital counter with two inputs. The counter is clocked by each valid transition on both input pins. The sequence of transitions of the two inputs is evaluated and generates count pulses as well as the direction signal. Depending on the sequence, the counter will count up or down.</p>
+<p><strong>Timer Gate Mode</strong></p>
+<p>In timer gated mode, a timer module is also said to be working in “slave mode”. Where it only counts as long as an external input pin is held high or low. This input pin is said to be the timer gate that allows the timer to count or not at all.</p>
+<p><strong>Timer DMA Burst Mode</strong></p>
+<p>The STM32 timers, not all of them, have the capability to generate multiple DMA requests upon a single event. The main purpose is to be able to re-program part of the timer multiple times without software overhead, but it can also be used to read several registers in a row, at regular intervals.</p>
+<p><strong>Infrared Mode</strong></p>
+<p>An infrared interface (IRTIM) for remote control can be used with an infrared LED to perform remote control functions. It uses internal connections with TIM15 and TIM16 as shown in the diagram down below. To generate the infrared remote control signals, the IR interface must be enabled and TIM15 channel 1 (TIM15_OC1) and TIM16 channel 1 (TIM16_OC1) must be properly configured to generate correct waveforms. The infrared receiver can be implemented easily through a basic input capture mode.</p>
+<h2 id="3-hal-software">3. HAL Software<a class="headerlink" href="#3-hal-software" title="Permanent link">⚓︎</a></h2>
+<p>The <em>Hardware Abstract Layer (HAL)</em> is designed so that it abstracts from the specific peripheral memory mapping. But, it also provides a general and more user-friendly way to configure the peripheral, without forcing the programmers to now how to configure its registers in detail.</p>
 <blockquote>
-<p>update soon</p>
+<p>excerpt from <a href="https://www.st.com/resource/en/user_manual/dm00122015-description-of-stm32f0-hal-and-lowlayer-drivers-stmicroelectronics.pdf">Description of STM32F0 HAL and low-layer drivers</a></p>
 </blockquote>
+<p><strong>How to use TIM HAL</strong></p>
+<ol>
+<li>
+<p>Initialize the TIM low level resources by implementing the following functions depending from feature used :</p>
+<ul>
+<li>Time Base : <code>HAL_TIM_Base_MspInit()</code></li>
+<li>Input Capture : <code>HAL_TIM_IC_MspInit()</code></li>
+<li>Output Compare : <code>HAL_TIM_OC_MspInit()</code></li>
+<li>PWM generation : <code>HAL_TIM_PWM_MspInit()</code></li>
+<li>One-pulse mode output : <code>HAL_TIM_OnePulse_MspInit()</code></li>
+<li>Encoder mode output : <code>HAL_TIM_Encoder_MspInit()</code></li>
+</ul>
+</li>
+<li>
+<p>Initialize the TIM low level resources : </p>
+<ul>
+<li>Use <code>__HAL_RCC_TIMx_CLK_ENABLE()</code> to enable the TIM interface clock </li>
+<li>TIM pins configuration<ul>
+<li>Use <code>__HAL_RCC_GPIOx_CLK_ENABLE()</code> to enable the clock for the TIM GPIOs</li>
+<li>Configure these TIM pins in Alternate function mode using <code>HAL_GPIO_Init()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>The external Clock can be configured, if needed (the default clock is the internal clock from the APBx), using the following function: <code>HAL_TIM_ConfigClockSource</code>, the clock configuration should be done before any start function.</p>
+</li>
+<li>
+<p>Configure the TIM in the desired functioning mode using one of the Initialization function of this driver:   </p>
+<ul>
+<li><code>HAL_TIM_Base_Init</code>: to use the Timer to generate a simple time base</li>
+<li><code>HAL_TIM_OC_Init</code> and <code>HAL_TIM_OC_ConfigChannel</code>: to use the Timer to generate an Output Compare signal.</li>
+<li><code>HAL_TIM_PWM_Init</code> and <code>HAL_TIM_PWM_ConfigChannel</code>: to use the Timer to generate a PWM signal.</li>
+<li><code>HAL_TIM_IC_Init</code> and <code>HAL_TIM_IC_ConfigChannel</code>: to use the Timer to measure an external signal.</li>
+<li><code>HAL_TIM_OnePulse_Init</code> and <code>HAL_TIM_OnePulse_ConfigChannel</code>: to use the Timer in One Pulse Mode.</li>
+<li><code>HAL_TIM_Encoder_Init</code>: to use the Timer Encoder Interface.</li>
+</ul>
+</li>
+<li>
+<p>Activate the TIM peripheral using one of the start functions depending from the feature used:</p>
+<ul>
+<li>Time Base : <code>HAL_TIM_Base_Start()</code>, <code>HAL_TIM_Base_Start_DMA()</code>, <code>HAL_TIM_Base_Start_IT()</code></li>
+<li>Input Capture : <code>HAL_TIM_IC_Start()</code>, <code>HAL_TIM_IC_Start_DMA()</code>, <code>HAL_TIM_IC_Start_IT()</code></li>
+<li>Output Compare : <code>HAL_TIM_OC_Start()</code>, <code>HAL_TIM_OC_Start_DMA()</code>, <code>HAL_TIM_OC_Start_IT()</code></li>
+<li>PWM generation : <code>HAL_TIM_PWM_Start()</code>, <code>HAL_TIM_PWM_Start_DMA()</code>, <code>HAL_TIM_PWM_Start_IT()</code></li>
+<li>One-pulse mode output : <code>HAL_TIM_OnePulse_Start()</code>, <code>HAL_TIM_OnePulse_Start_IT()</code></li>
+<li>Encoder mode output : <code>HAL_TIM_Encoder_Start()</code>, <code>HAL_TIM_Encoder_Start_DMA()</code>, <code>HAL_TIM_Encoder_Start_IT()</code>.</li>
+</ul>
+</li>
+<li>
+<p>The DMA Burst is managed with the two following functions: <code>HAL_TIM_DMABurst_WriteStart()</code> and <code>HAL_TIM_DMABurst_ReadStart()</code></p>
+</li>
+</ol>
+<h2 id="4-lab-basic-timer">4. Lab: Basic Timer<a class="headerlink" href="#4-lab-basic-timer" title="Permanent link">⚓︎</a></h2>
+<p>This project will use a basic timer (TIM16 or TIM17) to measure a pulse width on the Echo pin of the Ultrasonic distance sensor US-100. </p>
+<p>Triggering the sensor to start operation is done by sending a short pulse to the TRIGGER pin and it should be anything wider than 5uS. It can be even a few milliseconds. The module sends an ultrasonic signal, eight pulses of 40kHz square wave from the transmitter; the echo is then picked up by the receiver and outputs a waveform with a time period proportional to the distance.</p>
+<p>The echo response pulse corresponds to the time it takes for the ultrasonic sound to travel from the sensor to the object and back. Hence, the distance is computed as:</p>
+<div class="highlight"><pre><span></span><code>Distance = Pulse Width * Speed of Sound / 2 (m)
+</code></pre></div>
+<p>The actual speed of sound depends on the several environment factors, with temperature having most pronounced effect:</p>
+<div class="highlight"><pre><span></span><code>Speed of Sound = 331.4 + 0.6T (m/s)
+</code></pre></div>
+<p>US-100 has built-in temperature compensation, so the distance formula is reduced to:</p>
+<div class="highlight"><pre><span></span><code>Distance = Pulse width * 165.7 (m)
+</code></pre></div>
+<p>The pulse with is calculated by the timer counter divided by the counting frequency:</p>
+<div class="highlight"><pre><span></span><code>Pulse width = Timer counter / Frequency
+</code></pre></div>
+<p>Therefore, the final equation is:</p>
+<div class="highlight"><pre><span></span><code>Distance = Timer counter / Frequency * 165.7 (m)
+         = Timer counter * 165700 / Frequency (mm)
+</code></pre></div>
+<h3 id="41-configure-io">4.1. Configure IO<a class="headerlink" href="#41-configure-io" title="Permanent link">⚓︎</a></h3>
+<p>Start with a new project and enable UART for printing debug. Consider to use <a href="../redirection/">Redirection</a> to use <code>printf()</code>.</p>
+<p>To connect with US-100 in trigger mode, use 2 GPIO pins as below:</p>
+<table>
+<thead>
+<tr>
+<th>MCU Pin</th>
+<th>US-100 Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PA1 (Output)</td>
+<td>Trigger/TX</td>
+</tr>
+<tr>
+<td>PA2 (Input, EXTI2, Both edges)</td>
+<td>Echo/RX</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-enable-timer">4.2. Enable Timer<a class="headerlink" href="#42-enable-timer" title="Permanent link">⚓︎</a></h3>
+<p>The timer will be used is TIM17, which is driven by APB1 Bus clock running at 48 MHz. The resolution will be <code>1 / 48000000 = 20 us</code>.</p>
+<p>
+<figure><img src="ide_clock_tree.png"/><figcaption>Clock path to timers</figcaption>
+</figure>
+</p>
+<p>Just activate the timer and use default settings for this time, as the period is set to 65535 which means the longest counting period is <code>20 us * 65535 = 1.3 s</code>.</p>
+<p>
+<figure><img src="ide_timer.png"/><figcaption>Enable timer</figcaption>
+</figure>
+</p>
+<h3 id="43-generated-code">4.3. Generated code<a class="headerlink" href="#43-generated-code" title="Permanent link">⚓︎</a></h3>
+<p>This first function is to init the TIM17 peripheral:</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="n">MX_TIM17_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">htim17</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">TIM17</span><span class="p">;</span>
+  <span class="n">htim17</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Prescaler</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">htim17</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">CounterMode</span> <span class="o">=</span> <span class="n">TIM_COUNTERMODE_UP</span><span class="p">;</span>
+  <span class="n">htim17</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Period</span> <span class="o">=</span> <span class="mi">65535</span><span class="p">;</span>
+  <span class="n">htim17</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ClockDivision</span> <span class="o">=</span> <span class="n">TIM_CLOCKDIVISION_DIV1</span><span class="p">;</span>
+  <span class="n">htim17</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">RepetitionCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">htim17</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">AutoReloadPreload</span> <span class="o">=</span> <span class="n">TIM_AUTORELOAD_PRELOAD_DISABLE</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_Base_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim17</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>and then the interrupt handler is generated for PA2 input on EXTI2_3 line:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">EXTI2_3_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">HAL_GPIO_EXTI_IRQHandler</span><span class="p">(</span><span class="n">GPIO_PIN_2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="44-user-code">4.4. User code<a class="headerlink" href="#44-user-code" title="Permanent link">⚓︎</a></h3>
+<p><strong>States</strong></p>
+<p>The system will go around 3 states:</p>
+<div class="mermaid">stateDiagram-v2
+    idle --&gt; wait: send trigger
+    wait --&gt; calc : receive echo
+    calc --&gt; idle
+</div>
+<p>There are some variables to hold the system state, timer counter, and distance value.</p>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span> <span class="p">{</span>
+  <span class="n">IDLE</span><span class="p">,</span>
+  <span class="n">WAIT</span><span class="p">,</span>
+  <span class="n">CALC</span>
+<span class="p">};</span>
+<span class="kt">int</span> <span class="n">state</span> <span class="o">=</span> <span class="n">IDLE</span><span class="p">;</span>
+<span class="kt">int</span> <span class="k">try</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Main loop</strong></p>
+<p>The mail loop checks the current state and do corresponding actions:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">IDLE</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">__HAL_TIM_SET_COUNTER</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim17</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+      <span class="n">HAL_GPIO_WritePin</span><span class="p">(</span><span class="n">TRIGGER_GPIO_Port</span><span class="p">,</span> <span class="n">TRIGGER_Pin</span><span class="p">,</span> <span class="n">GPIO_PIN_SET</span><span class="p">);</span>
+      <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+      <span class="n">HAL_GPIO_WritePin</span><span class="p">(</span><span class="n">TRIGGER_GPIO_Port</span><span class="p">,</span> <span class="n">TRIGGER_Pin</span><span class="p">,</span> <span class="n">GPIO_PIN_RESET</span><span class="p">);</span>
+
+      <span class="n">state</span> <span class="o">=</span> <span class="n">WAIT</span><span class="p">;</span>
+      <span class="k">try</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">WAIT</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// do nothing</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">CALC</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">counter</span> <span class="o">=</span> <span class="n">__HAL_TIM_GET_COUNTER</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim17</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"T =  %d ~ %d us</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">counter</span><span class="p">,</span> <span class="n">counter</span><span class="o">*</span><span class="mi">1000</span><span class="o">/</span><span class="mi">48000</span><span class="p">);</span>
+
+      <span class="n">distance</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">*</span> <span class="mi">1657</span> <span class="o">/</span> <span class="mi">480000</span><span class="p">;</span>
+      <span class="c1">// overflow if use * 165700 / 48000000</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"D = %d mm</span><span class="se">\n\r</span><span class="s">"</span><span class="p">,</span> <span class="n">distance</span><span class="p">);</span>
+
+      <span class="n">state</span> <span class="o">=</span> <span class="n">IDLE</span><span class="p">;</span>
+      <span class="k">try</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">++</span><span class="k">try</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">state</span> <span class="o">=</span> <span class="n">IDLE</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Overflow</p>
+<p>If using wrong data type, overflow will happen if the value to be store is larger than the maximum value of that type.</p>
+</div>
+<p><strong>Handle ECHO pulse</strong></p>
+<p>The ECHO pulse is handled in the <code>HAL_GPIO_EXTI_Callback()</code> function called from the <code>EXTI2_3_IRQHandler()</code>. This function starts the timer when it detects a rasing edge, and stop the timer when it gets a falling edge.</p>
+<p>The interrupt latency would affect the measured time at which it starts measuring the time. However. it does add the same little bit of lagging for the 2<sup>nd</sup> edge as well so there is not much measurement error at all due to interrupt latency.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_GPIO_EXTI_Callback</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">GPIO_Pin</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">GPIO_Pin</span> <span class="o">==</span> <span class="n">ECHO_Pin</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">WAIT</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">HAL_GPIO_ReadPin</span><span class="p">(</span><span class="n">ECHO_GPIO_Port</span><span class="p">,</span> <span class="n">ECHO_Pin</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">HAL_TIM_Base_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim17</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">HAL_TIM_Base_Stop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim17</span><span class="p">);</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">CALC</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The result is shown in a logic analyzer and a serial output as well.</p>
+<p>
+<figure><img src="output_distance.png"/><figcaption>Output on Echo pin and calculated distance</figcaption>
+</figure>
+</p>
+<h2 id="5-lab-timer-interrupt">5. Lab: Timer interrupt<a class="headerlink" href="#5-lab-timer-interrupt" title="Permanent link">⚓︎</a></h2>
+<p>This project will setup a general-purpose timer to operate in timer mode. This timer will fire an event every 100ms to toggle a LED.</p>
+<p>Let's start with the previous project.</p>
+<h3 id="51-add-a-timer">5.1. Add a timer<a class="headerlink" href="#51-add-a-timer" title="Permanent link">⚓︎</a></h3>
+<p>To get 100ms while using 48 MHz clock, the Pre-scaler and Counter period value have to be set.</p>
+<div class="highlight"><pre><span></span><code>Time out = Counter * Tick period
+         = (Counter Period - 0) * (Pre-scaler value) * (1 / Frequency)
+</code></pre></div>
+<p>which equals to:</p>
+<div class="highlight"><pre><span></span><code>Counter Period * Pre-scaler value = Time out * Frequency
+</code></pre></div>
+<p>In this project, it is simple to choose Prescaler = 1000, and Counter Period = 4800 to make 100 ms interval.</p>
+<p>Next step is to enable the interrupt when the timer has counted from 0 to the counter period.</p>
+<p>
+<figure><img src="ide_timer_interrupt.png"/><figcaption>Enable timer with prescaler, counter period, and interrupt</figcaption>
+</figure>
+</p>
+<h3 id="52-handle-callback">5.2. Handle callback<a class="headerlink" href="#52-handle-callback" title="Permanent link">⚓︎</a></h3>
+<p>Every time when the timer reaches to the counter period value, it fires an event <code>HAL_TIM_PeriodElapsedCallback()</code> to notify to system. In this function, toggle the LED:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_TIM_PeriodElapsedCallback</span><span class="p">(</span><span class="n">TIM_HandleTypeDef</span> <span class="o">*</span><span class="n">htim</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">htim</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">htim6</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">LD3_GPIO_Port</span><span class="p">,</span> <span class="n">LD3_Pin</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="53-start-timer">5.3. Start timer<a class="headerlink" href="#53-start-timer" title="Permanent link">⚓︎</a></h3>
+<p>Finally, start the timer in the main function, before the while loop with Interrupt mode:</p>
+<div class="highlight"><pre><span></span><code><span class="n">HAL_TIM_Base_Start_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim6</span><span class="p">);</span>
+<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="6-lab-pwm">6. Lab: PWM<a class="headerlink" href="#6-lab-pwm" title="Permanent link">⚓︎</a></h2>
+<h3 id="61-duty">6.1. Duty<a class="headerlink" href="#61-duty" title="Permanent link">⚓︎</a></h3>
+<p>The square waves has a common characteristic: they have a T<sub>ON</sub> period equal to the T<sub>OFF</sub> one. For this reason they are also said to have a 50% duty cycle. A duty cycle is the percentage of one period of time (for example, 1s) in which a signal is active. As a formula, a duty cycle is expressed as the T<sub>ON</sub>/Period.</p>
+<p>
+<figure class="w80"><img src="pwm_duty.png"/><figcaption>Different duty cycles</figcaption></figure>
+</p>
+<p><em>Pulse-width modulation (PWM)</em> is a technique used to generate several pulses with different duty cycles in a given period of time at a given frequency. PWM has many applications in digital electronics, but all of them can be grouped in two main categories:</p>
+<ul>
+<li>control the output voltage (and hence the current);</li>
+<li>encoding (that is, modulate) a message (that is, a series of bytes in digital electronics) on a carrier wave (which runs at a given frequency).</li>
+</ul>
+<p>Those two categories can be expanded in several practical usages of the PWM technique. If only focusing on the control of the output voltage,  here are several applications:</p>
+<ul>
+<li>generation of an output voltage ranging from 0V up to VDD (that is, the maximum allowed voltage for an I/O, which in an STM32 is 3.3V);<ul>
+<li>dimming of LEDs;</li>
+<li>motor control;</li>
+<li>power conversion;</li>
+</ul>
+</li>
+<li>generation of an output wave running at a given frequency (sine wave, triangle, square, and so on);</li>
+<li>sound output;</li>
+</ul>
+<p>There are two PWM modes available:</p>
+<ul>
+<li>
+<p><strong>PWM mode 1</strong>: in up-counting, the channel is active as long as <em>Period</em> &lt; <em>Pulse</em>, else inactive. In down-counting, the channel is inactive as long as <em>Period</em> &gt; <em>Pulse</em>, else active.</p>
+</li>
+<li>
+<p><strong>PWM mode 2</strong>: in up-counting, channel is inactive as long as <em>Period</em> &lt; <em>Pulse</em>, else active. In down-counting, channel 1 is active as long as <em>Period</em> &gt; <em>Pule</em>, else inactive.</p>
+</li>
+</ul>
+<h3 id="62-drive-the-brightness">6.2. Drive the brightness<a class="headerlink" href="#62-drive-the-brightness" title="Permanent link">⚓︎</a></h3>
+<p>This project will generate changeable-duty PWM signal on PC8 which connected to the blue LED on the F0 Discovery board. If the duty goes up to 100%, the LED will have the highest brightness, and it becomes off when the duty goes down to 0%. The target application should slowly change the duty of the generated PWM.</p>
+<h3 id="63-setup-pwm-on-timer">6.3. Setup PWM on Timer<a class="headerlink" href="#63-setup-pwm-on-timer" title="Permanent link">⚓︎</a></h3>
+<p>The Blue LED on PC8 is connected to Timer 3 - Channel 3 Output. Therefore, select the Alternate Function of PC8 first. After that, when configuring the TIM3, select Channel 3 as <em>PWM Generation CH3</em>.</p>
+<p>Next step is configure the PWM frequency and duty:</p>
+<ul>
+<li>
+<p>PWM Frequency = 1000 Hz, it means:</p>
+<div class="highlight"><pre><span></span><code>Prescaler * Counter period  = Timer input clock frequency / 1000 
+                           = 48000000 / 1000 
+                           = 48000
+</code></pre></div>
+<p>Let's use <em>Prescaler = 48-1</em> (count from 0 to 47 to get 48 cycles), and <em>Counter period = 1000-1</em>.</p>
+</li>
+<li>
+<p>PWM Duty: the Counter period is set to 1000, the if duty is 25%, the <em>Pulse counter</em> must be set at <em>250</em></p>
+</li>
+</ul>
+<p>
+<figure><img src="ide_timer_pwm.png"/><figcaption>Setup PWM on TIM3 and its output on PC8</figcaption>
+</figure>
+</p>
+<h3 id="64-generated-code">6.4. Generated code<a class="headerlink" href="#64-generated-code" title="Permanent link">⚓︎</a></h3>
+<p>The function <code>MX_TIM3_Init()</code> is generated to setup TIM3 at Channel 3 with PWM settings.</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="n">MX_TIM3_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">TIM_ClockConfigTypeDef</span> <span class="n">sClockSourceConfig</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">TIM_MasterConfigTypeDef</span> <span class="n">sMasterConfig</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">TIM_OC_InitTypeDef</span> <span class="n">sConfigOC</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+  <span class="n">htim3</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">TIM3</span><span class="p">;</span>
+<span class="hll">  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Prescaler</span> <span class="o">=</span> <span class="mi">48-1</span><span class="p">;</span>
+</span>  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">CounterMode</span> <span class="o">=</span> <span class="n">TIM_COUNTERMODE_UP</span><span class="p">;</span>
+<span class="hll">  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Period</span> <span class="o">=</span> <span class="mi">1000-1</span><span class="p">;</span>
+</span>  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ClockDivision</span> <span class="o">=</span> <span class="n">TIM_CLOCKDIVISION_DIV1</span><span class="p">;</span>
+  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">AutoReloadPreload</span> <span class="o">=</span> <span class="n">TIM_AUTORELOAD_PRELOAD_DISABLE</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_Base_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">sClockSourceConfig</span><span class="p">.</span><span class="n">ClockSource</span> <span class="o">=</span> <span class="n">TIM_CLOCKSOURCE_INTERNAL</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_ConfigClockSource</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sClockSourceConfig</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+
+<span class="hll">  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_PWM_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+</span>    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">sMasterConfig</span><span class="p">.</span><span class="n">MasterOutputTrigger</span> <span class="o">=</span> <span class="n">TIM_TRGO_RESET</span><span class="p">;</span>
+  <span class="n">sMasterConfig</span><span class="p">.</span><span class="n">MasterSlaveMode</span> <span class="o">=</span> <span class="n">TIM_MASTERSLAVEMODE_DISABLE</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIMEx_MasterConfigSynchronization</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sMasterConfig</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+
+<span class="hll">  <span class="n">sConfigOC</span><span class="p">.</span><span class="n">OCMode</span> <span class="o">=</span> <span class="n">TIM_OCMODE_PWM1</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">sConfigOC</span><span class="p">.</span><span class="n">Pulse</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span>
+</span>  <span class="n">sConfigOC</span><span class="p">.</span><span class="n">OCPolarity</span> <span class="o">=</span> <span class="n">TIM_OCPOLARITY_HIGH</span><span class="p">;</span>
+  <span class="n">sConfigOC</span><span class="p">.</span><span class="n">OCFastMode</span> <span class="o">=</span> <span class="n">TIM_OCFAST_DISABLE</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_PWM_ConfigChannel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sConfigOC</span><span class="p">,</span> <span class="n">TIM_CHANNEL_3</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="n">HAL_TIM_MspPostInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="65-user-code">6.5. User code<a class="headerlink" href="#65-user-code" title="Permanent link">⚓︎</a></h3>
+<p>To dynamically change the duty of the PWM, there are variables holding the PWM Period and PWM pulse value to calculate the duty and set a new value.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint16_t</span> <span class="n">period</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">uint16_t</span> <span class="n">duty</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<p>HAL provides some macros to access to register level directly, for example, below macros are used to get period and pulse value. Note that pulse value actually is the output compare value. Timer constantly compares the time counter value with output compare value to generate output level.</p>
+<div class="highlight"><pre><span></span><code><span class="n">period</span> <span class="o">=</span> <span class="n">__HAL_TIM_GET_AUTORELOAD</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">duty</span> <span class="o">=</span> <span class="n">__HAL_TIM_GET_COMPARE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="n">TIM_CHANNEL_3</span><span class="p">);</span>
+</code></pre></div>
+<p>Then start the timer in PWM mode on the channel 3, before going to the while loop. Inside the while loop, change the duty of PWM by calculating the pulse value and set it to the output compare register:</p>
+<div class="highlight"><pre><span></span><code><span class="n">HAL_TIM_PWM_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="n">TIM_CHANNEL_3</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="n">duty</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">duty</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">duty</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">__HAL_TIM_SET_COMPARE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="n">TIM_CHANNEL_3</span><span class="p">,</span> <span class="n">duty</span> <span class="o">*</span> <span class="n">period</span> <span class="o">/</span> <span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning notitle">
+<p class="admonition-title"> </p>
+<p>Changing the PWM duty too fast may lead to bad result, as the average voltage of each cycle is not clearly affect the output. In the above example, PWM duty is keep constant in 100ms before it is changed.</p>
+</div>
 <h2 id="__comments">Comments</h2>
 <div id="disqus_thread"></div>
 <script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/stm32/timers/",this.page.identifier="blog/stm32/timers/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
@@ -1032,7 +1731,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a class="md-footer__link md-footer__link--prev" href="../distance_us-100/" rel="prev">
+<a class="md-footer__link md-footer__link--prev" href="../dma/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -1041,17 +1740,17 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              US-100
+              DMA
             </div>
 </div>
 </a>
-<a class="md-footer__link md-footer__link--next" href="../notes/" rel="next">
+<a class="md-footer__link md-footer__link--next" href="../distance_us-100/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Notes
+              US-100
             </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -1101,5 +1800,5 @@
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
 <script src="../../../assets/javascripts/bundle.4ea5477f.min.js"></script>
 <script src="../../../assets/extra.js"></script>
-</body>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>
