@@ -1,0 +1,1913 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="MJPEG streaming is a simple method to stream videos on the internet with a low latency. It sends JPEG images over the network and display that sequence of images on the user's webpage. However, it consumes a lot of bandwidth due to the size of every complete image. This post guides to implement a camera live stream using MJPEG format. A server can be easily made by PiCamera and Python HTTP." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/pi/stream-picamera-mjpeg/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
+<title>Camera live streaming using MJPEG format - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<meta content="website" property="og:type">
+<meta content="Camera live streaming using MJPEG format - Code Inside Out" property="og:title">
+<meta content="MJPEG streaming is a simple method to stream videos on the internet with a low latency. It sends JPEG images over the network and display that sequence of images on the user's webpage. However, it consumes a lot of bandwidth due to the size of every complete image. This post guides to implement a camera live stream using MJPEG format. A server can be easily made by PiCamera and Python HTTP." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/pi/stream-picamera-mjpeg/" property="og:url">
+<meta content="https://www.codeinsideout.com/blog/pi/stream-picamera-mjpeg/MJPG_BigBuckBunny_snapshot.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-record-video-to-a-stream">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              MJPEG streaming
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            MJPEG streaming
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        MJPEG streaming
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-record-video-to-a-stream">
+    1. Record video to a stream
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-frame-buffer">
+    2. Frame buffer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-streaming-web-server">
+    3. Streaming Web server
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-request-handler">
+    4. Request Handler
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-synchronize-between-threads">
+    5. Synchronize between threads
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-some-updates-in-the-script">
+    6. Some updates in the script
+  </a>
+<nav aria-label="6. Some updates in the script" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-class-variable">
+    6.1. Class variable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-instance-variable">
+    6.2. Instance variable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#63-args-and-kwargs">
+    6.3. *args and **kwargs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#64-lambda-function">
+    6.4. Lambda function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#65-measure-fps">
+    6.5. Measure FPS
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        C/C++
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkTurquoise;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkViolet;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkViolet;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkTurquoise;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkRed;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkGoldenrod;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkCyan;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkViolet;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkSlateBlue;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkOrchid;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGreen;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkRed;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-record-video-to-a-stream">
+    1. Record video to a stream
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-frame-buffer">
+    2. Frame buffer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-streaming-web-server">
+    3. Streaming Web server
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-request-handler">
+    4. Request Handler
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-synchronize-between-threads">
+    5. Synchronize between threads
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-some-updates-in-the-script">
+    6. Some updates in the script
+  </a>
+<nav aria-label="6. Some updates in the script" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-class-variable">
+    6.1. Class variable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-instance-variable">
+    6.2. Instance variable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#63-args-and-kwargs">
+    6.3. *args and **kwargs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#64-lambda-function">
+    6.4. Lambda function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#65-measure-fps">
+    6.5. Measure FPS
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkSlateBlue;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateBlue;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkMagenta;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkViolet;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOliveGreen;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkRed;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkOrchid;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkBlue;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkCyan;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkMagenta;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkOrchid;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkSlateBlue;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">Camera live streaming using MJPEG format</h1>
+<p class="page-description">MJPEG streaming is a simple method to stream videos on the internet with a low latency. It sends JPEG images over the network and display that sequence of images on the user's webpage. However, it consumes a lot of bandwidth due to the size of every complete image. This post guides to implement a camera live stream using MJPEG format. A server can be easily made by PiCamera and Python HTTP.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name">
+                        #pi
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name">
+                        #stream
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name">
+                        #camera
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name">
+                        #mjpeg
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name">
+                        #picamera
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-03 16:34:50</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-record-video-to-a-stream">
+    1. Record video to a stream
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-frame-buffer">
+    2. Frame buffer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-streaming-web-server">
+    3. Streaming Web server
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-request-handler">
+    4. Request Handler
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-synchronize-between-threads">
+    5. Synchronize between threads
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-some-updates-in-the-script">
+    6. Some updates in the script
+  </a>
+<nav aria-label="6. Some updates in the script" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-class-variable">
+    6.1. Class variable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-instance-variable">
+    6.2. Instance variable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#63-args-and-kwargs">
+    6.3. *args and **kwargs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#64-lambda-function">
+    6.4. Lambda function
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#65-measure-fps">
+    6.5. Measure FPS
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+<div class="btn-actions screen-only">
+<p><a class="md-button" href="..\..\..\pdfs\blog\pi\stream-picamera-mjpeg\pi__MJPEG_streaming.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a><a class="md-button" href="https://github.com/vuquangtrong/pi_streaming"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> stream_picamera_mjpeg</a>
+<!--
+<a href="stream_picamera_mjpeg.zip">klzzwxh:0131 stream_picamera_mjpeg.zip</a>{.md-button}
+--></p>
+</div>
+<div class="btn-actions screen-only">
+<p><video autoplay="" loop="" style="width:100%">
+<source src="MJPG_BigBuckBunny.mp4" type="video/mp4"/>
+</video>
+<figure>
+<figcaption>Low latency streaming using MJPEG format</figcaption>
+</figure></p>
+<blockquote>
+<p><a href="https://peach.blender.org/">Big Buck Bunny movie</a>, © 2008, Blender Foundation</p>
+</blockquote>
+</div>
+<p>There are many methods to implement a streaming server using MJPEG (MJPG) format. The basic principle is to send a series of JPEG (JPG) image to the user’s webpage and display it in an image <code>&lt;img&gt;</code> tag. An example is the <a href="https://github.com/jacksonliam/mjpg-streamer">mjpg-streamer</a>.</p>
+<p>This post shows a method to develop a streaming system, starting with a Python package named <a href="https://picamera.readthedocs.io/en/latest/">picamera</a> and a simple Python HTTP server.</p>
+<div class="admonition info">
+<p class="admonition-title">Setup PiCamera</p>
+<p>To setup <code>picamera</code> package, please read more in the <a href="../setup-camera/#install-picamera">Setup Camera</a> post.<br/>
+PiCamera also has an example to stream MJPEG at <a href="https://picamera.readthedocs.io/en/latest/recipes2.html#web-streaming">Web streaming</a> section.</p>
+</div>
+<p>The basic structure of this MJPEG streaming server is as below. PiCamera will capture JPEG images to a buffer that will be sent to user’s web browser via an endless <code>multipart/x-mixed-replace</code> content when the webpage requests to show an image in a <code>&lt;img&gt;</code> element.</p>
+<p>
+<figure><img src="mjpeg_streaming.drawio.svg"/><figcaption>A structure of an MJPEG streaming server</figcaption>
+</figure>
+</p>
+<h2 id="1-record-video-to-a-stream">1. Record video to a stream<a class="headerlink" href="#1-record-video-to-a-stream" title="Permanent link">⚓︎</a></h2>
+<p>This is a basic step to write a video stream to a buffered memory. Python has the <code>io</code> package which expects bytes-like objects and produces <code>bytes</code> objects. No encoding, decoding, or newline translation is performed, because PiCamera requests to V4L2 driver to handle the encoding in hardware.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span> <span class="nn">picamera</span> <span class="kn">import</span> <span class="n">PiCamera</span>
+
+<span class="c1"># create in-memory stream</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+
+<span class="c1"># create camera object (instance)</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">PiCamera</span><span class="p">()</span>
+
+
+<span class="c1"># config camera</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+
+<span class="c1"># start recording to stream</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">start_recording</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'mjpeg'</span><span class="p">)</span>
+
+<span class="c1"># wait</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">wait_recording</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># stop recording</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="2-frame-buffer">2. Frame buffer<a class="headerlink" href="#2-frame-buffer" title="Permanent link">⚓︎</a></h2>
+<p>Next step is to create a custom output to used in <code>PiCamera.start_recording()</code> method. Refer to <a href="https://picamera.readthedocs.io/en/latest/recipes2.html#custom-outputs">Custom outputs</a>.</p>
+<p>A file-like object (as far as picamera is concerned) is simply an object with:</p>
+<ul>
+<li>a <code>write()</code> method which must accept a single parameter consisting of a byte-string, and which can optionally return the number of bytes written.</li>
+<li>a <code>flush()</code> method with no parameters, which will be called at the end of output.</li>
+</ul>
+<div class="admonition warning nt">
+<p class="admonition-title"> </p>
+<p>In <code>write()</code> method, it can implement code that reacts to each and every frame. The <code>write()</code> method is called frequently, so its implementation must be sufficiently rapid that it doesn’t stall the encoding flow.</p>
+</div>
+<p>Let’s write a class <code>FrameBuffer()</code> which checks the <a href="https://www.file-recovery.com/jpg-signature-format.htm">JPEG Magic Number</a> <code>0xFF</code> <code>0xD8</code> at the beginning of an JPEG image:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">io</span>
+
+<span class="k">class</span> <span class="nc">FrameBuffer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># store each frame</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># buffer to hold incoming frame</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">):</span>
+        <span class="c1"># if it's a JPEG image</span>
+        <span class="k">if</span> <span class="n">buf</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">'</span><span class="se">\xff\xd8</span><span class="s1">'</span><span class="p">):</span>
+            <span class="c1"># write to buffer</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+            <span class="c1"># extract frame</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+</code></pre></div>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>Note that <code>FrameBuffer.frame</code> will be used to send the frame to user’s webpage.</p>
+</div>
+<p>Then, use the FrameBuffer instead of the buffered memory:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># create buffer</span>
+<span class="n">frame_buffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">()</span>
+
+<span class="c1"># write to framebuffer</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">start_recording</span><span class="p">(</span><span class="n">frame_buffer</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'mjpeg'</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="3-streaming-web-server">3. Streaming Web server<a class="headerlink" href="#3-streaming-web-server" title="Permanent link">⚓︎</a></h2>
+<p>Python has a built-in simple HTTP Server, which is ready to run by providing a server address and a request handler class.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">http.server</span> <span class="kn">import</span> <span class="n">HTTPServer</span><span class="p">,</span> <span class="n">BaseHTTPRequestHandler</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">server_class</span><span class="o">=</span><span class="n">HTTPServer</span><span class="p">,</span> <span class="n">handler_class</span><span class="o">=</span><span class="n">BaseHTTPRequestHandler</span><span class="p">):</span>
+    <span class="n">server_address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">''</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
+    <span class="n">httpd</span> <span class="o">=</span> <span class="n">server_class</span><span class="p">(</span><span class="n">server_address</span><span class="p">,</span> <span class="n">handler_class</span><span class="p">)</span>
+    <span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</code></pre></div>
+<p>Now, look at some pre-defined Request Handler classes:</p>
+<dl>
+<dt><code class="highlight"><span class="k">class</span> <span class="nc">http</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">BaseHTTPRequestHandler</span></code></dt>
+<dd>This class is used to handle the HTTP requests that arrive at the server. By itself, it cannot respond to any actual HTTP requests; <code>BaseHTTPRequestHandler</code> just provides a number of class and instance variables, and methods for use by subclasses. It must be subclassed to handle each request method (e.g. GET or POST).</dd>
+<dd>The handler will parse the request and the headers, then call a method specific to the request type. The method name is constructed from the request. For example, for the request method <em>SPAM</em>, the <code>do_SPAM()</code> method will be called with no arguments. All of the relevant information is stored in instance variables of the handler. Subclasses should not need to override or extend the <code>__init__()</code> method.</dd>
+<dt><code class="highlight"><span class="k">class</span> <span class="nc">http</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">SimpleHTTPRequestHandler</span></code></dt>
+<dd>This class serves files from the current directory and below, directly mapping the directory structure to HTTP requests. A lot of the work, such as parsing the request, is done by the base class <code>BaseHTTPRequestHandler</code>. <mark>This class implements the <code>do_GET()</code> and <code>do_HEAD()</code> functions.</mark></dd>
+</dl>
+<div class="np"></div>
+<dl>
+<dt><code class="highlight"><span class="k">class</span> <span class="nc">http</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">CGIHTTPRequestHandler</span></code></dt>
+<dd>This class is used to serve either files or output of CGI scripts from the current directory and below. Note that mapping HTTP hierarchic structure to local directory structure is exactly as in <code>SimpleHTTPRequestHandler</code>.</dd>
+<dd>The class will however, run the CGI script, instead of serving it as a file, if it guesses it to be a CGI script. Only directory-based CGI are used — the other common server configuration is to treat special extensions as denoting CGI scripts.</dd>
+<dd>The <code>do_GET()</code> and <code>do_HEAD()</code> functions are modified to run CGI scripts and serve the output, instead of serving files, if the request leads to somewhere below the cgi_directories path.</dd>
+</dl>
+<p>Let’s start with <code>SimpleHTTPRequestHandler</code> which has some implemented features.</p>
+<h2 id="4-request-handler">4. Request Handler<a class="headerlink" href="#4-request-handler" title="Permanent link">⚓︎</a></h2>
+<p>Based on <code>SimpleHTTPRequestHandler</code>, create a new class <code>StreamingHandler</code> and only override <code>do_GET()</code> method to just print requested <code>path</code> and then call the base method as it is already implemented.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">http.server</span> <span class="kn">import</span> <span class="n">SimpleHTTPRequestHandler</span>
+
+<span class="k">class</span> <span class="nc">StreamingHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="c1"># call to the base method implemented in SimpleHTTPRequestHandler</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">do_GET</span><span class="p">()</span>
+</code></pre></div>
+<p>The <code>SimpleHTTPRequestHandler</code> will serve files in <em class="im">GET</em> requests, and it will looking for <code>index.html</code> for the homepage.</p>
+<p>To display image, create an <code>&lt;img&gt;</code> tag which will request a file named <code>stream.mjpg</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Picamea MJPEG Live Stream<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="c">&lt;!-- Request MJPEG stream --&gt;</span>
+        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"stream.mjpg"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><mark>There is no actual <code>stream.mjpg</code> file!</mark>.
+When the web page request <code>stream.mjpg</code>, web server should return a stream, not a single file, therefore a special sequence is needed to handle this special request of <code>stream.mjpg</code> file in the <code>do_GET()</code> method:</p>
+<ol>
+<li>
+<p>Send response with HTTP Status Code 200 (Successful responses)</p>
+</li>
+<li>
+<p>Send header with information to notify web client about type of responded content, which is <code>multipart/x-mixed-replace</code></p>
+</li>
+<li>
+<p>Send the content in a stream format (loop forever!): send the boundary <code>FRAME</code>, send content type of each frame <code>image/jpeg</code>, send the length of the content, and then send the actual image data</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">http.server</span> <span class="kn">import</span> <span class="n">SimpleHTTPRequestHandler</span>
+
+<span class="k">class</span> <span class="nc">StreamingHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="s1">'/stream.mjpg'</span><span class="p">:</span>
+            <span class="c1"># response</span>
+<span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span>            <span class="c1"># header</span>
+<span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s1">'Age'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s1">'Cache-Control'</span><span class="p">,</span> <span class="s1">'no-cache, private'</span><span class="p">)</span>
+</span><span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s1">'Pragma'</span><span class="p">,</span> <span class="s1">'no-cache'</span><span class="p">)</span>
+</span><span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'multipart/x-mixed-replace; boundary=FRAME'</span><span class="p">)</span>
+</span><span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">end_headers</span><span class="p">()</span>
+</span>            <span class="k">try</span><span class="p">:</span>
+                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="hll">                    <span class="n">frame</span> <span class="o">=</span> <span class="n">frame_buffer</span><span class="o">.</span><span class="n">frame</span> <span class="c1"># need frame_buffer as global</span>
+</span><span class="hll">                    <span class="bp">self</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">'--FRAME</span><span class="se">\r\n</span><span class="s1">'</span><span class="p">)</span>
+</span><span class="hll">                    <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'image/jpeg'</span><span class="p">)</span>
+</span><span class="hll">                    <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s1">'Content-Length'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">frame</span><span class="p">))</span>
+</span><span class="hll">                    <span class="bp">self</span><span class="o">.</span><span class="n">end_headers</span><span class="p">()</span>
+</span><span class="hll">                    <span class="bp">self</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+</span><span class="hll">                    <span class="bp">self</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">'</span><span class="se">\r\n</span><span class="s1">'</span><span class="p">)</span>
+</span>            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">do_GET</span><span class="p">()</span>
+</code></pre></div>
+<p>Finally, wrap them up by creating an instance of <code>FrameBuffer</code>, <code>PiCamera</code>, <code>HTTPServer</code> to start streaming:</p>
+<div class="highlight"><pre><span></span><code><span class="n">frame_buffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">()</span>
+
+<span class="n">camera</span> <span class="o">=</span> <span class="n">PiCamera</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">'640x480'</span><span class="p">,</span> <span class="n">framerate</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">start_recording</span><span class="p">(</span><span class="n">frame_buffer</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'mjpeg'</span><span class="p">)</span>
+
+<span class="n">server_address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">''</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
+<span class="n">handler_class</span> <span class="o">=</span> <span class="n">StreamingHandler</span> <span class="c1"># alias</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">httpd</span> <span class="o">=</span> <span class="n">HTTPServer</span><span class="p">(</span><span class="n">server_address</span><span class="p">,</span> <span class="n">handler_class</span><span class="p">)</span>
+    <span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
+</code></pre></div>
+<div class="admonition bug">
+<p class="admonition-title">Bug: Hangup stream</p>
+<p>When run the above code, the web page shows up but with only one frame displayed, CPU is locked up at 100%, because the block <code class="highlight"><span class="k">while</span> <span class="kc">True</span><span class="p">:</span></code> loop causes the problem.</p>
+<p><mark>Need to find a way to synchronize between camera thread and web server thread: send a frame only when it is availabe.</mark></p>
+</div>
+<h2 id="5-synchronize-between-threads">5. Synchronize between threads<a class="headerlink" href="#5-synchronize-between-threads" title="Permanent link">⚓︎</a></h2>
+<p>Python has implemented a lock mechanism between threads:</p>
+<dl>
+<dt><strong><code class="highlight"><span class="k">class</span> <span class="nc">threading</span><span class="o">.</span><span class="n">Condition</span><span class="p">(</span><span class="n">lock</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></strong></dt>
+<dd>
+<p>This class implements condition variable objects. A condition variable allows one or more threads to wait until they are notified by another thread. If the <code>lock</code> argument is given and not <code>None</code>, it must be a <code>Lock</code> or <code>RLock</code> object, and it is used as the underlying lock. Otherwise, a new <code>RLock</code> object is created and used as the underlying lock.</p>
+<dl>
+<dt><strong><code class="highlight"><span class="n">wait</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code></strong></dt>
+<dd>Wait until notified or until a timeout occurs. If the calling thread has not acquired the <code>lock</code> when this method is called, a <code>RuntimeError</code> is raised.</dd>
+<dd>This method releases the underlying <code>lock</code>, and then blocks until it is awakened by a <code>notify()</code> or <code>notify_all()</code> call for the same condition variable in another thread, or until the optional timeout occurs. Once awakened or timed out, it re-acquires the <code>lock</code> and returns.</dd>
+<dt><strong><code class="highlight"><span class="n">notify_all</span><span class="p">()</span></code></strong></dt>
+<dd>Wake up all threads waiting on this condition. This method acts like <code>notify()</code>, but wakes up all waiting threads instead of one. If the calling thread has not acquired the <code>lock</code> when this method is called, a <code>RuntimeError</code> is raised.</dd>
+</dl>
+</dd>
+</dl>
+<p>Then add a <code>Condition</code> object in <code>FrameBuffer</code>, and use it in <code>StreamingHandler</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Condition</span>
+
+<span class="k">class</span> <span class="nc">FrameBuffer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+        <span class="c1"># synchronize between threads</span>
+<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">Condition</span><span class="p">()</span>
+</span>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">buf</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">'</span><span class="se">\xff\xd8</span><span class="s1">'</span><span class="p">):</span>
+<span class="hll">            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">:</span>
+</span>                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+                <span class="c1"># notify other threads</span>
+<span class="hll">                <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="o">.</span><span class="n">notify_all</span><span class="p">()</span>
+</span>
+<span class="k">class</span> <span class="nc">StreamingHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="s1">'/stream.mjpg'</span><span class="p">:</span>
+            <span class="o">...</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="hll">                    <span class="k">with</span> <span class="n">frame_buffer</span><span class="o">.</span><span class="n">condition</span><span class="p">:</span>
+</span>                        <span class="c1"># wait for a new frame</span>
+<span class="hll">                        <span class="n">frame_buffer</span><span class="o">.</span><span class="n">condition</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</span>                        <span class="n">frame</span> <span class="o">=</span> <span class="n">frame_buffer</span><span class="o">.</span><span class="n">frame</span> <span class="c1"># access global variable, need to change later</span>
+</code></pre></div>
+<p>Wow, it works!!! The <mark>latency is just about 200ms</mark> which is unachievable with <a href="../stream-ffmpeg-hls-dash/">HLS/ MPEG-DASH</a> streaming. <mark>However, the CPU usage is quite high, Pi Zero W <em>only can handle 6 clients</em> at the same time with video quality at 640x480 @25fps.</mark></p>
+<p>
+<figure><img src="stream_picamera_mjpeg.png"/><figcaption>A low latency in MJPEG streaming</figcaption>
+</figure>
+</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Above sections are enough to create a simple MJPEG streaming server.</p>
+<p>Below sections are for an advanced implementation which need some advanced Python programming to create multiple buffers in an application, which can be used to merge or manipulate the image before sending to user’s browsers.</p>
+</div>
+<div class="np"></div>
+<h2 id="6-some-updates-in-the-script">6. Some updates in the script<a class="headerlink" href="#6-some-updates-in-the-script" title="Permanent link">⚓︎</a></h2>
+<p>The instance <code>frame_buffer</code> is used as a global variable in the <code>StreamingHandler</code>, it is <em>not good</em> if there is another <code>FrameBuffer</code> used for another stream in a same script.</p>
+<p>Here is an advanced method to have multiple frame buffers by passing an instance of <code>FrameBuffer</code> into an instance of <code>StreamingHandler</code>. It can be done by adding an <strong>Instance variable</strong> that holds reference to an instance of <code>FrameBuffer</code>, but can <em>not</em> be done using <strong>Class variable</strong>.</p>
+<p>Let’s check how they work.</p>
+<h3 id="61-class-variable">6.1. Class variable<a class="headerlink" href="#61-class-variable" title="Permanent link">⚓︎</a></h3>
+<p>Class variable is shared by all instance, therefore it acts like a global static attribute of the class.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StreamingHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
+    <span class="c1"># class variable refers to an instance of FrameBuffer</span>
+    <span class="n">my_frame_buffer</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_frame_buffer</span><span class="o">.</span><span class="n">frame</span>
+
+<span class="c1"># create an instance of FrameBuffer</span>
+<span class="n">frame_buffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">()</span>
+<span class="n">handler_class</span> <span class="o">=</span> <span class="n">StreamingHandler</span> <span class="c1"># alias</span>
+
+<span class="c1"># assign class variable</span>
+<span class="n">handler_class</span><span class="o">.</span><span class="n">my_frame_buffer</span> <span class="o">=</span> <span class="n">frame_buffer</span>
+
+<span class="c1"># all instance will share class variables</span>
+<span class="n">first_handler</span> <span class="o">=</span> <span class="n">StreamingHandler</span><span class="p">()</span>
+<span class="n">second_handler</span> <span class="o">=</span> <span class="n">StreamingHandler</span><span class="p">()</span>
+
+<span class="c1"># first_handler.my_frame_buffer will be the same as second_handler.my_frame_buffer</span>
+</code></pre></div>
+<h3 id="62-instance-variable">6.2. Instance variable<a class="headerlink" href="#62-instance-variable" title="Permanent link">⚓︎</a></h3>
+<p>Instance variables are for the data unique to each instance, they are create in the <code>__init()__</code> constructor of that class:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StreamingHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_buffer</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">client_address</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_frame_buffer</span> <span class="o">=</span> <span class="n">frame_buffer</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">client_address</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">do_GET</span><span class="p">():</span>
+        <span class="o">...</span>
+</code></pre></div>
+<p>However, with this modification, script cannot use <code>StreamingHandler</code> to initialize <code>ThreadingHTTPServer</code> anymore, because it expects to call a request handler with only required positional arguments <code>(request, client_address, server)</code>, without a new argument <code>frame_buffer</code>.</p>
+<p>Therefore, write a function that convert expected params list to new params list:</p>
+<div class="highlight"><pre><span></span><code><span class="n">frame_buffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">getStreamingHandler</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">client_address</span><span class="p">,</span> <span class="n">server</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">StreamingHandler</span><span class="p">(</span><span class="n">frame_buffer</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">client_address</span><span class="p">,</span> <span class="n">server</span><span class="p">)</span>
+
+<span class="n">httpd</span> <span class="o">=</span> <span class="n">ThreadingHTTPServer</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">getStreamingHandler</span><span class="p">)</span>
+</code></pre></div>
+<p>Well, it works, but the convert function actually drop the param <code>directory</code> which is an optional param in original constructor of <code>SimpleHTTPRequestHandler</code>. To solve this problem, let’s use special <code>*args</code> and <code>**kwargs</code>params.</p>
+<h3 id="63-args-and-kwargs">6.3. <code>*args</code> and <code>**kwargs</code><a class="headerlink" href="#63-args-and-kwargs" title="Permanent link">⚓︎</a></h3>
+<p>The special <code>*args</code> and <code>**kwargs</code> params allow to pass multiple arguments or keyword arguments to a function. Read about them in <a href="https://realpython.com/python-kwargs-and-args/">here</a>.</p>
+<p>So, change the param list <code>(request, client_address, server, ...)</code> to <code>*args</code> in code, then it looks better:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StreamingHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_buffer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_frame_buffer</span> <span class="o">=</span> <span class="n">frame_buffer</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="n">frame_buffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">getStreamingHandler</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">StreamingHandler</span><span class="p">(</span><span class="n">frame_buffer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="n">httpd</span> <span class="o">=</span> <span class="n">ThreadingHTTPServer</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">getStreamingHandler</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="64-lambda-function">6.4. Lambda function<a class="headerlink" href="#64-lambda-function" title="Permanent link">⚓︎</a></h3>
+<p>Python and other languages like Java, C#, and even C++ have had lambda functions added to their syntax, whereas languages like LISP or the ML family of languages, Haskell, OCaml, and F#, use lambdas as a core concept. Read more in <a href="https://realpython.com/python-lambda/">here</a></p>
+<p>So, reduce the function <code>getStreamingHandler</code> to a lambda function which can be declared in-line when creating <code>ThreadingHTTPServer</code> instance:</p>
+<div class="highlight"><pre><span></span><code><span class="n">frame_buffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">()</span>
+<span class="n">httpd</span> <span class="o">=</span> <span class="n">ThreadingHTTPServer</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">StreamingHandler</span><span class="p">(</span><span class="n">frame_buffer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="65-measure-fps">6.5. Measure FPS<a class="headerlink" href="#65-measure-fps" title="Permanent link">⚓︎</a></h3>
+<p>In the while loop of sending frames, use <code>frame_count</code> variable to count the number of processed frames. With <code>time</code> package, it is easy to calculate FPS over a defined period, for example, 5 seconds in below code:</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># tracking serving time</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># endless stream</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames_buffer</span><span class="o">.</span><span class="n">condition</span><span class="p">:</span>
+            <span class="c1"># wait for a new frame</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frames_buffer</span><span class="o">.</span><span class="n">condition</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="c1"># it's available, pick it up</span>
+            <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames_buffer</span><span class="o">.</span><span class="n">frame</span>
+            <span class="c1"># send it</span>
+            <span class="o">...</span>
+            <span class="c1"># count frames</span>
+            <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="c1"># calculate FPS every 5s</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">"FPS: "</span><span class="p">,</span> <span class="n">frame_count</span> <span class="o">/</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+                <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="o">...</span>
+</code></pre></div>
+<p>Some lines of code to handle exception are also needed, for full source code, please download by clicking on the download button at the beginning of this post.</p>
+<div data-value="https://www.codeinsideout.com/blog/pi/stream-picamera-mjpeg/" id="page_url"></div>
+<div data-value="blog/pi/stream-picamera-mjpeg/" id="page_identifier"></div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../stream-ffmpeg-hls-dash/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              HLS/DASH Streaming
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../stream-picamera-h264/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              H264 streaming
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

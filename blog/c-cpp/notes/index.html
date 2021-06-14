@@ -1,0 +1,1713 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Tips, hints, and tricks for developers in programming C/C++." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/c-cpp/notes/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
+<title>Notes for C and C++ programming - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<meta content="website" property="og:type">
+<meta content="Notes for C and C++ programming - Code Inside Out" property="og:title">
+<meta content="Tips, hints, and tricks for developers in programming C/C++." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/c-cpp/notes/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#size-of-datatypes">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              C/C++
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            C/C++
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        C/C++
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#size-of-datatypes">
+    Size of datatypes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#do-not-use-sizeof-for-array-parameters">
+    Do not use sizeof for array parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-goto-if-it-can-reduce-the-complexity">
+    Use goto if it can reduce the complexity
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arrayindex-is-actually-pointer-accessing">
+    Array[index] is actually pointer accessing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#short-circuit-evaluation">
+    Short-circuit evaluation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cached-data">
+    Cached data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#compiler-warnings">
+    Compiler warnings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buffered-stdout-but-unbuffered-stderr">
+    Buffered stdout but unbuffered stderr
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#negative-error-code">
+    Negative error code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bit-fields">
+    Bit fields
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOliveGreen;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOliveGreen;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkRed;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkOliveGreen;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkRed;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkSlateBlue;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkSlateGray;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkViolet;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOliveGreen;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#size-of-datatypes">
+    Size of datatypes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#do-not-use-sizeof-for-array-parameters">
+    Do not use sizeof for array parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-goto-if-it-can-reduce-the-complexity">
+    Use goto if it can reduce the complexity
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arrayindex-is-actually-pointer-accessing">
+    Array[index] is actually pointer accessing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#short-circuit-evaluation">
+    Short-circuit evaluation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cached-data">
+    Cached data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#compiler-warnings">
+    Compiler warnings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buffered-stdout-but-unbuffered-stderr">
+    Buffered stdout but unbuffered stderr
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#negative-error-code">
+    Negative error code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bit-fields">
+    Bit fields
+  </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkBlue;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkCyan;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkGoldenrod;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkTurquoise;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkBlue;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkTurquoise;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkRed;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkViolet;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkBlue;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOliveGreen;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">Notes for C and C++ programming</h1>
+<p class="page-description">Tips, hints, and tricks for developers in programming C/C++.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name">
+                        #notes
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name">
+                        #c
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name">
+                        #c++
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-10 12:52:12</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#size-of-datatypes">
+    Size of datatypes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#do-not-use-sizeof-for-array-parameters">
+    Do not use sizeof for array parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-goto-if-it-can-reduce-the-complexity">
+    Use goto if it can reduce the complexity
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arrayindex-is-actually-pointer-accessing">
+    Array[index] is actually pointer accessing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#short-circuit-evaluation">
+    Short-circuit evaluation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cached-data">
+    Cached data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#compiler-warnings">
+    Compiler warnings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buffered-stdout-but-unbuffered-stderr">
+    Buffered stdout but unbuffered stderr
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#negative-error-code">
+    Negative error code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bit-fields">
+    Bit fields
+  </a>
+</li>
+</ul>
+</nav>
+</div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\c-cpp\notes\c-cpp__C_C++.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
+<style>
+    .md-typeset h2,
+    .md-typeset h3 {
+        font-size: 0; /* hide header but still scroll to its anchor */
+    }
+    .md-typeset .content {
+        margin-left: 3em;
+    }
+</style>
+<h2 id="size-of-datatypes">Size of datatypes<a class="headerlink" href="#size-of-datatypes" title="Permanent link">⚓︎</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Size of datatypes</p>
+</div>
+<div class="content">
+<p>The size of a type is determined by the compiler, which doesn’t have anything to do with the actual hardware. The returned value of <code>sizeof(char)</code> is always 1 by definition, and <code>sizeof(int)</code> always returns 4. Starting at C99, <code>bool</code> is present as an 1-byte datatype.</p>
+<p>Note that, size of a pointer should be 4 bytes on any 32-bit C/C++ compiler, and be 8 bytes on any 64-bit C/C++ compiler.</p>
+<p>Use <code>int</code> instead of <code>char</code> or <code>uint8_t</code>? It depends on the target machine: if it is incapable to access unaligned memory (e.g. Cortex-M0 processors), then using <code>int</code> is much faster.</p>
+</div>
+<h2 id="do-not-use-sizeof-for-array-parameters">Do not use <code>sizeof</code> for array parameters<a class="headerlink" href="#do-not-use-sizeof-for-array-parameters" title="Permanent link">⚓︎</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Do not use <code>sizeof</code> for array parameters</p>
+</div>
+<div class="content">
+<p>The function <code>fun()</code> below receives an array parameter <code>arr[]</code> and tries to find out the number of elements in the array <code>arr[]</code> using the <code>sizeof</code> operator. In main, there is also a statement calculating the number of elements in the array <code>arr[]</code>. But 2 methods return different results.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// WRONG</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">arr_size</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// RIGHT</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">arr_size</span> <span class="o">==</span> <span class="n">fun</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span> <span class="p">{}</span> <span class="c1">// ???</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In C, array parameters are treated as pointers. So the expression:</p>
+<div class="highlight"><pre><span></span><code><span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+<p>becomes</p>
+<div class="highlight"><pre><span></span><code><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+</code></pre></div>
+<p>which finally is evaluated as <code>sizeof(arr) = sizeof(int *)</code> which is 4 or 8 depending on the compiler.</p>
+</div>
+<h2 id="use-goto-if-it-can-reduce-the-complexity">Use <code>goto</code> if it can reduce the complexity<a class="headerlink" href="#use-goto-if-it-can-reduce-the-complexity" title="Permanent link">⚓︎</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Use <code>goto</code> if it can reduce the complexity</p>
+</div>
+<div class="content">
+<p>Using <code>goto</code> is considered as bad and harmful, but if it is used with care, it can be helpful to reduce the complexity.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">func</span><span class="p">(...)</span> <span class="p">{</span>
+    <span class="n">byte</span><span class="o">*</span> <span class="n">buf1</span><span class="o">=</span><span class="n">malloc</span><span class="p">(...);</span>
+    <span class="n">byte</span><span class="o">*</span> <span class="n">buf2</span><span class="o">=</span><span class="n">malloc</span><span class="p">(...);</span>
+    <span class="kt">FILE</span><span class="o">*</span> <span class="n">f</span><span class="o">=</span><span class="n">fopen</span><span class="p">(...);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="o">==</span><span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">func_cleanup_and_exit</span><span class="p">;</span>
+    <span class="p">...</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">something_goes_wrong_1</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">func_close_file_cleanup_and_exit</span><span class="p">;</span>
+    <span class="p">...</span>
+
+<span class="nl">func_close_file_cleanup_and_exit</span><span class="p">:</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+
+<span class="nl">func_cleanup_and_exit</span><span class="p">:</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">buf1</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">buf2</span><span class="p">);</span>
+
+<span class="nl">func_exit</span><span class="p">:</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+<h2 id="arrayindex-is-actually-pointer-accessing"><code>Array[index]</code> is actually pointer accessing<a class="headerlink" href="#arrayindex-is-actually-pointer-accessing" title="Permanent link">⚓︎</a></h2>
+<div class="admonition warning">
+<p class="admonition-title"><code>Array[index]</code> is actually pointer accessing</p>
+</div>
+<div class="content">
+<p>The expression <code>a[i]</code> is translated to <code>*(a+i)</code>. That’s why this weird code <code class="highlight"><span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="mi">3</span><span class="p">[</span><span class="s">"abcdef"</span><span class="p">]);</span></code> still runs.</p>
+<p>C/C++ does not check the index range, therefore it is easy to access a memory block which is out of range of the array:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+<span class="c1">// if a and b are allocated next to each other, b[-1] will be a[1]</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="mi">-1</span><span class="p">]);</span>
+</code></pre></div>
+<p>There are <em class="im">Buffer overflow</em> exploiting techniques based on this problem of accessing memory block outsides of the array.</p>
+</div>
+<h2 id="short-circuit-evaluation">Short-circuit evaluation<a class="headerlink" href="#short-circuit-evaluation" title="Permanent link">⚓︎</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Short-circuit evaluation</p>
+</div>
+<div class="content">
+<p>At runtime, in the expression with <code>AND</code> operator <code class="highlight"><span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">&amp;&amp;</span> <span class="n">c</span><span class="p">)</span></code>, the part <code>(b)</code> will be calculated only if <code>(a)</code> is true, and <code>(c)</code> will be calculated only if <code>(a)</code> and <code>(b)</code> are both true.</p>
+<p>The same story about <code>OR</code> operator: in the expression <code class="highlight"><span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">||</span> <span class="n">b</span> <span class="o">||</span> <span class="n">c</span><span class="p">)</span></code>, if the sub-expression <code>(a)</code> is true, others will not be computed.</p>
+<p>This helps in case the next condition depends on the previous condition, such as accessing to pointer:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">pointer</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">pointer</span><span class="o">-&gt;</span><span class="n">member</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
+<p>or, checking for a higher priority condition first:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">flag_a</span> <span class="o">||</span> <span class="n">flag_b</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div>
+<p>However, as the consequence, do not expect the 2<sup>nd</sup> or later conditions are executed in all cases.</p>
+</div>
+<h2 id="cached-data">Cached data<a class="headerlink" href="#cached-data" title="Permanent link">⚓︎</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Cached data</p>
+</div>
+<div class="content">
+<p>Modern CPUs have L1, L2, and L3 caches. When fetching data from memory, it usually read a whole line of L1 cache. For example, L1 cache has 64-bytes lines, it will fetch 64 bytes from memory at once when it accesses to a memory.</p>
+<p>So if a data structure is larger than 64 bytes, it is very important to divide it by 2 parts: the most demanded fields and the less ones. It is desirable to place the most demanded fields in the first 64 bytes. C++ classes are also concerned.</p>
+</div>
+<h2 id="compiler-warnings">Compiler warnings<a class="headerlink" href="#compiler-warnings" title="Permanent link">⚓︎</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Compiler warnings</p>
+</div>
+<div class="content">
+<p>Is it worth to turn on <code>-Wall</code> to see all possible problems which usually are small error and hard to get noticed. In GCC, it is also possible to turn all warnings to errors with <code>-Werror</code>. If enabled, any problem marked as error will halt the compiler, and it must be fixed.</p>
+<p>Example 1:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">f1</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">ret</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">f1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>main()</code> function still runs but prints out wrong value due to non-returned function. A random value will be seen because compiler still use the return register which is not set the desired value.</p>
+<p><br/>
+Example 2:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">f1</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">cond</span> <span class="o">?</span> <span class="nb">true</span> <span class="o">:</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><code>bool</code> is 1-byte datatype</p>
+</blockquote>
+<p>Compiler will generate a code to set the low byte of the <code>AL</code> register to <code>0x01</code> or <code>0x00</code>, because the return size of 1 byte. Other higher bytes of the <code>AL</code> register won’t change.</p>
+<p>However, in a different file, <code>f1()</code> is assumed to return <em>int</em>, not <em>bool</em>, therefore compiler generates code to compare 4 bytes of an <em>int</em> which is only updated its lowest byte after <code>f1()</code> returns. There maybe some random value in higher bytes of that <em>int</em> memory block, and it will cause a wrong comparison:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">f1</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<h2 id="buffered-stdout-but-unbuffered-stderr">Buffered <code>stdout</code> but unbuffered <code>stderr</code><a class="headerlink" href="#buffered-stdout-but-unbuffered-stderr" title="Permanent link">⚓︎</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Buffered <code>stdout</code> but unbuffered <code>stderr</code></p>
+</div>
+<div class="content">
+<p>The <mark><code>stdout</code> or <code>cout</code> is a buffered output</mark>, so a user, usually not aware of this, sees the output by portions. Sometimes, the program outputs something and then crashes, and if buffer did not have time to <em>flush</em> into the console, a user will not see anything. This is sometimes inconvenient.</p>
+<p>Thus, for dumping more important information, including debugging, it is better to use the <mark>un-buffered <code>stderr</code> or <code>cerr</code></mark>.</p>
+</div>
+<h2 id="negative-error-code">Negative error code<a class="headerlink" href="#negative-error-code" title="Permanent link">⚓︎</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Negative error code</p>
+</div>
+<div class="content">
+<p>The simplest way to indicate to caller about its children’s success is to return a boolean value: <em>false</em> — in case of error, and <em>true</em> in case of success. However, to indicate more status than just 2 states, a number can be returned. And it can be extended more to indicate different status of failure or success using signed numbers:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm">* func() - A function that does something</span>
+<span class="cm">* input:</span>
+<span class="cm">*      none</span>
+<span class="cm">* output:</span>
+<span class="cm">*      -2: error on buffer</span>
+<span class="cm">*      -1: error on transmission</span>
+<span class="cm">*       0: success but no response</span>
+<span class="cm">*       1: success with a response = NACK</span>
+<span class="cm">*       2: success with a response = ACK</span>
+<span class="cm">*/</span>
+</code></pre></div>
+</div>
+<h2 id="bit-fields">Bit fields<a class="headerlink" href="#bit-fields" title="Permanent link">⚓︎</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Bit fields</p>
+</div>
+<div class="content">
+<p>A very popular thing in C, and also in programming generally is working with bits. For flags specifying, in order to not make a typo and mess, they can be defined using bit shifting:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define FLAG1 (1&lt;&lt;0)</span>
+<span class="cp">#define FLAG2 (1&lt;&lt;1)</span>
+<span class="cp">#define FLAG3 (1&lt;&lt;2)</span>
+<span class="cp">#define FLAG4 (1&lt;&lt;3)</span>
+<span class="cp">#define FLAG5 (1&lt;&lt;4)</span>
+</code></pre></div>
+<p>and some macros can be use to work on bits:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define IS_SET(flag, bit) (((flag) &amp; (bit)) ? true : false)</span>
+<span class="cp">#define SET_BIT(var, bit) ((var) |= (bit))</span>
+<span class="cp">#define REMOVE_BIT(var, bit) ((var) &amp;= ~(bit))</span>
+</code></pre></div>
+<p>For better performance, use <em>bool</em> for each bit, but it will cost memory.</p>
+</div>
+<div data-value="https://www.codeinsideout.com/blog/c-cpp/notes/" id="page_url"></div>
+<div data-value="blog/c-cpp/notes/" id="page_identifier"></div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../../pi/notes/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Notes
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../../setup-blog/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Setup blog
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

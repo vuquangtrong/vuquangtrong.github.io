@@ -1,0 +1,2794 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Almost every microcontroller provides at least one UART peripheral, and this protocol seems to be a must-have supported feature for any project as UART is widely used for debugging, logging, data exchange, and for firmware update. Serialization also be used in many application, especially in continuous streaming, mostlw working in DMA more, some in Interrupt mode, and rarely in Polling mode." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/stm32/uart/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
+<title>Universal Asynchronous Receiver-Transmitter - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<meta content="website" property="og:type">
+<meta content="Universal Asynchronous Receiver-Transmitter - Code Inside Out" property="og:title">
+<meta content="Almost every microcontroller provides at least one UART peripheral, and this protocol seems to be a must-have supported feature for any project as UART is widely used for debugging, logging, data exchange, and for firmware update. Serialization also be used in many application, especially in continuous streaming, mostlw working in DMA more, some in Interrupt mode, and rarely in Polling mode." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/stm32/uart/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-hardware">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              UART
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            UART
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        UART
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-hardware">
+    1. Hardware
+  </a>
+<nav aria-label="1. Hardware" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-wires">
+    1.1. Wires
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-flow-control">
+    1.2. Flow control
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-data-frame">
+    1.3. Data frame
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-clock">
+    1.4. Clock
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-baud-rate">
+    1.5. Baud rate
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-multiprocessor">
+    1.6. Multiprocessor
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stm32cube-hal-usage">
+    2. STM32Cube HAL Usage
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-lab-1-polling-mode">
+    3. Lab 1: Polling mode
+  </a>
+<nav aria-label="3. Lab 1: Polling mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-start-a-new-project">
+    3.1. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-enable-usart1">
+    3.2. Enable USART1
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-generated-code">
+    3.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-send-data">
+    3.4. Send data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#35-connect-uart-to-pc">
+    3.5. Connect UART to PC
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#36-receive-data">
+    3.6. Receive data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-2-interrupt-mode">
+    4. Lab 2: Interrupt Mode
+  </a>
+<nav aria-label="4. Lab 2: Interrupt Mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-interruptions">
+    4.1. Interruptions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-start-a-new-project">
+    4.2. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-enable-interrupt">
+    4.3. Enable interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-send-data-with-interrupt">
+    4.4. Send data with interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#45-receive-data-with-interrupt">
+    4.5. Receive data with interrupt
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-3-dma-mode">
+    5. Lab 3: DMA mode
+  </a>
+<nav aria-label="5. Lab 3: DMA mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-start-a-new-project">
+    5.1. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-enable-dma">
+    5.2. Enable DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-send-data-with-dma">
+    5.3. Send data with DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-receive-data-with-dma">
+    5.4. Receive data with DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-uart-idle-detection">
+    5.5. UART IDLE Detection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#56-process-continuous-received-data">
+    5.6. Process continuous received data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        C/C++
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkMagenta;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkViolet;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkSlateBlue;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOliveGreen;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkBlue;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkSlateBlue;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkBlue;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateBlue;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkRed;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkBlue;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-hardware">
+    1. Hardware
+  </a>
+<nav aria-label="1. Hardware" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-wires">
+    1.1. Wires
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-flow-control">
+    1.2. Flow control
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-data-frame">
+    1.3. Data frame
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-clock">
+    1.4. Clock
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-baud-rate">
+    1.5. Baud rate
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-multiprocessor">
+    1.6. Multiprocessor
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stm32cube-hal-usage">
+    2. STM32Cube HAL Usage
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-lab-1-polling-mode">
+    3. Lab 1: Polling mode
+  </a>
+<nav aria-label="3. Lab 1: Polling mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-start-a-new-project">
+    3.1. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-enable-usart1">
+    3.2. Enable USART1
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-generated-code">
+    3.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-send-data">
+    3.4. Send data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#35-connect-uart-to-pc">
+    3.5. Connect UART to PC
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#36-receive-data">
+    3.6. Receive data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-2-interrupt-mode">
+    4. Lab 2: Interrupt Mode
+  </a>
+<nav aria-label="4. Lab 2: Interrupt Mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-interruptions">
+    4.1. Interruptions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-start-a-new-project">
+    4.2. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-enable-interrupt">
+    4.3. Enable interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-send-data-with-interrupt">
+    4.4. Send data with interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#45-receive-data-with-interrupt">
+    4.5. Receive data with interrupt
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-3-dma-mode">
+    5. Lab 3: DMA mode
+  </a>
+<nav aria-label="5. Lab 3: DMA mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-start-a-new-project">
+    5.1. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-enable-dma">
+    5.2. Enable DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-send-data-with-dma">
+    5.3. Send data with DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-receive-data-with-dma">
+    5.4. Receive data with DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-uart-idle-detection">
+    5.5. UART IDLE Detection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#56-process-continuous-received-data">
+    5.6. Process continuous received data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOliveGreen;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkViolet;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkRed;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkViolet;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkRed;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkMagenta;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkViolet;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkViolet;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkGreen;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkBlue;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkMagenta;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">Universal Asynchronous Receiver-Transmitter</h1>
+<p class="page-description">Almost every microcontroller provides at least one UART peripheral, and this protocol seems to be a must-have supported feature for any project as UART is widely used for debugging, logging, data exchange, and for firmware update. Serialization also be used in many application, especially in continuous streaming, mostlw working in DMA more, some in Interrupt mode, and rarely in Polling mode.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name">
+                        #arm
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name">
+                        #stm32
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name">
+                        #usart
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name">
+                        #uart
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name">
+                        #interrupt
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name">
+                        #dma
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-12 23:16:18</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-hardware">
+    1. Hardware
+  </a>
+<nav aria-label="1. Hardware" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-wires">
+    1.1. Wires
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-flow-control">
+    1.2. Flow control
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-data-frame">
+    1.3. Data frame
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-clock">
+    1.4. Clock
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-baud-rate">
+    1.5. Baud rate
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-multiprocessor">
+    1.6. Multiprocessor
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stm32cube-hal-usage">
+    2. STM32Cube HAL Usage
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-lab-1-polling-mode">
+    3. Lab 1: Polling mode
+  </a>
+<nav aria-label="3. Lab 1: Polling mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-start-a-new-project">
+    3.1. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-enable-usart1">
+    3.2. Enable USART1
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-generated-code">
+    3.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-send-data">
+    3.4. Send data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#35-connect-uart-to-pc">
+    3.5. Connect UART to PC
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#36-receive-data">
+    3.6. Receive data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-2-interrupt-mode">
+    4. Lab 2: Interrupt Mode
+  </a>
+<nav aria-label="4. Lab 2: Interrupt Mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-interruptions">
+    4.1. Interruptions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-start-a-new-project">
+    4.2. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-enable-interrupt">
+    4.3. Enable interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-send-data-with-interrupt">
+    4.4. Send data with interrupt
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#45-receive-data-with-interrupt">
+    4.5. Receive data with interrupt
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-3-dma-mode">
+    5. Lab 3: DMA mode
+  </a>
+<nav aria-label="5. Lab 3: DMA mode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-start-a-new-project">
+    5.1. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-enable-dma">
+    5.2. Enable DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-send-data-with-dma">
+    5.3. Send data with DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-receive-data-with-dma">
+    5.4. Receive data with DMA
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-uart-idle-detection">
+    5.5. UART IDLE Detection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#56-process-continuous-received-data">
+    5.6. Process continuous received data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+<div class="btn-actions screen-only">
+<p><a class="md-button" href="..\..\..\pdfs\blog\stm32\uart\stm32__UART.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a><a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_UART_Polling.zip"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> UART in Polling mode</a>
+<a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_UART_Interrupt.zip"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> UART in Interrupt mode</a>
+<a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_UART_DMA.zip"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> UART in DMA mode</a></p>
+</div>
+<h2 id="1-hardware">1. Hardware<a class="headerlink" href="#1-hardware" title="Permanent link">⚓︎</a></h2>
+<p>Universal Synchronous/Asynchronous Receiver/Transmitter interface, also simply known as USART, is a device that translates a parallel sequence of bits (usually grouped in a byte) in a continuous stream of signals flowing on a single wire.</p>
+<h3 id="11-wires">1.1. Wires<a class="headerlink" href="#11-wires" title="Permanent link">⚓︎</a></h3>
+<p>When the information flows between two devices inside a common channel, both devices (as the sender and also the receiver) have to agree on the <em>timing</em>, that defines how long it takes to transmit each individual bit of the information.</p>
+<ul>
+<li>
+<p>In a <em>synchronous</em> transmission, the sender and the receiver share a common clock generated by one of the two devices</p>
+<p>
+<figure class="w60"><img src="usart.png"/><figcaption>Shared clock in <em>synchronous</em> USART</figcaption></figure>
+</p>
+</li>
+<li>
+<p>In an <em>asynchronous</em> transmission, the clock line is omitted, and both devices have an internal clock source and a mechanism to detect start/ stop bit.</p>
+<p>
+<figure class="w60"><img src="uart.png"/><figcaption>One line of data in <em>asynchronous</em> USART</figcaption></figure>
+</p>
+</li>
+</ul>
+<p>In a bi-direction communication, it needs a pairs of lines for Transmitter (TX) and Receiver (RX):</p>
+<p>
+<figure class="w60"><img src="usart_uart.png"/><figcaption>USART vs UART</figcaption></figure>
+</p>
+<h3 id="12-flow-control">1.2. Flow control<a class="headerlink" href="#12-flow-control" title="Permanent link">⚓︎</a></h3>
+<p>The presence of a dedicated clock line, or a common agreement about transmission frequency, does not guarantee that the receiver of a byte stream is able to process them at the same transmission rate of the master.</p>
+<p>For this reason, some communication standards, like the RS232 and the RS485, provide the possibility to use a dedicated <em>Hardware Flow Control</em> line. For example, two devices communicating using the RS232 interface can share two additional lines, named <em>Request To Send (RTS)</em> and <em>Clear To Send (CTS)</em>: the sender sets its RTS, which signals the receiver to begin monitoring its data input line. When ready for data, the receiver will raise its complementary line, CTS, which signals the sender to start sending data, and for the sender to begin monitoring the slave’s data output line.</p>
+<h3 id="13-data-frame">1.3. Data frame<a class="headerlink" href="#13-data-frame" title="Permanent link">⚓︎</a></h3>
+<p>The frames are comprised of:</p>
+<ul>
+<li>An Idle Line prior to transmission or reception</li>
+<li>A start bit</li>
+<li>A data word (7, 8 or 9 bits) least significant bit first</li>
+<li>A 0.5, 1, 1.5, or 2 stop bits indicating that the frame is complete</li>
+</ul>
+<p>By default, the signal (TX or RX) is in low state during the start bit. It is in high state during the stop bit. These values can be inverted, separately for each signal, through polarity configuration control.</p>
+<ul>
+<li>An <em>Idle character</em> is interpreted as an entire frame of “1”s (the number of “1”s includes the number of stop bits).</li>
+<li>A <em>Break</em> character is interpreted on receiving “0”s for a frame period. At the end of the break frame, the transmitter inserts 2 stop bits.</li>
+</ul>
+<p>
+<figure class="w70"><img src="usart_frame.png"/><figcaption>Frames in USART</figcaption></figure>
+</p>
+<h3 id="14-clock">1.4. Clock<a class="headerlink" href="#14-clock" title="Permanent link">⚓︎</a></h3>
+<p>The choice of the clock source is done through the Clock Control system (see <a href="../clock/">Section Reset and clock control (RCC))</a>). The clock source must be chosen before enabling the USART (by setting the <code>UE</code> bit).</p>
+<p>Choosing LSE or HSI as clock source may allow the USART to receive data while the MCU is in low-power mode.</p>
+<p>Clock source is used to do oversampling by 16 or by 8 to detect the start bit. It samples the RX line and try to detect a falling edge and following patterns of zeros.</p>
+<p>
+<figure class="w80"><img src="uart_detect_start.png"/><figcaption>Detect start bit using oversampling</figcaption></figure>
+</p>
+<h3 id="15-baud-rate">1.5. Baud rate<a class="headerlink" href="#15-baud-rate" title="Permanent link">⚓︎</a></h3>
+<p>Baud rate determines the speed of transmitting and receiving, as the speed is depend on the clock source and <code>USARTDIV</code> value.</p>
+<p><code>USARTDIV</code> is an unsigned fixed point number that is coded on the <code>USART_BRR</code> register.</p>
+<ul>
+<li>When <code>OVER8</code> = 0, <code>BRR</code> = <code>USARTDIV</code>.</li>
+<li>When <code>OVER8</code> = 1:<ul>
+<li><code>BRR[2:0]</code> = <code>USARTDIV[3:0]</code> shifted 1 bit to the right.</li>
+<li><code>BRR[3]</code> must be kept cleared.</li>
+<li><code>BRR[15:4]</code> = USARTDIV[15:4].</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Example: To obtain 9600 baud with core clock frequency at 8 MHz.</p>
+<ul>
+<li>
+<p>In case of oversampling by 16:<br/>
+<code>BRR</code> = <code>USARTDIV</code> = 8 000 000/9600 = 833d = 0341h</p>
+</li>
+<li>
+<p>In case of oversampling by 8:<br/>
+<code>USARTDIV</code> = 2 * 8 000 000/9600 = 1666,66 (~1667d) = 683h<br/>
+<code>BRR[3:0]</code> = 3h &gt;&gt; 1 = 1h<br/>
+<code>BRR</code> = 0x681</p>
+</li>
+</ul>
+</blockquote>
+<p><br/>
+<strong>Auto baud rate detection</strong></p>
+<p>The USART is able to detect and automatically set the <code>USART_BRR</code> register value based on the reception of one character. Automatic baud rate detection is useful under two circumstances:</p>
+<ul>
+<li>The communication speed of the system is not known in advance</li>
+<li>The system is using a relatively low accuracy clock source and this mechanism allows the correct baud rate to be obtained without measuring the clock deviation.</li>
+</ul>
+<p>Before activating the auto baud rate detection, the auto baud rate detection mode must be chosen. There are various modes based on different character patterns.</p>
+<p>Prior to activating auto baud rate detection, the <code>USART_BRR</code> register must be initialized by writing a non-zero baud rate value.</p>
+<h3 id="16-multiprocessor">1.6. Multiprocessor<a class="headerlink" href="#16-multiprocessor" title="Permanent link">⚓︎</a></h3>
+<p>In multiprocessor communication, the following bits are to be kept cleared:</p>
+<ul>
+<li><code>LINEN</code> bit in the <code>USART_CR2</code> register,</li>
+<li><code>HDSEL</code>, <code>IREN</code> and <code>SCEN</code> bits in the <code>USART_CR3</code> register.</li>
+</ul>
+<p>It is possible to perform multiprocessor communication with the USART (with several USARTs connected in a network). For instance one of the USARTs can be the master, its TX output connected to the RX inputs of the other USARTs. The others are slaves, their respective TX outputs are logically ANDed together and connected to the RX input of the master.</p>
+<h2 id="2-stm32cube-hal-usage">2. STM32Cube HAL Usage<a class="headerlink" href="#2-stm32cube-hal-usage" title="Permanent link">⚓︎</a></h2>
+<p>The Hardware Abstract Layer (HAL) is designed so that it abstracts from the specific peripheral memory mapping. But, it also provides a general and more user-friendly way to configure the peripheral, without forcing the programmers to now how to configure its registers in detail.</p>
+<blockquote>
+<p>excerpt from <a href="https://www.st.com/resource/en/user_manual/dm00122015-description-of-stm32f0-hal-and-lowlayer-drivers-stmicroelectronics.pdf">Description of STM32F0 HAL and low-layer drivers</a></p>
+</blockquote>
+<p><strong>How to use USART HAL</strong></p>
+<ol>
+<li>
+<p>Declare a <code>UART_HandleTypeDef</code> handle structure (eg. <code>UART_HandleTypeDef</code> huart).</p>
+</li>
+<li>
+<p>Initialize the UART low level resources by implementing the <code>HAL_UART_MspInit()</code> API when needed:</p>
+<ul>
+<li>
+<p>Enable the USARTx interface clock.</p>
+</li>
+<li>
+<p>UART pins configuration:</p>
+<ul>
+<li>
+<p>Enable the clock for the UART GPIOs.</p>
+</li>
+<li>
+<p>Configure these UART pins as alternate function pull-up.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>NVIC configuration if use interrupt process (<code>HAL_UART_Transmit_IT()</code> and <code>HAL_UART_Receive_IT()</code> APIs):</p>
+<ul>
+<li>
+<p>Configure the USARTx interrupt priority.</p>
+</li>
+<li>
+<p>Enable the NVIC USART IRQ handle.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>UART interrupts handling:</p>
+</li>
+<li>
+<p>DMA Configuration if use DMA process (<code>HAL_UART_Transmit_DMA()</code> and <code>HAL_UART_Receive_DMA()</code> APIs):</p>
+<ul>
+<li>
+<p>Declare a DMA handle structure for the Tx/Rx channel.</p>
+</li>
+<li>
+<p>Enable the DMAx interface clock.</p>
+</li>
+<li>
+<p>Configure the declared DMA handle structure with the required Tx/Rx parameters.</p>
+</li>
+<li>
+<p>Configure the DMA Tx/Rx channel.</p>
+</li>
+<li>
+<p>Associate the initialized DMA handle to the UART DMA Tx/Rx handle.</p>
+</li>
+<li>
+<p>Configure the priority and enable the NVIC for the transfer complete interrupt on the DMA Tx/Rx channel.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Program the Baud Rate, Word Length, Stop Bit, Parity, Hardware flow control and Mode (Receiver/Transmitter) in the huart handle Init structure.</p>
+</li>
+<li>
+<p>If required, program UART advanced features (TX/RX pins swap, auto Baud rate detection,…) in the huart handle AdvancedInit structure.</p>
+</li>
+<li>
+<p>For the UART asynchronous mode, initialize the UART registers by calling the <code>HAL_UART_Init()</code> API.</p>
+</li>
+<li>
+<p>For the UART Half duplex mode, initialize the UART registers by calling the <code>HAL_HalfDuplex_Init()</code> API.</p>
+</li>
+<li>
+<p>For the UART Multiprocessor mode, initialize the UART registers by calling the <code>HAL_MultiProcessor_Init()</code> API.</p>
+</li>
+<li>
+<p>For the UART RS485 Driver Enabled mode, initialize the UART registers by calling the <code>HAL_RS485Ex_Init()</code> API.</p>
+</li>
+</ol>
+<h2 id="3-lab-1-polling-mode">3. Lab 1: Polling mode<a class="headerlink" href="#3-lab-1-polling-mode" title="Permanent link">⚓︎</a></h2>
+<p>This project aims to learn how to configure USART via STM32CubeIDE and STM32CubeMX in polling mode.</p>
+<p>In <em>polling</em> mode, also called <em>blocking</em> mode, the main application, or one of its threads, synchronously waits for the data transmission and reception. This is the most simple form of data communication using this peripheral, and it can be used when the transmit rate is not too much low and when the UART is not used as critical peripheral.</p>
+<p><br/>
+<strong>Requirements</strong>:</p>
+<ul>
+<li>Increase a counter by 1 and print its value to UART1 every second</li>
+<li>Get user commands:<ul>
+<li><code>stop</code> to pause increasing the counter</li>
+<li><code>resume</code> to resume increasing the counter</li>
+</ul>
+</li>
+</ul>
+<p><strong>Target board</strong>:</p>
+<p>Any board which has STM32 MCUs. This tutorial will be using the STM32F0 Discovery board, which features an STM32F051R8 Cortex-M0 MCU.</p>
+<table>
+<thead>
+<tr>
+<th>STM32F051R8</th>
+<th>Mode</th>
+<th>External peripheral</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PA9</td>
+<td>Alternate Function</td>
+<td>UART1 TX</td>
+</tr>
+<tr>
+<td>PA10</td>
+<td>Alternate Function</td>
+<td>UART1 RX</td>
+</tr>
+<tr>
+<td>PC9</td>
+<td>GPIO Output</td>
+<td>Green LED</td>
+</tr>
+</tbody>
+</table>
+<h3 id="31-start-a-new-project">3.1. Start a new project<a class="headerlink" href="#31-start-a-new-project" title="Permanent link">⚓︎</a></h3>
+<p>Open STM32CubeIDE and create a new STM32 with STM32F051R8 MCU by selecting the target board or just the target MCU.</p>
+<p>Make sure to configure below settings:</p>
+<ul>
+<li>Set the HLCK to <em>48 MHz</em></li>
+<li>Set the Debug mode to Debug Serial Wire or Trace Asynchronous SW</li>
+</ul>
+<h3 id="32-enable-usart1">3.2. Enable USART1<a class="headerlink" href="#32-enable-usart1" title="Permanent link">⚓︎</a></h3>
+<p>Open <strong>Connectivity</strong> section in <strong>Pinout &amp; Configs</strong> tab and select <strong>USART1</strong> module, then edit some settings:</p>
+<ul>
+<li>Mode: <em>Asynchronous</em></li>
+<li>Parameter:<ul>
+<li>Baud rate: <em>115200 bps</em></li>
+<li>Word length: <em>8 bits (including Parity)</em></li>
+<li>Parity: <em>None</em></li>
+<li>Stop bits: <em>1</em></li>
+</ul>
+</li>
+</ul>
+<p>
+<figure class="w85"><img src="lab_enable_usart1.png"/><figcaption>Enable USART1</figcaption></figure>
+</p>
+<p>Note that <strong>PA9</strong> and <strong>PA10</strong> are automatically configured to Alternative Function to use as USART1 pinout.</p>
+<h3 id="33-generated-code">3.3. Generated code<a class="headerlink" href="#33-generated-code" title="Permanent link">⚓︎</a></h3>
+<p>When generate code from configs, there are some noticeable code blocks:</p>
+<p><br/>
+<strong>Peripheral instance</strong></p>
+<p>IDE will add an instance handler for the USART1 module in <code>main.c</code>. This instance will be used for manage USART1 peripheral then it should be global access:</p>
+<div class="highlight"><pre><span></span><code><span class="n">UART_HandleTypeDef</span> <span class="n">huart1</span><span class="p">;</span>
+</code></pre></div>
+<p><br/>
+<strong>Init functions</strong></p>
+<p>The function <code>SystemClock_Config()</code> is included to setup the system clock, bus clocks. In addition, it will set the clock source for the USART1:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SystemClock_Config</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">RCC_OscInitTypeDef</span> <span class="n">RCC_OscInitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">RCC_ClkInitTypeDef</span> <span class="n">RCC_ClkInitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">RCC_PeriphCLKInitTypeDef</span> <span class="n">PeriphClkInit</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+  <span class="cm">/** Initializes the RCC Oscillators according to the specified parameters</span>
+<span class="cm">  in the RCC_OscInitTypeDef structure. */</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">OscillatorType</span> <span class="o">=</span> <span class="n">RCC_OSCILLATORTYPE_HSI</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">HSIState</span> <span class="o">=</span> <span class="n">RCC_HSI_ON</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">HSICalibrationValue</span> <span class="o">=</span> <span class="n">RCC_HSICALIBRATION_DEFAULT</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLState</span> <span class="o">=</span> <span class="n">RCC_PLL_ON</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLSource</span> <span class="o">=</span> <span class="n">RCC_PLLSOURCE_HSI</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLMUL</span> <span class="o">=</span> <span class="n">RCC_PLL_MUL12</span><span class="p">;</span>
+  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PREDIV</span> <span class="o">=</span> <span class="n">RCC_PREDIV_DIV1</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_RCC_OscConfig</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RCC_OscInitStruct</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="cm">/** Initializes the CPU, AHB and APB buses clocks */</span>
+  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">ClockType</span> <span class="o">=</span> <span class="n">RCC_CLOCKTYPE_HCLK</span> <span class="o">|</span>
+                                <span class="n">RCC_CLOCKTYPE_SYSCLK</span> <span class="o">|</span>
+                                <span class="n">RCC_CLOCKTYPE_PCLK1</span><span class="p">;</span>
+  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">SYSCLKSource</span> <span class="o">=</span> <span class="n">RCC_SYSCLKSOURCE_PLLCLK</span><span class="p">;</span>
+  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">AHBCLKDivider</span> <span class="o">=</span> <span class="n">RCC_SYSCLK_DIV1</span><span class="p">;</span>
+  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">APB1CLKDivider</span> <span class="o">=</span> <span class="n">RCC_HCLK_DIV1</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_RCC_ClockConfig</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RCC_ClkInitStruct</span><span class="p">,</span> <span class="n">FLASH_LATENCY_1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">PeriphClkInit</span><span class="p">.</span><span class="n">PeriphClockSelection</span> <span class="o">=</span> <span class="n">RCC_PERIPHCLK_USART1</span><span class="p">;</span>
+  <span class="n">PeriphClkInit</span><span class="p">.</span><span class="n">Usart1ClockSelection</span> <span class="o">=</span> <span class="n">RCC_USART1CLKSOURCE_PCLK1</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_RCCEx_PeriphCLKConfig</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PeriphClkInit</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The function <code>MX_USART1_UART_Init()</code> inits the USART1 instance with the values put into the init struct. This function, at the end, calls to <code>HAL_UART_Init()</code> which is an HAL function to check the init params and finally calls to <code>HAL_UART_MspInit()</code> to do low-level configs.</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">MX_USART1_UART_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">huart1</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">USART1</span><span class="p">;</span>
+<span class="hll">  <span class="n">huart1</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">BaudRate</span> <span class="o">=</span> <span class="mi">115200</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">huart1</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">WordLength</span> <span class="o">=</span> <span class="n">UART_WORDLENGTH_8B</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">huart1</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">StopBits</span> <span class="o">=</span> <span class="n">UART_STOPBITS_1</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">huart1</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Parity</span> <span class="o">=</span> <span class="n">UART_PARITY_NONE</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">huart1</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">UART_MODE_TX_RX</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">huart1</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">HwFlowCtl</span> <span class="o">=</span> <span class="n">UART_HWCONTROL_NONE</span><span class="p">;</span>
+</span>  <span class="n">huart1</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">OverSampling</span> <span class="o">=</span> <span class="n">UART_OVERSAMPLING_16</span><span class="p">;</span>
+  <span class="n">huart1</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">OneBitSampling</span> <span class="o">=</span> <span class="n">UART_ONE_BIT_SAMPLE_DISABLE</span><span class="p">;</span>
+  <span class="n">huart1</span><span class="p">.</span><span class="n">AdvancedInit</span><span class="p">.</span><span class="n">AdvFeatureInit</span> <span class="o">=</span> <span class="n">UART_ADVFEATURE_NO_INIT</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_UART_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The function <code>HAL_UART_MspInit()</code> is generated in <code>stm32f0xx_hal_msp.c</code> to override the function declared in HAL Lib. This low-level config will setup the peripheral clocks, and set alternative functions on GPIO pins.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_UART_MspInit</span><span class="p">(</span><span class="n">UART_HandleTypeDef</span><span class="o">*</span> <span class="n">huart</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">GPIO_InitTypeDef</span> <span class="n">GPIO_InitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">huart</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">==</span><span class="n">USART1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* Peripheral clock enable */</span>
+<span class="hll">    <span class="n">__HAL_RCC_USART1_CLK_ENABLE</span><span class="p">();</span>
+</span><span class="hll">    <span class="n">__HAL_RCC_GPIOA_CLK_ENABLE</span><span class="p">();</span>
+</span>
+    <span class="cm">/**USART1 GPIO Configuration</span>
+<span class="cm">    PA9     ------&gt; USART1_TX</span>
+<span class="cm">    PA10    ------&gt; USART1_RX */</span>
+    <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pin</span> <span class="o">=</span> <span class="n">GPIO_PIN_9</span><span class="o">|</span><span class="n">GPIO_PIN_10</span><span class="p">;</span>
+<span class="hll">    <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">GPIO_MODE_AF_PP</span><span class="p">;</span>
+</span><span class="hll">    <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pull</span> <span class="o">=</span> <span class="n">GPIO_NOPULL</span><span class="p">;</span>
+</span><span class="hll">    <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Speed</span> <span class="o">=</span> <span class="n">GPIO_SPEED_FREQ_HIGH</span><span class="p">;</span>
+</span><span class="hll">    <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Alternate</span> <span class="o">=</span> <span class="n">GPIO_AF1_USART1</span><span class="p">;</span>
+</span><span class="hll">
+</span>    <span class="n">HAL_GPIO_Init</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">GPIO_InitStruct</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="34-send-data">3.4. Send data<a class="headerlink" href="#34-send-data" title="Permanent link">⚓︎</a></h3>
+<p>With generated code, just need to use <code>HAL_UART_Transmit()</code> function to send a buffer over the USART instance. Let’s create a buffer, a counter variable, and make a message to send every second.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // sprintf</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="c1"> // strlen</span><span class="cp"></span>
+
+<span class="hll"><span class="kt">char</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="hll"><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span> <span class="c1">// counter=xxx\n\r</span>
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+<span class="hll">        <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+</span><span class="hll">        <span class="n">sprintf</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="s">"counter=%03d</span><span class="se">\n\r</span><span class="s">"</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
+</span><span class="hll">        <span class="n">HAL_UART_Transmit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span>
+</span><span class="hll">                            <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
+</span><span class="hll">        <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="35-connect-uart-to-pc">3.5. Connect UART to PC<a class="headerlink" href="#35-connect-uart-to-pc" title="Permanent link">⚓︎</a></h3>
+<p>Because STM32F0 Discovery does not have a Virtual COM port on ST-LINK/V2, so use a TTL-to-USB converter go get UART data. Connect pins <strong>PA9</strong> and <strong>PA10</strong> to UART terminal on PC. It’s recommend to check the voltage because MCU board is running at 3.3V while PC USB or COM port might be running at 5V.</p>
+<blockquote>
+<p>Another option is to use an Arduino Uno board with RESET pin connected to GND, and use its TX, RX pins which are connected to the Arduino Virtual COM port.</p>
+</blockquote>
+<p>Build and run the code on the target board, and open a COM terminal on PC to see the message from the target board. Use a digital logic analyser to see raw bits transferred in RX and TX pins.</p>
+<p>
+<figure><img src="lab_uart_output.png"/><figcaption>UART output on digital logic analyser</figcaption>
+</figure>
+</p>
+<p>
+<figure class="w55"><img src="lab_uart_terminal.png"/><figcaption>UART output in a terminal</figcaption></figure>
+</p>
+<h3 id="36-receive-data">3.6. Receive data<a class="headerlink" href="#36-receive-data" title="Permanent link">⚓︎</a></h3>
+<p>Next step is to read from UART in polling mode.</p>
+<div class="admonition warning">
+<p class="admonition-title">Polling mode</p>
+<ul>
+<li>Block the program flow</li>
+<li>Have to wait for the exact number of characters</li>
+</ul>
+</div>
+<p>Use the function <code>HAL_UART_Receive(&amp;huart1, (uint8_t *)buffer, 4, 2000)</code> to read the input, which means:</p>
+<ul>
+<li>All received data is written into <code>buffer</code></li>
+<li>Function will exit if one of the below condition meets:<ul>
+<li>4 chars are received, or</li>
+<li>2000 ms timeout, <span class="critic comment">use HAL_MAX_DELAY will block the while loop</span></li>
+</ul>
+</li>
+</ul>
+<p>Let’s modify the code to get helper functions and process input in main while loop:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span> <span class="c1">// counter=xxx\n\r</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="n">MSG_PAUSE</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"PAUSED</span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="n">MSG_RESUME</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"RESUMED</span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="n">MSG_OK</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"OK</span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="n">MSG_BUSY</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"BUSY</span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="n">MSG_ERROR</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"ERROR</span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="n">MSG_TIMEOUT</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"TIMEOUT</span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
+
+<span class="n">HAL_StatusTypeDef</span> <span class="nf">Write</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">HAL_UART_Transmit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span>
+                            <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">HAL_StatusTypeDef</span> <span class="nf">Read</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">HAL_StatusTypeDef</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">HAL_TIMEOUT</span><span class="p">;</span>
+
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">HAL_UART_Receive</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Write</span><span class="p">(</span><span class="n">MSG_OK</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">HAL_BUSY</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Write</span><span class="p">(</span><span class="n">MSG_BUSY</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">HAL_ERROR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Write</span><span class="p">(</span><span class="n">MSG_ERROR</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">HAL_TIMEOUT</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Write</span><span class="p">(</span><span class="n">MSG_TIMEOUT</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">pause</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pause</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">sprintf</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">"counter=%03d</span><span class="se">\n\r</span><span class="s">"</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
+            <span class="n">Write</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">Read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">"stop"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">pause</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">Write</span><span class="p">(</span><span class="n">MSG_PAUSE</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">"resu"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">"me"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">pause</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                <span class="n">Write</span><span class="p">(</span><span class="n">MSG_RESUME</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>
+<figure class="w60"><img src="lab_uart_input_polling.png"/><figcaption>Receive user’s input</figcaption></figure>
+</p>
+<div class="admonition bug">
+<p class="admonition-title">Bug: Uncontrollable input</p>
+<p>It’s hard to input correct command because the timeout behavior may break the flow, and the number of remaining characters is not predictable.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Timeout mechanism</p>
+<p>It is important to remark that the timeout mechanism offered used in the receiving function works only if the <code>HAL_IncTick()</code> routine is called every <em>1ms</em>, as done by the code generated by CubeMX (the function that increments the HAL tick counter is called inside the SysTick timer ISR).</p>
+</div>
+<h2 id="4-lab-2-interrupt-mode">4. Lab 2: Interrupt Mode<a class="headerlink" href="#4-lab-2-interrupt-mode" title="Permanent link">⚓︎</a></h2>
+<h3 id="41-interruptions">4.1. Interruptions<a class="headerlink" href="#41-interruptions" title="Permanent link">⚓︎</a></h3>
+<p>Every USART peripheral provides the interrupts listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Interrupt Event</th>
+<th>Event Flag</th>
+<th>Enable Control Bit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transmit Data Register Empty</td>
+<td><code>TXE</code></td>
+<td><code>TXEIE</code></td>
+</tr>
+<tr>
+<td>Clear To Send (CTS) flag</td>
+<td><code>CTS</code></td>
+<td><code>CTSIE</code></td>
+</tr>
+<tr>
+<td>Transmission Complete</td>
+<td><code>TC</code></td>
+<td><code>TCIE</code></td>
+</tr>
+<tr>
+<td>Received Data Ready to be Read</td>
+<td><code>RXNE</code></td>
+<td><code>RXNEIE</code></td>
+</tr>
+<tr>
+<td>Overrun Error Detected</td>
+<td><code>ORE</code></td>
+<td><code>RXNEIE</code></td>
+</tr>
+<tr>
+<td>Idle Line Detected</td>
+<td><code>IDLE</code></td>
+<td><code>IDLEIE</code></td>
+</tr>
+<tr>
+<td>Parity Error</td>
+<td><code>PE</code></td>
+<td><code>PEIE</code></td>
+</tr>
+<tr>
+<td>Break Flag</td>
+<td><code>LBD</code></td>
+<td><code>LBDIE</code></td>
+</tr>
+<tr>
+<td>Noise Flag, Overrun error and Framing Error<br/>in multi buffer communication</td>
+<td><code>NF</code> or <code>ORE</code> or <code>FE</code></td>
+<td><code>EIE</code></td>
+</tr>
+</tbody>
+</table>
+<p>These events generate an interrupt if the corresponding <em>Enable Control Bit</em> is set. However, STM32 MCUs are designed so that all these IRQs are bound to just one ISR for every USART peripheral. It is up to the user code to analyze the corresponding <em>Event Flag</em> to infer which interrupt has generated the request.</p>
+<p>The CubeHAL is designed to automatically do that job. Then user is warned about the interrupt thanks to a series of callback functions invoked by the <code>HAL_UART_IRQHandler()</code>.</p>
+<p>From a technical point of view, there is not so much difference between UART transmission in polling and in interrupt mode. Both the methods transfer an array of bytes using the UART <em>Data Register</em> (DR) with the following algorithm:</p>
+<ul>
+<li>
+<p>For data transmission, place a byte inside the <code>USART-&gt;DR</code> register and wait until the <em>Transmit Data Register Empty (TXE)</em> flag is asserted true.</p>
+</li>
+<li>
+<p>For data reception, wait until the <em>Received Data Ready to be Read (RXNE)</em> is asserted true, and then store the content of the <code>USART-&gt;DR</code> register inside the application memory.</p>
+</li>
+</ul>
+<p>The difference between the two methods consists in how they wait for the completion of data transmission:</p>
+<ul>
+<li>
+<p>In polling mode, the <code>HAL_UART_Receive()</code> / <code>HAL_UART_Transmit()</code> functions are designed so that it waits for the corresponding event flag to be set, for every byte of data.</p>
+</li>
+<li>
+<p>In interrupt mode, the <code>HAL_UART_Receive_IT()</code> / <code>HAL_UART_Transmit_IT()</code> functions are designed so that they do not wait for data transmission completion, but the job to place a new byte inside the DR register, or to load its content inside the application memory, is accomplished by the ISR routine when the <code>RXNEIE</code> / <code>TXEIE</code> interrupt is generated.</p>
+</li>
+</ul>
+<h3 id="42-start-a-new-project">4.2. Start a new project<a class="headerlink" href="#42-start-a-new-project" title="Permanent link">⚓︎</a></h3>
+<p>Open STM32CubeIDE and create a new STM32 with the same steps in the previous lab, including configuration for clocks, debug, and UART1.</p>
+<h3 id="43-enable-interrupt">4.3. Enable interrupt<a class="headerlink" href="#43-enable-interrupt" title="Permanent link">⚓︎</a></h3>
+<p>Go to USART1 module, select <strong>NVIC Settings</strong> tab and enable the interrupt.</p>
+<p>
+<figure><img src="lab_enable_usart1_interrupt.png"/><figcaption>Enable interrupt for USART1</figcaption>
+</figure>
+</p>
+<p>After generating code, the functions to enable interrupt are written in function <code>HAL_UART_MspInit()</code> in <code>stm32f0xx_hal_msp.c</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="n">HAL_NVIC_SetPriority</span><span class="p">(</span><span class="n">USART1_IRQn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">HAL_NVIC_EnableIRQ</span><span class="p">(</span><span class="n">USART1_IRQn</span><span class="p">);</span>
+</code></pre></div>
+<p>The interrupt handler is added to <code>stm32f0xx_it.c</code> file too. Trace the function <code>HAL_UART_IRQHandler()</code> to understand about how it processes the data. Basically, it checks the error, check the state, and mode of the USART instance; then it save or transfer data on RX or TX wire.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">USART1_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">HAL_UART_IRQHandler</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="44-send-data-with-interrupt">4.4. Send data with interrupt<a class="headerlink" href="#44-send-data-with-interrupt" title="Permanent link">⚓︎</a></h3>
+<p>As said above, use <code>HAL_UART_Transmit_IT()</code> function to send data.</p>
+<div class="file"></div>
+<p>main.c</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span> <span class="c1">// counter=xxx\n\r</span>
+
+<span class="n">HAL_StatusTypeDef</span> <span class="nf">Write</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">  <span class="k">return</span> <span class="n">HAL_UART_Transmit_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">));</span>
+</span><span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">pause</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pause</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sprintf</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">"counter=%03d</span><span class="se">\n\r</span><span class="s">"</span><span class="p">,</span> <span class="n">counter</span><span class="o">++</span><span class="p">);</span>
+            <span class="n">Write</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Race condition in Interrupt Mode</p>
+<p>Consider below code:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">printWelcomeMessage</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">HAL_UART_Transmit_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="n">buffer1</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer1</span><span class="p">));</span>
+    <span class="n">HAL_UART_Transmit_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="n">buffer2</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer2</span><span class="p">));</span>
+    <span class="n">HAL_UART_Transmit_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="n">buffer3</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer3</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The above code will never work correctly, since each call to the function <code>HAL_UART_Transmit_IT()</code> is much faster than the UART transmission, and the subsequent calls to the <code>HAL_UART_Transmit_IT()</code> will fail as it will see that UART is in the Busy state.</p>
+<p>If speed is not a strict requirement for the application, and the use of the <code>HAL_UART_Transmit_IT()</code> is limited to few parts of the application, the above code could be rearranged in the following way:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">printWelcomeMessage</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">strings</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">buffer1</span><span class="p">,</span> <span class="n">buffer2</span><span class="p">,</span> <span class="n">buffer3</span><span class="p">};</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">HAL_UART_Transmit_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="n">strings</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">strlen</span><span class="p">(</span><span class="n">strings</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">HAL_UART_GetState</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">)</span> <span class="o">==</span> <span class="n">HAL_UART_STATE_BUSY_TX</span> <span class="o">||</span>
+                <span class="n">HAL_UART_GetState</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">)</span> <span class="o">==</span> <span class="n">HAL_UART_STATE_BUSY_TX_RX</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<p>When all data in the buffer are sent, HAL library will call to a callback function named <code>HAL_UART_TxCpltCallback()</code> to notify about the end of the transmission. <span class="critic comment"> There is no callback when half of data is transfered </span>. This function can be overridden to do something after the buffer is transmitted.</p>
+<div class="file"></div>
+<p>main.c</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">uart_tx_done</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="hll"><span class="kt">void</span> <span class="nf">HAL_UART_TxCpltCallback</span><span class="p">(</span><span class="n">UART_HandleTypeDef</span> <span class="o">*</span><span class="n">huart</span><span class="p">)</span> <span class="p">{</span>
+</span>  <span class="k">if</span><span class="p">(</span><span class="n">huart</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">huart1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">uart_tx_done</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="45-receive-data-with-interrupt">4.5. Receive data with interrupt<a class="headerlink" href="#45-receive-data-with-interrupt" title="Permanent link">⚓︎</a></h3>
+<p>Next step is to read data using interrupt with the function <code>HAL_UART_Receive_IT()</code>. Because it’s unknown time when a character comes, so the <code>buffer</code> for receiving will be filled in at anytime, even when buffer is being used in the <code>sprinf()</code> function, therefore, should use a new buffer to store received data, e.g. <code>command</code>.</p>
+<p>When the receiver get enough characters, it will fire an interrupt to run the <code>HAL_UART_RxCpltCallback()</code> function. That function can be overridden to handle received data in the main:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">uart_rx_int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="hll"><span class="kt">void</span> <span class="nf">HAL_UART_RxCpltCallback</span><span class="p">(</span><span class="n">UART_HandleTypeDef</span> <span class="o">*</span><span class="n">huart</span><span class="p">)</span>
+</span><span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">huart</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">huart1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">uart_rx_int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the main function, process received data only when the flag is on:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">uart_rx_int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">command</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="n">MSG_PAUSE</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"PAUSED</span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="n">MSG_RESUME</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"RESUMED</span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
+
+<span class="n">HAL_StatusTypeDef</span> <span class="nf">Read</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">HAL_UART_Receive_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="hll">
+</span><span class="kt">void</span> <span class="nf">HAL_UART_RxCpltCallback</span><span class="p">(</span><span class="n">UART_HandleTypeDef</span> <span class="o">*</span><span class="n">huart</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">huart</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">huart1</span><span class="p">)</span> <span class="p">{</span> <span class="n">uart_rx_int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+<span class="hll"><span class="p">}</span>
+</span><span class="hll">
+</span><span class="hll"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span>    <span class="kt">char</span> <span class="n">pause</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pause</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">sprintf</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">"counter=%03d</span><span class="se">\n\r</span><span class="s">"</span><span class="p">,</span> <span class="n">counter</span><span class="p">);</span>
+            <span class="n">Write</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">uart_rx_int</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">uart_rx_int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="hll">            <span class="k">if</span> <span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="s">"stop"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">                <span class="n">pause</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span>                <span class="n">Write</span><span class="p">(</span><span class="n">MSG_PAUSE</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="s">"resume"</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">pause</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                <span class="n">Write</span><span class="p">(</span><span class="n">MSG_RESUME</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">Read</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+        <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>
+<figure class="w60"><img src="lab_uart_interrupt_output.png"/><figcaption>Communicate with UART in interrupt mode</figcaption></figure>
+</p>
+<div class="admonition bug">
+<p class="admonition-title">Bug: Input length is fixed</p>
+<p>The above implementation has an issue: The receiving interrupt only is fired when it receives enough number of characters. In the above example, enter <em class="noem">stopxx</em> for stop command will work, but <em class="noem">stop</em> will never do.</p>
+<p>To fix this, set the receive mode to get only one byte at a time, then check for the <em class="noem">new line</em> / <em class="noem">line feed</em> <code>\n</code> or <em class="noem">carriage return</em> <code>\r</code> character to to determine input sentences. However, this will lead to run the interrupt handler many times if the incoming data rate is high.</p>
+</div>
+<p>Here is an example to handle every byte in the Interrupt mode:</p>
+<ul>
+<li>Received one byte at a time</li>
+<li>Check the received by with the <em class="noem">new line</em> <code>\n</code> character to separate strings</li>
+<li>Call Receive function again to listen to a new character</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">rx_buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">rx_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">rx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">HAL_UART_RxCpltCallback</span><span class="p">(</span><span class="n">UART_HandleTypeDef</span> <span class="o">*</span><span class="n">huart</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rx</span> <span class="o">==</span> <span class="sc">'\n'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rx_buffer</span><span class="p">[</span><span class="n">rx_idx</span><span class="p">]</span><span class="o">=</span><span class="sc">'\0'</span><span class="p">;</span>
+        <span class="n">strncpy</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">rx_buffer</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+        <span class="n">rx_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">uart_rx_int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">rx_buffer</span><span class="p">[</span><span class="n">rx_idx</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">rx</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Read</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rx</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Read</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rx</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">uart_rx_int</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">uart_rx_int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="s">"stop"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{...}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This approach can be optimized more by not using the HAL function (both <code>HAL_UART_Receive_IT()</code> and <code>HAL_UART_IRQHandler()</code>), but by setting up <code>UART_IT_RXNE</code> (Received Data Not Empty) interrupt and then handle this interrupt manually in the <code>USART1_IRQHandler()</code> ISR.</p>
+<div class="highlight"><pre><span></span><code><span class="n">__HAL_UART_ENABLE_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="n">UART_IT_RXNE</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">USART1_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span> <span class="n">handle_received_byte</span><span class="p">();</span> <span class="p">}</span>
+</code></pre></div>
+<h2 id="5-lab-3-dma-mode">5. Lab 3: DMA mode<a class="headerlink" href="#5-lab-3-dma-mode" title="Permanent link">⚓︎</a></h2>
+<p>The <a href="../dma/">DMA</a> can be used to transfer data in or out through an UART interface. However, DMA still needs to know how many bytes of data should be exchanged. In case of transmitting, it is easy to calculate the length of data, but in case of receiving, it maybe unknown length of data.</p>
+<h3 id="51-start-a-new-project">5.1. Start a new project<a class="headerlink" href="#51-start-a-new-project" title="Permanent link">⚓︎</a></h3>
+<p>Open STM32CubeIDE and create a new STM32 with the same steps in the previous lab, including configuration for clocks, debug, and UART1.</p>
+<h3 id="52-enable-dma">5.2. Enable DMA<a class="headerlink" href="#52-enable-dma" title="Permanent link">⚓︎</a></h3>
+<p>Go to USART1 module, select <strong>DMA Settings</strong> tab and Add two DMA requests:</p>
+<ul>
+<li>
+<p><strong>USART1_TX</strong>:
+    This DMA Request has direction of Memory to Peripheral, it means DMA processor will read data from Memory and write to the USART1 Transmit Data Register, therefore, only Memory Address will be increased</p>
+</li>
+<li>
+<p><strong>USART1_RX</strong>:
+    This DMA Request has direction of Peripheral to Memory, it means DMA processor will read data from USART1 Receive Data Register and write to Memory, therefore, only Memory Address will be increased</p>
+</li>
+</ul>
+<div class="admonition caution nt">
+<p class="admonition-title"> </p>
+<p>DMA only works when the peripheral’s interrupt is enabled, as it needs triggered from the peripheral. Make sure to enable USART1 global / wake-up interrupts through the external interrupt line.</p>
+</div>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>Note that CubeMX automatically enable DMA interrupts. To disable it, go to <strong>NVIC</strong> module under the <strong>System Core</strong> category.</p>
+</div>
+<p>After generating code, there is a new function <code>MX_DMA_Init()</code> added to the <code>main.c</code> file to initialize the DMA module:</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">MX_DMA_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="cm">/* DMA controller clock enable */</span>
+  <span class="n">__HAL_RCC_DMA1_CLK_ENABLE</span><span class="p">();</span>
+
+  <span class="cm">/* DMA interrupt init */</span>
+  <span class="cm">/* DMA1_Channel2_3_IRQn interrupt configuration */</span>
+  <span class="n">HAL_NVIC_SetPriority</span><span class="p">(</span><span class="n">DMA1_Channel2_3_IRQn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">HAL_NVIC_EnableIRQ</span><span class="p">(</span><span class="n">DMA1_Channel2_3_IRQn</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>
+<figure><img src="lab_enable_usart_dma.png"/><figcaption>Enable DMA requests on USART1</figcaption>
+</figure>
+</p>
+<p>Inside the <code>HAL_UART_MspInit()</code> function, there are calls to init DMA instances for USART1_TX and USART1_RX, and finally links of DMA instances with the USART instance with the function <code>__HAL_LINKDMA</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_UART_MspInit</span><span class="p">(</span><span class="n">UART_HandleTypeDef</span><span class="o">*</span> <span class="n">huart</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="cm">/* DMA USART1_RX Init */</span>
+    <span class="n">hdma_usart1_rx</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">DMA1_Channel3</span><span class="p">;</span>
+    <span class="n">hdma_usart1_rx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Direction</span> <span class="o">=</span> <span class="n">DMA_PERIPH_TO_MEMORY</span><span class="p">;</span>
+    <span class="n">hdma_usart1_rx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">PeriphInc</span> <span class="o">=</span> <span class="n">DMA_PINC_DISABLE</span><span class="p">;</span>
+    <span class="n">hdma_usart1_rx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">MemInc</span> <span class="o">=</span> <span class="n">DMA_MINC_ENABLE</span><span class="p">;</span>
+    <span class="n">hdma_usart1_rx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">PeriphDataAlignment</span> <span class="o">=</span> <span class="n">DMA_PDATAALIGN_BYTE</span><span class="p">;</span>
+    <span class="n">hdma_usart1_rx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">MemDataAlignment</span> <span class="o">=</span> <span class="n">DMA_MDATAALIGN_BYTE</span><span class="p">;</span>
+    <span class="n">hdma_usart1_rx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">DMA_NORMAL</span><span class="p">;</span>
+    <span class="n">hdma_usart1_rx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Priority</span> <span class="o">=</span> <span class="n">DMA_PRIORITY_LOW</span><span class="p">;</span>
+<span class="hll">    <span class="k">if</span> <span class="p">(</span><span class="n">HAL_DMA_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hdma_usart1_rx</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+</span>      <span class="n">Error_Handler</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="hll">    <span class="n">__HAL_LINKDMA</span><span class="p">(</span><span class="n">huart</span><span class="p">,</span><span class="n">hdmarx</span><span class="p">,</span><span class="n">hdma_usart1_rx</span><span class="p">);</span>
+</span>
+    <span class="cm">/* DMA USART1_TX Init */</span>
+    <span class="n">hdma_usart1_tx</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">DMA1_Channel2</span><span class="p">;</span>
+    <span class="n">hdma_usart1_tx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Direction</span> <span class="o">=</span> <span class="n">DMA_MEMORY_TO_PERIPH</span><span class="p">;</span>
+    <span class="n">hdma_usart1_tx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">PeriphInc</span> <span class="o">=</span> <span class="n">DMA_PINC_DISABLE</span><span class="p">;</span>
+    <span class="n">hdma_usart1_tx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">MemInc</span> <span class="o">=</span> <span class="n">DMA_MINC_ENABLE</span><span class="p">;</span>
+    <span class="n">hdma_usart1_tx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">PeriphDataAlignment</span> <span class="o">=</span> <span class="n">DMA_PDATAALIGN_BYTE</span><span class="p">;</span>
+    <span class="n">hdma_usart1_tx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">MemDataAlignment</span> <span class="o">=</span> <span class="n">DMA_MDATAALIGN_BYTE</span><span class="p">;</span>
+    <span class="n">hdma_usart1_tx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">DMA_NORMAL</span><span class="p">;</span>
+    <span class="n">hdma_usart1_tx</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Priority</span> <span class="o">=</span> <span class="n">DMA_PRIORITY_LOW</span><span class="p">;</span>
+<span class="hll">    <span class="k">if</span> <span class="p">(</span><span class="n">HAL_DMA_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hdma_usart1_tx</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+</span>      <span class="n">Error_Handler</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="hll">    <span class="n">__HAL_LINKDMA</span><span class="p">(</span><span class="n">huart</span><span class="p">,</span><span class="n">hdmatx</span><span class="p">,</span><span class="n">hdma_usart1_tx</span><span class="p">);</span>
+</span>
+    <span class="cm">/* USART1 interrupt Init */</span>
+    <span class="n">HAL_NVIC_SetPriority</span><span class="p">(</span><span class="n">USART1_IRQn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">HAL_NVIC_EnableIRQ</span><span class="p">(</span><span class="n">USART1_IRQn</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>There is also an implementation for DMA interrupt in the file <code>stm32f0xx_it.c</code> which calls to the <code>HAL_DMA_IRQHandler()</code> function.</p>
+<p><mark>There is no default callback for DMA. User has to set the callbacks manually</mark>, as described in the <a href="../dma/#65-dma-interrupts">DMA Interrupts</a> section. However, HAL functions will assign a callback when they need to handle an interrupt.</p>
+<h3 id="53-send-data-with-dma">5.3. Send data with DMA<a class="headerlink" href="#53-send-data-with-dma" title="Permanent link">⚓︎</a></h3>
+<p>Sending data with DMA is quite easy, just provide the <code>tx_buffer</code> and the length of data to the function <code>HAL_UART_Transmit_DMA()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define DMA_BUFFER_MAX 16</span>
+<span class="kt">char</span> <span class="n">tx_buffer</span><span class="p">[</span><span class="n">DMA_BUFFER_MAX</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+
+<span class="n">HAL_StatusTypeDef</span> <span class="nf">Write</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">HAL_UART_Transmit_DMA</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">pause</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pause</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sprintf</span><span class="p">(</span><span class="n">tx_buffer</span><span class="p">,</span> <span class="s">"counter=%03d</span><span class="se">\n\r</span><span class="s">"</span><span class="p">,</span> <span class="n">counter</span><span class="o">++</span><span class="p">);</span>
+            <span class="n">Write</span><span class="p">(</span><span class="n">tx_buffer</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>There are two interrupts will be fired for transmission, which are helpful when sending a huge amount of data: DMA notifies application to start loading new data into the first half of the buffer afther the <code>TxHalfCpltCallback</code> is fired, while the second half of the buffer is being transmitted by the DMA; then application can load the new data into the second half of the buffer after the <code>TxCpltCallback</code> is fired, while the first half is being transmitted.</p>
+<div class="admonition hint nt">
+<p class="admonition-title"> </p>
+<p>Using DMA mode can significantly resude the number of UART interrupts, comparing to using Interrupt mode. If there is a variable to keep track of the numbers of UART interrupts, for example in the below code, this number will be increased for every bytes in the transmitting buffer in Interrupt mode (each byte sent causes an interrupt to load the next byte). However, in DMA mode, there is only one interrupt added only when the buffer is completely transfered.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">size_t</span> <span class="n">uart_irq_counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">void</span> <span class="nf">USART1_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">uart_irq_counter</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<h3 id="54-receive-data-with-dma">5.4. Receive data with DMA<a class="headerlink" href="#54-receive-data-with-dma" title="Permanent link">⚓︎</a></h3>
+<p>Nomally, when calling to <code>HAL_UART_Receive_DMA()</code>, the DMA module will stop transfering data when it counts enough bytes set in the params. There is the <em>Circular</em> mode that makes DMA continouses get data and fills into memory like a ring buffer.</p>
+<p>Go back to the <strong>DMA Settings</strong> tab of the USART1 module to set the mode of USART1_RX request to Circular.</p>
+<p>
+<figure><img src="lab_enable_usart_dma_rx_circular.png"/><figcaption>Enable Circular mode for DMA on USART1_RX</figcaption>
+</figure>
+</p>
+<p>Then create a buffer for receiving data, and start DMA Request in the main function:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define DMA_BUFFER_MAX 16</span>
+<span class="kt">char</span> <span class="n">rx_buffer</span><span class="p">[</span><span class="n">DMA_BUFFER_MAX</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">HAL_UART_Receive_DMA</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">rx_buffer</span><span class="p">,</span> <span class="n">DMA_BUFFER_MAX</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{...}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>By calling the <code>HAL_UART_Receive_DMA()</code> function, USART1_RX DMA instance will get some callback functions assigned to its Half-transfer and Full-Transfer callbacks. Refer to the function <code>UART_Start_Receive_DMA()</code> for more details.</p>
+<p>It is possible to configure DMA to transfer one byte at a time and call to an interrupt function to hanlde the newly received character like in Interrupt mode, but it wastes of resource and performance. However, if application lets DMA to notify only then it receives enough the required number of characrers, sometimes there is no notification sent.</p>
+<div class="admonition cite nt">
+<p class="admonition-title"> </p>
+<p>Assume that application expects to receive 20 chars, but UART only receives 14 chars:</p>
+<ul>
+<li>Application would be notified when 10 bytes received by Half-Transfer event</li>
+<li>Application would never be notified the rest of 4 bytes has arrived<ul>
+<li>If UART get more chars, application would be nofified by Full-Transfer event but some chars may be left over</li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 id="55-uart-idle-detection">5.5. UART IDLE Detection<a class="headerlink" href="#55-uart-idle-detection" title="Permanent link">⚓︎</a></h3>
+<p>Most of STM32 series have USARTs with <em>IDLE Line</em> detection. If IDLE Line detection is not available, some of them have <em>Receiver Timeout</em> feature with programmable delay. IDLE line detection (or Receiver Timeout) can trigger USART interrupt when receive line is steady without any communication for at least 1 character for reception.</p>
+<div class="admonition info">
+<p class="admonition-title">IDLE Detection</p>
+<p>Right after enable the UART, the <code>IDLE</code> bit in Interrupt Status Register <code>ISR</code> will be set. However, the interrupt for IDLE detection only gets fired when the bit <code>IDLEIE</code> is set on the Control Register <code>CRx</code>. Therefore, the IDLE interrupt always fire up once rigth after the bit <code>IDLEIE</code> is set.</p>
+<p>To clear the IDLE interrupt status, either set the <code>IDLECF</code> in the Clear Register or do a read sequence on <code>SR</code> and <code>DR</code> registers. Refer to the <a href="../docs/#2-the-reference-manual">Reference Manual</a> documents to get more detail.</p>
+<p>When IDLE dection is enable, make sure the RX line is not floating to prevent the IDLE flag from being set continuously.</p>
+</div>
+<p><br/>
+<strong>DMA RX and IDLE Line detection</strong></p>
+<p>The good combination for using DMA to get unknown length of data is to use DMA in Circular mode, with big enough memory buffer, then use DMA Half-Transfer, Full-Transfer and the IDLE line dectection to notify application to process received data. HAL DMA Receiving function automatically notifies the application by calling <code>HAL_UART_RxHalfCpltCallback()</code> and <code>HAL_UART_RxCpltCallback()</code>. Therefore, it is only needed to override the <code>USART1_IRQHandler()</code> function. To more simple and still left HAL Hanlder processes other cases, it is better to add a small code just to check the IDLE flag and process received data before handing over the interrupt to original <code>HAL_UART_IRQHandler()</code> function.</p>
+<div class="file"></div>
+<p>stm32f0xx_it.c</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">USART1_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(((</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">-&gt;</span><span class="n">ISR</span> <span class="o">&amp;</span> <span class="n">UART_FLAG_IDLE</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
+      <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">-&gt;</span><span class="n">CR1</span> <span class="o">&amp;</span> <span class="n">USART_CR1_IDLEIE</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">__HAL_UART_CLEAR_IDLEFLAG</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">);</span>
+    <span class="n">HAL_UART_RxCpltCallback</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// pass the work to HAL function</span>
+  <span class="n">HAL_UART_IRQHandler</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="file"></div>
+<p>main.c</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_UART_RxCpltCallback</span><span class="p">(</span><span class="n">UART_HandleTypeDef</span> <span class="o">*</span><span class="n">huart</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">UART_RX_Check</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hdma_usart1_rx</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">HAL_UART_RxHalfCpltCallback</span><span class="p">(</span><span class="n">UART_HandleTypeDef</span> <span class="o">*</span><span class="n">huart</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">UART_RX_Check</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hdma_usart1_rx</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="56-process-continuous-received-data">5.6. Process continuous received data<a class="headerlink" href="#56-process-continuous-received-data" title="Permanent link">⚓︎</a></h3>
+<p>Due to DMA buffer is a Ring buffer with small number of bytes, it is necessary to copy received bytes from DMA buffer to a bigger UART buffer. There are 2 indexes to mark the bytes position in DMA buffer: <code>new_pos</code> at the last received byte, and <code>old_pos</code> at last processed byte. There is one index <code>uart_index</code> to mark the last byte in the UART buffer.</p>
+<p>
+<figure><img src="dma_continuos_receive.drawio.svg"/><figcaption>Visualization of memory copy between DMA buffer and UART buffer</figcaption>
+</figure>
+</p>
+<ul>
+<li>In DMA buffer, if the <code>new_pos</code> is bigger than the <code>old_pos</code>, it means there is no roll-over, application can copy bytes [<code>old_pos</code>:<code>new_pos</code>] to the UART buffer.</li>
+<li>In DMA buffer, if the <code>new_pos</code> is less than the <code>old_pos</code>, it means there is a roll-over, application can copy bytes [<code>old_pos</code>:<code>max</code>] and [0:<code>new_pos</code>] to the UART buffer.</li>
+<li>In UART buffer, when buffer is full, it does not get any more character, only character <em class="noem">new line</em> <code>\n</code> will reset the index to 0</li>
+<li>To get the <code>new_pos</code> index, aka. number of received bytes, use the register <code>CNDTR</code> of the DMA instance. Read more about “DMA channel x number of data register (<code>DMA_CNDTRx</code> and <code>DMA2_CNDTRx</code>)” section in the <a href="../docs/#2-the-reference-manual">Reference Manual</a> document.</li>
+</ul>
+<p>Here is the implementation example for the above solution of processing the received data:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define UART_BUFFER_MAX   64</span>
+<span class="kt">char</span> <span class="n">uart_buffer</span><span class="p">[</span><span class="n">UART_BUFFER_MAX</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">size_t</span> <span class="n">uart_buffer_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">uart_new_string</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">UART_RX_Process</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span> <span class="n">data</span><span class="p">)[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">uart_buffer_idx</span> <span class="o">&lt;</span> <span class="n">UART_BUFFER_MAX</span><span class="mi">-2</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">uart_buffer</span><span class="p">[</span><span class="n">uart_buffer_idx</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+      <span class="n">uart_buffer</span><span class="p">[</span><span class="n">uart_buffer_idx</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'\n'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">uart_buffer_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">uart_new_string</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">UART_RX_Check</span><span class="p">(</span><span class="n">DMA_HandleTypeDef</span> <span class="o">*</span><span class="n">hdma</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="kt">size_t</span> <span class="n">old_pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">rx_pos</span> <span class="o">=</span> <span class="n">DMA_BUFFER_MAX</span> <span class="o">-</span> <span class="n">hdma</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">-&gt;</span><span class="n">CNDTR</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">rx_pos</span> <span class="o">!=</span> <span class="n">old_pos</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// new data</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rx_pos</span> <span class="o">&gt;</span> <span class="n">old_pos</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// no overflow</span>
+      <span class="n">UART_RX_Process</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rx_buffer</span><span class="p">[</span><span class="n">old_pos</span><span class="p">],</span> <span class="n">rx_pos</span> <span class="o">-</span> <span class="n">old_pos</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// overflow</span>
+      <span class="n">UART_RX_Process</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rx_buffer</span><span class="p">[</span><span class="n">old_pos</span><span class="p">],</span> <span class="n">DMA_BUFFER_MAX</span> <span class="o">-</span> <span class="n">old_pos</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">rx_pos</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// run up</span>
+        <span class="n">UART_RX_Process</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rx_buffer</span><span class="p">[</span><span class="n">old_pos</span><span class="p">],</span> <span class="n">rx_pos</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">old_pos</span> <span class="o">=</span> <span class="n">rx_pos</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">uart_new_string</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">uart_new_string</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">uart_buffer</span><span class="p">,</span> <span class="s">"stop"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{...}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This tutorial only show a method to process variale string length in a continuous byte stream. The function <code>UART_RX_Process()</code> should be modified to handle different streaming format.</p>
+<p>Compile and run with variable string length to find how it work. Below captured image was in a debug section to see how many IDLE interrupts are called, how received bytes are saved into the <code>rx_buffer</code> and to monitor the <code>uart_buffer</code>.</p>
+<p>
+<figure><img src="lab_uart_dma_output.png"/><figcaption>Communicate with UART in DMA mode</figcaption>
+</figure>
+</p>
+<div data-value="https://www.codeinsideout.com/blog/stm32/uart/" id="page_url"></div>
+<div data-value="blog/stm32/uart/" id="page_identifier"></div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../add-swo/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Add SWO
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../uart-redirection/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              UART Redirection
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

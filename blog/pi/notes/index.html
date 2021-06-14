@@ -5,38 +5,36 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Interesting stuff in Embedded Systems and IoT Applications. From hardwares to cloud applications. Step by step." name="description"/>
+<meta content="Tips, hints, and tricks when working on Raspberry Pi" name="description"/>
 <meta content="embedded systems application programming" name="keywords"/>
 <meta content="vqtrong" name="author"/>
 <link href="https://www.codeinsideout.com/blog/pi/notes/" rel="canonical"/>
-<link href="../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
 <title>Notes for Raspberry Pi - Code Inside Out</title>
-<link href="../../../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
-<link href="../../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
 <meta content="#ffffff" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
 <link href="../../../assets/extra.css" rel="stylesheet"/>
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<meta content="website" property="og:type"/>
-<meta content="Code Inside Out - Notes for Raspberry Pi" property="og:title"/>
-<meta content="Interesting stuff in Embedded Systems and IoT Applications. From hardwares to cloud applications. Step by step." property="og:description"/>
-<meta content="https://www.codeinsideout.com/blog/pi/notes/" property="og:url"/>
-<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image"/>
-<meta content="image/png" property="og:image:type"/>
-<meta content="1080" property="og:image:width"/>
-<meta content="568" property="og:image:height"/>
-</head>
-<body data-md-color-accent="" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<meta content="website" property="og:type">
+<meta content="Notes for Raspberry Pi - Code Inside Out" property="og:title">
+<meta content="Tips, hints, and tricks when working on Raspberry Pi" property="og:description">
+<meta content="https://www.codeinsideout.com/blog/pi/notes/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
 <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#1-utilities">
+<a class="md-skip" href="#1-setup-wireless">
           Skip to content
         </a>
 </div>
@@ -107,8 +105,8 @@
 </li>
 <li class="md-tabs__item">
 <a class="md-tabs__link md-tabs__link--active" href="../../">
-        Blog
-      </a>
+      Blog
+    </a>
 </li>
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../../projects/">
@@ -125,6 +123,16 @@
 </nav>
 <main class="md-main" data-md-component="main">
 <div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
 <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
@@ -144,31 +152,38 @@
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2">
-        Blog
-        <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
 </label>
 <nav aria-label="Blog" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
-          Blog
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../">
-        Recent posts
-      </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_2">
-        Stm32
-        <span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
 </label>
-<nav aria-label="Stm32" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_2">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
 <span class="md-nav__icon md-icon"></span>
-          Stm32
-        </label>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../stm32/intro/">
@@ -176,13 +191,23 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/toolchain/">
-        Tools and Docs
+<a class="md-nav__link" href="../../stm32/prepare/">
+        Preparation
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/semihosting/">
-        Semihosting
+<a class="md-nav__link" href="../../stm32/tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/clock/">
+        Clock Tree
       </a>
 </li>
 <li class="md-nav__item">
@@ -191,8 +216,8 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/clock/">
-        Clock
+<a class="md-nav__link" href="../../stm32/semihosting/">
+        Semihosting
       </a>
 </li>
 <li class="md-nav__item">
@@ -201,28 +226,33 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/usart/">
-        USART
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/redirection/">
-        Redirection
-      </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="../../stm32/dma/">
         DMA
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/timers/">
-        Timer
+<a class="md-nav__link" href="../../stm32/swv/">
+        SWV
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/distance_us-100/">
-        US-100
+<a class="md-nav__link" href="../../stm32/add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/timer/">
+        Timers
       </a>
 </li>
 <li class="md-nav__item">
@@ -234,22 +264,76 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3">
-        Raspberry Pi
-        <span class="md-nav__icon md-icon"></span>
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
 </label>
 <nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
+<label class="md-nav__title" for="__nav_2_2">
 <span class="md-nav__icon md-icon"></span>
-          Raspberry Pi
-        </label>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Notes
-          <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Notes
+          </a>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
         Notes
@@ -261,125 +345,106 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#1-utilities">
-    1. Utilities
+<a class="md-nav__link" href="#1-setup-wireless">
+    1. Setup Wireless
   </a>
-<nav aria-label="1. Utilities" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#11-terminal-multiplexer">
-    1.1. Terminal multiplexer
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#12-cpu-usage">
-    1.2. CPU Usage
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#2-python-packages">
     2. Python packages
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-who-is-logged-on">
+    3. Who is logged on?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-save-power">
+    4. Save power
+  </a>
+<nav aria-label="4. Save power" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-turn-off-usb">
+    4.1. Turn off USB
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-turn-off-hdmi">
+    4.2. Turn off HDMI
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-throttle-cpu">
+    4.3. Throttle CPU
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-disable-wi-fi--bluetooth">
+    4.4. Disable Wi-Fi &amp; Bluetooth
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#45-disable-on-board-leds">
+    4.5. Disable on-board LEDs
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../backup_sdcard/">
-        Backup SDCard
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        C/C++
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../check_camera_i2c/">
-        Diagnostic Camera
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../compile_ffmpeg/">
-        Compile FFmpeg
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../resource_usage/">
-        Resource usage
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../setup_camera/">
-        Setup Camera
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../stream_ffmpeg_hls_dash/">
-        HLS/DASH Streaming
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../stream_picamera_mjpeg/">
-        MJPEG streaming
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../stream_picamera_h264/">
-        H264 streaming
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../setup_headless/">
-        Headless mode
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../setup_wifi_ap/">
-        Wifi Access Point
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../save_power/">
-        Save Power
-      </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_4">
-        Setup blog
-        <span class="md-nav__icon md-icon"></span>
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
 </label>
 <nav aria-label="Setup blog" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_4">
 <span class="md-nav__icon md-icon"></span>
-          Setup blog
-        </label>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../setup_blog/install_and_configure/">
-        Install and configure
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../setup_blog/markdown_syntax/">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
         Markdown syntax
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../setup_blog/mkdocs_plugins/">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
         MkDocs plugins
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../setup_blog/customize_theme/">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
         Customize theme
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../setup_blog/print_to_pdf/">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
         Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
       </a>
 </li>
 </ul>
@@ -401,275 +466,388 @@
 </ul>
 </nav>
 <div class="tag-cloud-nav">
-<br/>
-<br/>
-<br/>
-<div style="font-weight:700; font-size:.7rem; margin:0 0.6rem;">
-<label>Tag cloud</label>
-</div>
-<div style="padding: 0.4rem 0.6rem;">
-<div class="tag-cloud">
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">mjpeg
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">wifi
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">clock
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">semihosting
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkGoldenrod;">python
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">h264
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkRed;">stream
-            </span>
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOliveGreen;
+        ">debug</span>
 <sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">top
-            </span>
-<sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">hls
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkBlue;">notes
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">debug
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkCyan;">pi
-            </span>
-<sup class="tag-count">10</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">dash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">toolchain
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">distance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">redirect
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">pwm
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">sdcard
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">i2c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">pulse
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">access point
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">hardware accelerator
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">backup
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">timer
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">vcp
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">sensor
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">omx
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkGreen;">uart
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="font-size:1.5rem;color:DarkMagenta;">arm
-            </span>
-<sup class="tag-count">11</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">grep
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">interrupt
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkGreen;">picamera
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">awk
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">c++
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">jinja
-            </span>
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">hls</span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="font-size:1.5rem;color:DarkOrchid;">stm32
-            </span>
-<sup class="tag-count">11</sup>
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkGoldenrod;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">markdown
-            </span>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">semihosting</span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkTurquoise;">mkdocs
-            </span>
-<sup class="tag-count">4</sup>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkBlue;
+        ">pi</span>
+<sup class="tag-count">9</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">restore
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#power">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">power
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">gnuplot
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">dma
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkOrchid;">camera
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">v4l2
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">usart
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">headless
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">performance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkRed;">ffmpeg
-            </span>
-<sup class="tag-count">2</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">capture
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">bash
-            </span>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">css</span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">gpio
-            </span>
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">gpio</span>
 <sup class="tag-count">1</sup>
 </a>
-</div>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGreen;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateBlue;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkCyan;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkBlue;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkTurquoise;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkCyan;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkCyan;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateBlue;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkSlateGray;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkMagenta;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
 </div>
 </div>
 </div>
@@ -685,301 +863,439 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#1-utilities">
-    1. Utilities
+<a class="md-nav__link" href="#1-setup-wireless">
+    1. Setup Wireless
   </a>
-<nav aria-label="1. Utilities" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#11-terminal-multiplexer">
-    1.1. Terminal multiplexer
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#12-cpu-usage">
-    1.2. CPU Usage
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#2-python-packages">
     2. Python packages
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-who-is-logged-on">
+    3. Who is logged on?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-save-power">
+    4. Save power
+  </a>
+<nav aria-label="4. Save power" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-turn-off-usb">
+    4.1. Turn off USB
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-turn-off-hdmi">
+    4.2. Turn off HDMI
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-throttle-cpu">
+    4.3. Throttle CPU
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-disable-wi-fi--bluetooth">
+    4.4. Disable Wi-Fi &amp; Bluetooth
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#45-disable-on-board-leds">
+    4.5. Disable on-board LEDs
+  </a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 <div class="tag-cloud-toc">
-<br/>
-<br/>
-<br/>
-<div style="font-weight:700; font-size:.7rem; margin:0 0.6rem;">
-<label>Tag cloud</label>
-</div>
-<div style="padding: 0.4rem 0.6rem;">
-<div class="tag-cloud">
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">gnuplot
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">markdown
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">debug
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="font-size:0.6818181818181819rem;color:DarkCyan;">ffmpeg
-            </span>
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateBlue;
+        ">interrupt</span>
 <sup class="tag-count">2</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">h264
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">sdcard
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkTurquoise;">uart
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">awk
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">timer
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">interrupt
-            </span>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">material</span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">bash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">distance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrange;">restore
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">omx
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">dash
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">top
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#vcp">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">vcp
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateGray;">pwm
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">hardware accelerator
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">backup
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOliveGreen;">semihosting
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="font-size:1.4090909090909092rem;color:DarkCyan;">pi
-            </span>
-<sup class="tag-count">10</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">gpio
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">toolchain
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">pulse
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#power">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">power
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">sensor
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkSlateGray;">stream
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">mjpeg
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkCyan;">python
-            </span>
-<sup class="tag-count">5</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">c++
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#wifi">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">wifi
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkBlue;">picamera
-            </span>
-<sup class="tag-count">3</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">dma
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkRed;">grep
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="font-size:0.8636363636363636rem;color:DarkTurquoise;">mkdocs
-            </span>
-<sup class="tag-count">4</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">c
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkTurquoise;">i2c
-            </span>
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">bash</span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="font-size:0.9545454545454546rem;color:DarkSlateGray;">camera
-            </span>
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkViolet;
+        ">camera</span>
 <sup class="tag-count">5</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="font-size:0.7727272727272727rem;color:DarkTurquoise;">notes
-            </span>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkRed;
+        ">debug</span>
 <sup class="tag-count">3</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkMagenta;">hls
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGreen;">redirect
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkCyan;">performance
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkGoldenrod;">clock
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="font-size:1.5rem;color:DarkBlue;">stm32
-            </span>
-<sup class="tag-count">11</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkViolet;">v4l2
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">usart
-            </span>
-<sup class="tag-count">1</sup>
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#access point">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">access point
-            </span>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">c</span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkOrchid;">capture
-            </span>
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">capture</span>
 <sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="font-size:1.5rem;color:DarkViolet;">arm
-            </span>
-<sup class="tag-count">11</sup>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkSlateBlue;">jinja
-            </span>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">i2c</span>
 <sup class="tag-count">1</sup>
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="font-size:0.5909090909090909rem;color:DarkBlue;">headless
-            </span>
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">headless</span>
 <sup class="tag-count">1</sup>
 </a>
-</div>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkOrchid;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkOrchid;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkSlateGray;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkTurquoise;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkMagenta;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
 </div>
 </div>
 </div>
@@ -987,29 +1303,76 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<div class="page-cover">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
 <h1 class="page-title">Notes for Raspberry Pi</h1>
-<p>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="color:DarkMagenta;">
-                        #pi
+<p class="page-description">Tips, hints, and tricks when working on Raspberry Pi</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name">
+                        #notes
                     </span>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="color:DarkRed;">
-                        #notes
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name">
+                        #pi
                     </span>
 </a>
 </p>
 <p class="md-source-date">
-<hr class="print-only"/>
+<hr style="margin-bottom: .5em;"/>
 <small>
-                                
-                                    Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2021</span><br/>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-10 12:52:12</span>
 </small>
 </p>
 </div>
-<div class="toc print-only">
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
 <h2>Table of Content</h2>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -1018,32 +1381,66 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#1-utilities">
-    1. Utilities
+<a class="md-nav__link" href="#1-setup-wireless">
+    1. Setup Wireless
   </a>
-<nav aria-label="1. Utilities" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#11-terminal-multiplexer">
-    1.1. Terminal multiplexer
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#12-cpu-usage">
-    1.2. CPU Usage
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#2-python-packages">
     2. Python packages
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-who-is-logged-on">
+    3. Who is logged on?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-save-power">
+    4. Save power
+  </a>
+<nav aria-label="4. Save power" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-turn-off-usb">
+    4.1. Turn off USB
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-turn-off-hdmi">
+    4.2. Turn off HDMI
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-throttle-cpu">
+    4.3. Throttle CPU
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-disable-wi-fi--bluetooth">
+    4.4. Disable Wi-Fi &amp; Bluetooth
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#45-disable-on-board-leds">
+    4.5. Disable on-board LEDs
+  </a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\pi\notes\pi__Notes.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
+<style>
+    .md-typeset h2,
+    .md-typeset h3 {
+        font-size: 0; /* hide header but still scroll to its anchor */
+    }
+    .md-typeset .content {
+        margin-left: 3em;
+    }
+</style>
 <div class="screen-only">
 <p>Search<sup id="fnref:mdf"><a class="footnote-ref" href="#fn:mdf">1</a></sup> for a package distributed by Debian:</p>
 <form action="https://packages.debian.org/search" role="search" target="_blank">
@@ -1052,63 +1449,181 @@
 <button class="md-button" type="submit">Search</button>
 </div>
 </form>
+<p> </p>
 </div>
-<div class="new-page"></div>
-<h2 id="1-utilities">1. Utilities<a class="headerlink" href="#1-utilities" title="Permanent link">⚓︎</a></h2>
-<h3 id="11-terminal-multiplexer">1.1. Terminal multiplexer<a class="headerlink" href="#11-terminal-multiplexer" title="Permanent link">⚓︎</a></h3>
-<p><code>screen</code> is a terminal multiplexer program that allows managing several Terminal sessions from with the single window. Start a new session and detach it to leave it running in background even the terminal is ended (like disconnected <code>ssh</code> session), then resume that session later.</p>
-<blockquote>
-<p>Similar to <code>tmux</code></p>
-</blockquote>
-<h3 id="12-cpu-usage">1.2. CPU Usage<a class="headerlink" href="#12-cpu-usage" title="Permanent link">⚓︎</a></h3>
-<p><code>top</code> shows the average CPU Usage in an interval of time, such as 1 second.</p>
-<p><code>ps</code> shows the average CPU Usage of a process from when it has started.</p>
-<p><code>tload</code> shows  the CPU Usage history in simple graph in terminal.</p>
+<h2 id="1-setup-wireless">1. Setup Wireless<a class="headerlink" href="#1-setup-wireless" title="Permanent link">⚓︎</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Setup Wireless</p>
+</div>
+<div class="content">
+<p>Refer to the official guide at <a href="https://www.raspberrypi.org/documentation/configuration/wireless/">Raspberry Pi Configuration</a>.</p>
+<p>Note that there are two type of access points:</p>
+<dl>
+<dt><a href="https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md"><strong>Routed</strong> wireless access point</a></dt>
+<dd>
+<p>Create a new local network, which is not connected any other existing network</p>
+<p><div markdown="1" style="font-size:small;">
+<div class="highlight"><pre><span></span><code>                                        +- RPi -------+
+<span class="hll">                                    +---+ 10.10.0.2   |          +- Laptop ----+
+</span>                                    |   |     WLAN AP +-)))  (((-+ WLAN Client |
+<span class="hll">                                    |   | 192.168.4.1 |          | 192.168.4.2 |
+</span>                                    |   +-------------+          +-------------+
+                +- Router ----+     |
+                | Firewall    |     |   +- PC#2 ------+
+(Internet)---WAN-+ DHCP server +-LAN-+---+ 10.10.0.3   |
+                |   10.10.0.1 |     |   +-------------+
+                +-------------+     |
+                                    |   +- PC#1 ------+
+                                    +---+ 10.10.0.4   |
+                                        +-------------+
+</code></pre></div>
+</div></p>
+</dd>
+<dt><a href="https://www.raspberrypi.org/documentation/configuration/wireless/access-point-bridged.md"><strong>Bridged</strong> wireless access point</a></dt>
+<dd>
+<p>Extend an existing Ethernet network to wireless computers and devices</p>
+<p><div markdown="1" style="font-size:small;">
+<div class="highlight"><pre><span></span><code>                                        +- RPi -------+
+<span class="hll">                                    +---+ 10.10.0.2   |          +- Laptop ----+
+</span>                                    |   |     WLAN AP +-)))  (((-+ WLAN Client |
+<span class="hll">                                    |   |  Bridge     |          | 10.10.0.5   |
+</span>                                    |   +-------------+          +-------------+
+                +- Router ----+     |
+                | Firewall    |     |   +- PC#2 ------+
+(Internet)---WAN-+ DHCP server +-LAN-+---+ 10.10.0.3   |
+                |   10.10.0.1 |     |   +-------------+
+                +-------------+     |
+                                    |   +- PC#1 ------+
+                                    +---+ 10.10.0.4   |
+                                        +-------------+
+</code></pre></div>
+</div></p>
+</dd>
+</dl>
+</div>
 <h2 id="2-python-packages">2. Python packages<a class="headerlink" href="#2-python-packages" title="Permanent link">⚓︎</a></h2>
-<p>Most packages can be installed using <code>sudo apt-get install</code> followed by <code>python-&lt;packagename&gt;</code> (for Python2) or <code>python3-&lt;packagename&gt;</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Python packages</p>
+</div>
+<div class="content">
+<p>Most packages can be installed using <code>sudo apt-get install</code> followed by <code>python-&lt;packagename&gt;</code> <span class="critic comment">for Python2</span> or <code>python3-&lt;packagename&gt;</code>.</p>
 <p>In some cases, a package is not available on the OS package manager, so install that packages via <code>pip</code> from python package manager.</p>
 <p>Install <code>pip</code> first:</p>
 <div class="highlight"><pre><span></span><code>sudo apt install python-pip python3-pip
 </code></pre></div>
-<p>Then install the target package. </p>
-<p>For example:</p>
+<p>Then install the target package. For example:</p>
 <div class="highlight"><pre><span></span><code>sudo apt install python-ws4py python3-ws4py
 </code></pre></div>
 <p>is equivalent to:</p>
 <div class="highlight"><pre><span></span><code>pip install ws4py <span class="c1"># python2 package</span>
 pip3 install ws4py
 </code></pre></div>
+</div>
+<h2 id="3-who-is-logged-on">3. Who is logged on?<a class="headerlink" href="#3-who-is-logged-on" title="Permanent link">⚓︎</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Who is logged on?</p>
+</div>
+<div class="content">
+<p>Use <code>w</code> command from <code>procps</code> package.</p>
+<div class="highlight"><pre><span></span><code>    <span class="m">08</span>:53:52 up  <span class="m">2</span>:21,  <span class="m">2</span> users,  load average: <span class="m">0</span>.02, <span class="m">0</span>.06, <span class="m">0</span>.07
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+pi       pts/0    fe80::1936:b4d4: <span class="m">06</span>:34    <span class="m">0</span>.00s  <span class="m">1</span>.54s  <span class="m">0</span>.05s w
+</code></pre></div>
+</div>
+<h2 id="4-save-power">4. Save power<a class="headerlink" href="#4-save-power" title="Permanent link">⚓︎</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Save power</p>
+</div>
+<div class="content">
+<p>Save power when running on battery by turning off unused peripherals, or features.</p>
+<h3 id="41-turn-off-usb">4.1. Turn off USB<a class="headerlink" href="#41-turn-off-usb" title="Permanent link">⚓︎</a></h3>
+<p><strong>Turn OFF the USB chip</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">'1-1'</span> <span class="p">|</span>sudo tee /sys/bus/usb/drivers/usb/unbind
+</code></pre></div>
+<p>Turn ON the USB chip:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">'1-1'</span> <span class="p">|</span>sudo tee /sys/bus/usb/drivers/usb/bind
+</code></pre></div>
+<h3 id="42-turn-off-hdmi">4.2. Turn off HDMI<a class="headerlink" href="#42-turn-off-hdmi" title="Permanent link">⚓︎</a></h3>
+<p><strong>Turn OFF the HDMI output</strong>:</p>
+<div class="highlight"><pre><span></span><code>sudo /opt/vc/bin/tvservice -o
+</code></pre></div>
+<p>Turn ON the HDMI output:</p>
+<div class="highlight"><pre><span></span><code>sudo /opt/vc/bin/tvservice -p
+</code></pre></div>
+<h3 id="43-throttle-cpu">4.3. Throttle CPU<a class="headerlink" href="#43-throttle-cpu" title="Permanent link">⚓︎</a></h3>
+<p><strong>Reduce the clock</strong> of the core by changing some parameters in the <code>/boot/config.txt</code> file:</p>
+<div class="file"></div>
+<p>/boot/config.txt</p>
+<div class="highlight"><pre><span></span><code><span class="na">arm_freq_min</span><span class="o">=</span><span class="s">250</span>
+<span class="na">core_freq_min</span><span class="o">=</span><span class="s">100</span>
+<span class="na">sdram_freq_min</span><span class="o">=</span><span class="s">150</span>
+<span class="na">over_voltage_min</span><span class="o">=</span><span class="s">0</span>
+</code></pre></div>
+<h3 id="44-disable-wi-fi--bluetooth">4.4. Disable Wi-Fi &amp; Bluetooth<a class="headerlink" href="#44-disable-wi-fi--bluetooth" title="Permanent link">⚓︎</a></h3>
+<p><strong>Disable Wi-Fi &amp; Bluetooth</strong></p>
+<p>Starting from Raspberry Pi 3, WiFi and Bluetooth are added on hardware, so Raspbian has its method to control these signals in <code>/boot/config.txt</code> file:</p>
+<div class="file"></div>
+<p>/boot/config.txt</p>
+<div class="highlight"><pre><span></span><code><span class="na">dtoverlay</span><span class="o">=</span><span class="s">pi3-disable-wifi</span>
+<span class="na">dtoverlay</span><span class="o">=</span><span class="s">pi3-disable-bt</span>
+</code></pre></div>
+<div class="row">
+<div class="col w5"></div>
+<div class="col w95">
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>It’s correct to use the word <code>pi3</code> in the params’s value, for other version of RPi.</p>
+</div>
+<div class="admonition hint nt">
+<p class="admonition-title"> </p>
+<p>The <code>rfkill</code> command can be used to soft-block the wireless connections:</p>
+<div class="highlight"><pre><span></span><code>rfkill list              <span class="c1"># displays the state of the modules</span>
+rfkill block wifi
+rfkill block bluetooth
+</code></pre></div>
+<p>but this does not completely turn off the hardware of the WiFi and the Bluetooth module. They will still draw a little power in the background.</p>
+</div>
+</div>
+</div>
+<h3 id="45-disable-on-board-leds">4.5. Disable on-board LEDs<a class="headerlink" href="#45-disable-on-board-leds" title="Permanent link">⚓︎</a></h3>
+<p><strong>Disable on-board LEDs</strong></p>
+<p>Add below params to the <code>/boot/config.txt</code> file:</p>
+<div class="file"></div>
+<p>/boot/config.txt</p>
+<div class="highlight"><pre><span></span><code><span class="na">dtparam</span><span class="o">=</span><span class="s">act_led_trigger=none</span>
+<span class="na">dtparam</span><span class="o">=</span><span class="s">act_led_activelow=on</span>
+</code></pre></div>
+</div>
 <div class="footnote">
-<hr/>
+<hr>
 <ol>
 <li id="fn:mdf">
 <p>Add a form in markdown:</p>
 <p><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">role</span><span class="o">=</span><span class="s">"search"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_blank"</span> <span class="na">action</span><span class="o">=</span><span class="s">"https://packages.debian.org/search"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"search"</span> <span class="na">id</span><span class="o">=</span><span class="s">"mySearch"</span> <span class="na">name</span><span class="o">=</span><span class="s">"keywords"</span>
         <span class="na">placeholder</span><span class="o">=</span><span class="s">"Enter package name..."</span>
         <span class="na">aria-label</span><span class="o">=</span><span class="s">"Search for a package name"</span>
         <span class="na">style</span><span class="o">=</span><span class="s">"border:1px solid gray; padding: .25em .5em;"</span> <span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span> <span class="na">class</span><span class="o">=</span><span class="s">"md-button"</span><span class="p">&gt;</span>Search<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </code></pre></div> <a class="footnote-backref" href="#fnref:mdf" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 </ol>
-</div>
-<h2 id="__comments">Comments</h2>
-<div id="disqus_thread"></div>
-<script>var disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/pi/notes/",this.page.identifier="blog/pi/notes/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//vuquangtrong-github-io.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+</hr></div>
+<div data-value="https://www.codeinsideout.com/blog/pi/notes/" id="page_url"></div>
+<div data-value="blog/pi/notes/" id="page_identifier"></div>
 </article>
 </div>
 </div>
-<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
 </a>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a class="md-footer__link md-footer__link--prev" href="../../stm32/notes/" rel="prev">
+<a class="md-footer__link md-footer__link--prev" href="../check-camera-i2c/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -1117,17 +1632,17 @@ pip3 install ws4py
 <span class="md-footer__direction">
                 Previous
               </span>
-              Notes
+              Diagnostic Camera
             </div>
 </div>
 </a>
-<a class="md-footer__link md-footer__link--next" href="../backup_sdcard/" rel="next">
+<a class="md-footer__link md-footer__link--next" href="../../c-cpp/notes/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Backup SDCard
+              C/C++
             </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -1147,23 +1662,23 @@ pip3 install ws4py
           Material for MkDocs
         </a>
 </div>
-<div style="color: var(--md-footer-fg-color--lighter);">
-        using
-        <a href="https://github.com/vuquangtrong/mkdocs-material-blog" rel="noopener" target="_blank">
-            MkDocs Material Blog
-        </a>
-        theme
-    </div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
 </div>
 </div>
 <div class="md-footer-social">
-<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="github.com">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
 <svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
 </a>
-<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="facebook.com">
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
 <svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
 </a>
-<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="www.linkedin.com">
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
 </a>
 </div>
@@ -1174,8 +1689,9 @@ pip3 install ws4py
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
-<script src="../../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
 <script src="../../../assets/extra.js"></script>
 </body>
 </html>

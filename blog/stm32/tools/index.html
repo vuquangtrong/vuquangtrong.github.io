@@ -1,0 +1,2104 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A tool-chain is a set of programs which are used to develope, compile, debug and monitor an application. Setting up a complete toolchain can help to speed up the development, as they are configured to work together, mainly in automated scripts or having shared data format." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/stm32/tools/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
+<title>Tools to develop and debug on STM32 - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<meta content="website" property="og:type">
+<meta content="Tools to develop and debug on STM32 - Code Inside Out" property="og:title">
+<meta content="A tool-chain is a set of programs which are used to develope, compile, debug and monitor an application. Setting up a complete toolchain can help to speed up the development, as they are configured to work together, mainly in automated scripts or having shared data format." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/stm32/tools/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-stm32-ecosystem">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Toolchain
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Toolchain
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Toolchain
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-stm32-ecosystem">
+    1. STM32 Ecosystem
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stmcubeide">
+    2. STMCubeIDE
+  </a>
+<nav aria-label="2. STMCubeIDE" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-installation">
+    2.1. Installation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-create-a-workspace">
+    2.2. Create a workspace
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-create-a-project">
+    2.3. Create a project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-stm32cubemx">
+    2.4. STM32CubeMX
+  </a>
+<nav aria-label="2.4. STM32CubeMX" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#241-pinout-configuration">
+    2.4.1. Pinout Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#242-clock-configuration">
+    2.4.2. Clock Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#243-project-manager">
+    2.4.3. Project Manager
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#244-code-generation">
+    2.4.4. Code generation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#25-add-user-code">
+    2.5. Add user code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#26-compiler-options">
+    2.6. Compiler options
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#27-build-project">
+    2.7. Build Project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#28-setup-debugger">
+    2.8. Setup debugger
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#29-run-mode">
+    2.9. Run Mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#210-debug-mode">
+    2.10. Debug Mode
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-stm32cubeprogrammer">
+    3. STM32CubeProgrammer
+  </a>
+<nav aria-label="3. STM32CubeProgrammer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-target-connection">
+    3.1. Target connection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-erase-and-program">
+    3.2. Erase and Program
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-other-features">
+    3.3. Other features
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-stm32cubemonitor">
+    4. STM32CubeMonitor
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-other-tools">
+    5. Other tools
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        C/C++
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkViolet;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkOrchid;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkCyan;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkGoldenrod;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkBlue;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkBlue;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkGoldenrod;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkCyan;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkOrchid;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-stm32-ecosystem">
+    1. STM32 Ecosystem
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stmcubeide">
+    2. STMCubeIDE
+  </a>
+<nav aria-label="2. STMCubeIDE" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-installation">
+    2.1. Installation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-create-a-workspace">
+    2.2. Create a workspace
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-create-a-project">
+    2.3. Create a project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-stm32cubemx">
+    2.4. STM32CubeMX
+  </a>
+<nav aria-label="2.4. STM32CubeMX" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#241-pinout-configuration">
+    2.4.1. Pinout Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#242-clock-configuration">
+    2.4.2. Clock Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#243-project-manager">
+    2.4.3. Project Manager
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#244-code-generation">
+    2.4.4. Code generation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#25-add-user-code">
+    2.5. Add user code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#26-compiler-options">
+    2.6. Compiler options
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#27-build-project">
+    2.7. Build Project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#28-setup-debugger">
+    2.8. Setup debugger
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#29-run-mode">
+    2.9. Run Mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#210-debug-mode">
+    2.10. Debug Mode
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-stm32cubeprogrammer">
+    3. STM32CubeProgrammer
+  </a>
+<nav aria-label="3. STM32CubeProgrammer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-target-connection">
+    3.1. Target connection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-erase-and-program">
+    3.2. Erase and Program
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-other-features">
+    3.3. Other features
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-stm32cubemonitor">
+    4. STM32CubeMonitor
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-other-tools">
+    5. Other tools
+  </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkSlateGray;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateBlue;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkCyan;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkCyan;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkTurquoise;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkCyan;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkTurquoise;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkMagenta;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkOliveGreen;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkRed;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">Tools to develop and debug on STM32</h1>
+<p class="page-description">A tool-chain is a set of programs which are used to develope, compile, debug and monitor an application. Setting up a complete toolchain can help to speed up the development, as they are configured to work together, mainly in automated scripts or having shared data format.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name">
+                        #arm
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name">
+                        #stm32
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name">
+                        #toolchain
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-03 17:13:17</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-stm32-ecosystem">
+    1. STM32 Ecosystem
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-stmcubeide">
+    2. STMCubeIDE
+  </a>
+<nav aria-label="2. STMCubeIDE" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-installation">
+    2.1. Installation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-create-a-workspace">
+    2.2. Create a workspace
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-create-a-project">
+    2.3. Create a project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-stm32cubemx">
+    2.4. STM32CubeMX
+  </a>
+<nav aria-label="2.4. STM32CubeMX" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#241-pinout-configuration">
+    2.4.1. Pinout Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#242-clock-configuration">
+    2.4.2. Clock Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#243-project-manager">
+    2.4.3. Project Manager
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#244-code-generation">
+    2.4.4. Code generation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#25-add-user-code">
+    2.5. Add user code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#26-compiler-options">
+    2.6. Compiler options
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#27-build-project">
+    2.7. Build Project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#28-setup-debugger">
+    2.8. Setup debugger
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#29-run-mode">
+    2.9. Run Mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#210-debug-mode">
+    2.10. Debug Mode
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-stm32cubeprogrammer">
+    3. STM32CubeProgrammer
+  </a>
+<nav aria-label="3. STM32CubeProgrammer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-target-connection">
+    3.1. Target connection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-erase-and-program">
+    3.2. Erase and Program
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-other-features">
+    3.3. Other features
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-stm32cubemonitor">
+    4. STM32CubeMonitor
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-other-tools">
+    5. Other tools
+  </a>
+</li>
+</ul>
+</nav>
+</div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\stm32\tools\stm32__Toolchain.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
+<h2 id="1-stm32-ecosystem">1. STM32 Ecosystem<a class="headerlink" href="#1-stm32-ecosystem" title="Permanent link">⚓︎</a></h2>
+<p>A tool-chain is a set of programming tools that allow developers to:</p>
+<ol>
+<li>Configure the settings on the target MCU</li>
+<li>Write code and navigate inside source files of the project</li>
+<li>Inspect the code to show additional information about variables, function definitions, etc.</li>
+<li>Compile the source code to an executable application</li>
+<li>Program the target MCU</li>
+<li>Debug the application running on the target MCU</li>
+<li>Monitor the application on the target MCU</li>
+</ol>
+<p>The STM32Cube ecosystem is a complete software solution for STM32 microcontrollers and microprocessors. It has a complete toolchain and extended packages to well support developers on STM32 MCUs.</p>
+<p>
+<figure><img src="stm32_ecosystem.png"/><figcaption>STM32 Ecosystem</figcaption>
+</figure>
+</p>
+<p><a href="https://www.st.com/en/development-tools/stm32cubemx.html"><strong>STM32CubeMX</strong></a>, a configuration tool for any STM32 device. This easy-to-use graphical user interface generates initialization C code for Cortex-M cores and generates the Linux device tree source for Cortex-A cores.</p>
+<p><a href="https://www.st.com/en/development-tools/stm32cubeide.html"><strong>STM32CubeIDE</strong></a>, an Integrated Development Environment. Based on open-source solutions like Eclipse or the GNU C/C++ toolchain, this IDE includes compilation reporting features and advanced debug features. It also integrate additional features present in other tools from the ecosystem, such as the HW and SW initialization and code generation from STM32CubeMX. This software includes:</p>
+<ul>
+<li>
+<p><a href="https://www.eclipse.org/">Eclipse IDE</a> - an open source code editor and manager which supports many plugins such as C/C++ Development Platform, GCC Cross Compiler, GDB Hardware Debugger, Make and build scripts.</p>
+</li>
+<li>
+<p><a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm">GNU ARM Cross-compiler</a> with ST patch for STM32 MCUs - a compiler that converts code to executable and linkable file (.elf) or binary file (.bin, .hex).</p>
+</li>
+<li>
+<p><a href="https://www.gnu.org/software/gdb/">GDB</a> for inspecting, debugging the target application.</p>
+</li>
+</ul>
+<p><a href="https://www.st.com/en/development-tools/stm32cubeprog.html"><strong>STM32CubeProgrammer</strong></a>, a programming tool. It provides an easy-to-use and efficient environment for reading, writing and verifying devices and external memories via a wide variety of available communication media (JTAG, SWD, UART, USB DFU, I2C, SPI, CAN, etc.).</p>
+<p><a href="https://www.st.com/content/st_com/en/ecosystems/stm32cube-ecosystem.html#DataTables_Table_0"><strong>STM32CubeMonitor</strong></a>, a monitoring tool. Powerful monitoring tools that help developers fine-tune the behavior and performance of their applications in real time.</p>
+<p><a href="https://www.st.com/en/embedded-software/stm32cube-mcu-mpu-packages.html"><strong>STM32Cube MCU and MPU packages</strong></a>, dedicated to each STM32 series. Packages offer all the required embedded software bricks to operate the available set of STM32 peripherals. They include drivers (HAL, low-layer, etc.), middleware, and lots of example code used in a wide variety of real-world use cases.</p>
+<p><a href="https://www.st.com/en/embedded-software/stm32cube-expansion-packages.html"><strong>STM32Cube expansion packages</strong></a>, for application-oriented solutions. Complementing and expanding the STM32Cube MCU Package offer with additional embedded software bricks, STM32 expansion packages come either from ST or approved partners to create an extensive and scalable embedded software offer around the STM32.</p>
+<p>
+<figure><img src="stm32_dev_tools.png"/><figcaption>4 steps of an interactive development process</figcaption>
+</figure>
+</p>
+<h2 id="2-stmcubeide">2. STMCubeIDE<a class="headerlink" href="#2-stmcubeide" title="Permanent link">⚓︎</a></h2>
+<p>STM32CubeIDE is an advanced C/C++ development platform with peripheral configuration, code generation, code compilation, and debug features for STM32 microcontrollers and microprocessors. It is based on the Eclipse®/CDT framework and GCC toolchain for the development, and GDB for the debugging. It allows the integration of the hundreds of existing plugins that complete the features of the Eclipse® IDE.</p>
+<p>This tool includes the STM32CubeMX for code generation. At any time during the development, the user can return to the initialization and configuration of the peripherals or middleware and regenerate the initialization code with no impact on the user code written in the user blocks.</p>
+<p>STM32CubeIDE includes build and stack analyzers that provide the user with useful information about project status and memory requirements.</p>
+<p>STM32CubeIDE also includes standard and advanced debugging features including views of CPU core registers, memories, and peripheral registers, as well as live variable watch, Serial Wire Viewer interface, or fault analyzer.</p>
+<blockquote>
+<p>Other IDEs that support ARM Cortex:</p>
+<ul>
+<li>ARM®, Atollic TrueSTUDIO®: was bought by ST, included in STM32CubeIDE</li>
+<li>Keil™, MDK-ARM™: only free for STM32F0 and STM32L0 processes</li>
+<li>Altium®, TASKING™ VX-toolset: paid license</li>
+<li>IAR™, EWARM (IAR Embedded Workbench®): paid license</li>
+</ul>
+</blockquote>
+<h3 id="21-installation">2.1. Installation<a class="headerlink" href="#21-installation" title="Permanent link">⚓︎</a></h3>
+<p><a class="md-button" href="https://www.st.com/en/development-tools/stm32cubeide.html"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> Download STM32CubeIDE</a>
+<a class="md-button" href="https://www.st.com/resource/en/user_manual/dm00629856-stm32cubeide-user-guide-stmicroelectronics.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> STM32CubeIDE User Manual</a></p>
+<p>During the installation, please be suare to install ST-LINK and SEGGER J-Link drivers.</p>
+<h3 id="22-create-a-workspace">2.2. Create a workspace<a class="headerlink" href="#22-create-a-workspace" title="Permanent link">⚓︎</a></h3>
+<p>When start the program, it will ask to select a directory as a workspace - the location to save projects. Consider to make new workspaces for different big projects.</p>
+<p>
+<figure class="w70"><img src="ide_create_workspace.png"/><figcaption>Select a workspace</figcaption></figure>
+</p>
+<p>Each workspace has its own <strong>Preferences</strong> settings under the <strong>Windows</strong> menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Some personal settings</p>
+<p>Due to the generated code from CubeMX is 2-space tab width, it is better to configure the Text Editor to adapt with the tab width behavior in <strong>General</strong> → <strong>Editor</strong> → <strong>Text Editor</strong>:</p>
+<ul>
+<li>Displayed tab width: <strong>2</strong></li>
+<li>Insert spaces for tabs: <strong>Checked</strong><ul>
+<li>Remove multiple spaces on backspace/delete: <strong>Checked</strong></li>
+</ul>
+</li>
+</ul>
+<p>There are some options for <strong>Code Analysis</strong> under the <strong>C/C++</strong> → <strong>Build</strong>. I recommended to enable some check for <strong>Potential Programming Problems</strong>:</p>
+<ul>
+<li>Assignment in condition <code class="highlight"><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="p">)</span></code></li>
+<li>No return in a function which is declared to return a value <code class="highlight"><span class="kt">int</span> <span class="nf">func</span><span class="p">(){}</span></code></li>
+<li>Return without value <code>int func(){ return;}</code></li>
+<li>Return the address of a local variable <code>int* func(){int a; return &amp;a;}</code></li>
+<li>Virtual method call in constructor/ destructor</li>
+</ul>
+<p>Next is the formatting style under the option <strong>C/C++</strong> →  <strong>Code Style</strong> → <strong>Formatter</strong>:</p>
+<ul>
+<li>Create a new profile from K&amp;R</li>
+<li>In the <strong>Indentation</strong>, change Tab Policy to Space Only; then set Indentation size and Tab size both to 2.</li>
+</ul>
+<p>Finally, it should increase the buffer for terminals in <strong>Terminal</strong> option to 1000 or more.</p>
+</div>
+<h3 id="23-create-a-project">2.3. Create a project<a class="headerlink" href="#23-create-a-project" title="Permanent link">⚓︎</a></h3>
+<p>It is recommended to start a new project with STM32CubeIDE as it will automatically configure the project for the selected target processor. When start a new STM32 project, IDE shows up the <em>Device Finder</em> screen first. There are options to select the target MCU/MPU by name, board, example, and cross-reference.</p>
+<div class="admonition info">
+<p class="admonition-title">The first project</p>
+<p>I am using a <strong> STM32F0-Discovery board</strong> (STM32F051R8) to make an example project for this post. This project does not require any knowledge about the target microprocessor, as it will be written like a normal C application.</p>
+</div>
+<p>
+<figure><img src="ide_select_target.png"/><figcaption>Select the target MCU by name</figcaption>
+</figure>
+</p>
+<p>After selecting the microprocessor, it’s time to name the project, and select the <em>STM32Cube MCU packages</em> version for the selected target. In this example, it is <em class="noem">STM32Cube FW F0 v1.11.2</em>.</p>
+<p>
+<figure><img src="ide_start_project.png"/><figcaption>Set name and select firmware package for a new project</figcaption>
+</figure>
+</p>
+<p>Press on Finish then IDE will run a screen named <em>Device Configuration Tool</em> from the CubeMX tool, in there, it’s easy to enable any supported features in graphical mode. If the selected target is a development board, this tool will ask to use a default system config for the target board - usually including ST-Link pins, on-board buttons, LEDs, USB connect.</p>
+<h3 id="24-stm32cubemx">2.4. STM32CubeMX<a class="headerlink" href="#24-stm32cubemx" title="Permanent link">⚓︎</a></h3>
+<p>STM32CubeMX is a graphical tool that allows a very easy configuration of STM32 microcontrollers and microprocessors, as well as the generation of the corresponding initialization C code for the Arm® Cortex®-M cores.</p>
+<p><a class="md-button" href="https://www.st.com/resource/en/user_manual/dm00104712-stm32cubemx-for-stm32-configuration-and-initialization-c-code-generation-stmicroelectronics.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> STM32CubeMX User Manual</a></p>
+<p>STM32CubeMX allows the user to create, save and load previously saved projects. MCU configuration <code>.ioc</code> file is saved in the project folder, and user can open it in CubeMX for editing.</p>
+<h4 id="241-pinout-configuration">2.4.1. Pinout Configuration<a class="headerlink" href="#241-pinout-configuration" title="Permanent link">⚓︎</a></h4>
+<p>This tab shows available <em>Components</em> in categories or in A-Z list. Select on a component will show its <em>Configuration</em> screen.</p>
+<p>The large <em>Pinout</em> view show a graphic representation of the pin assignment. Left-click to select the function, and Right-click to do extra actions such as assigning a custom name.</p>
+<p>
+<figure><img src="ide_pinout_config.png"/><figcaption>The Pinout config screen</figcaption>
+</figure>
+</p>
+<h4 id="242-clock-configuration">2.4.2. Clock Configuration<a class="headerlink" href="#242-clock-configuration" title="Permanent link">⚓︎</a></h4>
+<p>This tab provides a schematic overview of the clock paths, clock sources, dividers, and multipliers. Drop-down menus and buttons can be used to modify the actual clock tree configuration, to meet the application requirements.</p>
+<p>IDE has ability to automatically calculate multipliers and dividers to provide requested frequency, user can set a desired frequency in the clock node, and press enter, then IDE will re-configure the PLL, pre-scaler. The frequency on each node can be locked via the right-click menu.</p>
+<p>
+<figure><img src="ide_clock_config.png"/><figcaption>The Clock config screen</figcaption>
+</figure>
+</p>
+<h4 id="243-project-manager">2.4.3. Project Manager<a class="headerlink" href="#243-project-manager" title="Permanent link">⚓︎</a></h4>
+<p>This tab provides information about general project setting: to specify the project name, location, toolchain, and firmware version. It also has configs for code generation options such as the location of peripheral initialization code, library copy/link options, and to select templates for customized
+code.</p>
+<p>
+<figure><img src="ide_project_config.png"/><figcaption>The Project config view</figcaption>
+</figure>
+</p>
+<h4 id="244-code-generation">2.4.4. Code generation<a class="headerlink" href="#244-code-generation" title="Permanent link">⚓︎</a></h4>
+<p>After configuring pins, save the settings first and then start generating code. Manually request to generate code by pressing <code>Alt + K</code> or choosing menu <strong>Project</strong> → <strong>Generate Code</strong>. The tool will create sub-folders and add necessary files into project. The general file structure is:</p>
+<div class="row">
+<div class="col" style="width:30%"></div>
+<div class="col">
+<div class="highlight"><pre><span></span><code>└───Core
+│ ├───Inc
+│ ├───Src
+│ └───Startup
+└───Drivers
+└───CMSIS
+│ └───Device
+│ │ └───ST
+│ │ └───STM32F0xx
+│ │ └───Include
+│ │ └───Source
+│ │ └───Templates
+│ └───Include
+└───STM32F0xx_HAL_Driver
+└───Inc
+│ └───Legacy
+└───Src
+</code></pre></div>
+</div>
+<div class="col" style="width:30%"></div>
+</div>
+<p>When chosen to use a Firmware Library in the project, IDE automatically uses ST Hardware Abstract Layer (HAL) library as the main way of controlling the processor and peripherals. HAL also makes use of Cortex Microcontroller Software Interface Standard (CMSIS) library to access processor’s registers. In the Project Manager tab, it can change to use Low-Level (LL) library instead of HAL.</p>
+<p>Code dependency starts from the <code>main.h</code> source file. This file includes HAL files which eventually includes CMSIS files. The <code>main</code> function is called from the startup file <code>startup_*.s</code>.</p>
+<p>
+<figure><img src="code_dependency.png"/><figcaption>Code dependency</figcaption>
+</figure>
+</p>
+<p>A HAL driver includes the following set of files:</p>
+<!-- prettier-ignore-start -->
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stm32f0xx_hal.h/.c</code></td>
+<td>This file is used for HAL initialization and contains DBGMCU, Remap and Time Delay based on SysTick APIs. This also include <code>stm32f0xx_hal_def.h</code>.</td>
+</tr>
+<tr>
+<td><code>stm32f0xx_hal_def.h</code></td>
+<td>Common HAL resources such as common define statements, enumerations, structures and macros. This includes CMSIS headers.</td>
+</tr>
+<tr>
+<td><code>stm32f0xx_hal_ppp.h/.c</code></td>
+<td>Main peripheral/module driver file. It includes the APIs that are common to all STM32 devices, example:<br/><code>stm32f0xx_hal_adc.c</code>, <code>stm32f0xx_hal_irda.c</code></td>
+</tr>
+<tr>
+<td><code>stm32f0xx_hal_ppp_ex.h/.c</code></td>
+<td>Extension file of a peripheral/module driver. It includes the specific APIs for a given part number or family, as well as the newly defined APIs that overwrite the default generic APIs if the internal process is implemented in different way, for example:<br/><code>stm32f0xx_hal_adc_ex.c</code>, <code>stm32f0xx_hal_flash_ex.c</code>.</td>
+</tr>
+</tbody>
+</table>
+<!-- prettier-ignore-end -->
+<p>The minimum files required to build an application using the HAL are listed in the table below:</p>
+<!-- prettier-ignore-start -->
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startup_stm32f0xx.s</code></td>
+<td>Toolchain specific file that contains reset handler and exception vectors.  For some toolchains, it allows adapting the stack/heap size to fit the application requirements</td>
+</tr>
+<tr>
+<td><code>system_stm32f0xx.c</code></td>
+<td>This file contains <code>SystemInit()</code> which is called at startup just after reset and before branching to the main program. It does not configure the system clock at startup (contrary to the standard library).This is to be done using the HAL APIs in the user files. It allows relocating the vector table in internal SRAM.</td>
+</tr>
+<tr>
+<td><code>stm32f0xx_hal_conf.h</code></td>
+<td>This file allows the user to customize the HAL drivers for a specific application. It is not mandatory to modify this configuration. The application can use the default configuration without any modification. This call to STM32F0 HAL headers.</td>
+</tr>
+<tr>
+<td><code>stm32f0xx_hal_msp.c</code></td>
+<td>This file contains the MSP initialization and de-initialization (main routine and callbacks) of the peripheral used in the user application.</td>
+</tr>
+<tr>
+<td><code>stm32f0xx_it.h/.c</code></td>
+<td>This file contains the exceptions handler and peripherals interrupt service routine, and calls <code>HAL_IncTick()</code> at regular time intervals to increment a local variable (declared in <code>stm32f0xx_hal.c</code>) used as HAL timebase. By default, this function is called each <em>1ms</em> in Systick ISR.The <code>PPP_IRQHandler()</code> routine must call <code>HAL_PPP_IRQHandler()</code> if an interrupt based process is used within the application.</td>
+</tr>
+<tr>
+<td><code>main.h/.c</code></td>
+<td>This file contains the main program routine, mainly:<br/>• call to <code>HAL_Init()</code><br/>• set system clock configuration<br/>• declare peripheral HAL initialization<br/>• user application code.</td>
+</tr>
+</tbody>
+</table>
+<!-- prettier-ignore-end -->
+<h3 id="25-add-user-code">2.5. Add user code<a class="headerlink" href="#25-add-user-code" title="Permanent link">⚓︎</a></h3>
+<p>User code sections are marked with a pair of phrases <code>/* USER CODE BEGIN x */</code> and <code>/* USER CODE END x */</code>. User code inside those marks are kept remaining during code generation.</p>
+<p>I am going to add a variable <code>counter</code> with type of <code>char</code>, then inside the main <code>while</code> loop in the <code>main()</code> function, increase it by <code>1</code> after 100ms. Don’t mind the HAL function at this time.</p>
+<div class="file">
+<p>main.c</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cm">/* USER CODE BEGIN PV */</span>
+<span class="kt">char</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="cm">/* USER CODE END PV */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/* other setup function */</span>
+  <span class="cm">/* USER CODE BEGIN WHILE */</span>
+  <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="cm">/* USER CODE END WHILE */</span>
+
+    <span class="cm">/* USER CODE BEGIN 3 */</span>
+  <span class="p">}</span>
+  <span class="cm">/* USER CODE END 3 */</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="26-compiler-options">2.6. Compiler options<a class="headerlink" href="#26-compiler-options" title="Permanent link">⚓︎</a></h3>
+<p>Project has options for the compiler under its properties. Right-click on the project name in the right panel, then select Properties menu.</p>
+<p>The default included folders are all the folders created in the project by the CubeMX tool. There are also some symbols created for the project build, such <code>DEBUG</code> mode, or the MCU name <code>STM32F051x8</code>.</p>
+<p>
+<figure><img src="ide_compiler_options.png"/><figcaption>The including paths and symbols</figcaption>
+</figure>
+</p>
+<p>Then in the Build Options, there are options to be used by GCC complier, GNU Linker, GNU Assembler.</p>
+<p>
+<figure><img src="ide_build_options.png"/><figcaption>Build options</figcaption>
+</figure>
+</p>
+<h3 id="27-build-project">2.7. Build Project<a class="headerlink" href="#27-build-project" title="Permanent link">⚓︎</a></h3>
+<p>Build the application by pressing <code>Ctrl + B</code>, or in menu <strong>Project</strong> → <strong>Build All</strong>. There are some reports about the resource usage to check after the compilation. The first thing it reports is the memory usage, in term of RAM and FLASH free space.</p>
+<h3 id="28-setup-debugger">2.8. Setup debugger<a class="headerlink" href="#28-setup-debugger" title="Permanent link">⚓︎</a></h3>
+<p>Before Run or Debug on the target chip, it is needed to configure the programming/ debugging interface. By default, the application code can be programmed through the debugger interface, therefore, in Run Config or Debug Config, there is a tab named <strong>Debugger</strong> to select:</p>
+<ul>
+<li>Debug Probe: ST-LINK GDB, ST-LINK OpenOCD, SEGGER J-LINK, or other available probes</li>
+<li>Interface: SWD or JTAG. If there are multiple boards connected, use debugger board Serial Number to choose the correct target</li>
+<li>Advanced features:<ul>
+<li>Serial Wire Viewer: read data from MCU in a dedicated <strong><em>SW0</em></strong> pin, available on Cortext-M3 and above</li>
+<li>Live Expression: read out the value at a memory address without halting the CPU</li>
+</ul>
+</li>
+</ul>
+<p>
+<figure class="w80"><img src="ide_debug_config.png"/><figcaption>Setup Debugger</figcaption></figure>
+</p>
+<h3 id="29-run-mode">2.9. Run Mode<a class="headerlink" href="#29-run-mode" title="Permanent link">⚓︎</a></h3>
+<p>In the Run Mode, IDE flashes the firmware via the Debugging interface, and then disconnect the debugger to make the target board run freely. Just use the menu <strong>Run</strong> → <strong>Run</strong>.</p>
+<h3 id="210-debug-mode">2.10. Debug Mode<a class="headerlink" href="#210-debug-mode" title="Permanent link">⚓︎</a></h3>
+<p>Putting the target under the Debug Mode is to control its execution, step by step. Breakpoint is where the CPU will be halted and debugger will inspect its current status: registers, memory values.</p>
+<p>By default, the first breakpoint is right after entering the <code>main</code> function. The start address and the first break point can be set in the <strong>Startup</strong> tab in Debug Configurations.</p>
+<p>
+<figure><img src="ide_debug_startup.png"/><figcaption>Startup option for debug</figcaption>
+</figure>
+</p>
+<p>When CPU is halted at a breakpoint, user can control the execution step by step, through the commands or buttons:</p>
+<p>
+<figure><img src="ide_debug_control.png"/><figcaption>Debug controls</figcaption>
+</figure>
+</p>
+<div class="np"></div>
+<h2 id="3-stm32cubeprogrammer">3. STM32CubeProgrammer<a class="headerlink" href="#3-stm32cubeprogrammer" title="Permanent link">⚓︎</a></h2>
+<p>STM32CubeProgrammer (previous name was ST-Link Utility) provides an easy-to-use and efficient environment for reading, writing and verifying device memory through both the debug interface (JTAG and SWD) and the bootloader interface (UART, USB DFU, I2C, SPI, and CAN). STM32CubeProgrammer offers a wide range of features to program STM32 internal memories (such as Flash, RAM, and OTP) as well as external memories.</p>
+<p><a class="md-button" href="https://www.st.com/en/development-tools/stm32cubeprog.html"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> Download STM32CubeProgrammer</a>
+<a class="md-button" href="https://www.st.com/resource/en/user_manual/dm00403500-stm32cubeprogrammer-software-description-stmicroelectronics.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> STM32CubeProgrammer User Manual</a></p>
+<p>
+<figure><img src="programmer.png"/><figcaption>STM32 Programmer</figcaption>
+</figure>
+</p>
+<h3 id="31-target-connection">3.1. Target connection<a class="headerlink" href="#31-target-connection" title="Permanent link">⚓︎</a></h3>
+<p>On the original development boards, please select ST-LINK interface, and then select either SWD or JTAG port.</p>
+<p>If the custom board has an USB port with Device Firmware Update mode, it can be connected on the USB interface. Before pressing <strong>Connect</strong> on the software, find on the board to press and hold the <strong>Boot</strong> button (Boot0 or Boot1) and press <strong>Reset</strong> button (NRST) to make device run into DFU mode.</p>
+<p>
+<figure><img src="programmer_connect.png"/><figcaption>Different connections</figcaption>
+</figure>
+</p>
+<h3 id="32-erase-and-program">3.2. Erase and Program<a class="headerlink" href="#32-erase-and-program" title="Permanent link">⚓︎</a></h3>
+<p>Once connected to a target, the memory sectors are displayed in the right-hand panel showing the start address and the size of each sector. To erase one or more sectors, select them in the first column and then click on the <strong>Erase selected sectors</strong> button.</p>
+<p>To download firmware to the target chip, select the Erasing &amp; Programming tab. Click on the browse button and select the file to be programmed. The file format supported are binary files (.bin), ELF files (.elf, .axf, .out), Intel hex files (.hex) and Motorola S-record files (.Srec).</p>
+<p><mark>In case of programming a binary file, the address must be set.</mark></p>
+<h3 id="33-other-features">3.3. Other features<a class="headerlink" href="#33-other-features" title="Permanent link">⚓︎</a></h3>
+<p>Other advanced features will be covered in other posts. Here is the list of those features:</p>
+<ul>
+<li>Option Bytes</li>
+<li>CPU Instruction debug</li>
+<li>Serial Wire View</li>
+<li>Fault Analyzer</li>
+<li>External Flash programming</li>
+</ul>
+<p>
+<figure><img src="programmer_flash.png"/><figcaption>Program a binary file</figcaption>
+</figure>
+</p>
+<h2 id="4-stm32cubemonitor">4. STM32CubeMonitor<a class="headerlink" href="#4-stm32cubemonitor" title="Permanent link">⚓︎</a></h2>
+<p>The STM32CubeMonitor helps to fine-tune and diagnose STM32 applications at run-time by reading and visualizing their variables in real-time. It provides a flow-based graphical editor to build custom dashboards simply, and quickly add widgets such as gauges, bar graphs and plots. With non-intrusive monitoring, STM32CubeMonitor preserves the real-time behavior of applications, and perfectly complements traditional debugging tools to perform application profiling.</p>
+<p><a class="md-button" href="https://www.st.com/en/development-tools/stm32cubemonitor.html"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> Download STM32CubeMonitor</a>
+<a class="md-button" href="https://wiki.st.com/stm32mcu/wiki/STM32CubeMonitor:STM32CubeMonitor_overview"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8v2m9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5z"></path></svg></span> STM32CubeMonitor Guide</a></p>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>This tool use SWD/JTAG interface to access the memory addresses and read their value.</p>
+</div>
+<p>
+<figure><img src="monitor.png"/><figcaption>The block editor</figcaption>
+</figure>
+</p>
+<p>When start the tool, there is a basic flow created with:</p>
+<ul>
+<li>Start/ Stop/ Clear buttons</li>
+<li><em class="im">myVariables</em> block holds the addresses under monitoring</li>
+<li><em class="im">myProbe_Out</em> block has configs to connect to the target device through debug interface</li>
+<li><em class="im">myProbe_In</em> block has script to read the value of the addresses listed in the <em>myVariables</em> block</li>
+<li><em class="im">myVariables</em> processing block read the captured value and process it</li>
+<li><em class="im">myChart</em> displays the dashboard which visualizes the processed data</li>
+</ul>
+<p>To configure a block, double click on it, and follow the guide. The steps go through file selection, variable list, connect probe, and assign probe.</p>
+<p>To demonstrate how it works, add a <code>counter</code> variable of type <code>char</code> as a global variable in the <code>main.c</code> file. In the main loop, increase the <code>counter</code> value every 100ms. This variable will be shown in the list of variables after selecting the compiled <code>.elf</code> firmware file.</p>
+<p>
+<figure><img src="monitor_variable_node.png"/><figcaption>Configure the variable block</figcaption>
+</figure>
+</p>
+<p>Connect the target board via ST-LINK or other SWD/ JTAG compatible debugger. The debugger will be shown a probe in Cube Monitor. Select the protocol and assign to the in or out probe.</p>
+<p>
+<figure><img src="monitor_probe_node.png"/><figcaption>Configure the probe block</figcaption>
+</figure>
+</p>
+<p>The chart can be drawn in line or bar chart. At this time, just use a default one.</p>
+<p>Finally, press on <strong>Deploy</strong> to configure the probes, and then click on <strong>Dashboard</strong> to show the graphical interface.</p>
+<p>Start button will send <code>start</code> message to the probe and variable processing block. The captured data will be drawn on the chart.</p>
+<p>
+<figure><img src="monitor_dashboard.png"/><figcaption>The interactive dashboard</figcaption>
+</figure>
+</p>
+<h2 id="5-other-tools">5. Other tools<a class="headerlink" href="#5-other-tools" title="Permanent link">⚓︎</a></h2>
+<p>There are many other tools that work on ARM cores. I will have other posts to share about those tools such as Cross Compiler, Config File, Make File, or System View.</p>
+<div data-value="https://www.codeinsideout.com/blog/stm32/tools/" id="page_url"></div>
+<div data-value="blog/stm32/tools/" id="page_identifier"></div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../prepare/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Preparation
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../docs/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Documents
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

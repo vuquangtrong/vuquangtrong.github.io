@@ -1,0 +1,2018 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Embedded devices perform some activities on a time basis. Timers are hardware modules that assist CPU to not only generate periodically events, but also do several features in which some are very important to work with external peripheral like Pulse Width Modulation, Pulse Capture. Timer is one of advanced peripheral that offer a wide range of customizations." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/stm32/timer/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
+<title>Timers and their modes - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<meta content="website" property="og:type">
+<meta content="Timers and their modes - Code Inside Out" property="og:title">
+<meta content="Embedded devices perform some activities on a time basis. Timers are hardware modules that assist CPU to not only generate periodically events, but also do several features in which some are very important to work with external peripheral like Pulse Width Modulation, Pulse Capture. Timer is one of advanced peripheral that offer a wide range of customizations." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/stm32/timer/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-timer-overview">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Timers
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Timers
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Timers
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-timer-overview">
+    1. Timer overview
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-timer-modes">
+    2. Timer modes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-stm32cube-hal-usage">
+    3. STM32Cube HAL Usage
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-1-blink-led-with-timer">
+    4. Lab 1: Blink LED with Timer
+  </a>
+<nav aria-label="4. Lab 1: Blink LED with Timer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-create-a-new-project">
+    4.1. Create a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-enable-a-timer">
+    4.2. Enable a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-generated-code">
+    4.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-user-code">
+    4.4. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-2-pwm-on-led-brightness">
+    5. Lab 2: PWM on LED brightness
+  </a>
+<nav aria-label="5. Lab 2: PWM on LED brightness" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-pwm-duty">
+    5.1. PWM Duty
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-drive-the-brightness">
+    5.2. Drive the brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-setup-pwm-on-a-timer">
+    5.3. Setup PWM on a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-setup-delay-on-a-timer">
+    5.4. Setup delay on a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-generated-code">
+    5.5. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#56-user-code">
+    5.6. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-other-modes">
+    6. Other modes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        C/C++
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkGoldenrod;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkOrchid;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkCyan;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkCyan;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkTurquoise;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGreen;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkBlue;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateBlue;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkRed;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-timer-overview">
+    1. Timer overview
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-timer-modes">
+    2. Timer modes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-stm32cube-hal-usage">
+    3. STM32Cube HAL Usage
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-1-blink-led-with-timer">
+    4. Lab 1: Blink LED with Timer
+  </a>
+<nav aria-label="4. Lab 1: Blink LED with Timer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-create-a-new-project">
+    4.1. Create a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-enable-a-timer">
+    4.2. Enable a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-generated-code">
+    4.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-user-code">
+    4.4. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-2-pwm-on-led-brightness">
+    5. Lab 2: PWM on LED brightness
+  </a>
+<nav aria-label="5. Lab 2: PWM on LED brightness" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-pwm-duty">
+    5.1. PWM Duty
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-drive-the-brightness">
+    5.2. Drive the brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-setup-pwm-on-a-timer">
+    5.3. Setup PWM on a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-setup-delay-on-a-timer">
+    5.4. Setup delay on a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-generated-code">
+    5.5. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#56-user-code">
+    5.6. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-other-modes">
+    6. Other modes
+  </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkCyan;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateBlue;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkOliveGreen;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkMagenta;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkRed;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkRed;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkBlue;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkGreen;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">Timers and their modes</h1>
+<p class="page-description">Embedded devices perform some activities on a time basis. Timers are hardware modules that assist CPU to not only generate periodically events, but also do several features in which some are very important to work with external peripheral like Pulse Width Modulation, Pulse Capture. Timer is one of advanced peripheral that offer a wide range of customizations.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name">
+                        #arm
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name">
+                        #stm32
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name">
+                        #timer
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name">
+                        #pwm
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name">
+                        #capture
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-14 14:07:22</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-timer-overview">
+    1. Timer overview
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-timer-modes">
+    2. Timer modes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-stm32cube-hal-usage">
+    3. STM32Cube HAL Usage
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-lab-1-blink-led-with-timer">
+    4. Lab 1: Blink LED with Timer
+  </a>
+<nav aria-label="4. Lab 1: Blink LED with Timer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-create-a-new-project">
+    4.1. Create a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-enable-a-timer">
+    4.2. Enable a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-generated-code">
+    4.3. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#44-user-code">
+    4.4. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-lab-2-pwm-on-led-brightness">
+    5. Lab 2: PWM on LED brightness
+  </a>
+<nav aria-label="5. Lab 2: PWM on LED brightness" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-pwm-duty">
+    5.1. PWM Duty
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-drive-the-brightness">
+    5.2. Drive the brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-setup-pwm-on-a-timer">
+    5.3. Setup PWM on a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#54-setup-delay-on-a-timer">
+    5.4. Setup delay on a Timer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#55-generated-code">
+    5.5. Generated code
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#56-user-code">
+    5.6. User code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-other-modes">
+    6. Other modes
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="btn-actions screen-only">
+<p><a class="md-button" href="..\..\..\pdfs\blog\stm32\timer\stm32__Timers.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a><a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_TIMER_Blink_LED.zip"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> Basic Timer - Blinking LED</a>
+<a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_TIMER_PWM_LED_Brightness.zip"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> PWM - LED Brightness</a></p>
+</div>
+<h2 id="1-timer-overview">1. Timer overview<a class="headerlink" href="#1-timer-overview" title="Permanent link">⚓︎</a></h2>
+<p>A timer is a free-running counter with a counting frequency that is a fraction of its source clock. The counting speed can be reduced using a dedicated pre-scaler for each timer. Depending on the timer type, it can be clocked by the internal clock (which is derived from the bus where it is connected), by an external clock source or by another timer used as a “master”.</p>
+<p>The F<sub>sys</sub> is not the frequency that is incrementing the timer module, but it gets divided by the Pre-scaler, then it gets fed to the timer. Every clock cycle, the value of the timer is incremented by 1. A timer can have additional pre-load register, therefore, timer will count from 0 to the pre-load value, and then go back to count again from 0.</p>
+<div class="admonition cite">
+<p>Let’s see an example to calculate the timer period.</p>
+<ul>
+<li>F<sub>sys</sub> = <em>80 MHz</em></li>
+<li>Pre-scaler = <em>1024</em></li>
+<li>Timer gets incremented by 1 every <em>1024* 1/80000000 s = 12.8 us</em></li>
+<li>If set overflow at full 16-bit (at 65535), and start counting from 0, it will generate a signal every <em>12.8 us * 65535</em> = <em>838848 us</em> = <em>838.848 ms</em></li>
+</ul>
+</div>
+<p><br/>
+<strong>Main groups of Timers</strong>:</p>
+<ul>
+<li>
+<p><strong>Basic timers</strong>: 16-bit timers used as time base generator; do not have output/input pins; used as a master of other timers or used to feed the DAC peripherals.</p>
+</li>
+<li>
+<p><strong>General purpose timers</strong>: 16/32-bit timers with multiple purposes; have four-programmable input/output channels; used in any application for output compare (timing and delay generation), One-Pulse Mode, input capture (for external signal frequency measurement), sensor interface (encoder, hall sensor), etc. This type has sub-groups: 1-channel/2-channels, or 1-channel/2-channels with one complimentary output ( a dead time generator on one channel).</p>
+</li>
+<li>
+<p><strong>Advanced timers</strong>: have more features than General purpose timers such as features related to motor control and digital power conversion applications: three complementary signals with dead time insertion, emergency shut-down input.</p>
+</li>
+<li>
+<p><strong>High resolution timer</strong>: a timer allows generating digital signals with high-accuracy timings, such as PWM or phase-shifted pulses. It has Delay lines with closed loop control guarantee a very small resolution whatever the voltage, temperature or chip-to-chip manufacturing process deviation.</p>
+</li>
+<li>
+<p><strong>Low-power timers</strong>: have a diversity of clock sources to run in low frequencies, or from external clock-like inputs, and have the capability to wake up the system from low-power modes.</p>
+</li>
+</ul>
+<h2 id="2-timer-modes">2. Timer modes<a class="headerlink" href="#2-timer-modes" title="Permanent link">⚓︎</a></h2>
+<p>An STM32 timer module can operate in any of the following modes, however, have to check the datasheet to figure out which modes are supported by which timers.</p>
+<p><br/>
+<strong>Timer Mode</strong></p>
+<p>In timer mode, the timer module gets clocked from an internal clock source with a known frequency. Hence the clocking frequency is known, the overflow time can also be calculated and controlled by the pre-load register to get any arbitrarily chosen time interval. Each timer overflow, the timer signals the CPU with an interrupt that indicates the end of the specified time interval.</p>
+<p>This mode of operation is usually used to get a specific operation done at each specific time interval, and to achieve timing &amp; synchronization between various tasks and events in the system. It can also replace delays in various situations for better system response.</p>
+<p><br/>
+<strong>Counter Mode</strong></p>
+<p>In counter mode, the timer module gets clocked from an external source (timer input pin). So the timer counts up or down on each rising or falling edge of the external input. This mode is really helpful in numerous situations when need to implement a digital counter without polling input pins or periodically reading a GPIO or continuously interrupt the CPU when hooking with an EXTI pin. If using another timer as an interval, this mode can be used to measure frequency.</p>
+<p><br/>
+<strong>PWM Mode</strong></p>
+<p>In Pulse-Width Modulation (PWM) mode, the timer module is clocked from an internal clock source and produces a digital waveform on the output channel pin called the PWM signal. By using output compare registers <code>OCR</code>, the incrementing timer’s register value is constantly compared against this <code>OCR</code> register. When a match occurs the output pin state is flipped until the end of the period and the whole process is repeated.</p>
+<p><br/>
+<strong>Advanced PWM Mode</strong></p>
+<p>The advanced PWM signal generation refers to the hardware ability to control more parameters and add some hardware circuitry to support extra features for the PWM signal generation. Which includes:</p>
+<ul>
+<li>The ability to produce a complementary PWM signal that is typically the same as the PWM on the main channel but logically inverted</li>
+<li>The ability to inject dead-time band in the PWM signal for motor driving applications to prevent shoot-through currents that result from PWM signals overlapping</li>
+<li>The ability to perform auto-shutdown for the PWM signal, it’s also called “auto brake” which an important feature for safety-critical applications</li>
+<li>The ability to phase-adjust the PWM signal</li>
+</ul>
+<p><br/>
+<strong>Output Compare Mode</strong></p>
+<p>In output compare mode, a timer module controls an output waveform or indicates when a period of time has elapsed. When a match is detected between the output compare register <code>OCR</code> and the counter, the output compare function assigns the corresponding output pin to a programmable value.</p>
+<p><br/>
+<strong>One-Pulse Mode</strong></p>
+<p>One-pulse mode (OPM) is a particular case of the previous modes. It allows the counter to be started in response to a stimulus and to generate a pulse with a programmable length after a programmable delay. Starting the counter can be controlled through the slave mode controller. Generating the waveform can be done in output compare mode or PWM mode.</p>
+<p><br/>
+<strong>Input Capture Mode</strong></p>
+<p>In Input capture mode, the Capture/Compare Registers <code>TIMx_CCRx</code> are used to latch the value of the counter after a transition detected by the corresponding <code>ICx</code> signal. When a capture occurs, the corresponding <code>CCXIF</code> flag (<code>TIMx_SR</code> register) is set and an interrupt or a DMA request can be sent if they are enabled.</p>
+<p>This mode is extremely important for external signal measurement or external event timing detection. The current value of the timer counts is captured when an external event occurs and an interrupt is fired.</p>
+<p><br/>
+<strong>Encoder Mode</strong></p>
+<p>In the encoder interface mode, the timer module operates as a digital counter with two inputs. The counter is clocked by each valid transition on both input pins. The sequence of transitions of the two inputs is evaluated and generates count pulses as well as the direction signal. Depending on the sequence, the counter will count up or down.</p>
+<p><br/>
+<strong>Timer Gate Mode</strong></p>
+<p>In timer gated mode, a timer module is also said to be working in “slave mode”. Where it only counts as long as an external input pin is held high or low. This input pin is said to be the timer gate that allows the timer to count or not at all.</p>
+<p><br/>
+<strong>Timer DMA Burst Mode</strong></p>
+<p>The STM32 timers, not all of them, have the capability to generate multiple DMA requests upon a single event. The main purpose is to be able to re-program part of the timer multiple times without software overhead, but it can also be used to read several registers in a row, at regular intervals.</p>
+<p><br/>
+<strong>Infrared Mode</strong></p>
+<p>An infrared interface (<code>IRTIM</code>) for remote control can be used with an infrared LED to perform remote control functions. It uses internal connections with TIM15 and TIM16 as shown in the diagram down below. To generate the infrared remote control signals, the IR interface must be enabled and TIM15 channel 1 (<code>TIM15_OC1</code>) and TIM16 channel 1 (<code>TIM16_OC1</code>) must be properly configured to generate correct waveforms. The infrared receiver can be implemented easily through a basic input capture mode.</p>
+<h2 id="3-stm32cube-hal-usage">3. STM32Cube HAL Usage<a class="headerlink" href="#3-stm32cube-hal-usage" title="Permanent link">⚓︎</a></h2>
+<p>The Hardware Abstract Layer (HAL) is designed so that it abstracts from the specific peripheral memory mapping. But, it also provides a general and more user-friendly way to configure the peripheral, without forcing the programmers to now how to configure its registers in detail.</p>
+<blockquote>
+<p>excerpt from <a href="https://www.st.com/resource/en/user_manual/dm00122015-description-of-stm32f0-hal-and-lowlayer-drivers-stmicroelectronics.pdf">Description of STM32F0 HAL and low-layer drivers</a></p>
+</blockquote>
+<p><strong>How to use TIM HAL</strong></p>
+<ol>
+<li>
+<p>Initialize the TIM low level resources by implementing the following functions depending from feature to be used :</p>
+<ul>
+<li>Time Base : <code>HAL_TIM_Base_MspInit()</code></li>
+<li>Input Capture : <code>HAL_TIM_IC_MspInit()</code></li>
+<li>Output Compare : <code>HAL_TIM_OC_MspInit()</code></li>
+<li>PWM generation : <code>HAL_TIM_PWM_MspInit()</code></li>
+<li>One-pulse mode output : <code>HAL_TIM_OnePulse_MspInit()</code></li>
+<li>Encoder mode output : <code>HAL_TIM_Encoder_MspInit()</code></li>
+</ul>
+</li>
+<li>
+<p>Initialize the TIM low level resources :</p>
+<ul>
+<li>Use <code>__HAL_RCC_TIMx_CLK_ENABLE()</code> to enable the TIM interface clock</li>
+<li>TIM pins configuration<ul>
+<li>Use <code>__HAL_RCC_GPIOx_CLK_ENABLE()</code> to enable the clock for the TIM GPIOs</li>
+<li>Configure these TIM pins in Alternate function mode using <code>HAL_GPIO_Init()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>The external Clock can be configured, if needed (the default clock is the internal clock from the APBx), using the following function: <code>HAL_TIM_ConfigClockSource</code>, the clock configuration should be done before any start function.</p>
+</li>
+<li>
+<p>Configure the TIM in the desired functioning mode using one of the Initialization function of this driver:</p>
+<ul>
+<li><code>HAL_TIM_Base_Init</code>: to use the Timer to generate a simple time base</li>
+<li><code>HAL_TIM_OC_Init</code> and <code>HAL_TIM_OC_ConfigChannel</code>: to use the Timer to generate an Output Compare signal.</li>
+<li><code>HAL_TIM_PWM_Init</code> and <code>HAL_TIM_PWM_ConfigChannel</code>: to use the Timer to generate a PWM signal.</li>
+<li><code>HAL_TIM_IC_Init</code> and <code>HAL_TIM_IC_ConfigChannel</code>: to use the Timer to measure an external signal.</li>
+<li><code>HAL_TIM_OnePulse_Init</code> and <code>HAL_TIM_OnePulse_ConfigChannel</code>: to use the Timer in One Pulse Mode.</li>
+<li><code>HAL_TIM_Encoder_Init</code>: to use the Timer Encoder Interface.</li>
+</ul>
+</li>
+<li>
+<p>Activate the TIM peripheral using one of the start functions depending from the feature used:</p>
+<ul>
+<li>Time Base : <code>HAL_TIM_Base_Start()</code>, <code>HAL_TIM_Base_Start_DMA()</code>, <code>HAL_TIM_Base_Start_IT()</code></li>
+<li>Input Capture : <code>HAL_TIM_IC_Start()</code>, <code>HAL_TIM_IC_Start_DMA()</code>, <code>HAL_TIM_IC_Start_IT()</code></li>
+<li>Output Compare : <code>HAL_TIM_OC_Start()</code>, <code>HAL_TIM_OC_Start_DMA()</code>, <code>HAL_TIM_OC_Start_IT()</code></li>
+<li>PWM generation : <code>HAL_TIM_PWM_Start()</code>, <code>HAL_TIM_PWM_Start_DMA()</code>, <code>HAL_TIM_PWM_Start_IT()</code></li>
+<li>One-pulse mode output : <code>HAL_TIM_OnePulse_Start()</code>, <code>HAL_TIM_OnePulse_Start_IT()</code></li>
+<li>Encoder mode output : <code>HAL_TIM_Encoder_Start()</code>, <code>HAL_TIM_Encoder_Start_DMA()</code>, <code>HAL_TIM_Encoder_Start_IT()</code>.</li>
+</ul>
+</li>
+<li>
+<p>The DMA Burst is managed with the two following functions: <code>HAL_TIM_DMABurst_WriteStart()</code> and <code>HAL_TIM_DMABurst_ReadStart()</code></p>
+</li>
+</ol>
+<h2 id="4-lab-1-blink-led-with-timer">4. Lab 1: Blink LED with Timer<a class="headerlink" href="#4-lab-1-blink-led-with-timer" title="Permanent link">⚓︎</a></h2>
+<p>This is a basic usage of a timer. Application will enable a basic timer with a pre-scaler and a pre-load value and let the timer run. Then the timer will keep counting and fire up an interrupt to application to do something.</p>
+<p><br/>
+<strong>Requirements</strong>:</p>
+<ul>
+<li>Use a Timer to toggle an LED every 250ms</li>
+</ul>
+<p><br/>
+<strong>Target board</strong>:</p>
+<p>Any board as a basic timer and a GPIO are always available.</p>
+<h3 id="41-create-a-new-project">4.1. Create a new project<a class="headerlink" href="#41-create-a-new-project" title="Permanent link">⚓︎</a></h3>
+<p>This tutorial will use the STM32F0 Discovery board which features an STM32F051R8 MCU. Starting a new project with below starting configs:</p>
+<ul>
+<li>System Clock set to 48 MHz, which also drives the Timers on the APB bus.</li>
+<li>Set <strong>PC9</strong> as the output for the on-board Blue LED</li>
+</ul>
+<p>
+<figure><img src="lab_setup_timer_clock.png"/><figcaption>Setup clock for Timers</figcaption>
+</figure>
+</p>
+<h3 id="42-enable-a-timer">4.2. Enable a Timer<a class="headerlink" href="#42-enable-a-timer" title="Permanent link">⚓︎</a></h3>
+<p>For this simple lab, a basic timer will be used. Look at the <a href="../docs/#1-the-datasheet">Datasheet</a> of the MCU to know how many timers are in the MCU and their types, and read the <a href="../docs/#2-the-reference-manual">Reference Manual</a> to get details about a specific timer. Note that a specific timer TIMx is the same in all STM32 MCUs to guarantee the compatibility and portability of the timer on different target.</p>
+<div class="np"></div>
+<div class="admonition cite">
+<p class="admonition-title">STM32F051xx Timers</p>
+<p>The STM32F051xx devices include up to six general-purpose timers, one basic timer and an advanced control timer.</p>
+<p>
+<figure><img src="stm32f051xx_timers.png"/><figcaption>Timer features in STM32F051xx</figcaption>
+</figure>
+</p>
+<p>The basic timer TIM6 is mainly used for DAC trigger generation. It can also be used as a generic 16-bit time base.</p>
+</div>
+<div class="admonition cite">
+<p class="admonition-title">TIM6/TIM7 main features</p>
+<ul>
+<li>16-bit auto-reload up-counter</li>
+<li>16-bit programmable pre-scaler used to divide (also “on the fly”) the counter clock frequency</li>
+<li>Synchronization circuit to trigger the DAC</li>
+<li>Interrupt/DMA generation on the update event: counter overflow</li>
+</ul>
+</div>
+<p>In the CubeMX, activate TIM6 module and then calculate the pre-scaler and auto reload register values:</p>
+<ul>
+<li>Toggle every 250ms, meaning the rate is 4 Hz</li>
+<li>Timer frequency is 48 MHz, so it should be reduced 12.000.000 times. Choose any combination of pre-scaler and auto-reload whose multiplication result is 12.000.000. Because these values are counted from zero, therefore, the filled number should be decreased by one.</li>
+<li><mark>One Pulse mode</mark> will make timer run once, do not select this to put timer in repeat mode.</li>
+<li><mark>Enable the Interrupt for this timer</mark></li>
+</ul>
+<p>
+<figure><img src="lab_setup_timer_basic.png"/><figcaption>Setting a basic timer</figcaption>
+</figure>
+</p>
+<div class="admonition warning">
+<p class="admonition-title">Do NOT use Polling mode on Timer</p>
+<p>Polling mode on Timer is just keep reading the timer’s counter to compare with a given counter. However, please note that the timer is an independent asynchronous peripheral which may run at higher frequency of the CPU core.</p>
+<p>This line of code <code class="highlight"><span class="k">if</span><span class="p">(</span><span class="n">__HAL_TIM_GET_COUNTER</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tim</span><span class="p">)</span> <span class="o">==</span> <span class="n">value</span><span class="p">){...}</span></code> does not guarantee that the CPU accesses to the counter register exactly at the same time the timer reaches the given value.</p>
+</div>
+<h3 id="43-generated-code">4.3. Generated code<a class="headerlink" href="#43-generated-code" title="Permanent link">⚓︎</a></h3>
+<p>After code generation, there is a function <code>MX_TIM6_Init()</code> to initialize the activated timers.</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">MX_TIM6_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">TIM_MasterConfigTypeDef</span> <span class="n">sMasterConfig</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+    <span class="n">htim6</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">TIM6</span><span class="p">;</span>
+<span class="hll">    <span class="n">htim6</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Prescaler</span> <span class="o">=</span> <span class="mi">3000-1</span><span class="p">;</span>
+</span>    <span class="n">htim6</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">CounterMode</span> <span class="o">=</span> <span class="n">TIM_COUNTERMODE_UP</span><span class="p">;</span>
+<span class="hll">    <span class="n">htim6</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Period</span> <span class="o">=</span> <span class="mi">4000-1</span><span class="p">;</span>
+</span>    <span class="n">htim6</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">AutoReloadPreload</span> <span class="o">=</span> <span class="n">TIM_AUTORELOAD_PRELOAD_DISABLE</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_Base_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim6</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Error_Handler</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">sMasterConfig</span><span class="p">.</span><span class="n">MasterOutputTrigger</span> <span class="o">=</span> <span class="n">TIM_TRGO_RESET</span><span class="p">;</span>
+    <span class="n">sMasterConfig</span><span class="p">.</span><span class="n">MasterSlaveMode</span> <span class="o">=</span> <span class="n">TIM_MASTERSLAVEMODE_DISABLE</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIMEx_MasterConfigSynchronization</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim6</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sMasterConfig</span><span class="p">)</span>
+        <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Error_Handler</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The clock and interrupt of the selected timer is configured in <code>HAL_TIM_Base_MspInit()</code> function:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_TIM_Base_MspInit</span><span class="p">(</span><span class="n">TIM_HandleTypeDef</span><span class="o">*</span> <span class="n">htim_base</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">__HAL_RCC_TIM6_CLK_ENABLE</span><span class="p">();</span>
+    <span class="n">HAL_NVIC_SetPriority</span><span class="p">(</span><span class="n">TIM6_DAC_IRQn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">HAL_NVIC_EnableIRQ</span><span class="p">(</span><span class="n">TIM6_DAC_IRQn</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Because the timer has enabled its interrupt, HAL calls to <code>HAL_TIM_IRQHandler()</code> in the interrupt handler, then finally informs to application via different callback. In this lab, application only need to know when a full period is done through the callback of <code>HAL_TIM_PeriodElapsedCallback()</code> and toggle the LED.</p>
+<h3 id="44-user-code">4.4. User code<a class="headerlink" href="#44-user-code" title="Permanent link">⚓︎</a></h3>
+<p>This simple lab only needs to override the callback when a full period elapses.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_TIM_PeriodElapsedCallback</span><span class="p">(</span><span class="n">TIM_HandleTypeDef</span> <span class="o">*</span><span class="n">htim</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">LED_GPIO_Port</span><span class="p">,</span> <span class="n">LED_Pin</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And then start the timer in Interrupt mode in the main application:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="hll">    <span class="n">HAL_TIM_Base_Start_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim6</span><span class="p">);</span>
+</span>    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">){...}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="5-lab-2-pwm-on-led-brightness">5. Lab 2: PWM on LED brightness<a class="headerlink" href="#5-lab-2-pwm-on-led-brightness" title="Permanent link">⚓︎</a></h2>
+<h3 id="51-pwm-duty">5.1. PWM Duty<a class="headerlink" href="#51-pwm-duty" title="Permanent link">⚓︎</a></h3>
+<p>The square waves has a common characteristic: they have a T<sub>ON</sub> period equal to the T<sub>OFF</sub> one. For this reason they are also said to have a 50% duty cycle. A duty cycle is the percentage of one period of time (for example, 1s) in which a signal is active. As a formula, a duty cycle is expressed as the T<sub>ON</sub>/Period.</p>
+<p><em>Pulse-width modulation (PWM)</em> is a technique used to generate several pulses with different duty cycles in a given period of time at a given frequency. PWM has many applications in digital electronics, but all of them can be grouped in two main categories:</p>
+<p>
+<figure class="w80"><img src="pwm.png"/><figcaption>PWM output and its average voltage</figcaption></figure>
+</p>
+<ul>
+<li>control the output voltage (and hence the current);</li>
+<li>encoding (that is, modulate) a message (that is, a series of bytes in digital electronics) on a carrier wave (which runs at a given frequency).</li>
+</ul>
+<p>Those two categories can be expanded in several practical usages of the PWM technique. If only focusing on the control of the output voltage, here are several applications:</p>
+<ul>
+<li>generation of an output voltage ranging from 0V up to VDD (that is, the maximum allowed voltage for an I/O, which in an STM32 is 3.3V);<ul>
+<li>dimming of LEDs;</li>
+<li>motor control;</li>
+<li>power conversion;</li>
+</ul>
+</li>
+<li>generation of an output wave running at a given frequency (sine wave, triangle, square, and so on);</li>
+<li>sound output;</li>
+</ul>
+<p>There are two PWM modes available:</p>
+<ul>
+<li>
+<p><strong>PWM mode 1</strong>: in up-counting, the channel is active as long as <em>Counter</em> &lt; <em>Period</em>, else inactive. In down-counting, the channel is inactive as long as <em>Counter</em> &gt; <em>Period</em>, else active.</p>
+</li>
+<li>
+<p><strong>PWM mode 2</strong>: in up-counting, channel is inactive as long as <em>Counter</em> &lt; <em>Period</em>, else active. In down-counting, channel 1 is active as long as <em>Counter</em> &gt; <em>Period</em>, else inactive.</p>
+</li>
+</ul>
+<h3 id="52-drive-the-brightness">5.2. Drive the brightness<a class="headerlink" href="#52-drive-the-brightness" title="Permanent link">⚓︎</a></h3>
+<p>This lab will generate changeable-duty PWM signal on pin <strong>PC8</strong> which connected to the blue LED on the STM32F0 Discovery board. If the duty goes up to 100%, the LED will have the highest brightness, and it becomes off when the duty goes down to 0%. The target application should slowly change the duty of the generated PWM.</p>
+<h3 id="53-setup-pwm-on-a-timer">5.3. Setup PWM on a Timer<a class="headerlink" href="#53-setup-pwm-on-a-timer" title="Permanent link">⚓︎</a></h3>
+<p>The Blue LED on <strong>PC8</strong> is connected to <strong>Timer 3 - Channel 3 Output</strong>. Therefore, select the Alternate Function of <strong>PC8</strong> as <strong>TIM3_CH3</strong> firstly. After that, when configuring the <strong>TIM3</strong>, select <strong>Channel 3</strong> as <em>PWM Generation CH3</em>.</p>
+<p>
+<figure><img src="lab_setup_pwm.png"/><figcaption>Setup PWM on the Timer 3 Channel 3</figcaption>
+</figure>
+</p>
+<p>Next step is configure the PWM frequency and duty:</p>
+<ul>
+<li>Use the internal clock source, which is 48 MHz in this lab</li>
+<li>PWM Frequency = 100 Hz, let’s use <code>Pre-scaler</code> = 480-1, and <code>Counter period</code> = 1000-1.</li>
+<li>PWM Duty: the <code>Counter period</code> is set to 1000, the if duty is 25%, the <code>Pulse counter</code> must be set at 250-1</li>
+</ul>
+<h3 id="54-setup-delay-on-a-timer">5.4. Setup delay on a Timer<a class="headerlink" href="#54-setup-delay-on-a-timer" title="Permanent link">⚓︎</a></h3>
+<p>Do the same thing as it’s done in the previous lab to setup an 100 Hz interrupt on a basic timer TIM6. The period is now only 10 ms</p>
+<h3 id="55-generated-code">5.5. Generated code<a class="headerlink" href="#55-generated-code" title="Permanent link">⚓︎</a></h3>
+<p>Let’s see how TIM3 is configured in the generated function <code>MX_TIM3_Init()</code> which setups the timer’s params and setup PWM mode. Note that PWM is Output Compare register to mark the point where pulse is inverted.</p>
+<p>
+<figure><img src="pwm_on_oc.png"/><figcaption>PWM output based on Output Compare and Period registers</figcaption>
+</figure>
+</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">MX_TIM3_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">TIM_ClockConfigTypeDef</span> <span class="n">sClockSourceConfig</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">TIM_MasterConfigTypeDef</span> <span class="n">sMasterConfig</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">TIM_OC_InitTypeDef</span> <span class="n">sConfigOC</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="cm">/* Setup base */</span>
+  <span class="n">htim3</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">TIM3</span><span class="p">;</span>
+<span class="hll">  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Prescaler</span> <span class="o">=</span> <span class="mi">480-1</span><span class="p">;</span>
+</span>  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">CounterMode</span> <span class="o">=</span> <span class="n">TIM_COUNTERMODE_UP</span><span class="p">;</span>
+<span class="hll">  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Period</span> <span class="o">=</span> <span class="mi">1000-1</span><span class="p">;</span>
+</span>  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ClockDivision</span> <span class="o">=</span> <span class="n">TIM_CLOCKDIVISION_DIV1</span><span class="p">;</span>
+  <span class="n">htim3</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">AutoReloadPreload</span> <span class="o">=</span> <span class="n">TIM_AUTORELOAD_PRELOAD_DISABLE</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_Base_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="cm">/* Setup clock source */</span>
+  <span class="n">sClockSourceConfig</span><span class="p">.</span><span class="n">ClockSource</span> <span class="o">=</span> <span class="n">TIM_CLOCKSOURCE_INTERNAL</span><span class="p">;</span>
+<span class="hll">  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_ConfigClockSource</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sClockSourceConfig</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+</span>    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="cm">/* Init PWM */</span>
+<span class="hll">  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_PWM_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+</span>    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="n">sMasterConfig</span><span class="p">.</span><span class="n">MasterOutputTrigger</span> <span class="o">=</span> <span class="n">TIM_TRGO_RESET</span><span class="p">;</span>
+  <span class="n">sMasterConfig</span><span class="p">.</span><span class="n">MasterSlaveMode</span> <span class="o">=</span> <span class="n">TIM_MASTERSLAVEMODE_DISABLE</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIMEx_MasterConfigSynchronization</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sMasterConfig</span><span class="p">)</span>
+        <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="cm">/* Setup PWM params*/</span>
+<span class="hll">  <span class="n">sConfigOC</span><span class="p">.</span><span class="n">OCMode</span> <span class="o">=</span> <span class="n">TIM_OCMODE_PWM1</span><span class="p">;</span>
+</span><span class="hll">  <span class="n">sConfigOC</span><span class="p">.</span><span class="n">Pulse</span> <span class="o">=</span> <span class="mi">250-1</span><span class="p">;</span>
+</span>  <span class="n">sConfigOC</span><span class="p">.</span><span class="n">OCPolarity</span> <span class="o">=</span> <span class="n">TIM_OCPOLARITY_HIGH</span><span class="p">;</span>
+  <span class="n">sConfigOC</span><span class="p">.</span><span class="n">OCFastMode</span> <span class="o">=</span> <span class="n">TIM_OCFAST_DISABLE</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_TIM_PWM_ConfigChannel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sConfigOC</span><span class="p">,</span> <span class="n">TIM_CHANNEL_3</span><span class="p">)</span>
+        <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Error_Handler</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="cm">/* Setup GPIO for PWM Output */</span>
+  <span class="n">HAL_TIM_MspPostInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="56-user-code">5.6. User code<a class="headerlink" href="#56-user-code" title="Permanent link">⚓︎</a></h3>
+<p>The <code>Counter period</code> (aka. <code>Auto Reload</code>) is stored in the register <code>ARR</code> of the timer. And the duty of the PWM is set in the <code>Compare Control</code> register named <code>CRx</code>.</p>
+<p>In the main application, save the PWM duty and use it to control PWM duty later. All timers must be started exclusively.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint16_t</span> <span class="n">dutyCycle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="hll">    <span class="n">dutyCycle</span> <span class="o">=</span> <span class="n">__HAL_TIM_GET_AUTORELOAD</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">);</span>
+</span><span class="hll">    <span class="n">HAL_TIM_PWM_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="n">TIM_CHANNEL_3</span><span class="p">);</span>
+</span><span class="hll">    <span class="n">HAL_TIM_Base_Start_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim6</span><span class="p">);</span>
+</span>    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>To change the duty of the output PWM inside the 100 Hz basic timer’s interrupt, override the callback and set the Output Compare value with changed duty.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_TIM_PeriodElapsedCallback</span><span class="p">(</span><span class="n">TIM_HandleTypeDef</span> <span class="o">*</span><span class="n">htim</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">  <span class="k">if</span><span class="p">(</span><span class="n">dutyCycle</span> <span class="o">&gt;=</span> <span class="n">__HAL_TIM_GET_AUTORELOAD</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">))</span> <span class="p">{</span>
+</span>    <span class="n">dutyInc</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">dutyCycle</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dutyInc</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">dutyCycle</span> <span class="o">+=</span> <span class="n">dutyInc</span><span class="p">;</span>
+<span class="hll">  <span class="n">__HAL_TIM_SET_COMPARE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">,</span> <span class="n">TIM_CHANNEL_3</span><span class="p">,</span> <span class="n">dutyCycle</span><span class="p">);</span>
+</span><span class="p">}</span>
+</code></pre></div>
+<p>
+<figure><img src="pwm_output.png"/><figcaption>PWM at 100Hz with changing duty - <a href="pwm_output.mp4">video</a></figcaption>
+</figure>
+</p>
+<video autoplay="" loop="" style="width:100%">
+<source src="led_with_pwm.mp4" type="video/mp4"/>
+</video>
+<figure>
+<figcaption>LED brightness with changing PWM</figcaption>
+</figure>
+<h2 id="6-other-modes">6. Other modes<a class="headerlink" href="#6-other-modes" title="Permanent link">⚓︎</a></h2>
+<p>Other modes of timers will be covered in some examples in up coming posts.</p>
+<div data-value="https://www.codeinsideout.com/blog/stm32/timer/" id="page_url"></div>
+<div data-value="blog/stm32/timer/" id="page_identifier"></div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../uart-redirection/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              UART Redirection
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../notes/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Notes
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

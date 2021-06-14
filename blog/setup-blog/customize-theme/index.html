@@ -1,0 +1,2946 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A personal website should look different to others to make it unique or standout. This post guides to add some must-have elements of a blog like tag cloud, tag page, list of posts into the theme's template. This also add some styles and scripts to the pages in order to get a simple look which goes straight to the content but still have clear and beautiful visual for reading not only on screens but also in papers." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/setup-blog/customize-theme/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
+<title>Customize the theme with personal styles - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<meta content="website" property="og:type">
+<meta content="Customize the theme with personal styles - Code Inside Out" property="og:title">
+<meta content="A personal website should look different to others to make it unique or standout. This post guides to add some must-have elements of a blog like tag cloud, tag page, list of posts into the theme's template. This also add some styles and scripts to the pages in order to get a simple look which goes straight to the content but still have clear and beautiful visual for reading not only on screens but also in papers." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/setup-blog/customize-theme/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-the-posts-title">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Customize theme
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        C/C++
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Customize theme
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Customize theme
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-the-posts-title">
+    1. The post's title
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-the-posts-tags">
+    2. The post's tags
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-the-tags-page">
+    3. The Tags page
+  </a>
+<nav aria-label="3. The Tags page" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-the-tag-cloud">
+    3.1. The tag cloud
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-list-pages-of-a-tag">
+    3.2. List pages of a tag
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-the-recent-blog-posts">
+    4. The recent blog posts
+  </a>
+<nav aria-label="4. The recent blog posts" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-create-the-pagination">
+    4.1. Create the pagination
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-create-a-post-entry">
+    4.2. Create a post entry
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-create-active-page">
+    4.3. Create active page
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-the-main-template">
+    5. The main template
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-zoom-in-images">
+    6. Zoom-in Images
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-open-external-links">
+    7. Open external links
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-custom-styles">
+    8. Custom styles
+  </a>
+<nav aria-label="8. Custom styles" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#81-colors">
+    8.1. Colors
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#82-admonition">
+    8.2. Admonition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#83-quotes">
+    8.3. Quotes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#84-code-block">
+    8.4. Code block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#85-tables">
+    8.5. Tables
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#86-tabs">
+    8.6. Tabs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#87-buttons">
+    8.7. Buttons
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#88-image-caption">
+    8.8. Image caption
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#89-sidebar-scrolls">
+    8.9. Sidebar scrolls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#810-spaces">
+    8.10. Spaces
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#811-tags">
+    8.11. Tags
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#812-new-elements">
+    8.12. New elements
+  </a>
+<nav aria-label="8.12. New elements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8121-new-span">
+    8.12.1. New span
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8122-row-and-column">
+    8.12.2. Row and Column
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkRed;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkCyan;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGreen;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkViolet;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkRed;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkViolet;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateBlue;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOliveGreen;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkGreen;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkGreen;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkSlateBlue;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkOliveGreen;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-the-posts-title">
+    1. The post's title
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-the-posts-tags">
+    2. The post's tags
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-the-tags-page">
+    3. The Tags page
+  </a>
+<nav aria-label="3. The Tags page" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-the-tag-cloud">
+    3.1. The tag cloud
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-list-pages-of-a-tag">
+    3.2. List pages of a tag
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-the-recent-blog-posts">
+    4. The recent blog posts
+  </a>
+<nav aria-label="4. The recent blog posts" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-create-the-pagination">
+    4.1. Create the pagination
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-create-a-post-entry">
+    4.2. Create a post entry
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-create-active-page">
+    4.3. Create active page
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-the-main-template">
+    5. The main template
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-zoom-in-images">
+    6. Zoom-in Images
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-open-external-links">
+    7. Open external links
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-custom-styles">
+    8. Custom styles
+  </a>
+<nav aria-label="8. Custom styles" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#81-colors">
+    8.1. Colors
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#82-admonition">
+    8.2. Admonition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#83-quotes">
+    8.3. Quotes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#84-code-block">
+    8.4. Code block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#85-tables">
+    8.5. Tables
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#86-tabs">
+    8.6. Tabs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#87-buttons">
+    8.7. Buttons
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#88-image-caption">
+    8.8. Image caption
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#89-sidebar-scrolls">
+    8.9. Sidebar scrolls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#810-spaces">
+    8.10. Spaces
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#811-tags">
+    8.11. Tags
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#812-new-elements">
+    8.12. New elements
+  </a>
+<nav aria-label="8.12. New elements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8121-new-span">
+    8.12.1. New span
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8122-row-and-column">
+    8.12.2. Row and Column
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkOliveGreen;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkSlateGray;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOliveGreen;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkViolet;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkTurquoise;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGoldenrod;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkTurquoise;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkViolet;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkCyan;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkGreen;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkViolet;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGoldenrod;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">Customize the theme with personal styles</h1>
+<p class="page-description">A personal website should look different to others to make it unique or standout. This post guides to add some must-have elements of a blog like tag cloud, tag page, list of posts into the theme's template. This also add some styles and scripts to the pages in order to get a simple look which goes straight to the content but still have clear and beautiful visual for reading not only on screens but also in papers.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name">
+                        #jinja
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name">
+                        #css
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name">
+                        #javascript
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-14 15:57:19</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-the-posts-title">
+    1. The post's title
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-the-posts-tags">
+    2. The post's tags
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-the-tags-page">
+    3. The Tags page
+  </a>
+<nav aria-label="3. The Tags page" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-the-tag-cloud">
+    3.1. The tag cloud
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-list-pages-of-a-tag">
+    3.2. List pages of a tag
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-the-recent-blog-posts">
+    4. The recent blog posts
+  </a>
+<nav aria-label="4. The recent blog posts" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-create-the-pagination">
+    4.1. Create the pagination
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-create-a-post-entry">
+    4.2. Create a post entry
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-create-active-page">
+    4.3. Create active page
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-the-main-template">
+    5. The main template
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-zoom-in-images">
+    6. Zoom-in Images
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-open-external-links">
+    7. Open external links
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-custom-styles">
+    8. Custom styles
+  </a>
+<nav aria-label="8. Custom styles" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#81-colors">
+    8.1. Colors
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#82-admonition">
+    8.2. Admonition
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#83-quotes">
+    8.3. Quotes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#84-code-block">
+    8.4. Code block
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#85-tables">
+    8.5. Tables
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#86-tabs">
+    8.6. Tabs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#87-buttons">
+    8.7. Buttons
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#88-image-caption">
+    8.8. Image caption
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#89-sidebar-scrolls">
+    8.9. Sidebar scrolls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#810-spaces">
+    8.10. Spaces
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#811-tags">
+    8.11. Tags
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#812-new-elements">
+    8.12. New elements
+  </a>
+<nav aria-label="8.12. New elements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8121-new-span">
+    8.12.1. New span
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8122-row-and-column">
+    8.12.2. Row and Column
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\setup-blog\customize-theme\setup-blog__Customize_theme.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
+<h2 id="1-the-posts-title">1. The post’s title<a class="headerlink" href="#1-the-posts-title" title="Permanent link">⚓︎</a></h2>
+<p>By using the <a href="../mkdocs-plugins/#1-awesome-pages">Awesome Pages</a> plugin and the <a href="../mkdocs-plugins/#2-section-index"> Section index</a> plugin, the navigation sidebar can show a good structure of posts. However, each entry is displaying the post’s title with long text, this make the navigation bar look a bit messy.</p>
+<p>It is easy to add a full title into a post by using the <a href="../markdown-syntax/#1-meta-data">Metadata section</a>. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Customize theme</span>
+<span class="nt">title_full</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Customize the theme with personal styles</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">A personal website should look different to others ...</span>
+<span class="nn">---</span>
+</code></pre></div>
+<p>However, the content of each post will also display the short title. To fix this, I am going to override the main template. Before do it, I will add tags in the Metadata section also.</p>
+<h2 id="2-the-posts-tags">2. The post’s tags<a class="headerlink" href="#2-the-posts-tags" title="Permanent link">⚓︎</a></h2>
+<p>A tag is a word or a phrase that describes one main point of a blog post’s content. They are an easy way to attach labels to the content and link similar posts together.</p>
+<p>The tags of a post are defined in the <a href="../markdown-syntax/#1-meta-data">Metadata section</a>, then they are gathered and processed in templates later.</p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">title</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">description</span>
+<span class="nt">tags</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mkdocs</span>
+<span class="nn">---</span>
+</code></pre></div>
+<h2 id="3-the-tags-page">3. The Tags page<a class="headerlink" href="#3-the-tags-page" title="Permanent link">⚓︎</a></h2>
+<p>The tag page is the place to list all tags, and list all pages that have a common tag. A new page will be created at <code>docs\tags\index.md</code>. There is a method to use <a href="../mkdocs-plugins/#5-macros">MkDocs Macros</a> in Markdown template, but it is quite complicated.</p>
+<p>I use Jinja syntax to create the content of the Tags page, therefore, create a new file at <code>overrides\tags.html</code> and use it as the template for the Tags page:</p>
+<div class="file"></div>
+<p>docs\tags\index.md</p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Tags</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Tags and list of pages</span>
+<span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tags.html</span>
+<span class="nt">hide</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">disqus</span>
+<span class="nn">---</span>
+
+<span class="c1"># Tags</span>
+</code></pre></div>
+<p>The <code>tags.html</code> template to include 2 parts:</p>
+<ul>
+<li><code>tag-cloud.html</code>: make a tag cloud to see how many pages are associated with a tag</li>
+<li><code>tag-list-pages.html</code>: for each tag, list all pages having that tag to show similar articles together</li>
+</ul>
+<div class="file"></div>
+<p>overrides\tags.html</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"main.html"</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">page_content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">"partials/tag-cloud.html"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">"partials/tag-page-list.html"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+<p>Tags will have random colors, to easily disguise them to each other. A helper <code>random_color()</code> macro that returns a random color looks like:</p>
+<div class="file"></div>
+<p>overrides\partials\random-colors.html</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span>- <span class="k">macro</span> <span class="nv">random_color</span><span class="o">()</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="cp">{{</span><span class="o">-</span> <span class="o">[</span><span class="s2">"DarkRed"</span><span class="o">,</span>
+<span class="s2">"DarkGoldenrod"</span><span class="o">,</span>
+<span class="s2">"DarkGreen"</span><span class="o">,</span>
+<span class="s2">"DarkOliveGreen"</span><span class="o">,</span>
+<span class="s2">"DarkCyan"</span><span class="o">,</span>
+<span class="s2">"DarkTurquoise"</span><span class="o">,</span>
+<span class="s2">"DarkBlue"</span><span class="o">,</span>
+<span class="s2">"DarkMagenta"</span><span class="o">,</span>
+<span class="s2">"DarkViolet"</span><span class="o">,</span>
+<span class="s2">"DarkSlateBlue"</span><span class="o">,</span>
+<span class="s2">"DarkOrchid"</span><span class="o">,</span>
+<span class="s2">"DarkSlateGray"</span><span class="o">]</span> <span class="o">|</span> <span class="nf">random</span> -<span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span>- <span class="k">endmacro</span> -<span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+<p>Then it can be imported as:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">from</span> <span class="s2">"partials/random-colors.html"</span> <span class="k">import</span> <span class="nv">random_color</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+<h3 id="31-the-tag-cloud">3.1. The tag cloud<a class="headerlink" href="#31-the-tag-cloud" title="Permanent link">⚓︎</a></h3>
+<p>The tag cloud shows all tags in different size and color. The bigger a tag is, the more pages mention that tag. Steps to make a tag cloud:</p>
+<ol>
+<li>
+<p>Scan all pages and create a list of pairs <code>(tag, pages[])</code></p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">set</span> <span class="nv">tags</span><span class="o">=[]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="c">{# scan all pages #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">p</span> <span class="k">in</span> <span class="nv">pages</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">p.page.meta.tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="c">{# extract tags if available #}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">tag</span> <span class="k">in</span> <span class="nv">p.page.meta.tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">tags</span><span class="o">|</span><span class="nf">length</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">ns</span> <span class="o">=</span> <span class="nv">namespace</span><span class="o">(</span><span class="nv">found</span><span class="o">=</span><span class="kp">False</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# read more about scope at</span>
+<span class="c">    https://jinja.palletsprojects.com/en/2.11.x/templates/#assignments</span>
+<span class="c">    #}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# check if tag exists, append to its page list #}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">t</span><span class="o">,</span> <span class="nv">ps</span> <span class="o">=</span> <span class="nv">item</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">tag</span> <span class="o">==</span> <span class="nv">t</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">ns.found</span> <span class="o">=</span> <span class="kp">True</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      </span><span class="cp">{{</span> <span class="nv">ps.append</span><span class="o">(</span><span class="nv">p.page</span><span class="o">)</span> <span class="k">or</span> <span class="s2">""</span> <span class="cp">}}</span><span class="x"> </span><span class="c">{# use (or "") to not print} #}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# if tag doesn't exist, create new page list#}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">ns.found</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">tags.append</span><span class="o">((</span><span class="nv">tag</span><span class="o">,</span> <span class="o">[</span><span class="nv">p.page</span><span class="o">]))</span> <span class="k">or</span> <span class="s2">""</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">tags.append</span><span class="o">((</span><span class="nv">tag</span><span class="o">,</span> <span class="o">[</span><span class="nv">p.page</span><span class="o">]))</span> <span class="k">or</span> <span class="s2">""</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Count the number of pages for each tag then show each tag with different text size and color using <code>font-size</code> and <code>color</code> attributes</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;p class="md-nav"&gt;</span>
+<span class="x">    &lt;label class="md-nav__title"&gt;Tag cloud&lt;/label&gt;</span>
+<span class="x">&lt;/p&gt;</span>
+<span class="x">&lt;div class="tag-cloud-content"&gt;</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">tags</span><span class="o">|</span><span class="nf">count</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">tag</span><span class="o">,</span> <span class="nv">ps</span> <span class="o">=</span> <span class="nv">item</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# create a link with tag name #}</span><span class="x"></span>
+<span class="x">    </span><span class="c">{# font size is based on the page count #}</span><span class="x"></span>
+<span class="x">    &lt;a class="tag" href="</span><span class="cp">{{</span> <span class="nv">config.site_url</span> <span class="cp">}}</span><span class="x">tags/#</span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x">"&gt;</span>
+<span class="x">        &lt;span class="tag-name" style="</span>
+<span class="x">        font-size:</span><span class="cp">{{</span> <span class="m">0.6</span><span class="o">+</span><span class="nv">ps</span><span class="o">|</span><span class="nf">count</span><span class="o">*</span><span class="m">0.1</span><span class="cp">}}</span><span class="x">rem;</span>
+<span class="x">        color:</span><span class="cp">{{</span> <span class="nv">random_color</span><span class="o">()</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">        "&gt;</span>
+<span class="x">        </span><span class="cp">{{</span><span class="o">-</span> <span class="nv">tag</span> -<span class="cp">}}</span><span class="x"></span>
+<span class="x">        &lt;/span&gt;</span>
+<span class="x">        &lt;sup class="tag-count"&gt;</span><span class="cp">{{</span><span class="o">-</span> <span class="nv">ps</span><span class="o">|</span><span class="nf">count</span> -<span class="cp">}}</span><span class="x">&lt;/sup&gt;</span>
+<span class="x">    &lt;/a&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;div&gt;</span>
+<span class="x">    &lt;h3&gt;No tag found!&lt;/h3&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+</li>
+</ol>
+<h3 id="32-list-pages-of-a-tag">3.2. List pages of a tag<a class="headerlink" href="#32-list-pages-of-a-tag" title="Permanent link">⚓︎</a></h3>
+<p>This section is simple as it just needs to loop through the list of pairs <code>(tag, pages[])</code> and create a link to each page. Steps to do that:</p>
+<ol>
+<li>
+<p>Scan all pages and create a list of pairs <code>(tag, pages[])</code></p>
+<blockquote>
+<p>see above section</p>
+</blockquote>
+</li>
+<li>
+<p>Show each tag with the list of pages in a collapsible <code>&lt;details&gt;</code> block</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;div class="tag-page-list"&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">tag</span><span class="o">,</span> <span class="nv">ps</span> <span class="o">=</span> <span class="nv">item</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;details class="note" id=</span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x">&gt;</span>
+<span class="x">    &lt;summary&gt;</span>
+<span class="x">        </span><span class="cp">{{</span><span class="o">-</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x"> (</span><span class="cp">{{</span><span class="o">-</span> <span class="nv">ps</span><span class="o">|</span><span class="nf">count</span> -<span class="cp">}}</span><span class="x">)</span>
+<span class="x">        &lt;a class="headerlink" href="#</span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x">"&gt;⚓︎&lt;/a&gt;</span>
+<span class="x">    &lt;/summary&gt;</span>
+<span class="x">    &lt;ol&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">p</span> <span class="k">in</span> <span class="nv">ps</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;li&gt;</span>
+<span class="x">        &lt;a href="</span><span class="cp">{{</span> <span class="nv">page.canonical_url</span> <span class="cp">}}</span><span class="x">"&gt;</span>
+<span class="x">            </span><span class="cp">{%</span>- <span class="k">if</span> <span class="nv">p.meta</span> <span class="k">and</span> <span class="nv">p.meta.title_full</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{{</span><span class="o">-</span> <span class="nv">p.meta.title_full</span> -<span class="cp">}}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span>- <span class="k">elif</span> <span class="nv">p.meta</span> <span class="k">and</span> <span class="nv">p.meta.title</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{{</span><span class="o">-</span> <span class="nv">p.meta.title</span> -<span class="cp">}}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span>- <span class="k">else</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{{</span><span class="o">-</span> <span class="nv">p.title</span> -<span class="cp">}}</span><span class="x">`</span>
+<span class="x">            </span><span class="cp">{%</span>- <span class="k">endif</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;/a&gt;</span>
+<span class="x">        &lt;/li&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/ol&gt;</span>
+<span class="x">    &lt;/details&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Only one tag block is open at a time to easily follow the selected tag. To do this, I added a callback of the <code>toggle</code> event on all tag blocks. Whenever a block is opened, this script will close all others</p>
+<div class="highlight"><pre><span></span><code><span class="p">[...</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"details"</span><span class="p">)].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">D</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">A</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">D</span><span class="p">.</span><span class="nx">open</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="nx">D</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+        <span class="s2">"toggle"</span><span class="p">,</span>
+        <span class="p">(</span><span class="nx">E</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">D</span><span class="p">.</span><span class="nx">open</span> <span class="o">&amp;&amp;</span> <span class="nx">A</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">d</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">d</span> <span class="o">!=</span> <span class="nx">E</span><span class="p">.</span><span class="nx">target</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">open</span> <span class="o">=</span> <span class="kc">false</span><span class="p">))</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+</li>
+<li>
+<p>A tag block can be opened via URL with hash being the selected tag</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">hash</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">hash</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">hash</span><span class="p">).</span><span class="nx">open</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+</ol>
+<p>Visit the <a href="../../../tags/">Tags</a> to see the result.</p>
+<h2 id="4-the-recent-blog-posts">4. The recent blog posts<a class="headerlink" href="#4-the-recent-blog-posts" title="Permanent link">⚓︎</a></h2>
+<p>There should be a page showing the recent posts to help users see what is new and updated. With the <a href="../mkdocs-plugins/#3-revision-date">Revision Date</a> plugin, it is able to use two new meta-dat fields: <code>git_revision_date_localized</code>, and <code>git_creation_date_localized</code> if the option <code>enable_creation_date</code> is <code>true</code>.</p>
+<p>Create new <code>index.md</code> file inside the <code>blog</code> folder. When using the <a href="../mkdocs-plugins/#2-section-index">Section Index</a> plugin, this index file will be merged to the Blog section, therefore, when user select the Blog label, there is a list of recent posts will be shown.</p>
+<p>This page will use the <code>blog.html</code> template in which it scans all posts and check the creation date to make a list of posts. Each post should be displayed in a container and be formatted to show the title, the description (at most 250 character using the <code>truncate</code> filter), the creation date, and its tags.</p>
+<div class="admonition caution nt">
+<p class="admonition-title"> </p>
+<p>Need to check the page’s path to filter blog posts. In my code, I use the <code>abs_url</code> and its length to check if a page is in the <code>blog</code> directory.</p>
+</div>
+<p>Here is the code to sort all pages in order of creation date, and then filter all blog posts to save into the array <code>blog_pages</code> which will be used to generate content.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">set</span> <span class="nv">blog_pages</span><span class="o">=[]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">p</span> <span class="k">in</span> <span class="nv">pages</span><span class="o">|</span><span class="nf">sort</span><span class="o">(</span>
+        <span class="nv">attribute</span><span class="o">=</span><span class="s1">'page.meta.git_creation_date_localized'</span><span class="o">,</span>
+        <span class="nv">reverse</span><span class="o">=</span><span class="kp">True</span>
+    <span class="o">)</span>
+<span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">pg</span> <span class="o">=</span> <span class="nv">p.page</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.abs_url.startswith</span><span class="o">(</span><span class="s1">'/blog/'</span><span class="o">)</span> <span class="k">and</span> <span class="nv">pg.abs_url</span><span class="o">|</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="m">6</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{{</span> <span class="nv">blog_pages.append</span><span class="o">(</span><span class="nv">pg</span><span class="o">)</span> <span class="k">or</span> <span class="s2">""</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;div class="pages"&gt;</span>
+<span class="x">    ... create list from blog_pages ...</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+<h3 id="41-create-the-pagination">4.1. Create the pagination<a class="headerlink" href="#41-create-the-pagination" title="Permanent link">⚓︎</a></h3>
+<p>When the number of posts goes bigger, the recent post list becomes longer. It’s time to brake the long list into pages - the user can click on the page number to see its children posts.</p>
+<p>This is called “Pagination”. How to implement it?</p>
+<p>Jinja template has the <a href="https://jinja.palletsprojects.com/en/3.0.x/templates/#jinja-filters.slice"><code>slice</code> filter</a> to divide a list into sub-lists. Here, I’d like to have maximum of 10 posts on each page.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;div class="pages"&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">pg_group</span> <span class="k">in</span> <span class="nv">blog_pages</span><span class="o">|</span><span class="nf">slice</span><span class="o">((</span><span class="nv">blog_pages</span><span class="o">|</span><span class="nf">count</span> <span class="o">/</span> <span class="m">10</span><span class="o">)|</span><span class="nf">int</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;div class="page" id="page</span><span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span><span class="x">"&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">pg</span> <span class="k">in</span> <span class="nv">pg_group</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            &lt;div class="post"&gt;</span>
+<span class="x">                ... create post layout and content ...</span>
+<span class="x">            &lt;/div&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+<h3 id="42-create-a-post-entry">4.2. Create a post entry<a class="headerlink" href="#42-create-a-post-entry" title="Permanent link">⚓︎</a></h3>
+<p>Each post is wrapped inside a <code class="highlight"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span></code> and its elements are marked with different classes, such as <code>post-title</code>, <code>post-description</code>, etc. for applying styles later.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;div class="post"&gt;</span>
+<span class="x">    &lt;h3 class="post-title"&gt;</span>
+<span class="x">        &lt;a class="link" href="</span><span class="cp">{{</span> <span class="nv">pg.canonical_url</span> <span class="cp">}}</span><span class="x">"&gt;</span><span class="cp">{{</span> <span class="nv">title</span> <span class="cp">}}</span><span class="x">&lt;/a&gt;</span>
+<span class="x">    &lt;/h3&gt;</span>
+<span class="x">    &lt;p class="post-description"&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.meta.description</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{{</span> <span class="nv">pg.meta.description</span> <span class="o">|</span> <span class="nf">truncate</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/p&gt;</span>
+<span class="x">    &lt;div class="post-extra"&gt;</span>
+<span class="x">        &lt;span class="post-timestamp"&gt;</span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.meta</span> <span class="k">and</span> <span class="nv">pg.meta.git_revision_date_localized</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            &lt;span class="post-timestamp-update"&gt;</span>
+<span class="x">                Updated: </span><span class="cp">{{</span> <span class="nv">pg.meta.git_revision_date_localized</span> -<span class="cp">}}</span><span class="x"></span>
+<span class="x">            &lt;/span&gt;</span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;/span&gt;</span>
+<span class="x">        &lt;span class="post-tags"&gt;</span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.meta.tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">tag</span> <span class="k">in</span> <span class="nv">pg.meta.tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            &lt;a class="tag" href="</span><span class="cp">{{</span> <span class="nv">config.site_url</span> <span class="cp">}}</span><span class="x">tags/#</span><span class="cp">{{</span><span class="nv">tag</span><span class="cp">}}</span><span class="x">"&gt;</span>
+<span class="x">                &lt;span class="tag-name"</span>
+<span class="x">                        style="color:</span><span class="cp">{{</span><span class="nv">random_color</span><span class="o">()</span><span class="cp">}}</span><span class="x">;"&gt;</span>
+<span class="x">                    #</span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">                &lt;/span&gt;</span>
+<span class="x">            &lt;/a&gt;</span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;/span&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">    &lt;hr /&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+<p>Here is a simple styles to make each post display necessary basic information:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">post</span><span class="p">:</span><span class="nd">first-of-type</span> <span class="nt">h3</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">post-title</span> <span class="p">{</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">post-extra</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">gray</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">post-tags</span> <span class="p">{</span>
+    <span class="k">float</span><span class="p">:</span> <span class="kc">right</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="43-create-active-page">4.3. Create active page<a class="headerlink" href="#43-create-active-page" title="Permanent link">⚓︎</a></h3>
+<p>To show the current active page, I use pure css and javascript. The idea is to use the URL hash to detect which page is activated, such as <code>#page1</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;div class="center"&gt;</span>
+<span class="x">    &lt;div class="pagination" id="pagination"&gt;</span>
+<span class="x">    &lt;a href="#"&gt;&amp;laquo;&lt;/a&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">pg_group</span> <span class="k">in</span> <span class="nv">blog_pages</span><span class="o">|</span><span class="nf">slice</span><span class="o">((</span><span class="nv">blog_pages</span><span class="o">|</span><span class="nf">count</span> <span class="o">/</span> <span class="m">10</span><span class="o">)|</span><span class="nf">int</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;a class="page-number </span><span class="cp">{%</span> <span class="k">if</span> <span class="nb">loop</span><span class="nv">.index</span><span class="o">==</span><span class="m">1</span> <span class="cp">%}</span><span class="x">active</span><span class="cp">{%</span> <span class="k">endif</span><span class="cp">%}</span><span class="x">"</span>
+<span class="x">            href="#page</span><span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span><span class="x">"&gt;</span><span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span><span class="x">&lt;/a&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;a href="#"&gt;&amp;raquo;&lt;/a&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+<p>Then add some styles to the pagination block and its children links:</p>
+<p><br/>
+<strong>CSS Styles</strong>:</p>
+<p>Use <code>target</code> keyword to select the selected <em>page id</em>, then show only the target element.</p>
+<div class="file"></div>
+<p>assets\extra.css</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">pages</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">page</span><span class="p">:</span><span class="nd">target</span> <span class="o">~</span> <span class="p">.</span><span class="nc">page</span><span class="p">:</span><span class="nd">last-child</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">pages</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">page</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">pages</span> <span class="o">&gt;</span> <span class="p">:</span><span class="nd">last-child</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">pages</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">page</span><span class="p">:</span><span class="nd">target</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br/>
+<strong>Javascript</strong></p>
+<p>When the page is loaded, a script will run to get all pagination’s links, and then add a callback function for click event, that remove <code>active</code> class from last activated element and then assign <code>active</code> class to the event’s source element. Note that the first page is activated by default when the page is loaded.</p>
+<div class="file"></div>
+<p>assets\extra.js</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">pagination</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"pagination"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nx">pagination</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">"page-number"</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">pagination</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">"active"</span><span class="p">);</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">current</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">current</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">className</span> <span class="o">=</span> <span class="nx">current</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">className</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span>
+                    <span class="s2">" active"</span><span class="p">,</span>
+                    <span class="s2">""</span>
+                <span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">className</span> <span class="o">+=</span> <span class="s2">" active"</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="nx">links</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">click</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<!--
+::: file
+overrides\\blog.html
+
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">from</span> <span class="s2">&quot;partials/random-colors.html&quot;</span> <span class="k">import</span> <span class="nv">random_color</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;main.html&quot;</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">page_content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        .md-typeset .post:first-of-type h3 {</span>
+<span class="x">            margin-top: 0;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .post-title {</span>
+<span class="x">            margin-bottom: 0;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .post-extra {</span>
+<span class="x">            color: gray;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .post-tags {</span>
+<span class="x">            float: right;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .pages &gt; .page:target ~ .page:last-child,</span>
+<span class="x">        .md-typeset .pages &gt; .page {</span>
+<span class="x">            display: none;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .pages &gt; :last-child,</span>
+<span class="x">        .md-typeset .pages &gt; .page:target {</span>
+<span class="x">            display: block;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .center {</span>
+<span class="x">            text-align: center;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .pagination {</span>
+<span class="x">            display: inline-block;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .pagination a {</span>
+<span class="x">            color: black;</span>
+<span class="x">            float: left;</span>
+<span class="x">            padding: .25em 1em;</span>
+<span class="x">            text-decoration: none;</span>
+<span class="x">            border-radius: 1em;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .pagination a.active {</span>
+<span class="x">            background-color: #4CAF50;</span>
+<span class="x">            color: white;</span>
+<span class="x">            font-weight: bold;</span>
+<span class="x">        }</span>
+<span class="x">        .md-typeset .pagination a:hover:not(.active) {</span>
+<span class="x">            background-color: #ddd;</span>
+<span class="x">        }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">blog_pages</span><span class="o">=[]</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">p</span> <span class="k">in</span>
+        <span class="nv">pages</span><span class="o">|</span><span class="nf">sort</span><span class="o">(</span>
+            <span class="nv">attribute</span><span class="o">=</span><span class="s1">&#39;page.meta.git_creation_date_localized&#39;</span><span class="o">,</span> 
+            <span class="nv">reverse</span><span class="o">=</span><span class="kp">True</span>
+        <span class="o">)</span>
+    <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">pg</span> <span class="o">=</span> <span class="nv">p.page</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.abs_url.startswith</span><span class="o">(</span><span class="s1">&#39;/blog/&#39;</span><span class="o">)</span> <span class="k">and</span> <span class="nv">pg.abs_url</span><span class="o">|</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="m">6</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{{</span> <span class="nv">blog_pages.append</span><span class="o">(</span><span class="nv">pg</span><span class="o">)</span> <span class="k">or</span> <span class="s2">&quot;&quot;</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="x">    &lt;div class=&quot;pages&quot;&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">pg_group</span> <span class="k">in</span> <span class="nv">blog_pages</span><span class="o">|</span><span class="nf">slice</span><span class="o">((</span><span class="nv">blog_pages</span><span class="o">|</span><span class="nf">count</span> <span class="o">/</span> <span class="m">10</span><span class="o">)|</span><span class="nf">int</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      &lt;div class=&quot;page&quot; id=&quot;page</span><span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">pg</span> <span class="k">in</span> <span class="nv">pg_group</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      &lt;div class=&quot;post&quot;&gt;</span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">title</span> <span class="o">=</span> <span class="nv">pg.title</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.meta</span> <span class="k">and</span> <span class="nv">pg.meta.title_full</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">title</span> <span class="o">=</span> <span class="nv">pg.meta.title_full</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;h3 class=&quot;post-title&quot;&gt;</span>
+<span class="x">            &lt;a class=&quot;link&quot; href=&quot;</span><span class="cp">{{</span> <span class="nv">pg.canonical_url</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span><span class="cp">{{</span> <span class="nv">title</span> <span class="cp">}}</span><span class="x">&lt;/a&gt;</span>
+<span class="x">        &lt;/h3&gt;</span>
+<span class="x">        &lt;p class=&quot;post-description&quot;&gt;</span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.meta.description</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{{</span> <span class="nv">pg.meta.description</span> <span class="o">|</span> <span class="nf">truncate</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;div class=&quot;post-extra&quot;&gt;</span>
+<span class="x">            &lt;span class=&quot;post-timestamp&quot;&gt;</span>
+<span class="x">                </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.meta</span> <span class="k">and</span> <span class="nv">pg.meta.git_revision_date_localized</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                &lt;span class=&quot;post-timestamp-update&quot;&gt;</span>
+<span class="x">                    Updated: </span><span class="cp">{{</span> <span class="nv">pg.meta.git_revision_date_localized</span> -<span class="cp">}}</span><span class="x"></span>
+<span class="x">                &lt;/span&gt;</span>
+<span class="x">                </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            &lt;/span&gt;</span>
+<span class="x">            &lt;span class=&quot;post-tags&quot;&gt;</span>
+<span class="x">                </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">pg.meta.tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">tag</span> <span class="k">in</span> <span class="nv">pg.meta.tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                &lt;a class=&quot;tag&quot; href=&quot;</span><span class="cp">{{</span> <span class="nv">config.site_url</span> <span class="cp">}}</span><span class="x">tags/#</span><span class="cp">{{</span><span class="nv">tag</span><span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="x">                    &lt;span class=&quot;tag-name&quot;</span>
+<span class="x">                          style=&quot;color:</span><span class="cp">{{</span><span class="nv">random_color</span><span class="o">()</span><span class="cp">}}</span><span class="x">;&quot;&gt;</span>
+<span class="x">                        #</span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">                    &lt;/span&gt;</span>
+<span class="x">                &lt;/a&gt;</span>
+<span class="x">                </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            &lt;/span&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">        &lt;hr /&gt;</span>
+<span class="x">      &lt;/div&gt;</span>
+<span class="x">      </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">      &lt;/div&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">    &lt;div class=&quot;center&quot;&gt;</span>
+<span class="x">      &lt;div class=&quot;pagination&quot; id=&quot;pagination&quot;&gt;</span>
+<span class="x">        &lt;a href=&quot;#&quot;&gt;&amp;laquo;&lt;/a&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">pg_group</span> <span class="k">in</span> <span class="nv">blog_pages</span><span class="o">|</span><span class="nf">slice</span><span class="o">((</span><span class="nv">blog_pages</span><span class="o">|</span><span class="nf">count</span> <span class="o">/</span> <span class="m">10</span><span class="o">)|</span><span class="nf">int</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">          &lt;a class=&quot;page-number </span><span class="cp">{%</span> <span class="k">if</span> <span class="nb">loop</span><span class="nv">.index</span><span class="o">==</span><span class="m">1</span> <span class="cp">%}</span><span class="x">active</span><span class="cp">{%</span> <span class="k">endif</span><span class="cp">%}</span><span class="x">&quot;</span>
+<span class="x">             href=&quot;#page</span><span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span><span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span><span class="x">&lt;/a&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;a href=&quot;#&quot;&gt;&amp;raquo;&lt;/a&gt;</span>
+<span class="x">      &lt;/div&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+-->
+<h2 id="5-the-main-template">5. The main template<a class="headerlink" href="#5-the-main-template" title="Permanent link">⚓︎</a></h2>
+<p>The <code>main.html</code> file, extending the <code>base.html</code> template, will be used for all markdown pages and it is the starting point to add custom template.</p>
+<p>To override it, add the <code>main.html</code> file in the <code>overrides</code> folder. Here are things I’m going to do to add more content into a blog post:</p>
+<ol>
+<li>
+<p>Extract metadata to get <code>title</code>, <code>title_full</code>, <code>description</code>, <code>tags</code>, and other information</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">set</span> <span class="nv">title</span> <span class="o">=</span> <span class="nv">config.site_name</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">page</span> <span class="k">and</span> <span class="nv">page.meta</span> <span class="k">and</span> <span class="nv">page.meta.title_full</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">title</span> <span class="o">=</span> <span class="nv">page.meta.title_full</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">elif</span> <span class="nv">page</span> <span class="k">and</span> <span class="nv">page.meta</span> <span class="k">and</span> <span class="nv">page.meta.title</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">title</span> <span class="o">=</span> <span class="nv">page.meta.title</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">elif</span> <span class="nv">page</span> <span class="k">and</span> <span class="nv">page.title</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">title</span> <span class="o">=</span> <span class="nv">page.title</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">description</span> <span class="o">=</span> <span class="nv">config.site_description</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">page</span> <span class="k">and</span> <span class="nv">page.meta</span> <span class="k">and</span> <span class="nv">page.meta.description</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">description</span> <span class="o">=</span> <span class="nv">page.meta.description</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">page</span> <span class="k">and</span> <span class="nv">page.meta</span> <span class="k">and</span> <span class="nv">page.meta.banner</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">image</span> <span class="o">=</span> <span class="nv">page.meta.banner</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">page</span> <span class="k">and</span> <span class="nv">page.meta</span> <span class="k">and</span> <span class="nv">page.meta.tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">tags</span> <span class="o">=</span> <span class="nv">page.meta.tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Add block to use the <a href="https://ogp.me/">Open Graph protocol</a> to show the page’s information when an user shares a page on a social network</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">block</span> <span class="nv">htmltitle</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;title&gt;</span><span class="cp">{{</span> <span class="nv">title</span> <span class="o">|</span> <span class="nf">striptags</span> <span class="cp">}}</span><span class="x"> - </span><span class="cp">{{</span> <span class="nv">config.site_name</span> <span class="cp">}}</span><span class="x">&lt;/title&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">extrahead</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;meta property="og:type" content="website" /&gt;</span>
+<span class="x">    &lt;meta property="og:title" content="</span>
+<span class="x">        </span><span class="cp">{{</span><span class="o">-</span> <span class="nv">title</span> <span class="o">|</span> <span class="nf">striptags</span> <span class="o">~</span> <span class="s1">' - '</span> <span class="o">~</span> <span class="nv">config.site_name</span> -<span class="cp">}}</span><span class="x"></span>
+<span class="x">    "/&gt;</span>
+<span class="x">    &lt;meta property="og:description" content="</span><span class="cp">{{</span> <span class="nv">description</span> <span class="cp">}}</span><span class="x">" /&gt;</span>
+<span class="x">    &lt;meta property="og:url" content="</span><span class="cp">{{</span> <span class="nv">page.canonical_url</span> <span class="cp">}}</span><span class="x">" /&gt;</span>
+<span class="x">    &lt;meta property="og:image" content="</span>
+<span class="x">            </span><span class="cp">{%</span>- <span class="k">if</span> <span class="nv">image</span> <span class="k">is</span> <span class="nf">defined</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">                </span><span class="cp">{{</span> <span class="nv">page.canonical_url</span> <span class="o">~</span> <span class="nv">image</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span>- <span class="k">else</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">                </span><span class="cp">{{</span> <span class="nv">config.site_url</span> <span class="o">~</span> <span class="s1">'assets/banner.jpg'</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span>- <span class="k">endif</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">            " /&gt;</span>
+<span class="x">    &lt;meta property="og:site_name" content="</span><span class="cp">{{</span> <span class="nv">config.site_name</span> <span class="cp">}}</span><span class="x">" /&gt;</span>
+<span class="x">    &lt;meta name="twitter:card" content="summary" /&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+</li>
+<li>
+<p>The page content should have a <code>cover</code> section which displays the <code>title</code>, <code>description</code> and <code>tags</code> on all pages, except the home page.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">page.is_homepage</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;div class="cover"&gt;</span>
+<span class="x">        &lt;h1 class="page-title"&gt;</span>
+<span class="x">            </span><span class="cp">{{</span> <span class="nv">title</span> <span class="o">|</span> <span class="nf">d</span><span class="o">(</span><span class="nv">config.site_name</span><span class="o">,</span> <span class="kp">true</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">        &lt;/h1&gt;</span>
+<span class="x">        &lt;p class="page-description"&gt;</span><span class="cp">{{</span> <span class="nv">description</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">tags</span> <span class="k">is</span> <span class="nf">defined</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;p class="page-tags"&gt;</span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">tag</span> <span class="k">in</span> <span class="nv">tags</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            &lt;a class="tag" href="</span><span class="cp">{{</span> <span class="nv">config.site_url</span> <span class="cp">}}</span><span class="x">tags/#</span><span class="cp">{{</span><span class="nv">tag</span><span class="cp">}}</span><span class="x">"&gt;</span>
+<span class="x">                &lt;span class="tag-name"&gt;</span>
+<span class="x">                    #</span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">                &lt;/span&gt;</span>
+<span class="x">            &lt;/a&gt;</span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">page.content</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+</li>
+<li>
+<p>The tag cloud should show in the sidebars based on the page’s width</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">block</span> <span class="nv">site_nav</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">nav</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">page</span> <span class="k">and</span> <span class="nv">page.meta</span> <span class="k">and</span> <span class="nv">page.meta.hide</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">          </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">hidden</span> <span class="o">=</span> <span class="s2">"hidden"</span> <span class="k">if</span> <span class="s2">"navigation"</span> <span class="k">in</span> <span class="nv">page.meta.hide</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;div class="md-sidebar md-sidebar--primary"</span>
+<span class="x">            data-md-component="sidebar"</span>
+<span class="x">            data-md-type="navigation" </span><span class="cp">{{</span> <span class="nv">hidden</span> <span class="cp">}}</span><span class="x">&gt;</span>
+<span class="x">            &lt;div class="md-sidebar__scrollwrap"&gt;</span>
+<span class="x">                &lt;div class="md-sidebar__inner"&gt;</span>
+<span class="x">                    </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">"partials/nav.html"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                    &lt;div class="tag-cloud-nav"&gt;</span>
+<span class="x">                        </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">"partials/tag-cloud.html"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                    &lt;/div&gt;</span>
+<span class="x">                &lt;/div&gt;</span>
+<span class="x">            &lt;/div&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">page.toc</span> <span class="k">and</span> <span class="k">not</span> <span class="s2">"toc.integrate"</span> <span class="k">in</span> <span class="nv">features</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">page</span> <span class="k">and</span> <span class="nv">page.meta</span> <span class="k">and</span> <span class="nv">page.meta.hide</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">            </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">hidden</span> <span class="o">=</span> <span class="s2">"hidden"</span> <span class="k">if</span> <span class="s2">"toc"</span> <span class="k">in</span> <span class="nv">page.meta.hide</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        &lt;div class="md-sidebar md-sidebar--secondary"</span>
+<span class="x">            data-md-component="sidebar"</span>
+<span class="x">            data-md-type="toc" </span><span class="cp">{{</span> <span class="nv">hidden</span> <span class="cp">}}</span><span class="x">&gt;</span>
+<span class="x">            &lt;div class="md-sidebar__scrollwrap"&gt;</span>
+<span class="x">                &lt;div class="md-sidebar__inner"&gt;</span>
+<span class="x">                    </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">"partials/toc.html"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                    &lt;div class="tag-cloud-toc"&gt;</span>
+<span class="x">                        </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">"partials/tag-cloud.html"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                    &lt;/div&gt;</span>
+<span class="x">                &lt;/div&gt;</span>
+<span class="x">            &lt;/div&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="6-zoom-in-images">6. Zoom-in Images<a class="headerlink" href="#6-zoom-in-images" title="Permanent link">⚓︎</a></h2>
+<p>As mentioned in the <a href="../markdown-syntax/#7-images">Images</a> section, <a href="https://github.com/newming/view-bigimg">view-bigimg</a> library helps to zoom and pan images. It’s useful when the image is in high resolution and resized to fit site’s width.</p>
+<p>Download <code>view-bigimg.css</code> and <code>view-bigimg.js</code> files from the <a href="https://github.com/newming/view-bigimg/tree/master/src">view-bigimg</a> repo, then add them into the addition assets configs in <code>mkdocs.yml</code>:</p>
+<div class="file"></div>
+<p>mkdocs.yml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">extra_css</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">assets/view-bigimg.css</span>
+<span class="nt">extra_javascript</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">assets/view-bigimg.js</span>
+</code></pre></div>
+<p>When click on the image, this library will create a new layer and show the image in a bigger size. However, it must be clicked on the close button to go back to the page’s content. I want to simplify this step by just click on the image. Panning still is activated by press and hold. Therefore, I write a function to detect <code>mousedown</code> and <code>mousemove</code> event, then only close the image if it is a simple click:</p>
+<div class="file"></div>
+<p>assets\extra.js</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">dragged</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"mousedown"</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">dragged</span> <span class="o">=</span> <span class="kc">false</span><span class="p">));</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"mousemove"</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">dragged</span> <span class="o">=</span> <span class="kc">true</span><span class="p">));</span>
+
+<span class="kd">var</span> <span class="nx">viewer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ViewBigimg</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">figures</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"img"</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">figures</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">figures</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">nodeName</span> <span class="o">===</span> <span class="s2">"IMG"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">viewer</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">src</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">containers</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"#iv-container .iv-image-view"</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">containers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">containers</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">dragged</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">viewer</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="7-open-external-links">7. Open external links<a class="headerlink" href="#7-open-external-links" title="Permanent link">⚓︎</a></h2>
+<p>When following links, to remain the blog page opened, external links should be shown in new tabs without any tracking information. To do that, I write some lines of code to get all external links in the page, then set <code>target = "_blank"</code> and add attribute <code>rel = "noopener noreferrer"</code> to them.</p>
+<div class="file"></div>
+<p>assets\extra.js</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* open external links in new tab */</span>
+<span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">links</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">,</span> <span class="nx">linksLength</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">linksLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hostname</span> <span class="o">!=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">target</span> <span class="o">=</span> <span class="s2">"_blank"</span><span class="p">;</span>
+        <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"rel"</span><span class="p">,</span> <span class="s2">"noopener noreferrer"</span><span class="p">);</span>
+        <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">className</span> <span class="o">+=</span> <span class="s2">" externalLink"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">className</span> <span class="o">+=</span> <span class="s2">" localLink"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="8-custom-styles">8. Custom styles<a class="headerlink" href="#8-custom-styles" title="Permanent link">⚓︎</a></h2>
+<p>After all extensions and plugins are installed, some extra pages and elements are added, this is the time to tweak the whole site’s styles.</p>
+<h3 id="81-colors">8.1. Colors<a class="headerlink" href="#81-colors" title="Permanent link">⚓︎</a></h3>
+<p>Here are some small additional styles to make the theme look a bit harmonious with the selected theme color</p>
+<ul>
+<li>
+<p>Logo and headers should be in orange to be highlighted, and active links can be in dark blue:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-logo</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">h1</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">orangered</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">h2</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">h3</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">h4</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-tabs__link</span><span class="p">.</span><span class="nc">md-tabs__link--active</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-nav__link</span><span class="p">.</span><span class="nc">md-nav__link--active</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">darkblue</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Search input should have white background color:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-search__input</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">white</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Non-highlighted code needs stand out a bit in dark red in white background:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">code</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">darkred</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Normal paragraph should be fully justified:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">p</span> <span class="p">{</span>
+    <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Emphasized text should be in dark magenta:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">em</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">darkmagenta</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Footer should look smaller by changing the background color:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-footer</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-footer-meta</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">black</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>The highlight color should not be too yellowish, I’d like to reduce its opacity:</p>
+<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="p">{</span>
+    <span class="nv">--md-code-hl-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">);</span>
+    <span class="nv">--md-typeset-mark-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="nv">--md-code-hl-color</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+</ul>
+<h3 id="82-admonition">8.2. Admonition<a class="headerlink" href="#82-admonition" title="Permanent link">⚓︎</a></h3>
+<p>I want to make admonitions look more harmonious to the theme, so I decided to remove border and shadow box, then add a light background color which is the title background color of each type. The font and the margin also need modified a bit to make admonitions look consistent to the main content.</p>
+<p>First, icon should be bigger:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition-title</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">summary</span><span class="p">:</span><span class="nd">before</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">rem</span><span class="p">;</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Remove border, shadow box, and increase font size:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span> <span class="p">{</span>
+    <span class="k">border</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mf">0.95</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Remove background color in the title, step it back to the right, due to the increased icon size:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">admonition-title</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span> <span class="o">&gt;</span> <span class="nt">summary</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">transparent</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="k">border-left</span><span class="p">:</span> <span class="mf">0.2</span><span class="kt">rem</span> <span class="kc">solid</span> <span class="kc">transparent</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="k">padding-left</span><span class="p">:</span> <span class="mi">3</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Fill background color for different admonition types:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">note</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">note</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">68</span><span class="p">,</span> <span class="mi">138</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">abstract</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">summary</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">tldr</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">abstract</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">summary</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">tldr</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">info</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">todo</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">info</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">todo</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">184</span><span class="p">,</span> <span class="mi">212</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">hint</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">important</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">tip</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">hint</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">important</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">tip</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">191</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">check</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">done</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">success</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">check</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">done</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">success</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">faq</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">help</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">question</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">faq</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">help</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">question</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">221</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">attention</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">caution</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">warning</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">attention</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">caution</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">warning</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">fail</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">failure</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">missing</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">fail</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">failure</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">missing</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">danger</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">error</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">danger</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">error</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">bug</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">bug</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">245</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">example</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">example</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">124</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">cite</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">quote</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">cite</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">quote</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">hsla</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="kt">%</span><span class="p">,</span> <span class="mi">62</span><span class="kt">%</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Make the content close to the title a bit:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">admonition-title</span> <span class="o">+</span> <span class="o">*,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span> <span class="o">&gt;</span> <span class="nt">summary</span> <span class="o">+</span> <span class="o">*</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>
+<figure><img src="admonition_styles.png"/><figcaption>Change admonition style</figcaption>
+</figure>
+</p>
+<p>And tweak the style to show admonitions which has icon but do not have title. The trick is to add left padding to the first letter in the content paragraph , and move the content up by applying a negative top margin:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">nt</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">admonition-title</span> <span class="o">+</span> <span class="nt">p</span><span class="p">::</span><span class="nd">first-letter</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">nt</span> <span class="o">&gt;</span> <span class="nt">summary</span> <span class="o">+</span> <span class="nt">p</span><span class="p">::</span><span class="nd">first-letter</span> <span class="p">{</span>
+    <span class="k">padding-left</span><span class="p">:</span> <span class="mf">2.2</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span><span class="p">.</span><span class="nc">nt</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">admonition-title</span> <span class="o">+</span> <span class="o">*,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span><span class="p">.</span><span class="nc">nt</span> <span class="o">&gt;</span> <span class="nt">summary</span> <span class="o">+</span> <span class="o">*</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mf">-2.1</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Use these additional styles, with <code>.nt</code> class and an empty title (use <code>"&amp;nbsp;"</code> or <code>"\ "</code>):</p>
+<div class="highlight"><pre><span></span><code>!!! info nt "\ "
+
+    This admonition has an icon as an inline element with the content
+
+!!! info
+
+    Default title
+
+!!! info "New title"
+
+    Content of the admonition is indented
+
+!!! info ""
+
+    There is no title and no icon
+</code></pre></div>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>This admonition has an icon as an inline element with the content</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Default title</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">New title</p>
+<p>Content of the admonition</p>
+</div>
+<div class="admonition info">
+<p>There is no title and no icon</p>
+</div>
+<h3 id="83-quotes">8.3. Quotes<a class="headerlink" href="#83-quotes" title="Permanent link">⚓︎</a></h3>
+<p>Quote is used to provide additional data, so I changed its style a bit to not make it confusing with the main text.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">blockquote</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+    <span class="k">border-left-width</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">opacity</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">blockquote</span> <span class="p">:</span><span class="nd">first-child</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mf">0.25</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">blockquote</span> <span class="p">:</span><span class="nd">last-child</span> <span class="p">{</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mf">0.25</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Admonition also has <code>quote</code> and <code>cite</code> type which are used as cited content.</p>
+</blockquote>
+<h3 id="84-code-block">8.4. Code block<a class="headerlink" href="#84-code-block" title="Permanent link">⚓︎</a></h3>
+<p>It is better to show the line number inline with its line of code:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">meta</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.superfences</span>
+    <span class="p p-Indicator">-</span> <span class="nt">pymdownx.highlight</span><span class="p">:</span>
+          <span class="nt">linenums_style</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx-inline</span>
+</code></pre></div>
+<p>And then increase the font size to get make them easy to read:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">code</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">kbd</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">word-break</span><span class="p">:</span> <span class="n">keep-all</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">pre</span> <span class="nt">code</span> <span class="p">{</span>
+    <span class="k">white-space</span><span class="p">:</span> <span class="kc">pre-wrap</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mf">0.9</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Then the line number should be dimmed to not distract the main code:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">highlight</span> <span class="o">[</span><span class="nt">data-linenos</span><span class="o">]</span><span class="p">:</span><span class="nd">before</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">transparent</span><span class="p">;</span>
+    <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">lightgray</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="2 "></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+</span><span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll"><span class="linenos" data-linenos="5 "></span>    <span class="n">printf</span><span class="p">(</span><span class="s">"Hello world!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos" data-linenos="6 "></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="7 "></span><span class="p">}</span>
+</code></pre></div>
+<h3 id="85-tables">8.5. Tables<a class="headerlink" href="#85-tables" title="Permanent link">⚓︎</a></h3>
+<p>Table should show cell border and use full width to make the content clear.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset__scrollwrap</span> <span class="p">{</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset__table</span> <span class="p">{</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">table</span><span class="p">:</span><span class="nd">not</span><span class="o">([</span><span class="nt">class</span><span class="o">])</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mf">0.9</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">table</span><span class="p">;</span>
+    <span class="k">border-collapse</span><span class="p">:</span> <span class="kc">collapse</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">table</span><span class="p">:</span><span class="nd">not</span><span class="o">([</span><span class="nt">class</span><span class="o">])</span> <span class="nt">th</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">table</span><span class="p">:</span><span class="nd">not</span><span class="o">([</span><span class="nt">class</span><span class="o">])</span> <span class="nt">td</span> <span class="p">{</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mf">0.5</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#f0f0f0</span><span class="p">;</span>
+    <span class="k">min-width</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Syntax</th>
+<th align="center">Description</th>
+<th align="right">Test Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Left align</td>
+<td align="center">Center align</td>
+<td align="right">Right align</td>
+</tr>
+<tr>
+<td align="left">Some texts</td>
+<td align="center">Some texts</td>
+<td align="right">Some texts</td>
+</tr>
+</tbody>
+</table>
+<h3 id="86-tabs">8.6. Tabs<a class="headerlink" href="#86-tabs" title="Permanent link">⚓︎</a></h3>
+<p>Tab’s content should show some intent to visualize its structure. The label is tweaked a bit to look consisted with its content at the left margin. Note that in printing, all tabs will be expanded to show all of its content.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">tabbed-content</span> <span class="p">{</span>
+    <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">border-top</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="nf">var</span><span class="p">(</span><span class="nv">--md-default-fg-color--lightest</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">tabbed-content</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">tabbed-set</span> <span class="p">{</span>
+    <span class="k">padding-left</span><span class="p">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">tabbed-set</span> <span class="o">&gt;</span> <span class="nt">label</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mf">0.9</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="k">margin-right</span><span class="o">:</span> <span class="mf">1.25</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">Tab 1</label><div class="tabbed-content">
+<p>Some texts</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><label for="__tabbed_2_1">Tab A</label><div class="tabbed-content">
+<p>Text A</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio"><label for="__tabbed_2_2">Tab B</label><div class="tabbed-content">
+<p>Text B</p>
+</div>
+</input></input></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio"><label for="__tabbed_1_2">Tab 2</label><div class="tabbed-content">
+<p>Some other texts</p>
+</div>
+</input></input></div>
+<h3 id="87-buttons">8.7. Buttons<a class="headerlink" href="#87-buttons" title="Permanent link">⚓︎</a></h3>
+<p>When using white primary color, the default button class <code>md-button</code> has issues to display correctly. Here are the fix for those buttons:</p>
+<ul>
+<li>change the margin to make them smaller</li>
+<li>change the border, and text color</li>
+<li>change the size of the icon</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">md-button</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="kc">small</span><span class="p">;</span>
+    <span class="k">font-weight</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mf">0.25</span><span class="kt">em</span> <span class="mf">0.5</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span><span class="p">;</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">orangered</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">md-button</span> <span class="p">.</span><span class="nc">twemoji</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="kc">large</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="md-button" href="#"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.76 8.69a.76.76 0 0 0-.76.76V20.9c0 .42.34.76.76.76.19 0 .35-.06.48-.16l1.91-1.55 1.66 3.62c.13.27.4.43.69.43.11 0 .22 0 .33-.08l2.76-1.28c.38-.18.56-.64.36-1.01L17.28 18l2.41-.45a.88.88 0 0 0 .43-.26c.27-.32.23-.79-.12-1.08l-8.74-7.35-.01.01a.756.756 0 0 0-.49-.18M15 10V8h5v2h-5m-1.17-5.24 2.83-2.83 1.41 1.41-2.83 2.83-1.41-1.41M10 0h2v5h-2V0M3.93 14.66l2.83-2.83 1.41 1.41-2.83 2.83-1.41-1.41m0-11.32 1.41-1.41 2.83 2.83-1.41 1.41-2.83-2.83M7 10H2V8h5v2"></path></svg></span> Click here</a></p>
+<h3 id="88-image-caption">8.8. Image caption<a class="headerlink" href="#88-image-caption" title="Permanent link">⚓︎</a></h3>
+<p>The caption should not have restricted width, and its bottom margin should be smaller.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">figcaption</span> <span class="p">{</span>
+    <span class="k">max-width</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>
+<figure><img src="https://picsum.photos/1280/720"/><figcaption>A photo from <a href="https://picsum.photos">https://picsum.photos</a></figcaption>
+</figure>
+</p>
+<h3 id="89-sidebar-scrolls">8.9. Sidebar scrolls<a class="headerlink" href="#89-sidebar-scrolls" title="Permanent link">⚓︎</a></h3>
+<p>Only show the scrollbar when hovering to make sidebar look clear.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-sidebar__scrollwrap</span> <span class="p">{</span>
+    <span class="k">overflow</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-sidebar__scrollwrap</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+    <span class="k">overflow-y</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="810-spaces">8.10. Spaces<a class="headerlink" href="#810-spaces" title="Permanent link">⚓︎</a></h3>
+<p>This part modifies some small space gap and margins to make the overall layout look better.</p>
+<p>Remove some space gaps.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-main__inner</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">md-typeset</span> <span class="nt">dd</span> <span class="p">{</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="kt">em</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">em</span> <span class="mf">1.875</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">dd</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">p</span><span class="p">:</span><span class="nd">empty</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">admonition</span> <span class="o">+</span> <span class="o">*,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">details</span> <span class="o">+</span> <span class="o">*</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/* .md-typeset blockquote, */</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">dl</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">figure</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">ol</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">pre</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">ul</span> <span class="p">{</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="811-tags">8.11. Tags<a class="headerlink" href="#811-tags" title="Permanent link">⚓︎</a></h3>
+<p>Add styles to have a space between tags.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">tag</span> <span class="p">{</span>
+    <span class="k">white-space</span><span class="p">:</span> <span class="kc">nowrap</span><span class="p">;</span>
+    <span class="k">margin-right</span><span class="p">:</span> <span class="mf">0.25</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Then the tag cloud should have some indent:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">tag-cloud-content</span> <span class="p">{</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span> <span class="mf">0.6</span><span class="kt">rem</span><span class="p">;</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="812-new-elements">8.12. New elements<a class="headerlink" href="#812-new-elements" title="Permanent link">⚓︎</a></h3>
+<h4 id="8121-new-span">8.12.1. New span<a class="headerlink" href="#8121-new-span" title="Permanent link">⚓︎</a></h4>
+<p>Class <code>.ns</code> is used in a new span to clear font-style of the target element, when using attribute list on it.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">ns</span> <span class="p">{</span>
+    <span class="k">font-style</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>An example of adding <code>.ns</code> class to an emphasized word:</p>
+<div class="highlight"><pre><span></span><code><span class="ge">_without new span: italic style_</span>\
+<span class="ge">_with new span: normal style thanks to `.ns` class_</span>{.ns}
+</code></pre></div>
+<p><em>without new span: italic style</em><br/>
+<em class="ns">with new span: normal style thanks to <code>.ns</code> class</em></p>
+<h4 id="8122-row-and-column">8.12.2. Row and Column<a class="headerlink" href="#8122-row-and-column" title="Permanent link">⚓︎</a></h4>
+<p>With <a href="../markdown-syntax/#17-custom-block">Custom Blocks</a> extension, I can make column layout with class <code>.row</code> and <code>.col</code>. Here are the style to make column layout in a row, and set column’s margins:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">row</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+    <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">row</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">row</span> <span class="p">.</span><span class="nc">col</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+    <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">column</span><span class="p">;</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="mf">0.25</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">row</span> <span class="p">.</span><span class="nc">col</span><span class="p">:</span><span class="nd">first-of-type</span> <span class="p">{</span>
+    <span class="k">margin-left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="p">.</span><span class="nc">row</span> <span class="p">.</span><span class="nc">col</span><span class="p">:</span><span class="nd">last-of-type</span> <span class="p">{</span>
+    <span class="k">margin-right</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A column will try to fit 100% of the page width. To set a percentage, use the class <code>.wXX</code> for the width of <code>XX%</code>. These classes can be applied to other elements too.</p>
+<p>And here is an example to create 2 column, a big one is 80% page width:</p>
+<div class="highlight"><pre><span></span><code>::: row
+
+    ::: col w80 style="background-color: lightyellow;"
+
+        A big column using 80% of page width
+
+    ::: col w20 style="background-color: lightblue;"
+
+        A small column
+</code></pre></div>
+<div class="row">
+<div class="col w80" style="background-color: lightyellow;">
+<p>A big column using 80% of page width</p>
+</div>
+<div class="col w20" style="background-color: lightblue;">
+<p>A small column</p>
+</div>
+</div>
+<div data-value="https://www.codeinsideout.com/blog/setup-blog/customize-theme/" id="page_url"></div>
+<div data-value="blog/setup-blog/customize-theme/" id="page_identifier"></div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../mkdocs-plugins/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              MkDocs plugins
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../print-to-pdf/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Print to PDF
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

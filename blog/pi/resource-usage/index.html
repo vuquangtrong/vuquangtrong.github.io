@@ -1,0 +1,2144 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="This post presents a custom script to execute a process and monitor the CPU and Memory usage of that process using linux utilities such as top, grep, and awk. The result is exported to a text file, and optionally an image if gnuplot is installed." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/pi/resource-usage/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
+<title>Monitor resource usage of an process - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<meta content="website" property="og:type">
+<meta content="Monitor resource usage of an process - Code Inside Out" property="og:title">
+<meta content="This post presents a custom script to execute a process and monitor the CPU and Memory usage of that process using linux utilities such as top, grep, and awk. The result is exported to a text file, and optionally an image if gnuplot is installed." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/pi/resource-usage/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-export-a-function-in-bash">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Resource usage
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Resource usage
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Resource usage
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-export-a-function-in-bash">
+    1. Export a function in bash
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-command-grouping">
+    2. Command-Grouping
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-run-a-process">
+    3. Run a process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-ps-or-top">
+    4. ps or top
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-grep-and-awk">
+    5. grep and awk
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-line-buffered-mode">
+    6. Line buffered mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-save-log-with-tee">
+    7. Save log with tee
+  </a>
+<nav aria-label="7. Save log with tee" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71-fix-empty-log">
+    7.1. Fix empty log
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#72-fix-wrong-data">
+    7.2. Fix wrong data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-graph-with-gnuplot">
+    8. Graph with gnuplot
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-some-enhancements">
+    9. Some enhancements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-the-final-script">
+    10. The final script
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        C/C++
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkCyan;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkBlue;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkMagenta;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkGoldenrod;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkSlateBlue;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOliveGreen;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkBlue;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkCyan;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkCyan;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkRed;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkGreen;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkBlue;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-export-a-function-in-bash">
+    1. Export a function in bash
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-command-grouping">
+    2. Command-Grouping
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-run-a-process">
+    3. Run a process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-ps-or-top">
+    4. ps or top
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-grep-and-awk">
+    5. grep and awk
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-line-buffered-mode">
+    6. Line buffered mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-save-log-with-tee">
+    7. Save log with tee
+  </a>
+<nav aria-label="7. Save log with tee" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71-fix-empty-log">
+    7.1. Fix empty log
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#72-fix-wrong-data">
+    7.2. Fix wrong data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-graph-with-gnuplot">
+    8. Graph with gnuplot
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-some-enhancements">
+    9. Some enhancements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-the-final-script">
+    10. The final script
+  </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOliveGreen;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkOliveGreen;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkBlue;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkViolet;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOrchid;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkViolet;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkSlateGray;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkTurquoise;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkViolet;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkTurquoise;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkOliveGreen;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkMagenta;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">Monitor resource usage of an process</h1>
+<p class="page-description">This post presents a custom script to execute a process and monitor the CPU and Memory usage of that process using linux utilities such as top, grep, and awk. The result is exported to a text file, and optionally an image if gnuplot is installed.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name">
+                        #bash
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name">
+                        #top
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name">
+                        #grep
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name">
+                        #awk
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name">
+                        #performance
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name">
+                        #gnuplot
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-03 14:44:13</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-export-a-function-in-bash">
+    1. Export a function in bash
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-command-grouping">
+    2. Command-Grouping
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-run-a-process">
+    3. Run a process
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-ps-or-top">
+    4. ps or top
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-grep-and-awk">
+    5. grep and awk
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-line-buffered-mode">
+    6. Line buffered mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-save-log-with-tee">
+    7. Save log with tee
+  </a>
+<nav aria-label="7. Save log with tee" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71-fix-empty-log">
+    7.1. Fix empty log
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#72-fix-wrong-data">
+    7.2. Fix wrong data
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-graph-with-gnuplot">
+    8. Graph with gnuplot
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-some-enhancements">
+    9. Some enhancements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-the-final-script">
+    10. The final script
+  </a>
+</li>
+</ul>
+</nav>
+</div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\pi\resource-usage\pi__Resource_usage.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
+<div class="admonition done">
+<p class="admonition-title">The final script</p>
+<p>Download <a class="md-button" href="monitor.sh"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> monitor.sh</a> then save to <code>~/monitor.sh</code>.</p>
+<p>Add below line to <code>~/.bashrc</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> monitor.sh
+</code></pre></div>
+<p>Usage:</p>
+<div class="highlight"><pre><span></span><code>monitor "title" program params
+</code></pre></div>
+</div>
+<blockquote>
+<p>This post is written as a walk through guide, step by step, to help understanding how the script was made.</p>
+</blockquote>
+<h2 id="1-export-a-function-in-bash">1. Export a function in bash<a class="headerlink" href="#1-export-a-function-in-bash" title="Permanent link">⚓︎</a></h2>
+<p>In a bash file, a function with a name and its body can be defined and then exported with <code>export -f</code> command:</p>
+<div class="file"></div>
+<p>myfunc.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+myfunc<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">"Params: </span><span class="nv">$@</span><span class="s2">"</span>
+<span class="o">}</span>
+<span class="nb">export</span> -f myfunc
+</code></pre></div>
+<p>To make function available outside of the script, run <code>source</code> command before calling the function:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> myfunc.sh
+myfunc abc
+</code></pre></div>
+<p>All params are implicit saved into local macros.</p>
+<blockquote>
+<p>Refer to <a href="https://tldp.org/LDP/abs/html/internalvariables.html">Advanced Bash-Scripting Guide</a>:</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$BASHPID</code></td>
+<td>Process ID of the current instance of Bash. This is not the same as the <code>$$</code> variable, but it often gives the same result.</td>
+</tr>
+<tr>
+<td><code>$PPID</code></td>
+<td>Process ID of the parent process</td>
+</tr>
+<tr>
+<td><code>$$</code></td>
+<td>Process ID of the script itself</td>
+</tr>
+<tr>
+<td><code>$!</code></td>
+<td>Process ID of last job run in background</td>
+</tr>
+<tr>
+<td><code>$PWD</code></td>
+<td>The current directory that process is in at the time</td>
+</tr>
+<tr>
+<td><code>$SECONDS</code></td>
+<td>The number of seconds the script has been running</td>
+</tr>
+<tr>
+<td><code>$1</code>, <code>$2</code>, <code>$n</code></td>
+<td>The first, the second and the n-th param</td>
+</tr>
+<tr>
+<td><code>$#</code></td>
+<td>The number of command-line arguments</td>
+</tr>
+<tr>
+<td><code>$*</code></td>
+<td>All of the positional parameters, seen as a single word, must be quoted</td>
+</tr>
+<tr>
+<td><code>$@</code></td>
+<td>Same as <code>$*</code>, but each parameter is a quoted string, that is, the parameters are passed on intact, without interpretation or expansion. This means, among other things, that each parameter in the argument list is seen as a separate word</td>
+</tr>
+<tr>
+<td><code>$?</code></td>
+<td>Exit status of a command, function, or the script itself</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-command-grouping">2. Command-Grouping<a class="headerlink" href="#2-command-grouping" title="Permanent link">⚓︎</a></h2>
+<blockquote>
+<p>Refer to <a href="https://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html#Command-Grouping">Bash Manual - Command Grouping</a>.</p>
+</blockquote>
+<p>Bash provides two ways to group a list of commands to be executed as a unit. When commands are grouped, re-directions may be applied to the entire command list.</p>
+<dl>
+<dt><code>( list )</code></dt>
+<dd>Placing a list of commands between parentheses causes a sub-shell environment to be created (see <a href="https://www.gnu.org/software/bash/manual/html_node/Command-Execution-Environment.html">Command Execution Environment</a>), and each of the commands in list to be executed in that sub-shell. Since the list is executed in a sub-shell, variable assignments do not remain in effect after the sub-shell completes.</dd>
+<dt><code>{ list; }</code></dt>
+<dd>Placing a list of commands between curly braces causes the list to be executed in the current shell context. No sub-shell is created. The semicolon (or newline) following list is required.</dd>
+</dl>
+<p>In addition to the creation of a sub-shell, there is a subtle difference between these two constructs due to historical reasons:</p>
+<ul>
+<li>The braces are reserved words, so they must be separated from the list by blanks or other shell meta-characters</li>
+<li>The parentheses are operators, and are recognized as separate tokens by the shell even if they are not separated from the list by whitespace</li>
+</ul>
+<h2 id="3-run-a-process">3. Run a process<a class="headerlink" href="#3-run-a-process" title="Permanent link">⚓︎</a></h2>
+<p>The basic idea is to run a process in background and while it’s running, report its resource usage:</p>
+<div class="file"></div>
+<p>monitor.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+monitor<span class="o">()</span> <span class="o">(</span>
+    <span class="c1"># run process in background</span>
+    <span class="nb">echo</span> <span class="s2">"Executing </span><span class="nv">$*</span><span class="s2">"</span>
+<span class="hll">    <span class="nv">$*</span> <span class="p">&amp;</span>
+</span>
+    <span class="c1"># get PID of last job in background</span>
+    <span class="nv">pid</span><span class="o">=</span><span class="nv">$!</span>
+    <span class="nb">echo</span> <span class="s2">"Executed in PID: </span><span class="nv">$pid</span><span class="s2">"</span>
+    ps --no-headers -p <span class="nv">$pid</span>
+
+    <span class="nb">echo</span> <span class="s1">'CPU  MEM'</span>
+    <span class="c1"># check if a process is running</span>
+    <span class="k">while</span> <span class="o">[</span> -e /proc/<span class="nv">$pid</span> <span class="o">]</span>
+    <span class="k">do</span>
+        <span class="c1"># use ps to get cpu and memory usage</span>
+<span class="hll">        ps --no-headers -o <span class="s1">'%cpu,%mem'</span> -p <span class="nv">$pid</span>
+</span>        sleep <span class="m">1</span>
+    <span class="k">done</span>
+<span class="o">)</span>
+
+<span class="nb">export</span> -f monitor
+</code></pre></div>
+<h2 id="4-ps-or-top">4. <code>ps</code> or <code>top</code><a class="headerlink" href="#4-ps-or-top" title="Permanent link">⚓︎</a></h2>
+<p>Both <code>ps</code> and <code>top</code> report CPU Usage, but the returned values are different.
+Let’s check the manual of each command:</p>
+<dl>
+<dt><code>ps</code></dt>
+<dd>CPU usage is currently expressed as the percentage of time spent running during the entire lifetime of a process. This is not ideal, and it does not conform to the standards that ps otherwise conforms to. CPU usage is unlikely to add up to exactly 100%.
+It means <mark><code>ps</code> does not show the instant CPU usage, it shows an average CPU usage over the lifetime of the process.</mark></dd>
+<dt><code>top</code></dt>
+<dd>
+<p>%CPU – CPU Usage, The task’s share of the elapsed CPU time since the last screen update, expressed as a percentage of total CPU time.
+It means <mark>if interval is 1 second, <code>top</code> will report CPU usage for the last 1 second. That can be considered as instant report.</mark></p>
+<p>Let’s check <code>top</code>‘s options</p>
+<dl>
+<dt><code>-b</code>: Batch-mode operation</dt>
+<dd>Starts  top  in Batch mode, which could be useful for sending output from top to other programs or to a file.  In this mode, top will not accept input and runs until the iterations limit set with the `-n’ command-line option or until killed.</dd>
+<dt><code>-d</code>: Delay-time interval as:  -d ss.t (secs.tenths)</dt>
+<dd>Specifies the delay between screen updates, and overrides the corresponding value in one’s personal configuration file or the startup default.  Later this can be changed with the <code>d</code> or <code>s</code> interactive commands.</dd>
+<dt><code>-p</code>: Monitor-PIDs mode as:  -pN1 -pN2 …  or  -pN1,N2,N3 …</dt>
+<dd>Monitor  only  processes  with specified process IDs.</dd>
+</dl>
+</dd>
+</dl>
+<p>Switch to use <code>top</code> get the the process information:</p>
+<div class="file"></div>
+<p>monitor.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+monitor<span class="o">()</span> <span class="o">(</span>
+    <span class="c1"># run process in background</span>
+<span class="hll">    <span class="nv">$*</span> <span class="p">&amp;</span>
+</span>
+    <span class="c1"># get PID of last job in background</span>
+    <span class="nv">pid</span><span class="o">=</span><span class="nv">$!</span>
+
+    <span class="c1"># use top to monitor the process</span>
+<span class="hll">    top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">&amp;</span>
+</span>
+    <span class="c1"># save top PID to control it</span>
+    <span class="nv">toppid</span><span class="o">=</span><span class="nv">$!</span>
+
+    <span class="nb">echo</span> <span class="s1">'CPU  MEM'</span>
+    <span class="c1"># check if a process is running</span>
+<span class="hll">    <span class="k">while</span> <span class="o">[</span> -e /proc/<span class="nv">$pid</span> <span class="o">]</span>
+</span>    <span class="k">do</span>
+        sleep <span class="m">1</span>
+    <span class="k">done</span>
+
+    <span class="c1"># kill top</span>
+    sleep <span class="m">1</span>
+    <span class="nb">kill</span> -9 <span class="nv">$toppid</span>
+<span class="o">)</span>
+
+<span class="nb">export</span> -f monitor
+</code></pre></div>
+<div class="np"></div>
+<p>Run a test:</p>
+<div class="highlight"><pre><span></span><code>monitor ffmpeg -y -hide_banner -i /dev/video0 -c:v h264_omx -t <span class="m">10</span> test.mp4
+</code></pre></div>
+<p>and the result:</p>
+<div class="highlight"><pre><span></span><code><span class="n">PID</span>  <span class="n">USER</span> <span class="n">PR</span>  <span class="n">NI</span> <span class="n">VIRT</span>   <span class="n">RES</span>    <span class="n">SHR</span>    <span class="n">S</span>  <span class="o">%CPU  %</span><span class="n">MEM</span>   <span class="n">TIME</span><span class="o">+</span>   <span class="n">COMMAND</span>
+<span class="m">2286</span> <span class="kc">pi</span>   <span class="m">20</span>  <span class="m">0</span>  <span class="m">336612</span> <span class="m">129848</span> <span class="m">121960</span> <span class="n">R</span>  <span class="m">34.5</span>  <span class="m">52.5</span>   <span class="m">0</span><span class="o">:</span><span class="m">03.36</span> <span class="n">ffmpeg</span>
+</code></pre></div>
+<h2 id="5-grep-and-awk">5. <code>grep</code> and <code>awk</code><a class="headerlink" href="#5-grep-and-awk" title="Permanent link">⚓︎</a></h2>
+<blockquote>
+<p>Refer to <a href="https://www.gnu.org/software/grep/manual/grep.html">grep manual</a></p>
+</blockquote>
+<p>Use <code>grep</code> to extract process information lines using <em>pid</em> number as the keyword:</p>
+<div class="highlight"><pre><span></span><code>top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">|</span> grep <span class="nv">$pid</span> <span class="p">&amp;</span>
+</code></pre></div>
+<blockquote>
+<p>Refer to <a href='https://www.gnu.org/software/gawk/manual/gawk.html"'>awk manual</a></p>
+</blockquote>
+<p>Use <code>awk</code> to cut out 2 columns: <em>%CPU</em> and <em>%MEM</em> (at the 9<sup>th</sup> and 10<sup>th</sup> column) from the filtered lines:</p>
+<div class="highlight"><pre><span></span><code>top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">|</span> grep <span class="nv">$pid</span> <span class="p">|</span> awk <span class="s1">'{print $9, $10}'</span> <span class="p">&amp;</span>
+</code></pre></div>
+<p>So, this is a modified version:</p>
+<div class="file"></div>
+<p>monitor.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+monitor<span class="o">()</span> <span class="o">(</span>
+    <span class="c1"># run process in background</span>
+<span class="hll">    <span class="nv">$*</span> <span class="p">&amp;</span>
+</span>
+    <span class="c1"># get PID of last job in background</span>
+    <span class="nv">pid</span><span class="o">=</span><span class="nv">$!</span>
+
+    <span class="c1"># use top to monitor the process</span>
+    <span class="c1"># use grep to catch useful lines</span>
+    <span class="c1"># use awk to extract data columns</span>
+<span class="hll">    top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">|</span> grep <span class="nv">$pid</span> <span class="p">|</span> awk <span class="s1">'{print $9, $10}'</span> <span class="p">&amp;</span>
+</span>
+    <span class="c1"># save top PID to control it</span>
+    <span class="nv">toppid</span><span class="o">=</span><span class="nv">$!</span>
+
+    <span class="nb">echo</span> <span class="s1">'CPU  MEM'</span>
+    <span class="c1"># check if a process is running</span>
+<span class="hll">    <span class="k">while</span> <span class="o">[</span> -e /proc/<span class="nv">$pid</span> <span class="o">]</span>
+</span>    <span class="k">do</span>
+        sleep <span class="m">1</span>
+    <span class="k">done</span>
+
+    <span class="c1"># kill top</span>
+    sleep <span class="m">1</span>
+    <span class="nb">kill</span> -9 <span class="nv">$toppid</span>
+<span class="o">)</span>
+
+<span class="nb">export</span> -f monitor
+</code></pre></div>
+<p>Run a test command:</p>
+<div class="highlight"><pre><span></span><code>monitor ffmpeg -y -hide_banner -i /dev/video0 -c:v h264_omx -t <span class="m">10</span> test.mp4
+</code></pre></div>
+<p>and the result:</p>
+<div class="highlight"><pre><span></span><code><span class="go">CPU  MEM</span>
+</code></pre></div>
+<div class="admonition bug">
+<p class="admonition-title">Bug: No output value</p>
+<p>Surprisingly, there is no output for CPU and MEM usage reported in the output.
+Search on google, there is a glue of missing data when using <code>grep</code> in a pipeline.</p>
+</div>
+<h2 id="6-line-buffered-mode">6. Line buffered mode<a class="headerlink" href="#6-line-buffered-mode" title="Permanent link">⚓︎</a></h2>
+<p>When using pipeline of commands, there is <em>pipeline buffer</em> between them.</p>
+<p>The output from <code>grep</code> is no longer line buffered but block buffered, usually the block is 4KB,leading to the problem that the next <code>awk</code> command cannot see new data immediately on its input.</p>
+<p>Notes from manuals:</p>
+<dl>
+<dt><code>man grep</code></dt>
+<dd><code>--line-buffered</code></dd>
+<dd>Use line buffering on output. This can cause a performance penalty.</dd>
+<dt><code>man awk</code></dt>
+<dd><code>-W interactive</code></dd>
+<dd>sets un-buffered writes to stdout and line buffered reads from stdin. Records from stdin are lines regardless of the value of RS.</dd>
+</dl>
+<p>Combining them together and testing again:</p>
+<div class="file"></div>
+<p>monitor.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+monitor<span class="o">()</span> <span class="o">(</span>
+    <span class="c1"># run process in background</span>
+<span class="hll">    <span class="nv">$*</span> <span class="p">&amp;</span>
+</span>
+    <span class="c1"># get PID of last job in background</span>
+    <span class="nv">pid</span><span class="o">=</span><span class="nv">$!</span>
+
+    <span class="c1"># use top to monitor the process</span>
+    <span class="c1"># use grep to catch useful lines, use line buffered mode</span>
+    <span class="c1"># use awk to extract data column, read input in line buffered mode</span>
+<span class="hll">    top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">|</span> grep --line-buffered <span class="nv">$pid</span> <span class="p">|</span> awk -W interactive <span class="s1">'{print $9, $10}'</span> <span class="p">&amp;</span>
+</span>
+    <span class="c1"># save top PID to control it</span>
+    <span class="nv">toppid</span><span class="o">=</span><span class="nv">$!</span>
+
+    <span class="nb">echo</span> <span class="s1">'CPU  MEM'</span>
+    <span class="c1"># check if a process is running</span>
+<span class="hll">    <span class="k">while</span> <span class="o">[</span> -e /proc/<span class="nv">$pid</span> <span class="o">]</span>
+</span>    <span class="k">do</span>
+        sleep <span class="m">1</span>
+    <span class="k">done</span>
+
+    <span class="c1"># kill top</span>
+    sleep <span class="m">1</span>
+    <span class="nb">kill</span> -9 <span class="nv">$toppid</span>
+<span class="o">)</span>
+
+<span class="nb">export</span> -f monitor
+</code></pre></div>
+<p>Run a test:</p>
+<div class="highlight"><pre><span></span><code>monitor ffmpeg -y -hide_banner -i /dev/video0 -c:v h264_omx -t <span class="m">10</span> test.mp4
+</code></pre></div>
+<p>and the result comes with expected values:</p>
+<div class="highlight"><pre><span></span><code><span class="go">CPU  MEM</span>
+<span class="go">20.0 0.8</span>
+<span class="go">21.0 3.5</span>
+<span class="go">67.3 5.1</span>
+<span class="go">89.1 6.0</span>
+<span class="go">77.2 9.4</span>
+</code></pre></div>
+<div class="np"></div>
+<h2 id="7-save-log-with-tee">7. Save log with <code>tee</code><a class="headerlink" href="#7-save-log-with-tee" title="Permanent link">⚓︎</a></h2>
+<p>Use <code>tee</code> to read from the standard input and write to the standard output and a file.
+That is simple enough to clone the output to a log file:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$*</span> <span class="p">|</span> tee log.txt <span class="p">&amp;</span>
+top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">|</span> grep --line-buffered <span class="nv">$pid</span> <span class="p">|</span> awk -W interactive <span class="s1">'{print $9, $10}'</span> <span class="p">|</span> tee usage.txt <span class="p">&amp;</span>
+</code></pre></div>
+<p>Then modify the script:</p>
+<div class="file"></div>
+<p>monitor.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+monitor<span class="o">()</span> <span class="o">(</span>
+    <span class="c1"># run process in background</span>
+<span class="hll">    <span class="nv">$*</span> <span class="p">|</span> tee log.txt <span class="p">&amp;</span>
+</span>
+    <span class="c1"># get PID of last job in background</span>
+    <span class="nv">pid</span><span class="o">=</span><span class="nv">$!</span>
+
+    <span class="c1"># use top to monitor the process</span>
+    <span class="c1"># use grep to catch useful lines, use line buffered mode</span>
+    <span class="c1"># use awk to extract data columns, read input in line buffered mode</span>
+<span class="hll">    top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">|</span> grep --line-buffered <span class="nv">$pid</span> <span class="p">|</span> awk -W interactive <span class="s1">'{print $9, $10}'</span> <span class="p">|</span> tee usage.txt <span class="p">&amp;</span>
+</span>
+    <span class="c1"># save top PID to control it</span>
+    <span class="nv">toppid</span><span class="o">=</span><span class="nv">$!</span>
+
+    <span class="nb">echo</span> <span class="s1">'CPU  MEM'</span>
+    <span class="c1"># check if a process is running</span>
+    <span class="k">while</span> <span class="o">[</span> -e /proc/<span class="nv">$pid</span> <span class="o">]</span>
+    <span class="k">do</span>
+        sleep <span class="m">1</span>
+    <span class="k">done</span>
+
+    <span class="c1"># kill top</span>
+    sleep <span class="m">1</span>
+    <span class="nb">kill</span> -9 <span class="nv">$toppid</span>
+<span class="o">)</span>
+
+<span class="nb">export</span> -f monitor
+</code></pre></div>
+<p>Run a test:</p>
+<div class="highlight"><pre><span></span><code>monitor ffmpeg -y -hide_banner -i /dev/video0 -c:v h264_omx -t <span class="m">10</span> test.mp4
+</code></pre></div>
+<div class="np"></div>
+<div class="admonition bug">
+<p class="admonition-title">Bug: Empty log and invalid output</p>
+<p>After using <code>tee</code>, there are twp issues happened:</p>
+<ul>
+<li>an empty <em>log.txt</em> file</li>
+<li>the <em>usage.txt</em> content is invalid</li>
+</ul>
+</div>
+<h3 id="71-fix-empty-log">7.1. Fix empty log<a class="headerlink" href="#71-fix-empty-log" title="Permanent link">⚓︎</a></h3>
+<p>When making pipeline to <code>tee</code>, only the STDOUT (1) is forwarded, while <code>ffmpeg</code> prints output on the STDERR (2) not on the STDOUT (1).</p>
+<p>Fix it by redirect <code>ffmpeg</code> STDERR to STDOUT:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$*</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee log.txt <span class="p">&amp;</span>
+</code></pre></div>
+<h3 id="72-fix-wrong-data">7.2. Fix wrong data<a class="headerlink" href="#72-fix-wrong-data" title="Permanent link">⚓︎</a></h3>
+<p>Add some debug lines <code class="highlight">ps -p <span class="nv">$pid</span></code> to check the process ID after creating the processes:</p>
+<div class="file"></div>
+<p>monitor.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+monitor<span class="o">()</span> <span class="o">(</span>
+    <span class="c1"># run process in background</span>
+    <span class="nv">$*</span> <span class="p">|</span> tee log.txt <span class="p">&amp;</span>
+
+    <span class="c1"># get PID of last job in background</span>
+    <span class="nv">pid</span><span class="o">=</span><span class="nv">$!</span>
+<span class="hll">    ps -p <span class="nv">$pid</span>
+</span>    <span class="c1"># use top to monitor the process</span>
+    <span class="c1"># use grep to catch useful lines, use line buffered mode</span>
+    <span class="c1"># use awk to extract data columns, read input in line buffered mode</span>
+    top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">|</span> grep --line-buffered <span class="nv">$pid</span> <span class="p">|</span> awk -W interactive <span class="s1">'{print $9, $10}'</span> <span class="p">|</span> tee &gt; usage.txt <span class="p">&amp;</span>
+
+    <span class="c1"># save top PID to control it</span>
+    <span class="nv">toppid</span><span class="o">=</span><span class="nv">$!</span>
+<span class="hll">    ps -p <span class="nv">$toppid</span>
+</span>
+    <span class="nb">echo</span> <span class="s1">'CPU  MEM'</span>
+    <span class="c1"># check if a process is running</span>
+    <span class="k">while</span> <span class="o">[</span> -e /proc/<span class="nv">$pid</span> <span class="o">]</span>
+    <span class="k">do</span>
+        sleep <span class="m">1</span>
+    <span class="k">done</span>
+
+    <span class="c1"># kill top</span>
+    sleep <span class="m">1</span>
+    <span class="nb">kill</span> -9 <span class="nv">$toppid</span>
+<span class="o">)</span>
+
+<span class="nb">export</span> -f monitor
+</code></pre></div>
+<p>Then, it prints out the PID of <code>tee</code>, not the PID of <code>ffmpeg</code> or <code>top</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="go">  PID TTY          TIME CMD</span>
+<span class="go">  647 pts/0    00:00:00 tee</span>
+<span class="go">  PID TTY          TIME CMD</span>
+<span class="go">  652 pts/0    00:00:00 tee</span>
+</code></pre></div>
+<p><br/>
+<strong>Get PID of a process in pipeline</strong></p>
+<p><mark>In bash, pipeline cause commands to run in a sub-shell!</mark></p>
+<p>For example, <code class="highlight"><span class="nv">$*</span> <span class="p">|</span> tee &gt; log.txt <span class="p">&amp;</span></code> will run <code>$*</code> in a sub-shell, and <code>tee &gt; log.txt</code> will run in current shell, therefore tee’s PID will be saved in the macro <code>$!</code>.</p>
+<p>The solution is to save the PID in the newly created sub-shell in which <code>$!</code> returns correct PID, then load that PID later:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># save to pid.txt</span>
+<span class="o">(</span><span class="nv">$*</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span> <span class="nb">echo</span> <span class="nv">$!</span> &gt; pid.txt<span class="o">)</span> <span class="p">|</span> tee &gt; log.txt <span class="p">&amp;</span>
+<span class="c1"># load from pid.txt</span>
+<span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>&lt;pid.txt<span class="k">)</span>
+</code></pre></div>
+<p>Then modify the script:</p>
+<div class="file"></div>
+<p>monitor.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+monitor<span class="o">()</span> <span class="o">(</span>
+    <span class="c1"># run process in background</span>
+<span class="hll">    <span class="o">(</span><span class="nv">$*</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span> <span class="nb">echo</span> <span class="nv">$!</span> &gt; pid.txt<span class="o">)</span> <span class="p">|</span> tee log.txt <span class="p">&amp;</span>
+</span>
+    <span class="c1"># get PID of last job in background</span>
+<span class="hll">    <span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>&lt;pid.txt<span class="k">)</span>
+</span>    ps -p <span class="nv">$pid</span>
+    <span class="c1"># use top to monitor the process</span>
+    <span class="c1"># use grep to catch useful lines, use line buffered mode</span>
+    <span class="c1"># use awk to extract data columns, read input in line buffered mode</span>
+<span class="hll">    <span class="o">(</span>top -b -d <span class="m">1</span> -p <span class="nv">$pid</span> <span class="p">&amp;</span> <span class="nb">echo</span> <span class="nv">$!</span> &gt; pid.txt<span class="o">)</span> <span class="p">|</span> grep --line-buffered <span class="nv">$pid</span> <span class="p">|</span> awk -W interactive <span class="s1">'{print $9, $10}'</span> <span class="p">|</span> tee usage.txt <span class="p">&amp;</span>
+</span>
+    <span class="c1"># save top PID to control it</span>
+<span class="hll">    <span class="nv">toppid</span><span class="o">=</span><span class="k">$(</span>&lt;pid.txt<span class="k">)</span>
+</span>    ps -p <span class="nv">$toppid</span>
+
+    <span class="nb">echo</span> <span class="s1">'CPU  MEM'</span>
+
+    <span class="c1"># check if a process is running</span>
+    <span class="k">while</span> <span class="o">[</span> -e /proc/<span class="nv">$pid</span> <span class="o">]</span>
+    <span class="k">do</span>
+        sleep <span class="m">1</span>
+    <span class="k">done</span>
+
+    <span class="c1"># kill top</span>
+    sleep <span class="m">1</span>
+    <span class="nb">kill</span> -9 <span class="nv">$toppid</span>
+
+    <span class="c1"># clean up</span>
+    rm pid.txt
+<span class="o">)</span>
+
+<span class="nb">export</span> -f monitor
+</code></pre></div>
+<p>Run a test:</p>
+<div class="highlight"><pre><span></span><code>monitor ffmpeg -y -hide_banner -i /dev/video0 -c:v h264_omx -t <span class="m">10</span> test.mp4
+</code></pre></div>
+<p>and got correct PIDs for <code>ffmpeg</code> and <code>top</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="go">  PID TTY          TIME CMD</span>
+<span class="go"> 2352 pts/0    00:00:00 ffmpeg</span>
+<span class="go">  PID TTY          TIME CMD</span>
+<span class="go"> 2360 pts/0    00:00:00 top</span>
+</code></pre></div>
+<h2 id="8-graph-with-gnuplot">8. Graph with <code>gnuplot</code><a class="headerlink" href="#8-graph-with-gnuplot" title="Permanent link">⚓︎</a></h2>
+<p>Gnuplot is a portable command-line graph utility for Linux, OS/2, MS Windows, OSX, VMS, and many other platforms. It can produce many different types of output, including terminal and file.</p>
+<p><br/>
+<strong>Terminal output</strong></p>
+<div class="highlight"><pre><span></span><code>gnuplot -e <span class="s2">" \</span>
+<span class="s2">    set term dumb; \</span>
+<span class="s2">    plot \</span>
+<span class="s2">        'usage.txt' using 1 title '%CPU' with lines, \</span>
+<span class="s2">        '' using 2 title 'MEM' with lines \</span>
+<span class="s2">"</span>
+</code></pre></div>
+<p><br/>
+<strong>PNG Image output</strong></p>
+<div class="highlight"><pre><span></span><code>gnuplot -e <span class="s2">" \</span>
+<span class="s2">    set term png size 640, 480; \</span>
+<span class="s2">    set output 'usage.png'; \</span>
+<span class="s2">    set grid xtics lc rgb '#bbbbbb' lw 1 lt 1; \</span>
+<span class="s2">    set grid ytics lc rgb '#bbbbbb' lw 1 lt 1; \</span>
+<span class="s2">    plot \</span>
+<span class="s2">        'usage.txt' using 1 title '%CPU' with lines, \</span>
+<span class="s2">        '' using 2 title 'MEM' with lines \</span>
+<span class="s2">"</span>
+</code></pre></div>
+<p>Run a test:</p>
+<div class="highlight"><pre><span></span><code>monitor <span class="s2">"test"</span> <span class="s2">"ffmpeg -y -hide_banner -i /dev/video0 -c:v h264_omx -t 10 test.mp4"</span>
+</code></pre></div>
+<p>It prints out a good graph in the terminal as well as in a PNG image:</p>
+<div class="code-fit" style="font-size:x-small">
+<style>
+    .code-fit code {
+        margin: auto !important;
+        width: fit-content;
+    }
+</style>
+<div class="highlight"><pre><span></span><code><span class="mi">100</span> <span class="o">+--------------------------------------------------------------------+</span>
+    <span class="o">|</span>     <span class="o">***</span>   <span class="o">+</span>          <span class="o">+</span>           <span class="o">+</span>          <span class="o">+</span>           <span class="o">+</span>          <span class="o">|</span>
+ <span class="mi">90</span> <span class="o">|-+</span>      <span class="o">*</span>                                              <span class="o">%</span><span class="n">CPU</span> <span class="o">*******-|</span>
+    <span class="o">|</span>         <span class="o">**</span>                                             <span class="n">MEM</span> <span class="err">#######</span> <span class="o">|</span>
+ <span class="mi">80</span> <span class="o">|-+</span>                                                                <span class="o">+-|</span>
+    <span class="o">|</span>           <span class="o">*</span>                                                        <span class="o">|</span>
+ <span class="mi">70</span> <span class="o">|-+</span>          <span class="o">*</span>                                                     <span class="o">+-|</span>
+    <span class="o">|</span>             <span class="o">*</span>                                                      <span class="o">|</span>
+ <span class="mi">60</span> <span class="o">|-+</span>            <span class="o">*</span>                                                   <span class="o">+-|</span>
+    <span class="o">|</span>              <span class="o">*</span>                                                     <span class="o">|</span>
+ <span class="mi">50</span> <span class="o">|-+</span>             <span class="o">*</span>                                                  <span class="o">+-|</span>
+    <span class="o">|</span>                <span class="o">*</span>                                                   <span class="o">|</span>
+ <span class="mi">40</span> <span class="o">|-+</span>               <span class="o">*</span>                                                <span class="o">+-|</span>
+    <span class="o">|</span>                  <span class="o">*</span>                                                 <span class="o">|</span>
+ <span class="mi">30</span> <span class="o">|-+</span>         <span class="err">#########################################################</span><span class="o">|</span>
+    <span class="o">|</span>          <span class="err">#</span>         <span class="o">*</span>                                               <span class="o">|</span>
+ <span class="mi">20</span> <span class="o">|-+</span>      <span class="err">##</span>           <span class="o">*</span>                                            <span class="o">+-|</span>
+    <span class="o">|</span>       <span class="err">#</span>              <span class="o">******</span>         <span class="o">*************************</span>      <span class="o">|</span>
+ <span class="mi">10</span> <span class="o">|-+</span>    <span class="err">#</span>                     <span class="o">*********</span>                         <span class="o">******|</span>
+    <span class="o">|</span><span class="err">######</span>     <span class="o">+</span>          <span class="o">+</span>           <span class="o">+</span>          <span class="o">+</span>           <span class="o">+</span>          <span class="o">|</span>
+  <span class="mi">0</span> <span class="o">+--------------------------------------------------------------------+</span>
+    <span class="mi">0</span>           <span class="mi">2</span>          <span class="mi">4</span>           <span class="mi">6</span>          <span class="mi">8</span>           <span class="mi">10</span>         <span class="mi">12</span>
+</code></pre></div>
+</div>
+<p>
+<figure class="w65"><img src="usage.png"/><figcaption>Resource Usage</figcaption></figure>
+</p>
+<h2 id="9-some-enhancements">9. Some enhancements<a class="headerlink" href="#9-some-enhancements" title="Permanent link">⚓︎</a></h2>
+<p>Some small modifications to make script run in multiple sessions:</p>
+<p><br/>
+<strong>1. Set title for a new session</strong></p>
+<p>Let’s modify the script to accept params in this format:</p>
+<div class="highlight"><pre><span></span><code>monitor <span class="s2">"title"</span> <span class="nb">command</span>
+</code></pre></div>
+<p>by extracting those params at the beginning of the script:</p>
+<div class="highlight"><pre><span></span><code>monitor<span class="o">()</span> <span class="o">(</span>
+    <span class="c1"># extract params</span>
+    <span class="nv">title</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nv">command</span><span class="o">=</span><span class="si">${</span><span class="p">@:</span><span class="nv">2</span><span class="si">}</span> <span class="c1"># get params from the 2nd one</span>
+    ...
+<span class="o">)</span>
+</code></pre></div>
+<p>The <em>title</em> will be used to name the session, to create a folder to save log files.</p>
+<p><br/>
+<strong>2. Save output to a separated folder</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># create result folder if not existed</span>
+<span class="o">[</span> ! -d <span class="nv">$title</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> mkdir <span class="nv">$title</span>
+</code></pre></div>
+<p><br/>
+<strong>3. Change output format to <code>CPU= X MEM= Y</code></strong></p>
+<p>It needs to change the data column index in <code>gnuplot</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># *-usage.txt content:</span>
+<span class="c1"># CPU= X MEM= Y</span>
+<span class="c1"># X is at 2nd column,</span>
+<span class="c1"># Y is at 4th column</span>
+gnuplot -e <span class="s2">" \</span>
+<span class="s2">    set term dumb; \</span>
+<span class="s2">    plot \</span>
+<span class="s2">        '</span><span class="si">${</span><span class="nv">title</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">title</span><span class="si">}</span><span class="s2">-usage.txt' using 2 title '%CPU' with lines, \</span>
+<span class="s2">        '' using 4 title 'MEM' with lines \</span>
+<span class="s2">    "</span>
+</code></pre></div>
+<h2 id="10-the-final-script">10. The final script<a class="headerlink" href="#10-the-final-script" title="Permanent link">⚓︎</a></h2>
+<p>Download the final script in the top of this page.</p>
+<div data-value="https://www.codeinsideout.com/blog/pi/resource-usage/" id="page_url"></div>
+<div data-value="blog/pi/resource-usage/" id="page_identifier"></div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../compile-ffmpeg/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Compile FFmpeg
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="../setup-camera/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Setup Camera
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>

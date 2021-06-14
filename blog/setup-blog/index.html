@@ -1,0 +1,2140 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Start a blog based on Material for MkDocs - a well-known theme for a popular Python-based static site generator. This post guides to install and configure necessary tools, Markdown extensions, MkDocs plugins, and modify the theme to fit personal needs." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/setup-blog/" rel="canonical"/>
+<link href="../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-7.1.6" name="generator"/>
+<title>Setup a personal blog site - Code Inside Out</title>
+<link href="../../assets/stylesheets/main.875de78c.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../assets/extra.css" rel="stylesheet"/>
+<meta content="website" property="og:type">
+<meta content="Setup a personal blog site - Code Inside Out" property="og:title">
+<meta content="Start a blog based on Material for MkDocs - a well-known theme for a popular Python-based static site generator. This post guides to install and configure necessary tools, Markdown extensions, MkDocs plugins, and modify the theme to fit personal needs." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/setup-blog/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-installation">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Setup blog
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stm32/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pi/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../c-cpp/notes/">
+        C/C++
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkViolet;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateGray;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkRed;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkBlue;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateBlue;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkBlue;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkRed;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkCyan;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkOrchid;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkBlue;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGreen;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkRed;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkRed;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-installation">
+    1. Installation
+  </a>
+<nav aria-label="1. Installation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-material-for-mkdocs">
+    1.1. Material for MkDocs
+  </a>
+<nav aria-label="1.1. Material for MkDocs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-start-a-new-project">
+    1.1.1. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-install-main-packages">
+    1.1.2. Install main packages
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#113-initialize-the-site">
+    1.1.3. Initialize the site
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#114-start-a-local-server">
+    1.1.4. Start a local server
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#115-write-a-post">
+    1.1.5. Write a post
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#116-publish">
+    1.1.6. Publish
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-visual-studio-code">
+    1.2. Visual Studio Code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-configuration">
+    2. Configuration
+  </a>
+<nav aria-label="2. Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-site-information">
+    2.1. Site information
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-color-palette">
+    2.2. Color palette
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-fonts">
+    2.3. Fonts
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-logo--icon">
+    2.4. Logo &amp; Icon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#25-navigation">
+    2.5. Navigation
+  </a>
+<nav aria-label="2.5. Navigation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#251-instant-loading">
+    2.5.1. Instant loading
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#252-navigation-tabs">
+    2.5.2. Navigation tabs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#253-back-to-top-button">
+    2.5.3. Back-to-top button
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#254-hide-header-bar">
+    2.5.4. Hide header bar
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#26-table-of-content">
+    2.6. Table of Content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#27-site-analytics">
+    2.7. Site analytics
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#28-comments-section">
+    2.8. Comments section
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#29-extra-styles-and-scripts">
+    2.9. Extra styles and scripts
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#210-override-templates">
+    2.10. Override templates
+  </a>
+<nav aria-label="2.10. Override templates" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2101-override-files">
+    2.10.1. Override files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2102-override-blocks">
+    2.10.2. Override blocks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2103-the-index-page">
+    2.10.3. The index page
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2104-the-404-page">
+    2.10.4. The 404 page
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-markdown-extensions">
+    3. Markdown extensions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-mkdocs-plugins">
+    4. MkDocs plugins
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-customize-theme">
+    5. Customize theme
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-print-to-pdf">
+    6. Print to PDF
+  </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">html</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">performance</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">backup</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">pdf</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">uart</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">omx</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkRed;
+        ">mkdocs</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">mjpeg</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:2.0rem;
+          color:DarkTurquoise;
+        ">stm32</span>
+<sup class="tag-count">14</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">dash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateBlue;
+        ">debug</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">v4l2</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">i2c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">hardware accelerator</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkSlateGray;
+        ">notes</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkCyan;
+        ">markdown</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkBlue;
+        ">dma</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">css</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">restore</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkTurquoise;
+        ">clock</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkMagenta;
+        ">stream</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkTurquoise;
+        ">interrupt</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkSlateBlue;
+        ">ffmpeg</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkViolet;
+        ">javascript</span>
+<sup class="tag-count">2</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">awk</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">gpio</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkSlateGray;
+        ">python</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">bash</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:1.1rem;
+          color:DarkSlateGray;
+        ">camera</span>
+<sup class="tag-count">5</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">usart</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">swv</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">pwm</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.8000000000000003rem;
+          color:DarkMagenta;
+        ">arm</span>
+<sup class="tag-count">12</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">grep</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">hls</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGoldenrod;
+        ">h264</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">top</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">redirect</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkMagenta;
+        ">semihosting</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.9rem;
+          color:DarkTurquoise;
+        ">picamera</span>
+<sup class="tag-count">3</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">sdcard</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">jinja</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">headless</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">timer</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">material</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkRed;
+        ">capture</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOrchid;
+        ">ajax</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkSlateBlue;
+        ">pi</span>
+<sup class="tag-count">9</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkBlue;
+        ">c</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">docs</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkViolet;
+        ">gnuplot</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">toolchain</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateBlue;
+        ">board</span>
+<sup class="tag-count">1</sup>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkOliveGreen;
+        ">c++</span>
+<sup class="tag-count">1</sup>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">Setup a personal blog site</h1>
+<p class="page-description">Start a blog based on Material for MkDocs - a well-known theme for a popular Python-based static site generator. This post guides to install and configure necessary tools, Markdown extensions, MkDocs plugins, and modify the theme to fit personal needs.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name">
+                        #python
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name">
+                        #mkdocs
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name">
+                        #material
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-03 16:34:50</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-installation">
+    1. Installation
+  </a>
+<nav aria-label="1. Installation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-material-for-mkdocs">
+    1.1. Material for MkDocs
+  </a>
+<nav aria-label="1.1. Material for MkDocs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-start-a-new-project">
+    1.1.1. Start a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-install-main-packages">
+    1.1.2. Install main packages
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#113-initialize-the-site">
+    1.1.3. Initialize the site
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#114-start-a-local-server">
+    1.1.4. Start a local server
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#115-write-a-post">
+    1.1.5. Write a post
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#116-publish">
+    1.1.6. Publish
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-visual-studio-code">
+    1.2. Visual Studio Code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-configuration">
+    2. Configuration
+  </a>
+<nav aria-label="2. Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-site-information">
+    2.1. Site information
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-color-palette">
+    2.2. Color palette
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-fonts">
+    2.3. Fonts
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-logo--icon">
+    2.4. Logo &amp; Icon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#25-navigation">
+    2.5. Navigation
+  </a>
+<nav aria-label="2.5. Navigation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#251-instant-loading">
+    2.5.1. Instant loading
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#252-navigation-tabs">
+    2.5.2. Navigation tabs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#253-back-to-top-button">
+    2.5.3. Back-to-top button
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#254-hide-header-bar">
+    2.5.4. Hide header bar
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#26-table-of-content">
+    2.6. Table of Content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#27-site-analytics">
+    2.7. Site analytics
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#28-comments-section">
+    2.8. Comments section
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#29-extra-styles-and-scripts">
+    2.9. Extra styles and scripts
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#210-override-templates">
+    2.10. Override templates
+  </a>
+<nav aria-label="2.10. Override templates" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2101-override-files">
+    2.10.1. Override files
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2102-override-blocks">
+    2.10.2. Override blocks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2103-the-index-page">
+    2.10.3. The index page
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2104-the-404-page">
+    2.10.4. The 404 page
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-markdown-extensions">
+    3. Markdown extensions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-mkdocs-plugins">
+    4. MkDocs plugins
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-customize-theme">
+    5. Customize theme
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-print-to-pdf">
+    6. Print to PDF
+  </a>
+</li>
+</ul>
+</nav>
+</div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\pdfs\blog\setup-blog\Setup_blog.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
+<h2 id="1-installation">1. Installation<a class="headerlink" href="#1-installation" title="Permanent link">⚓︎</a></h2>
+<p>There are some <a href="https://jamstack.org/generators/">static site generators</a> written in several languages such as Javascript, Go, Ruby, Python. They also use different template languages, e.g. React, Go, Liquid, Jinja. Among those generators, I’d like to choose an engine based on Python language, because I am familiar with Python, so if I want to modify or add an extension, I can do it myself.</p>
+<p>Python-based site generators include MkDocs, Pelican, Sphinx, etc. MkDocs and Pelican are the most popular ones. I used Pelican few years ago, but recently, I was looking for a way to export blog posts to PDF files for printing and offline sharing, then Material theme for MkDocs which has a clear printing style became my choice.</p>
+<h3 id="11-material-for-mkdocs">1.1. Material for MkDocs<a class="headerlink" href="#11-material-for-mkdocs" title="Permanent link">⚓︎</a></h3>
+<p><a href="https://www.mkdocs.org/">MkDocs</a> is a fast and simple engine to build a site for project documentation. Content source files are written in <a href="https://daringfireball.net/projects/markdown/">Markdown</a> format, and the site is configured with a single <a href="https://yaml.org/">YAML</a> config file.</p>
+<p>MkDocs runs on <a href="https://www.python.org">Python 3</a>, so download and install it first.</p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a> is a popular theme for MkDocs. It has a simple UI with <a href="http://www.materialui.co/colors">Material color</a> palettes. It also brings more features than the base MkDocs: it has webapp mode, flexible settings, and as I mentioned, it has a clear layout and good styles for printing. When installing this Material theme, it will automatically install the MkDocs engine.</p>
+<h4 id="111-start-a-new-project">1.1.1. Start a new project<a class="headerlink" href="#111-start-a-new-project" title="Permanent link">⚓︎</a></h4>
+<p>Create a new folder to store the project:</p>
+<div class="highlight"><pre><span></span><code>mkdir CodeInsideOut
+cd CodeInsideOut
+</code></pre></div>
+<p>Create the project’s <a href="https://docs.python.org/3/library/venv.html">virtual environment</a> to isolate this project with others from a possible package conflict:</p>
+<div class="highlight"><pre><span></span><code>python -m venv .venv
+</code></pre></div>
+<p>Activate the virtual environment:</p>
+<div class="highlight"><pre><span></span><code>.venv\Scripts\activate.bat
+</code></pre></div>
+<h4 id="112-install-main-packages">1.1.2. Install main packages<a class="headerlink" href="#112-install-main-packages" title="Permanent link">⚓︎</a></h4>
+<p>Update the <code>pip</code>, <code>setuptools</code> and <code>wheel</code> as they’re used to install and configure other packages:</p>
+<div class="highlight"><pre><span></span><code>python -m pip install -U pip setuptools wheel
+</code></pre></div>
+<blockquote>
+<p><code>-U</code> or <code>--upgrade</code> will upgrade the package if it is already installed</p>
+</blockquote>
+<p>Then install the <em>Material for Mkdocs</em> package:</p>
+<div class="highlight"><pre><span></span><code>pip install -U mkdocs-material
+</code></pre></div>
+<h4 id="113-initialize-the-site">1.1.3. Initialize the site<a class="headerlink" href="#113-initialize-the-site" title="Permanent link">⚓︎</a></h4>
+<p>Bring up the base of the site:</p>
+<div class="highlight"><pre><span></span><code>mkdocs new .
+</code></pre></div>
+<p>This will create the following file structure:</p>
+<div class="highlight"><pre><span></span><code>.
+├─ mkdocs.yml    <span class="c1"># The configuration file</span>
+└─ docs/         <span class="c1"># Other markdown pages</span>
+    ├─ index.md  <span class="c1"># The documentation homepage</span>
+    └─ ...       <span class="c1"># Other files</span>
+</code></pre></div>
+<p>Change the theme to <em>material</em> in the project configuration file <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">material</span>
+</code></pre></div>
+<h4 id="114-start-a-local-server">1.1.4. Start a local server<a class="headerlink" href="#114-start-a-local-server" title="Permanent link">⚓︎</a></h4>
+<p>Run a local server with:</p>
+<div class="highlight"><pre><span></span><code>mkdocs serve
+</code></pre></div>
+<p>and preview the site at <a href="http://localhost:8000">http://localhost:8000</a> to see the default homepage.</p>
+<h4 id="115-write-a-post">1.1.5. Write a post<a class="headerlink" href="#115-write-a-post" title="Permanent link">⚓︎</a></h4>
+<p>Each Markdown file inside the folder <code>docs</code> will be rendered to a page of the site. The index page is located at <code>docs\index.md</code>. There can be sub-folders inside the <code>docs</code> directory to contain a group of posts in separate main topics.</p>
+<p>If a post is named other than <code>index.md</code>, the filename will be used as the directory path of the generated page. Here is how MkDocs generates URLs for Markdown posts:</p>
+<ul>
+<li>folder <code>docs</code> becomes the root of the site <a href="#">www.site.com/</a></li>
+<li>file <code>docs\blog\index.md</code> becomes a link <a href="#">www.site.com/blog/</a></li>
+<li>file <code>docs\blog\a-post.md</code> becomes a link <a href="#">www.site.com/blog/a-post/</a></li>
+</ul>
+<blockquote>
+<p>Use hyphen <code>-</code> in folder name and file name to create good URLs.<br/>
+Here are some tips to <a href="https://developers.google.com/search/docs/advanced/guidelines/url-structure">keep URLs simple</a>.</p>
+</blockquote>
+<h4 id="116-publish">1.1.6. Publish<a class="headerlink" href="#116-publish" title="Permanent link">⚓︎</a></h4>
+<p>To publish the site, build it first:</p>
+<div class="highlight"><pre><span></span><code>mkdocs build
+</code></pre></div>
+<p>then copy all the content in the <code>site</code> folder to the website root folder.</p>
+<h3 id="12-visual-studio-code">1.2. Visual Studio Code<a class="headerlink" href="#12-visual-studio-code" title="Permanent link">⚓︎</a></h3>
+<p>Download and install <a href="https://code.visualstudio.com/">Visual Studio Code</a> - a lightweight but powerful source code editor. It well supports users to write code, documents, notes. This editor also have some extensions to turn it into a full-feature IDE for coding, such as <a href="https://platformio.org/">PlatformIO</a>.</p>
+<p>
+<figure><img src="blog_editing.png"/><figcaption>Write blog posts and preview in a local browser</figcaption>
+</figure>
+</p>
+<p>Useful extensions for writing in Markdown format and editing HTML template:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one"><strong>Markdown All in One</strong></a>: add keyboard shortcuts, auto completion, edit and format list and table</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image"><strong>Markdown Paste</strong></a>: paste images, links from the clipboard</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio"><strong>Draw.io Integration</strong></a>: edit diagrams and svg images</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja"><strong>Jinja</strong></a>: highlight Jinja syntax in HTML templates</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings"><strong>Sublime Text Keymap and Settings Importer</strong></a>: import keybindings and settings</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker"><strong>Code Spell Checker</strong></a>: catch common spelling errors</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode"><strong>Prettier - Code formatter</strong></a>: a formatter which supports a lot of languages</li>
+</ul>
+<h2 id="2-configuration">2. Configuration<a class="headerlink" href="#2-configuration" title="Permanent link">⚓︎</a></h2>
+<p>Material for MkDocs is just a start point. It is needed to be customized a little to fit my personal tastes. Refer to the official homepage of for more and complete guides, as I just list here main points to tweak the theme.</p>
+<h3 id="21-site-information">2.1. Site information<a class="headerlink" href="#21-site-information" title="Permanent link">⚓︎</a></h3>
+<p>Site information consists of the name, the URL, the title, a description and some keywords that are used to get brief information about the content of the site.</p>
+<p>These information is configured in the config file <code>mkdocs.yml</code> as below:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">site_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Code Inside Out</span>
+<span class="nt">site_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://www.codeinsideout.com/</span> <span class="c1"># must have the trailing slash</span>
+<span class="nt">site_author</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vqtrong</span>
+<span class="nt">site_email</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vuquangtrong@gmail.com</span>
+<span class="nt">site_description</span><span class="p">:</span> <span class="p p-Indicator">&gt;-</span>
+    <span class="no">Interesting stuff in Embedded Systems and IoT Applications.</span>
+    <span class="no">From hardwares to cloud applications. Step by step.</span>
+<span class="nt">site_keywords</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">embedded systems application programming</span>
+<span class="nt">copyright</span><span class="p">:</span> <span class="p p-Indicator">&gt;-</span>
+    <span class="no">© 2021 Code Inside Out</span>
+</code></pre></div>
+<p>The social links can be added in the <code>extra</code> section in the config file <code>mkdocs.yml</code>.
+Refer to the guide of <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/">setting up the footer</a>. The icon field must point to a valid icon path referencing to a <a href="markdown-syntax/index.md/#12-icons--emojis">bundled icon</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">extra</span><span class="p">:</span>
+    <span class="nt">social</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">icon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/github-alt</span>
+          <span class="nt">link</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/vuquangtrong</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vuquangtrong</span>
+        <span class="p p-Indicator">-</span> <span class="nt">icon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/facebook-f</span>
+          <span class="nt">link</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://facebook.com/trongvq</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trongvq</span>
+        <span class="p p-Indicator">-</span> <span class="nt">icon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/linkedin-in</span>
+          <span class="nt">link</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://www.linkedin.com/in/vqtrong</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vqtrong</span>
+</code></pre></div>
+<div class="np"></div>
+<h3 id="22-color-palette">2.2. Color palette<a class="headerlink" href="#22-color-palette" title="Permanent link">⚓︎</a></h3>
+<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/">Changing color</a> is to select colors for 2 main groups:</p>
+<ul>
+<li>the primary color which is used for the header, the sidebar, text links and several other components.</li>
+<li>the accent color which is used to denote elements that can be interacted with, e.g. hovered links, buttons and scroll-bars.</li>
+</ul>
+<p>Both of them can be changed in <code>mkdocs.yml</code> by choosing a valid color name. As this page is intent to be printed on paper, I choose the white color as the primary look and feel, and the deep orange color for interactive elements.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+    <span class="nt">palette</span><span class="p">:</span>
+        <span class="nt">primary</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">white</span>
+        <span class="nt">accent</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">deep orange</span>
+</code></pre></div>
+<h3 id="23-fonts">2.3. Fonts<a class="headerlink" href="#23-fonts" title="Permanent link">⚓︎</a></h3>
+<p>Serif fonts<sup id="fnref:serif"><a class="footnote-ref" href="#fn:serif">1</a></sup> are widely used for body text because they are considered to be more easier to read than Sans-Serif fonts in print.</p>
+<p>For better reading, distinguishing the digit zero <code>0</code> from the Latin script letter Oh <code>o</code> or <code>O</code> is a way to avoid mistake, especially while reading technical notes. Fonts for source code do have slashed / dotted / open zero<sup id="fnref:zero"><a class="footnote-ref" href="#fn:zero">2</a></sup>, but fonts for reading don’t have those styles.</p>
+<p>It’s also needed to clearly distinguish the digit one <code>1</code> with lowercase i <code>i</code>, the uppercase i <code>I</code>, and the lowercase l <code>l</code>. Luckily, they usually do not stand close to each other.</p>
+<p>To replace the <a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/">defaults fonts</a>, this site uses <em>Noto Serif</em> for the body text, and <em>Roboto Mono</em> for the code block.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+    <span class="nt">font</span><span class="p">:</span>
+        <span class="nt">text</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Noto Serif</span>
+        <span class="nt">code</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Roboto Mono</span>
+</code></pre></div>
+<p>Can you easily read below pairs of characters?</p>
+<ul>
+<li>Body text: 0o 0O oO 1i 1I 1l 1L iI il iL Il IL lL</li>
+<li>Code block: <code>0o 0O oO 1i 1I 1l 1L iI il iL Il IL lL</code></li>
+</ul>
+<h3 id="24-logo--icon">2.4. Logo &amp; Icon<a class="headerlink" href="#24-logo--icon" title="Permanent link">⚓︎</a></h3>
+<p>I want to replace the <a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons">default icon</a> and logo with this <code>code</code> symbol <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+    <span class="nt">icon</span><span class="p">:</span>
+        <span class="nt">logo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/solid/code</span>
+    <span class="nt">favicon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">favicon.png</span>
+</code></pre></div>
+<p>To use the included icons in Material theme, refer to <a href="markdown-syntax/">Markdown syntax - Icons and Emojis</a>.</p>
+<h3 id="25-navigation">2.5. Navigation<a class="headerlink" href="#25-navigation" title="Permanent link">⚓︎</a></h3>
+<p>Here are some interesting features for the <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/">navigation</a> in Material theme:</p>
+<h4 id="251-instant-loading">2.5.1. Instant loading<a class="headerlink" href="#251-instant-loading" title="Permanent link">⚓︎</a></h4>
+<p>When instant loading is enabled, clicks on internal links will be intercepted and dispatched via <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XHR</a> without fully reloading the page. The resulting page is parsed and injected and all event handlers and components are rebound automatically. This means that the site behaves like a Single Page Application, which is especially useful for large documentation sites that come with a massive search index, as the search index will now remain intact in-between document switches.</p>
+<p>Material for MkDocs is the only MkDocs theme offering this feature.</p>
+<div class="admonition warning">
+<p class="admonition-title">Dynamic Javascript-enabled elements do not work after AJAX content is loaded</p>
+<p>After an AJAX request is done, the old content is replaced with the new content, causing dynamic content and handlers are destroyed, such as items were selected by javascript query, Mermaid code blocks, disqus comments, registered event for clicking, etc.</p>
+<p>A solution is given in <a href="fix-ajax-issue/">Fix AJAX issue</a>.</p>
+</div>
+<h4 id="252-navigation-tabs">2.5.2. Navigation tabs<a class="headerlink" href="#252-navigation-tabs" title="Permanent link">⚓︎</a></h4>
+<p>When tabs are enabled, top-level sections (first-level directories in the <code>docs</code> folder) are rendered in a menu layer below the header.</p>
+<h4 id="253-back-to-top-button">2.5.3. Back-to-top button<a class="headerlink" href="#253-back-to-top-button" title="Permanent link">⚓︎</a></h4>
+<p>A back-to-top button can be shown when the user, after scrolling down, starts to scroll up again. It’s rendered in the lower right corner of the viewport, and help to go to the top a the page quickly.</p>
+<h4 id="254-hide-header-bar">2.5.4. Hide header bar<a class="headerlink" href="#254-hide-header-bar" title="Permanent link">⚓︎</a></h4>
+<p>When auto hiding is enabled, the header is automatically hidden when the user scrolls past a certain threshold, leaving more space for content.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+    <span class="nt">features</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">navigation.instant</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">navigation.tabs</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">navigation.top</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">header.autohide</span>
+</code></pre></div>
+<h3 id="26-table-of-content">2.6. Table of Content<a class="headerlink" href="#26-table-of-content" title="Permanent link">⚓︎</a></h3>
+<p>The <a href="https://python-markdown.github.io/extensions/toc/">Table of Content extension</a> provides a quick navigation between sections in the post, it also places an anchor link at each header. This anchor can be used to link the header from other pages. The <code>toc_depth: 4</code> makes the list displays from <code>&lt;h1&gt;</code> to <code>&lt;h4&gt;</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">toc</span><span class="p">:</span>
+          <span class="nt">permalink</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">⚓︎</span>
+          <span class="nt">slugify</span><span class="p">:</span> <span class="kt">!!python/name:pymdownx.slugs.uslugify</span>
+          <span class="nt">toc_depth</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+</code></pre></div>
+<h3 id="27-site-analytics">2.7. Site analytics<a class="headerlink" href="#27-site-analytics" title="Permanent link">⚓︎</a></h3>
+<p>Material for MkDocs natively integrates with <a href="https://developers.google.com/analytics">Google Analytics</a>. Just need to create a new GA property in order to obtain a unique tracking id of the form <code>UA-XXXXXXXX-X</code>, add it to mkdocs.yml:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">google_analytics</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">UA-XXXXXXXX-X</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+</code></pre></div>
+<h3 id="28-comments-section">2.8. Comments section<a class="headerlink" href="#28-comments-section" title="Permanent link">⚓︎</a></h3>
+<p>Material for MkDocs is natively integrated with <a href="https://disqus.com/">Disqus</a>, a comment system that provides a wide range of features like social integrations, user profiles, as well as spam and moderation tools.</p>
+<p>After setting up the <code>site_url</code> in <code>mkdocs.yml</code>, Disqus is configured by adding the Disqus shortname:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">extra</span><span class="p">:</span>
+    <span class="nt">disqus</span><span class="p">:</span> <span class="s">"shortname"</span>
+</code></pre></div>
+<p>This will insert a comment system on every page, except the <a href="/">index page</a>.
+If the <a href="markdown-syntax/#1-meta-data">Metadata extension</a> is enabled, Disqus can be disabled per page by using an empty string:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">disqus</span><span class="p">:</span> <span class="s">""</span>
+<span class="nn">---</span>
+</code></pre></div>
+<h3 id="29-extra-styles-and-scripts">2.9. Extra styles and scripts<a class="headerlink" href="#29-extra-styles-and-scripts" title="Permanent link">⚓︎</a></h3>
+<p>Add stylesheets and javascript files to the <code>docs</code> directory as below structure:</p>
+<div class="highlight"><pre><span></span><code>.
+├─ docs/
+│ ├─ assets/
+<span class="hll">│ | └─ extra.css
+</span><span class="hll">│ | └─ extra.js
+</span>| └─ blog/
+└─ mkdocs.yml
+</code></pre></div>
+<p>Then, add the following line to <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">extra_css</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">assets/extra.css</span>
+<span class="nt">extra_javascript</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">assets/extra.js</span>
+</code></pre></div>
+<p>It’s ready to add extra styles and scripts to the site at the moment, but it should be done later after adding new layouts and elements to the theme. At this time, I just need to add some small additional styles to make the theme look a bit harmonious with the selected theme color.</p>
+<p>To do that, in the webpage, right-click on an element, then select <strong>Inspect</strong> menu to go to the <strong>Developer Mode</strong>, and check the tag and the class of the selected element.</p>
+<p>The page content is usually wrapped inside the tag <code class="highlight"><span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"md-content__inner md-typeset"</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span></code>, so select either the tag or a class of that tag to use as the container of extra styles. Here are some small requirements:</p>
+<ul>
+<li>
+<p>Logo and headers should be in orange to be highlighted, and active links can be in dark blue:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-logo</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">h1</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">orangered</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">h2</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">h3</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">h4</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-tabs__link</span><span class="p">.</span><span class="nc">md-tabs__link--active</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">md-nav__link</span><span class="p">.</span><span class="nc">md-nav__link--active</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">darkblue</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Search input should have white background color:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-search__input</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">white</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Non-highlighted code needs stand out a bit in dark red in white background:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">code</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">darkred</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Normal paragraph should be fully justified:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">p</span> <span class="p">{</span>
+    <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Emphasized text should be in dark magenta:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-typeset</span> <span class="nt">em</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">darkmagenta</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Footer should look smaller by changing the background color:</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">md-footer</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">unset</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">md-footer-meta</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">black</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+</ul>
+<p>For more stylings, please read more in <a href="#5-customize-theme">Customize theme</a>.</p>
+<h3 id="210-override-templates">2.10. Override templates<a class="headerlink" href="#210-override-templates" title="Permanent link">⚓︎</a></h3>
+<p>MkDocs allows to override the them by just adding extra files that will replace the original ones when building the site. Create a new folder <code>overrides</code> in the project folder to save the overriding files, then enable them in the config file <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">material</span>
+    <span class="nt">custom_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">overrides</span>
+</code></pre></div>
+<h4 id="2101-override-files">2.10.1. Override files<a class="headerlink" href="#2101-override-files" title="Permanent link">⚓︎</a></h4>
+<p>The structure in the <code>overrides</code> directory must mirror the directory structure of the original theme, as any file in the overrides directory will replace the file with the same name which is part of the original theme. Besides, further assets may also be put in the overrides directory.</p>
+<div class="highlight"><pre><span></span><code>.
+├─ .icons/                             <span class="c1"># Bundled icon sets</span>
+├─ assets/
+│  ├─ images/                          <span class="c1"># Images and icons</span>
+│  ├─ javascripts/                     <span class="c1"># JavaScript</span>
+│  └─ stylesheets/                     <span class="c1"># Stylesheets</span>
+├─ partials/
+│  ├─ integrations/                    <span class="c1"># Third-party integrations</span>
+│  │  ├─ analytics.html                <span class="c1"># - Google Analytics</span>
+│  │  └─ disqus.html                   <span class="c1"># - Disqus</span>
+│  ├─ languages/                       <span class="c1"># Localized languages</span>
+│  ├─ footer.html                      <span class="c1"># Footer bar</span>
+│  ├─ header.html                      <span class="c1"># Header bar</span>
+│  ├─ language.html                    <span class="c1"># Localized labels</span>
+│  ├─ logo.html                        <span class="c1"># Logo in header and sidebar</span>
+│  ├─ nav.html                         <span class="c1"># Main navigation</span>
+│  ├─ nav-item.html                    <span class="c1"># Main navigation item</span>
+│  ├─ palette.html                     <span class="c1"># Color palette</span>
+│  ├─ search.html                      <span class="c1"># Search box</span>
+│  ├─ social.html                      <span class="c1"># Social links</span>
+│  ├─ source.html                      <span class="c1"># Repository information</span>
+│  ├─ source-date.html                 <span class="c1"># Last updated date</span>
+│  ├─ source-link.html                 <span class="c1"># Link to source file</span>
+│  ├─ tabs.html                        <span class="c1"># Tabs navigation</span>
+│  ├─ tabs-item.html                   <span class="c1"># Tabs navigation item</span>
+│  ├─ toc.html                         <span class="c1"># Table of contents</span>
+│  └─ toc-item.html                    <span class="c1"># Table of contents item</span>
+├─ <span class="m">404</span>.html                            <span class="c1"># 404 error page</span>
+├─ base.html                           <span class="c1"># Base template</span>
+└─ main.html                           <span class="c1"># Default page</span>
+</code></pre></div>
+<p>The template file <code>base.html</code>, which originally located in the folder <code>.venv\Lib\site-packages\material</code>, is the starting point of any site’s page. All other pages should extend from it. The <code>main.html</code> template, which extends the <code>base.html</code>, is used to add a custom template.</p>
+<p>To use other template, in the metadata of the Markdown file, set the attribute <code>template</code> with the name of template file. For example:</p>
+<div class="highlight"><pre><span></span><code>---
+title: Blog
+<span class="gu">template: blog.html</span>
+<span class="gu">---</span>
+</code></pre></div>
+<h4 id="2102-override-blocks">2.10.2. Override blocks<a class="headerlink" href="#2102-override-blocks" title="Permanent link">⚓︎</a></h4>
+<p>Besides overriding partials, it’s also possible to override (and extend) template blocks, which are defined inside the template files and wrap specific features. To override a block, create a new template <code>.html</code> file inside the <code>overrides</code> directory, and define a same block name with the one which will be overridden:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="hll"><span class="cp">{%</span> <span class="k">block</span> <span class="nv">htmltitle</span> <span class="cp">%}</span><span class="x"></span>
+</span><span class="x">    &lt;title&gt;New title&lt;/title&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+<p>To extend a block, use the <code class="highlight"><span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span><span class="x"></span></code> command:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">head</span> <span class="cp">%}</span><span class="x"></span>
+<span class="hll"><span class="x">    </span><span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span><span class="x"></span>
+</span><span class="x">    Appended content</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+<p><mark>To replace a block, don’t use the <code class="highlight"><span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span><span class="x"></span></code> command.</mark></p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">block</span> <span class="nv">head</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    New content</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+<p>The list of blocks:</p>
+<div class="highlight"><pre><span></span><code>analytics   <span class="c1"># Wraps the Google Analytics integration</span>
+announce    <span class="c1"># Wraps the announcement bar</span>
+config      <span class="c1"># Wraps the JavaScript application config</span>
+content     <span class="c1"># Wraps the main content</span>
+disqus      <span class="c1"># Wraps the Disqus integration</span>
+extrahead   <span class="c1"># Empty block to add custom meta tags</span>
+fonts       <span class="c1"># Wraps the font definitions</span>
+footer      <span class="c1"># Wraps the footer with navigation and copyright</span>
+header      <span class="c1"># Wraps the fixed header bar</span>
+hero        <span class="c1"># Wraps the hero teaser (if available)</span>
+htmltitle   <span class="c1"># Wraps the &lt;title&gt; tag</span>
+libs        <span class="c1"># Wraps the JavaScript libraries (header)</span>
+outdated    <span class="c1"># Wraps the version warning</span>
+scripts     <span class="c1"># Wraps the JavaScript application (footer)</span>
+<span class="nb">source</span>      <span class="c1"># Wraps the linked source files</span>
+site_meta   <span class="c1"># Wraps the meta tags in the document head</span>
+site_nav    <span class="c1"># Wraps the site navigation and table of contents</span>
+styles      <span class="c1"># Wraps the stylesheets (also extra sources)</span>
+tabs        <span class="c1"># Wraps the tabs navigation (if available)</span>
+</code></pre></div>
+<h4 id="2103-the-index-page">2.10.3. The index page<a class="headerlink" href="#2103-the-index-page" title="Permanent link">⚓︎</a></h4>
+<p>The <a href="../..">index page</a> of the website is located at <code>docs\index.md</code>. Material theme created a default one then it has to be modified. I’d like to write a brief information about me and why this blog is created:</p>
+<div class="highlight"><pre><span></span><code>Welcome to
+
+<span class="gh"># Code Inside Out</span>
+
+Interesting stuff in Embedded Systems and IoT Applications.
+From hardwares to cloud applications. Step by step.
+(ﾉ ◕ ヮ ◕)ﾉ\*:・ﾟ ✧
+</code></pre></div>
+<h4 id="2104-the-404-page">2.10.4. The 404 page<a class="headerlink" href="#2104-the-404-page" title="Permanent link">⚓︎</a></h4>
+<p>Whenever a page is not found in a website, the error <code>404</code> is return to the requested users. I need to create this special page to display a short message and guide user to search in this blog.</p>
+<p>The <a href="/404">404 page</a> should be created in the <code>overrides</code> folder as it will replace the default 404 page of Material theme. Its layout is based on the <code>base.html</code>, and the content is a message displayed in the center of the page. The <code>disqus</code> comment section is removed. The sidebar should not be visible to display message clearly.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"main.html"</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;style&gt;</span>
+<span class="x">    .md-sidebar {</span>
+<span class="x">        display: none;</span>
+<span class="x">    }</span>
+<span class="x">&lt;/style&gt;</span>
+<span class="x">&lt;div style="text-align: center;"&gt;</span>
+<span class="x">    &lt;h1&gt;</span>
+<span class="x">        Oops! Something went wrong!</span>
+<span class="x">    &lt;/h1&gt;</span>
+<span class="x">    &lt;h3&gt;</span>
+<span class="x">        Please go back to the</span>
+<span class="x">        &lt;a href="</span><span class="cp">{{</span> <span class="nv">config.site_url</span> <span class="cp">}}</span><span class="x">"&gt;</span>
+<span class="x">            </span><span class="cp">{{</span> <span class="nv">config.site_name</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">        &lt;/a&gt;</span>
+<span class="x">        homepage,&lt;br&gt;</span>
+<span class="x">        or press &lt;kbd&gt;S&lt;/kbd&gt; to search on this site.</span>
+<span class="x">    &lt;/h3&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">disqus</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+<h2 id="3-markdown-extensions">3. Markdown extensions<a class="headerlink" href="#3-markdown-extensions" title="Permanent link">⚓︎</a></h2>
+<p>Markdown comes with a simple syntax to create headers, links, images, and paragraphs with formatted text, lists. However, that’s not enough. Some Markdown extensions bring more syntaxes to create complex elements or new layouts that help writing documents easier, faster, and look professional.</p>
+<p>Read more in <a href="markdown-syntax/">Markdown syntax</a>.</p>
+<h2 id="4-mkdocs-plugins">4. MkDocs plugins<a class="headerlink" href="#4-mkdocs-plugins" title="Permanent link">⚓︎</a></h2>
+<p>New features can be added to MkDocs engine by installing plugins. These packages can modify the navigation behavior, or render new content types, or export the site to PDF documents. Plugins also can be modified easily as they are written in Python.</p>
+<p>Read more in <a href="mkdocs-plugins/">MkDocs plugins</a>.</p>
+<h2 id="5-customize-theme">5. Customize theme<a class="headerlink" href="#5-customize-theme" title="Permanent link">⚓︎</a></h2>
+<p>A personal website should look different to others to make it unique and standout. I prefer a simple look which goes straight to the content, and pages should be clear to be printed on papers. Therefore, I modified styles for some elements, also bring must-have elements of a blog like tag cloud, tag page, list of posts.</p>
+<p>Read more in <a href="customize-theme/">Customize theme</a>.</p>
+<h2 id="6-print-to-pdf">6. Print to PDF<a class="headerlink" href="#6-print-to-pdf" title="Permanent link">⚓︎</a></h2>
+<p>For printing or offline reading, the document should be exported to PDF format. A manual method is to print each post by the user browser. There is a plugin to automatically export all site’s posts to PDF during the build time, but it needs some configuration to work as I expected. Generated PDF files can be download by clicking on the download button at the beginning of each page.</p>
+<p>Read more in <a href="print-to-pdf/">Print to PDF</a>.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:serif">
+<p>https://en.wikipedia.org/wiki/Serif <a class="footnote-backref" href="#fnref:serif" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:zero">
+<p>https://en.wikipedia.org/wiki/Slashed_zero <a class="footnote-backref" href="#fnref:zero" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+</ol>
+</hr></div>
+<div data-value="https://www.codeinsideout.com/blog/setup-blog/" id="page_url"></div>
+<div data-value="blog/setup-blog/" id="page_identifier"></div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a class="md-footer__link md-footer__link--prev" href="../c-cpp/notes/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              C/C++
+            </div>
+</div>
+</a>
+<a class="md-footer__link md-footer__link--next" href="markdown-syntax/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Markdown syntax
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+<script src="../../assets/javascripts/bundle.34eae1b6.min.js"></script>
+<script src="../../assets/view-bigimg.js"></script>
+<script src="../../assets/extra.js"></script>
+</body>
+</html>
