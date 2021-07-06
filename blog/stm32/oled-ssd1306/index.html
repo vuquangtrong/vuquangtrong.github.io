@@ -1,0 +1,2429 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta and="" another="" as="" cases,="" commands."="" communication="" consumes="" content="SSD1306 0.96" control="" controller="" display="" exposes="" has="" i2c="" in="" interface="" interface.="" is="" it="" low="" mainly="" many="" multiple="" name="description" oled="" or="" popular="" power.="" project="" protocols="" same="" sh1106="" shares="" similar="" spi="" ssd1306,="" status="" system="" the="" to="" used="" very="" which=""/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/stm32/oled-ssd1306/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.1, mkdocs-material-7.1.9" name="generator"/>
+<title>SSD1306 OLED Controller - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.ca7ac06f.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<meta content="website" property="og:type">
+<meta content="SSD1306 OLED Controller - Code Inside Out" property="og:title">
+<meta and="" another="" as="" cases,="" commands."="" communication="" consumes="" content="SSD1306 0.96" control="" controller="" display="" exposes="" has="" i2c="" in="" interface="" interface.="" is="" it="" low="" mainly="" many="" multiple="" oled="" or="" popular="" power.="" project="" property="og:description" protocols="" same="" sh1106="" shares="" similar="" spi="" ssd1306,="" status="" system="" the="" to="" used="" very="" which="">
+<meta content="https://www.codeinsideout.com/blog/stm32/oled-ssd1306/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-ssd1306-controller">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              SSD1306 OLED
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../archives/">
+      Archives
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sensor-us-100/">
+        US-100 Sensor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../adc/">
+        ADC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../i2c-spi/">
+        I2C - SPI
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            SSD1306 OLED
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        SSD1306 OLED
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-ssd1306-controller">
+    1. SSD1306 Controller
+  </a>
+<nav aria-label="1. SSD1306 Controller" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-features">
+    1.1. Features
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-i2c-interface">
+    1.2. I2C Interface
+  </a>
+<nav aria-label="1.2. I2C Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#121-i2c-message">
+    1.2.1. I2C Message
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-display-clock">
+    1.3. Display clock
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-graphic-display-data-ram">
+    1.4. Graphic Display Data RAM
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-memory-addressing-mode">
+    1.5. Memory Addressing Mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-brightness">
+    1.6. Brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-display-start-line">
+    1.7. Display Start Line
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-display-content">
+    1.8. Display content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-display-inverse">
+    1.9. Display Inverse
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#110-display-onoff">
+    1.10. Display On/Off
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-charge-pump-dc-dc">
+    1.11. Charge Pump (DC-DC)
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-implementation">
+    2. Implementation
+  </a>
+<nav aria-label="2. Implementation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-protocol-settings">
+    2.1. Protocol Settings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-start-up-commands">
+    2.2. Start-up commands
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-screen-buffer">
+    2.3. Screen Buffer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-draw-a-pixel">
+    2.4. Draw a pixel
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#25-bitmap--font--string">
+    2.5. Bitmap &amp; Font &amp; String
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../j-link-rtt/">
+        J-Link RTT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../j-link-sysview/">
+        J-Link SysView
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../c-cpp/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          C/C++
+        </a>
+</label>
+<nav aria-label="C/C++" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../c-cpp/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            C/C++
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../lidar/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Lidar
+        </a>
+</label>
+<nav aria-label="Lidar" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../lidar/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Lidar
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lidar/livox-sdk/">
+        Livox SDK
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lidar/mapping/">
+        Lidar Mapping
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../virtual-machine/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Virtual machine
+        </a>
+</label>
+<nav aria-label="Virtual machine" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../virtual-machine/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Virtual machine
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../virtual-machine/docker/">
+        Docker
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../virtual-machine/hyper-v/">
+        Hyper-V
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../archives/">
+        Archives
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">gnuplot</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOrchid;
+        ">livox</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">awk</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkCyan;
+        ">interrupt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">hls</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkBlue;
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">redirect</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">dash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">omx</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">toolchain</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkCyan;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkOrchid;
+        ">camera</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.4rem;
+          color:DarkCyan;
+        ">stm32</span>
+<!--<sup class="tag-count">18</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">spi</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">css</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">virtual</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">h264</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">jinja</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.3rem;
+          color:DarkOrchid;
+        ">arm</span>
+<!--<sup class="tag-count">16</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">restore</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkBlue;
+        ">rtt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkBlue;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkMagenta;
+        ">notes</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">backup</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">c</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkBlue;
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGreen;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkBlue;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">docker</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkOrchid;
+        ">debug</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">swv</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.95rem;
+          color:DarkOliveGreen;
+        ">pi</span>
+<!--<sup class="tag-count">9</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">pdf</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">semihosting</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOliveGreen;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkSlateGray;
+        ">lidar</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkSlateGray;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">clock</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">hardware accelerator</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">sdcard</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">pulse</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">top</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">performance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">i2c</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">bash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">grep</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">mapping</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-ssd1306-controller">
+    1. SSD1306 Controller
+  </a>
+<nav aria-label="1. SSD1306 Controller" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-features">
+    1.1. Features
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-i2c-interface">
+    1.2. I2C Interface
+  </a>
+<nav aria-label="1.2. I2C Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#121-i2c-message">
+    1.2.1. I2C Message
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-display-clock">
+    1.3. Display clock
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-graphic-display-data-ram">
+    1.4. Graphic Display Data RAM
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-memory-addressing-mode">
+    1.5. Memory Addressing Mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-brightness">
+    1.6. Brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-display-start-line">
+    1.7. Display Start Line
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-display-content">
+    1.8. Display content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-display-inverse">
+    1.9. Display Inverse
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#110-display-onoff">
+    1.10. Display On/Off
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-charge-pump-dc-dc">
+    1.11. Charge Pump (DC-DC)
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-implementation">
+    2. Implementation
+  </a>
+<nav aria-label="2. Implementation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-protocol-settings">
+    2.1. Protocol Settings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-start-up-commands">
+    2.2. Start-up commands
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-screen-buffer">
+    2.3. Screen Buffer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-draw-a-pixel">
+    2.4. Draw a pixel
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#25-bitmap--font--string">
+    2.5. Bitmap &amp; Font &amp; String
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">redirect</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">h264</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkViolet;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkOliveGreen;
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkViolet;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.95rem;
+          color:DarkViolet;
+        ">pi</span>
+<!--<sup class="tag-count">9</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOrchid;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">docker</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">backup</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">pdf</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateBlue;
+        ">interrupt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkSlateGray;
+        ">debug</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGreen;
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkSlateBlue;
+        ">camera</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">toolchain</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">mapping</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkRed;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">bash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">i2c</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkRed;
+        ">livox</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">grep</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">jinja</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.4rem;
+          color:DarkSlateGray;
+        ">stm32</span>
+<!--<sup class="tag-count">18</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">c</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.3rem;
+          color:DarkSlateGray;
+        ">arm</span>
+<!--<sup class="tag-count">16</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">swv</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">css</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">virtual</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">semihosting</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">awk</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGoldenrod;
+        ">notes</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">sdcard</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">performance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGreen;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">pulse</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">gnuplot</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">dash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkSlateBlue;
+        ">lidar</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">omx</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">clock</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">hls</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">restore</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGreen;
+        ">rtt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">top</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">hardware accelerator</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">spi</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkSlateBlue;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">SSD1306 OLED Controller</h1>
+<p class="page-description">SSD1306 0.96" I2C OLED display is very popular as it is used in many project to display system status as it has multiple communication protocols and consumes very low power. It mainly exposes I2C interface or SPI interface. SH1106 is another controller which is similar to SSD1306, and in many cases, it shares the same control commands.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name">
+                        #oled
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name">
+                        #ssd1306
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-07-06 14:39:33</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-ssd1306-controller">
+    1. SSD1306 Controller
+  </a>
+<nav aria-label="1. SSD1306 Controller" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-features">
+    1.1. Features
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-i2c-interface">
+    1.2. I2C Interface
+  </a>
+<nav aria-label="1.2. I2C Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#121-i2c-message">
+    1.2.1. I2C Message
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-display-clock">
+    1.3. Display clock
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-graphic-display-data-ram">
+    1.4. Graphic Display Data RAM
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-memory-addressing-mode">
+    1.5. Memory Addressing Mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-brightness">
+    1.6. Brightness
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-display-start-line">
+    1.7. Display Start Line
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#18-display-content">
+    1.8. Display content
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#19-display-inverse">
+    1.9. Display Inverse
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#110-display-onoff">
+    1.10. Display On/Off
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-charge-pump-dc-dc">
+    1.11. Charge Pump (DC-DC)
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-implementation">
+    2. Implementation
+  </a>
+<nav aria-label="2. Implementation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-protocol-settings">
+    2.1. Protocol Settings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-start-up-commands">
+    2.2. Start-up commands
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-screen-buffer">
+    2.3. Screen Buffer
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-draw-a-pixel">
+    2.4. Draw a pixel
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#25-bitmap--font--string">
+    2.5. Bitmap &amp; Font &amp; String
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+<div class="btn-actions screen-only">
+<p><a class="md-button" href="..\..\..\pdfs\blog\stm32\oled-ssd1306\stm32__SSD1306_OLED.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a><a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_I2C_OLED_SSD1306.zip"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> F051R8_I2C_OLED_SSD1306.zip</a></p>
+</div>
+<div class="btn-actions screen-only" style="text-align:center;">
+<div class="row">
+<div class="col">
+<p><video autoplay="" loop="" style="width:100%">
+<source src="ssd1306_i2c_output.mp4" type="video/mp4"/>
+</video>
+<figure>
+<figcaption>128x32 using I2C at 400 Kbps</figcaption>
+</figure></p>
+</div>
+<div class="col">
+<p><video autoplay="" loop="" style="width:100%">
+<source src="Sh1106_spi_output.mp4" type="video/mp4"/>
+</video>
+<figure>
+<figcaption>OLED 128x64 using SPI at 750 Kbps</figcaption>
+</figure></p>
+</div>
+</div>
+</div>
+<h2 id="1-ssd1306-controller">1. SSD1306 Controller<a class="headerlink" href="#1-ssd1306-controller" title="Permanent link">⚓︎</a></h2>
+<p>SSD1306 is a single-chip CMOS OLED/PLED driver to control display with 128 segments and 64 commons. This IC is designed for Common Cathode type OLED panel.</p>
+<p>The SSD1306 embeds with contrast control, display RAM and oscillator, which reduces the number of external components and power consumption. It has 256-step brightness control. Data/Commands are sent from general MCU through the hardware selectable 6800/8000 series compatible Parallel Interface, I2C interface or Serial Peripheral Interface. It is suitable for many compact portable applications, such as mobile phone sub-display, MP3 player and calculator, etc.</p>
+<h3 id="11-features">1.1. Features<a class="headerlink" href="#11-features" title="Permanent link">⚓︎</a></h3>
+<ul>
+<li>Resolution: 128 x 64 dots</li>
+<li>VDD = 1.65V to 3.3V for IC logic</li>
+<li>On-Chip Oscillator</li>
+<li>256 step contrast brightness</li>
+<li>Embedded 128 x 64 bit SRAM display buffer</li>
+<li>Programmable Frame Rate and Multiplexing Ratio</li>
+<li>Row Re-mapping and Column Re-mapping to rotate the screen</li>
+<li>Scrolling function in both horizontal and vertical direction</li>
+<li>Pin selectable MCU Interfaces:<ul>
+<li>8-bit 6800/8080-series parallel interface</li>
+<li>3 /4 wire Serial Peripheral Interface</li>
+<li>I2C Interface</li>
+</ul>
+</li>
+</ul>
+<div class="row">
+<div class="col">
+<p>
+<figure class="w50"><img src="ssd1306_oled_128x64.png"/><figcaption>SSD1306 128x64 OLED</figcaption></figure>
+</p>
+</div>
+<div class="col">
+<p>
+<figure class="w50"><img src="ssd1306_oled_128x32.png"/><figcaption>SSD1306 128x32 OLED</figcaption></figure>
+</p>
+</div>
+</div>
+<div class="np"></div>
+<h3 id="12-i2c-interface">1.2. I2C Interface<a class="headerlink" href="#12-i2c-interface" title="Permanent link">⚓︎</a></h3>
+<p>SSD1306 has to recognize the slave address before transmitting or receiving any information by the I2C-bus. The device will respond to the slave address following by the slave address bit (<code>SA0</code> bit) and the read/write select bit (<code>R/W#</code> bit) with the following byte format:</p>
+<pre>
+b7  b6  b5  b4  b3  b2  b1  b0
+0   1   1   1   1   0   SA0 R/W#
+</pre>
+<p>It means the address of OLED is either <code>0x3C</code> or <code>0x3D</code> in 7-bit address mode, or <code>0x78</code> and <code>0x7A</code> in 8-bit address mode.</p>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>Use I2C Scanner to see the address of connected devices on I2C bus.</p>
+</div>
+<h4 id="121-i2c-message">1.2.1. I2C Message<a class="headerlink" href="#121-i2c-message" title="Permanent link">⚓︎</a></h4>
+<p>In the <strong>Write Mode</strong>, the Master device has to transfer a control byte following by one or more data bytes in a transfer (between the start and the stop bit).</p>
+<p>
+<figure><img src="ssd1306_i2c_message.png"/><figcaption>SSD1306 I2C Message</figcaption>
+</figure>
+</p>
+<p><em>Control Byte</em>: Have the <code>Co#</code> bit, the <code>D/C#</code> bit, and six <code>0</code> bits:</p>
+<ul>
+<li>Bit <code>Co#</code> set to <code>0</code> means the next stream bytes. Bit <code>Co#</code> set to <code>1</code> means the next byte is a single byte</li>
+<li>Bit <code>D/C#</code> set to <code>0</code> means the next bytes is a Command and Command params. Bit <code>D/C#</code> set to <code>1</code> means the next bytes is Data which will be stored in the Embedded GDDRAM.</li>
+</ul>
+<p>Therefore, the Control Byte can be:</p>
+<ul>
+<li>Single Command mode: <code>0x80</code></li>
+<li>Stream Command mode: <code>0x00</code></li>
+<li>Single Data mode: <code>0xC0</code></li>
+<li>Stream Data mode: <code>0x40</code></li>
+</ul>
+<h3 id="13-display-clock">1.3. Display clock<a class="headerlink" href="#13-display-clock" title="Permanent link">⚓︎</a></h3>
+<p>The Display Clock for the Display Timing Generator is derived from the operation CLK (either the internal RC Oscillator or an external Clock).</p>
+<p>The command <code>0xD5</code> and its one byte param <code>A</code> are used to select the internal RC frequency F<sub>osc</sub> via <code>A[7:4]</code>, and the clock divide ratio <code>D</code> via <code>A[3:0]</code>.</p>
+<h3 id="14-graphic-display-data-ram">1.4. Graphic Display Data RAM<a class="headerlink" href="#14-graphic-display-data-ram" title="Permanent link">⚓︎</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Dimension</p>
+<p><strong>Segments</strong> mean <strong>Columns</strong>, define the <strong>Width</strong>.<br/>
+<strong>Commons</strong> mean <strong>Rows</strong>, define the <strong>Height</strong>.</p>
+</div>
+<p>The width of the screen is the number of activated Segments. There are 128 segments, from <code>SEG0</code> to <code>SEG127</code>.</p>
+<p>The height of the screen is the number of activate Commons. There are 64 commons, from <code>COM0</code> to <code>COM63</code>.</p>
+<p>The GDDRAM is a bit mapped static RAM holding the bit pattern to be displayed. The size of the RAM is 128 x 64 bits. The Commons are grouped in to 8 pages, from <code>PAGE0</code> to <code>PAGE7</code>. Each segment in a page is one BYTE which actually drives 8 commons. Data bit <code>D0</code> is written into the top row, while data bit <code>D7</code> is written into bottom row.</p>
+<p>
+<figure><img src="ssd1603_gddram.png"/><figcaption>Pages with its Commons</figcaption>
+</figure>
+<figure><img src="ssd1306_gddram_pixel.png"/><figcaption>Segments in a Page and the corresponding bit of a pixel</figcaption>
+</figure>
+</p>
+<p>The command <code>0xA8</code> and its one byte param <code>A</code> are used to set the number of activated rows (in 0-index) which is usually the height of the desired screen’s resolution.</p>
+<p>The command <code>0xDA</code> and its one byte param <code>A</code> are used to set the <strong>Memory Scan Mode</strong> of the commons (rows) from the memory to the display. If <code>A=0x02</code>, each half of memory will be pushed on a half of screen. If <code>A=0x12</code>, rows are interleaved.</p>
+<p>
+<figure><img src="ssd1306_scan_mode.drawio.svg"/><figcaption>Memory scan mode</figcaption>
+</figure>
+</p>
+<div class="admonition info">
+<p class="admonition-title">128 x 32 Double Buffer</p>
+<p>SSD1306 Controller divides the GDDRAM 128x64 into 2 halves with different scan modes. Therefore, if using only half resolution at 128x32, 2 halves of memory can be used as a double buffer to reduce the flicker or to show different images without redrawing. Read more in this project.</p>
+</div>
+<p><br/>
+<strong>Mirroring</strong></p>
+<p>The command <code>0xA0</code> and <code>0xA1</code> are use to remap the segments (columns). This causes the screen is vertically flipped.</p>
+<p>The command <code>0xC0</code> and <code>0xC8</code> are use to remap the commons (rows). This causes the screen is horizontally flipped.</p>
+<div class="admonition caution">
+<p class="admonition-title">Flip behavior</p>
+<p>Horizontal Flip affects only activated commons (rows). Please note the case that the activated rows is less then the screen height.</p>
+<p>
+<figure><img src="ssd1306_flip.drawio.svg"/><figcaption>Flip behavior in different activating rows</figcaption>
+</figure>
+</p>
+</div>
+<h3 id="15-memory-addressing-mode">1.5. Memory Addressing Mode<a class="headerlink" href="#15-memory-addressing-mode" title="Permanent link">⚓︎</a></h3>
+<p>When ever a data is written into GDDRAM, the current memory point is increased by one to point to the next bytes of rows in the next segment. There are 3 different memory addressing mode in SSD1306: page addressing mode, horizontal addressing mode and vertical addressing mode.</p>
+<p>The command <code>0x20</code> and its one byte param <code>A</code> are used to set the <strong>Memory Addressing Mode</strong>.</p>
+<ul>
+<li>If <code>A=0</code>, it sets Horizontal Mode</li>
+<li>If <code>A=1</code>, it sets Vertical Mode</li>
+<li>If <code>A=2</code>, it sets Page Mode</li>
+</ul>
+<p><strong>Horizontal Mode</strong></p>
+<ul>
+<li>In horizontal addressing mode, after the display RAM is read/written, the column address pointer is increased automatically by 1.</li>
+<li>If the column address pointer reaches column end address, the column address pointer is reset to column start address and page address pointer is increased by 1.</li>
+<li>When both column and page address pointers reach the end address, the pointers are reset to column start address and page start address</li>
+</ul>
+<p>The command <code>0x21</code> and its two bytes param <code>A</code> and <code>B</code> are use to set the start and the end segment (column). This also set the address pointer to the start segment.</p>
+<p>The command <code>0x22</code> and its two bytes param <code>A</code> and <code>B</code> to set the start and the end page (rows). This also set the address pointer to the start page.</p>
+<p>
+<figure><img src="ssd1306_memory_mode_horizontal.png"/><figcaption>Memory Horizontal Addressing mode</figcaption>
+</figure>
+</p>
+<p><strong>Vertical Mode</strong></p>
+<ul>
+<li>In vertical addressing mode, after the display RAM is read/written, the page address pointer is increased automatically by 1.</li>
+<li>If the page address pointer reaches the page end address, the page address pointer is reset to page start address and column address pointer is increased by 1.</li>
+<li>When both column and page address pointers reach the end address, the pointers are reset to column start address and page start address</li>
+</ul>
+<p>The command <code>0x21</code> and its two bytes param <code>A</code> and <code>B</code> are use to set the start and the end segment (column). This also set the address pointer to the start segment.<br/>
+The command <code>0x22</code> and its two bytes param <code>A</code> and <code>B</code> to set the start and the end page (rows). This also set the address pointer to the start page.</p>
+<p>
+<figure><img src="ssd1306_memory_mode_vertical.png"/><figcaption>Memory Vertical Addressing mode</figcaption>
+</figure>
+</p>
+<p><strong>Page Mode</strong></p>
+<ul>
+<li>In page addressing mode, after the display RAM is read/written, the column address pointer is increased automatically by 1.</li>
+<li>If the column address pointer reaches column end address, the column address pointer is reset to column start address and page address pointer is not changed.</li>
+<li>Users have to set the new page and column addresses in order to access the next page RAM content</li>
+</ul>
+<p>The command from <code>0x00 ~ 0x0F</code> are used to set the lower nibble of the start segment (column). The command from <code>0x10 ~ 0x1F</code> are used to set the higher nibble of the start segment (column).</p>
+<p>The command from <code>0xB0 ~ 0xB7</code> are used to set the active page.</p>
+<h3 id="16-brightness">1.6. Brightness<a class="headerlink" href="#16-brightness" title="Permanent link">⚓︎</a></h3>
+<p>The command <code>0x81</code> and its one byte param <code>A</code> are used to set the brightness value which is in range <code>[0:255]</code>.</p>
+<h3 id="17-display-start-line">1.7. Display Start Line<a class="headerlink" href="#17-display-start-line" title="Permanent link">⚓︎</a></h3>
+<p>The command from <code>0x40 ~ 0x7F</code> are used to set the starting address of display RAM. With value equal to 0, RAM row 0 is mapped to COM0. With value equal to 1, RAM row 1 is mapped to COM0 and so on.</p>
+<p>Then command <code>0xD3</code> and its one byte param is to specify the mapping of the display start line to one of <code>COM0</code> to<code>COM63</code> (assuming that <code>COM0</code> is the display start line then the display start line register is equal to 0).</p>
+<p>For example, to move the <code>COM16</code> towards the <code>COM0</code> direction by 16 lines the 6-bit data in the second byte should be given as <code>010000b</code>. To move in the opposite direction by 16 lines the 6-bit data should be given by 64 – 16, so the second byte would be <code>100000b</code>.</p>
+<h3 id="18-display-content">1.8. Display content<a class="headerlink" href="#18-display-content" title="Permanent link">⚓︎</a></h3>
+<p>There are two modes of display ON can be selected.</p>
+<p>The command <code>0xA4</code> will set screen to display from RAM;</p>
+<p>The command <code>0xA5</code> will force screen to display all pixels ON regardless of the contents of the display data RAM.</p>
+<h3 id="19-display-inverse">1.9. Display Inverse<a class="headerlink" href="#19-display-inverse" title="Permanent link">⚓︎</a></h3>
+<p>The command <code>0xA6</code> will set screen to display in normal mode. In normal display a RAM data of 1 indicates an “ON” pixel while in inverse display a RAM data of 0 indicates an “ON” pixel.</p>
+<p>The command <code>0xA7</code> will force screen to inverse the display.</p>
+<div class="np"></div>
+<h3 id="110-display-onoff">1.10. Display On/Off<a class="headerlink" href="#110-display-onoff" title="Permanent link">⚓︎</a></h3>
+<p>The command <code>0xAE</code> will set screen to off; the segment and common output are in VSS state and high impedance state, respectively</p>
+<p>The command <code>0xAF</code> will turn on the screen.</p>
+<h3 id="111-charge-pump-dc-dc">1.11. Charge Pump (DC-DC)<a class="headerlink" href="#111-charge-pump-dc-dc" title="Permanent link">⚓︎</a></h3>
+<p>The internal regulator circuit in SSD1306 accompanying only 2 external capacitors can generate a 7.5V voltage supply, V<sub>CC</sub>, from a low voltage supply input, V<sub>BAT</sub>. The V<sub>CC</sub> is the voltage supply to the OLED driver block. This is a switching capacitor regulator circuit, designed for handheld applications. This regulator can be turned on/off by software command setting.</p>
+<p>The command <code>0x8D</code> and its one byte param is used to turn On or Off the OLED driver block. If the param is <code>0x14</code>, it enables the charge pump. If the param is <code>0x10</code>, it disables the charge pump.</p>
+<p>Note that the command to turn on OLED <code>0xAF</code> should be sent after enabling the charge pump.</p>
+<h2 id="2-implementation">2. Implementation<a class="headerlink" href="#2-implementation" title="Permanent link">⚓︎</a></h2>
+<p>Below implementation should not depend on any specific protocol. It can work without knowing the protocol, except 4 functions: <code>SSD1306_Init()</code>, <code>SSD1306_CMD_Send()</code>, <code>SSD1306_DATA_Send()</code> and <code>SSD1306_Screen_Update()</code>;</p>
+<h3 id="21-protocol-settings">2.1. Protocol Settings<a class="headerlink" href="#21-protocol-settings" title="Permanent link">⚓︎</a></h3>
+<p>SSD1306 can accept I2C speed at Standard Mode (100 Kbps), Fast Mode (400 Kbps), and Fast Plus Mode (1 Mbps). Note to set Pull-up resistors on the <code>SCL</code> and <code>SDA</code> pins when there is no external pull-up resistors.</p>
+<div class="admonition info">
+<p class="admonition-title">SPI interface</p>
+<p>Using SPI will achieve higher speed upto 15 Mbps. Refer to this <a href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_SPI_OLED_SH1106.zip">F051R8_SPI_OLED_SH1106</a>.</p>
+</div>
+<h3 id="22-start-up-commands">2.2. Start-up commands<a class="headerlink" href="#22-start-up-commands" title="Permanent link">⚓︎</a></h3>
+<p>It’s highly recommended to send a full set of commands to setup OLED when startup or reboot. This help to get right configs. This is a minimal setup for setting up OLED with resolution being 128x32, Horizontal Memory Addressing Mode, no flipping.</p>
+<p>A buffer with the first byte being the CONTROL COMMAND byte is used to store a list of commands:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint8_t</span> <span class="n">ssd1306_cmd_buffer</span><span class="p">[</span><span class="n">SSD1306_BUFFER_CMD_MAX</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x00</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+</code></pre></div>
+<p>Then add the commands and their params, as below:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SSD1306_Init</span><span class="p">(</span><span class="n">I2C_HandleTypeDef</span> <span class="o">*</span><span class="n">hi2c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// startup sequence</span>
+  <span class="n">SSD1306_CMD_Int</span><span class="p">();</span>
+  <span class="c1">// Display off</span>
+  <span class="n">SSD1306_CMD_Add0</span><span class="p">(</span><span class="mh">0xAE</span><span class="p">);</span>
+  <span class="c1">// OSC default=0x81</span>
+  <span class="n">SSD1306_CMD_Add1</span><span class="p">(</span><span class="mh">0xD5</span><span class="p">,</span> <span class="mh">0x81</span><span class="p">);</span>
+  <span class="c1">// Brightness in range 0~255, default=0x7F</span>
+  <span class="n">SSD1306_CMD_Add1</span><span class="p">(</span><span class="mh">0x81</span><span class="p">,</span> <span class="mh">0x7F</span><span class="p">);</span>
+  <span class="c1">// Memory Address Mode: Horizontal=0, Vertical=1, Page=default=2</span>
+  <span class="n">SSD1306_CMD_Add1</span><span class="p">(</span><span class="mh">0x20</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="c1">// Set Display Offset in range 0~63</span>
+  <span class="n">SSD1306_CMD_Add1</span><span class="p">(</span><span class="mh">0xD3</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="c1">// Set Display start line in range 0x40~0x7F</span>
+  <span class="n">SSD1306_CMD_Add0</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span>
+  <span class="c1">// Set multiplex number (activated rows): rows=height-1, default=63</span>
+  <span class="n">SSD1306_CMD_Add1</span><span class="p">(</span><span class="mh">0xA8</span><span class="p">,</span> <span class="n">SSD1306_HEIGHT</span><span class="mi">-1</span><span class="p">);</span>
+  <span class="c1">// Reduce a half of height</span>
+  <span class="n">SSD1306_CMD_Add1</span><span class="p">(</span><span class="mh">0xDA</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">);</span>
+  <span class="c1">// Segment (Column) normal mode, Inverse=0xA1</span>
+  <span class="n">SSD1306_CMD_Add0</span><span class="p">(</span><span class="mh">0xA0</span><span class="p">);</span>
+  <span class="c1">// Common (Row) normal mode, inverse=0xC8</span>
+  <span class="n">SSD1306_CMD_Add0</span><span class="p">(</span><span class="mh">0xC0</span><span class="p">);</span>
+  <span class="c1">// Display normal mode, inverse=0xA7</span>
+  <span class="n">SSD1306_CMD_Add0</span><span class="p">(</span><span class="mh">0xA6</span><span class="p">);</span>
+  <span class="c1">// Disable Scroll</span>
+  <span class="n">SSD1306_CMD_Add0</span><span class="p">(</span><span class="mh">0x2E</span><span class="p">);</span>
+  <span class="c1">// Pre-charge period, default=2</span>
+  <span class="n">SSD1306_CMD_Add1</span><span class="p">(</span><span class="mh">0xD9</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="c1">// Charge Pump: On=0x14, Off=0x10</span>
+  <span class="n">SSD1306_CMD_Add1</span><span class="p">(</span><span class="mh">0x8D</span><span class="p">,</span> <span class="mh">0x14</span><span class="p">);</span>
+  <span class="c1">// Display on</span>
+  <span class="n">SSD1306_CMD_Add0</span><span class="p">(</span><span class="mh">0xAF</span><span class="p">);</span>
+  <span class="n">SSD1306_CMD_Send</span><span class="p">(</span><span class="n">hi2c</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="23-screen-buffer">2.3. Screen Buffer<a class="headerlink" href="#23-screen-buffer" title="Permanent link">⚓︎</a></h3>
+<p>The GDDRAM is accessible at byte level only, therefore, to manipulate bits, it’s better to use an external memory which have the same size of the GDDRAM and then draw on that buffer. When screen needs to be updated, that buffer will be sent to GDDRAM.</p>
+<p>
+<figure><img src="ssd1306_memory_map.drawio.svg"/><figcaption>Memory Mapping</figcaption>
+</figure>
+</p>
+<p>A memory buffer is used to hold the screen buffer with the first byte is the DATA CONTROL byte:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint8_t</span> <span class="n">ssd1306_data_buffer</span><span class="p">[</span><span class="n">SSD1306_BUFFER_DATA_MAX</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x40</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+</code></pre></div>
+<p>The whole buffer is sent to SSD1306 after setting the address point to first byte (Segment = 0, Page = 0):</p>
+<div class="admonition caution">
+<p class="admonition-title">Separate Command and Data stream</p>
+<p>When an I2C transfer is started, the first byte is used to set the type of whole transfer. From the second byte, they are considered as the data bytes of the command. It could not be mixed between a command stream and a data stream.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SSD1306_Screen_Update</span><span class="p">(</span><span class="n">I2C_HandleTypeDef</span> <span class="o">*</span><span class="n">hi2c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">SSD1306_CMD_Int</span><span class="p">();</span> <span class="c1">// point to the starting byte of screen</span>
+    <span class="n">SSD1306_CMD_Add2</span><span class="p">(</span><span class="mh">0x21</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SSD1306_WIDTH</span><span class="mi">-1</span><span class="p">);</span> <span class="c1">// Segment (column)</span>
+    <span class="n">SSD1306_CMD_Add2</span><span class="p">(</span><span class="mh">0x22</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">SSD1306_HEIGHT</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span><span class="mi">-1</span><span class="p">);</span> <span class="c1">// Page (row)</span>
+    <span class="n">SSD1306_CMD_Send</span><span class="p">(</span><span class="n">hi2c</span><span class="p">);</span>
+
+    <span class="n">SSD1306_DATA_Send</span><span class="p">(</span><span class="n">hi2c</span><span class="p">);</span> <span class="c1">// Send screen buffer</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="24-draw-a-pixel">2.4. Draw a pixel<a class="headerlink" href="#24-draw-a-pixel" title="Permanent link">⚓︎</a></h3>
+<p>As seen in the above picture of memory mapping, any pixel at location <code>(x, y)</code> can be set or unset with below method:</p>
+<ul>
+<li>Byte location: <code class="highlight"><span class="n">ssd1306_data_buffer</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">SSD1306_WIDTH</span><span class="p">]</span></code></li>
+<li>Bit location: <code class="highlight"><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">8</span><span class="p">))</span></code></li>
+</ul>
+<p>Therefore, to set a pixel:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ssd1306_data_buffer</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">SSD1306_WIDTH</span><span class="p">]</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">8</span><span class="p">));</span>
+</code></pre></div>
+<p>and to clear a pixel:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ssd1306_data_buffer</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">SSD1306_WIDTH</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">8</span><span class="p">));</span>
+</code></pre></div>
+<p>The <code>SSD1306_DrawPixel</code> also takes a <code>color</code> param to present a set/cleared pixel: White = set, Black = clear.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SSD1306_DrawPixel</span><span class="p">(</span><span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y</span><span class="p">,</span> <span class="n">SSD1306_COLOR_t</span> <span class="n">color</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">SSD1306_WIDTH</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">SSD1306_HEIGHT</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">color</span> <span class="o">==</span> <span class="n">SSD1306_WHITE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ssd1306_data_buffer</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;&gt;</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">SSD1306_WIDTH</span><span class="p">]</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">8</span><span class="p">));</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">ssd1306_data_buffer</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;&gt;</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">SSD1306_WIDTH</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">8</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Based on the function <code>SSD1306_DrawPixel()</code>, other shapes can be drawn too. Here are some functions to draw primitive shapes:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SSD1306_DrawLine</span><span class="p">(</span>              <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y1</span><span class="p">,</span>
+                                    <span class="n">SSD1306_COLOR_t</span> <span class="n">color</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">SSD1306_DrawRectangle</span><span class="p">(</span>         <span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">w</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">h</span><span class="p">,</span>
+                                    <span class="n">SSD1306_COLOR_t</span> <span class="n">color</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">SSD1306_DrawFilledRectangle</span><span class="p">(</span>   <span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">w</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">h</span><span class="p">,</span>
+                                    <span class="n">SSD1306_COLOR_t</span> <span class="n">color</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">SSD1306_DrawTriangle</span><span class="p">(</span>          <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y1</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y2</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">x3</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y3</span><span class="p">,</span>
+                                    <span class="n">SSD1306_COLOR_t</span> <span class="n">color</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">SSD1306_DrawFilledTriangle</span><span class="p">(</span>    <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y1</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y2</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">x3</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y3</span><span class="p">,</span>
+                                    <span class="n">SSD1306_COLOR_t</span> <span class="n">color</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">SSD1306_DrawCircle</span><span class="p">(</span>            <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">r</span><span class="p">,</span>
+                                    <span class="n">SSD1306_COLOR_t</span> <span class="n">color</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">SSD1306_DrawFilledCircle</span><span class="p">(</span>      <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
+                                    <span class="kt">int16_t</span> <span class="n">r</span><span class="p">,</span>
+                                    <span class="n">SSD1306_COLOR_t</span> <span class="n">color</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="25-bitmap--font--string">2.5. Bitmap &amp; Font &amp; String<a class="headerlink" href="#25-bitmap--font--string" title="Permanent link">⚓︎</a></h3>
+<p>Bitmap file can be easily read out, as it is sliced into bytes. For example, a character <code>0</code> below are encoded into 10 bytes which will be mapped to 7px width by 10px height character. It also can be a 8px width by 10px height bitmap.</p>
+<p>
+<figure><img src="ssd1306_font_map.drawio.svg"/><figcaption>Bitmap Mapping</figcaption>
+</figure>
+</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SSD1306_DrawBitmap</span><span class="p">(</span><span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">bitmap</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">w</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">h</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kt">int16_t</span> <span class="n">byteWidth</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// Bitmap scan line pad = whole byte</span>
+    <span class="kt">uint8_t</span> <span class="n">byte</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int16_t</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">h</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">,</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int16_t</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">w</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">&amp;</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">byte</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// shift to get a bit</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// read one byte when i=0</span>
+                <span class="n">byte</span> <span class="o">=</span> <span class="n">bitmap</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="n">byteWidth</span> <span class="o">+</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">8</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="c1">// bit is 1</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mh">0x80</span><span class="p">)</span> <span class="p">{</span>
+              <span class="n">SSD1306_DrawPixel</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">SSD1306_WHITE</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Here is an example of a 7x10 font is saved, each 10 bytes represent a character, and the first character is <em>space</em> causing an lookup offset of 32 when retrieving bitmap for a character.</p>
+<p>If the width of a character is bigger than 8, the array will have <code>uint16_t</code> type to hold at max 16 bits.</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="k">const</span> <span class="kt">int8_t</span> <span class="n">Font7x10</span> <span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>  <span class="c1">// sp (32)</span>
+<span class="p">...</span>
+<span class="mh">0x38</span><span class="p">,</span> <span class="mh">0x44</span><span class="p">,</span> <span class="mh">0x44</span><span class="p">,</span> <span class="mh">0x54</span><span class="p">,</span> <span class="mh">0x54</span><span class="p">,</span> <span class="mh">0x44</span><span class="p">,</span> <span class="mh">0x44</span><span class="p">,</span> <span class="mh">0x38</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>  <span class="c1">// 0</span>
+<span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x50</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>  <span class="c1">// 1</span>
+<span class="mh">0x38</span><span class="p">,</span> <span class="mh">0x44</span><span class="p">,</span> <span class="mh">0x44</span><span class="p">,</span> <span class="mh">0x04</span><span class="p">,</span> <span class="mh">0x08</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x7C</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>  <span class="c1">// 2</span>
+<span class="p">...</span>
+</code></pre></div>
+<p><br/>
+To write a character:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SSD1306_WriteChar</span><span class="p">(</span><span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y</span><span class="p">,</span> <span class="kt">char</span> <span class="n">ch</span><span class="p">,</span> <span class="n">FontDef_t</span><span class="o">*</span> <span class="n">Font</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+
+    <span class="c1">// Translate font to screen buffer</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">y0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">y0</span> <span class="o">&lt;</span> <span class="n">Font</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">;</span> <span class="n">y0</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">Font</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[(</span><span class="n">ch</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="n">Font</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">+</span> <span class="n">y0</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">x0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x0</span> <span class="o">&lt;</span> <span class="n">Font</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">;</span> <span class="n">x0</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">x0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x8000</span><span class="p">)</span> <span class="p">{</span>
+              <span class="n">SSD1306_DrawPixel</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y0</span><span class="p">,</span> <span class="n">SSD1306_WHITE</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>To write a string:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">SSD1306_WriteString</span><span class="p">(</span><span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int16_t</span> <span class="n">y</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">,</span> <span class="n">FontDef_t</span><span class="o">*</span> <span class="n">Font</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int16_t</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// Write until null-byte or the first cutoff char</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SSD1306_WriteChar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">n</span><span class="o">*</span><span class="n">Font</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">str</span><span class="p">,</span> <span class="n">Font</span><span class="p">);</span>
+        <span class="n">n</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">str</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Transferring modes</p>
+<p>The communication with screen can be done in either Polling, Interrupt or DMA mode.
+In DMA mode, the interrupt of I2C port must be enabled as it is in the Interrupt mode. A callback <code>HAL_I2C_MasterTxCpltCallback()</code> is called when a transfer is done.</p>
+<p>It should check whenever the screen buffer is dirty to update on display to avoid overhead of data communication.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">I2C is dropped when using Interrupt at Ultra fast mode</p>
+<p>Take an example of I2C Ultra Fast mode at 5 Mbps, which will generate 625000 interrupts per second (!) in case of 8-bit transfer. An STM32F0xx running at 48 MHz will have a room of only 77 cycles to process an Interrupt.
+However, calling an interrupt takes 12 cycle, exiting an interrupt costs 10 cycles (ideal state without waiting). Therefore, an interrupt code must be served in only 55 cycles !</p>
+<p>Should use DMA when the bit rate is high, because DMA only causes 2 interrupts: “Half-transfer” and “Transfer-Complete” in a routine of transfer a large data buffer.</p>
+</div>
+<div data-value="https://www.codeinsideout.com/blog/stm32/oled-ssd1306/" id="page_url"></div>
+<div data-value="blog/stm32/oled-ssd1306/" id="page_identifier"></div>
+<div>
+<h2 id="__comments">Comments</h2>
+<div id="disqus_thread"></div>
+<script>var disqus_config = function () { this.page.url = "https://www.codeinsideout.com/blog/stm32/oled-ssd1306/", this.page.identifier = "blog/stm32/oled-ssd1306/" }; window.addEventListener("load", function () { var e = document, i = e.createElement("script"); i.src = "//vuquangtrong-github-io.disqus.com/embed.js", i.setAttribute("data-timestamp", +new Date), (e.head || e.body).appendChild(i) })</script>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#" title="Back to top">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+</a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: I2C - SPI" class="md-footer__link md-footer__link--prev" href="../i2c-spi/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              I2C - SPI
+            </div>
+</div>
+</a>
+<a aria-label="Next: J-Link RTT" class="md-footer__link md-footer__link--next" href="../j-link-rtt/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              J-Link RTT
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>
