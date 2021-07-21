@@ -1,0 +1,4159 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="This guide is a short version of ROS Tutorial for Beginner which lists useful terms, packages, and commands for quickly understand about the basic of ROS." name="description"/>
+<meta content="embedded systems application programming" name="keywords"/>
+<meta content="vqtrong" name="author"/>
+<link href="https://www.codeinsideout.com/blog/ros/tutorial-beginner/" rel="canonical"/>
+<link href="../../../favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.1.11" name="generator"/>
+<title>ROS - Quick Tutorial for Beginners - Code Inside Out</title>
+<link href="../../../assets/stylesheets/main.3754935a.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+<meta content="#ffffff" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Noto Serif";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/view-bigimg.css" rel="stylesheet"/>
+<link href="../../../assets/extra.css" rel="stylesheet"/>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-42618265-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<meta content="website" property="og:type">
+<meta content="ROS - Quick Tutorial for Beginners - Code Inside Out" property="og:title">
+<meta content="This guide is a short version of ROS Tutorial for Beginner which lists useful terms, packages, and commands for quickly understand about the basic of ROS." property="og:description">
+<meta content="https://www.codeinsideout.com/blog/ros/tutorial-beginner/" property="og:url">
+<meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
+<meta content="Code Inside Out" property="og:site_name">
+<meta content="summary" name="twitter:card">
+</meta></meta></meta></meta></meta></meta></meta></head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="white" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-install-ros">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Code Inside Out" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Code Inside Out
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Tutorial for Beginners
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+      Blog
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../projects/">
+      Projects
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../archives/">
+      Archives
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<style>
+        .tag-cloud-toc {
+            display: none;
+        }
+        @media screen and (max-width: 76.1875em) {
+            .tag-cloud-toc {
+                display: block;
+            }
+        }
+    </style>
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Code Inside Out" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Code Inside Out">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg>
+</a>
+    Code Inside Out
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Blog
+        </a>
+</label>
+<nav aria-label="Blog" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" id="__nav_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          STM32
+        </a>
+</label>
+<nav aria-label="STM32" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            STM32
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/prepare/">
+        Preparation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/tools/">
+        Toolchain
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/docs/">
+        Documents
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/clock/">
+        Clock Tree
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/interrupt/">
+        Interrupt
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/semihosting/">
+        Semihosting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/gpio/">
+        GPIO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/dma/">
+        DMA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/swv/">
+        SWV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/add-swo/">
+        Add SWO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart/">
+        UART
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/uart-redirection/">
+        UART Redirection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/timer/">
+        Timers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/sensor-us-100/">
+        US-100 Sensor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/adc/">
+        ADC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/i2c-spi/">
+        I2C - SPI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/oled-ssd1306/">
+        SSD1306 OLED
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/j-link-rtt/">
+        J-Link RTT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/j-link-sysview/">
+        J-Link SysView
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_21" id="__nav_2_1_21" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_21">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/rtos/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          RTOS
+        </a>
+</label>
+<nav aria-label="RTOS" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_1_21">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/rtos/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            RTOS
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/rtos/overview/">
+        RTOS Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/rtos/systick/">
+        RTOS SysTick
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Raspberry Pi
+        </a>
+</label>
+<nav aria-label="Raspberry Pi" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../pi/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Raspberry Pi
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/headless-mode/">
+        Headless mode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/compile-ffmpeg/">
+        Compile FFmpeg
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/resource-usage/">
+        Resource usage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/setup-camera/">
+        Setup Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-ffmpeg-hls-dash/">
+        HLS/DASH Streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-mjpeg/">
+        MJPEG streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/stream-picamera-h264/">
+        H264 streaming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/backup-sdcard/">
+        Backup SDCard
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/check-camera-i2c/">
+        Diagnostic Camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pi/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../c-cpp/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          C/C++
+        </a>
+</label>
+<nav aria-label="C/C++" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../c-cpp/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            C/C++
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c-cpp/notes/">
+        Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../lidar/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Lidar
+        </a>
+</label>
+<nav aria-label="Lidar" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../lidar/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Lidar
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lidar/livox-sdk/">
+        Livox SDK
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lidar/mapping/">
+        Lidar Mapping
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../linux/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Linux
+        </a>
+</label>
+<nav aria-label="Linux" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../linux/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Linux
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/byobu/">
+        Byobu
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/samba/">
+        Samba
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/tweaks/">
+        Tweaks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          ROS
+        </a>
+</label>
+<nav aria-label="ROS" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            ROS
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link md-nav__link--active" href="./" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Tutorial for Beginners
+          </a>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Tutorial for Beginners
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-install-ros">
+    1. Install ROS
+  </a>
+<nav aria-label="1. Install ROS" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-configure-repositories">
+    1.1. Configure repositories
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-build-packages">
+    1.2. Build packages
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-ros-workspace">
+    2. ROS Workspace
+  </a>
+<nav aria-label="2. ROS Workspace" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-the-ros-filesystem">
+    2.1. The ROS Filesystem
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-filesystem-tools">
+    2.2. Filesystem Tools
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-create-a-ros-package">
+    3. Create a ROS Package
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-ros-nodes">
+    4. ROS Nodes
+  </a>
+<nav aria-label="4. ROS Nodes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-roscore">
+    4.1. roscore
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-rosnode">
+    4.2. rosnode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-rosrun">
+    4.3. rosrun
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-ros-topics">
+    5. ROS Topics
+  </a>
+<nav aria-label="5. ROS Topics" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-rqt_graph">
+    5.1. rqt_graph
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-rostopic">
+    5.2. rostopic
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-ros-messages">
+    6. ROS Messages
+  </a>
+<nav aria-label="6. ROS Messages" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-publish-a-message">
+    6.1. Publish a message
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-rqt_plot">
+    6.2. rqt_plot
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-ros-services">
+    7. ROS Services
+  </a>
+<nav aria-label="7. ROS Services" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71-rosparam">
+    7.1. rosparam
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-ros-console">
+    8. ROS Console
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-ros-launch">
+    9. ROS Launch
+  </a>
+<nav aria-label="9. ROS Launch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#91-roslaunch">
+    9.1. roslaunch
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-create-ros-msg-and-srv">
+    10. Create ROS msg and srv
+  </a>
+<nav aria-label="10. Create ROS msg and srv" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#101-create-a-msg">
+    10.1. Create a msg
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#102-creating-a-srv">
+    10.2. Creating a srv
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#103-generate-msg-and-srv">
+    10.3. Generate msg and srv
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-publisher-and-subscriber-c">
+    11. Publisher and Subscriber (C++)
+  </a>
+<nav aria-label="11. Publisher and Subscriber (C++)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-a-publisher-node">
+    11.1. A Publisher Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-a-subscriber-node">
+    11.2. A Subscriber Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#113-building-new-nodes">
+    11.3. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#114-run-new-nodes">
+    11.4. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-publisher-and-subscriber-python">
+    12. Publisher and Subscriber (Python)
+  </a>
+<nav aria-label="12. Publisher and Subscriber (Python)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#121-a-publisher-node">
+    12.1. A Publisher Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#122-a-subscriber-node">
+    12.2. A Subscriber Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#123-make-script-executable">
+    12.3. Make script executable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#124-building-new-nodes">
+    12.4. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#125-run-new-nodes">
+    12.5. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-service-and-client-c">
+    13. Service and Client (C++)
+  </a>
+<nav aria-label="13. Service and Client (C++)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#131-a-service-node">
+    13.1. A Service Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#132-a-client-node">
+    13.2. A Client Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#133-building-new-nodes">
+    13.3. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#134-run-new-nodes">
+    13.4. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-service-and-client-python">
+    14. Service and Client (Python)
+  </a>
+<nav aria-label="14. Service and Client (Python)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#141-a-service-node">
+    14.1. A Service Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#142-a-client-node">
+    14.2. A Client Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#143-make-scripts-excutable">
+    14.3. Make scripts excutable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#144-building-new-nodes">
+    14.4. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#145-run-new-nodes">
+    14.5. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-playback-data">
+    15. Playback data
+  </a>
+<nav aria-label="15. Playback data" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#151-record-data">
+    15.1. Record data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#152-rosbag-info">
+    15.2. Rosbag info
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#153-rosbag-play">
+    15.3. Rosbag play
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#154-recording-a-subset">
+    15.4. Recording a subset
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-read-message-from-rosbag">
+    16. Read message from Rosbag
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-reference">
+    17. Reference
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Setup blog
+        </a>
+</label>
+<nav aria-label="Setup blog" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Setup blog
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/markdown-syntax/">
+        Markdown syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/mkdocs-plugins/">
+        MkDocs plugins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/customize-theme/">
+        Customize theme
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/print-to-pdf/">
+        Print to PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup-blog/fix-ajax-issue/">
+        Fix AJAX issue
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../virtual-machine/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Virtual machine
+        </a>
+</label>
+<nav aria-label="Virtual machine" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../virtual-machine/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Virtual machine
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../virtual-machine/docker/">
+        Docker
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../virtual-machine/hyper-v/">
+        Hyper-V
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/">
+        Projects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../archives/">
+        Archives
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-nav">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">systick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">hardware accelerator</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkViolet;
+        ">livox</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">samba</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkCyan;
+        ">linux</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.95rem;
+          color:DarkMagenta;
+        ">pi</span>
+<!--<sup class="tag-count">9</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOrchid;
+        ">i2c</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkViolet;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">docker</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">h264</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOrchid;
+        ">interrupt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkBlue;
+        ">rtt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkCyan;
+        ">debug</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkCyan;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateBlue;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">hls</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">dash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">omx</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">redirect</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">mapping</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">restore</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">c</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkTurquoise;
+        ">notes</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkRed;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkRed;
+        ">lidar</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">swv</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">gnuplot</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">backup</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">bash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">toolchain</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">sdcard</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">spi</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">sharing</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.4500000000000002rem;
+          color:DarkGoldenrod;
+        ">stm32</span>
+<!--<sup class="tag-count">19</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkMagenta;
+        ">camera</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.35rem;
+          color:DarkViolet;
+        ">arm</span>
+<!--<sup class="tag-count">17</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">awk</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">clock</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">tweaks</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">rtos</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">virtual</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">pdf</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">pulse</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">css</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">grep</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">top</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkBlue;
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkSlateGray;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">semihosting</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateBlue;
+        ">ros</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkSlateBlue;
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">tutorial</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkBlue;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">performance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">jinja</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-install-ros">
+    1. Install ROS
+  </a>
+<nav aria-label="1. Install ROS" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-configure-repositories">
+    1.1. Configure repositories
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-build-packages">
+    1.2. Build packages
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-ros-workspace">
+    2. ROS Workspace
+  </a>
+<nav aria-label="2. ROS Workspace" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-the-ros-filesystem">
+    2.1. The ROS Filesystem
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-filesystem-tools">
+    2.2. Filesystem Tools
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-create-a-ros-package">
+    3. Create a ROS Package
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-ros-nodes">
+    4. ROS Nodes
+  </a>
+<nav aria-label="4. ROS Nodes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-roscore">
+    4.1. roscore
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-rosnode">
+    4.2. rosnode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-rosrun">
+    4.3. rosrun
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-ros-topics">
+    5. ROS Topics
+  </a>
+<nav aria-label="5. ROS Topics" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-rqt_graph">
+    5.1. rqt_graph
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-rostopic">
+    5.2. rostopic
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-ros-messages">
+    6. ROS Messages
+  </a>
+<nav aria-label="6. ROS Messages" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-publish-a-message">
+    6.1. Publish a message
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-rqt_plot">
+    6.2. rqt_plot
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-ros-services">
+    7. ROS Services
+  </a>
+<nav aria-label="7. ROS Services" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71-rosparam">
+    7.1. rosparam
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-ros-console">
+    8. ROS Console
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-ros-launch">
+    9. ROS Launch
+  </a>
+<nav aria-label="9. ROS Launch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#91-roslaunch">
+    9.1. roslaunch
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-create-ros-msg-and-srv">
+    10. Create ROS msg and srv
+  </a>
+<nav aria-label="10. Create ROS msg and srv" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#101-create-a-msg">
+    10.1. Create a msg
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#102-creating-a-srv">
+    10.2. Creating a srv
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#103-generate-msg-and-srv">
+    10.3. Generate msg and srv
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-publisher-and-subscriber-c">
+    11. Publisher and Subscriber (C++)
+  </a>
+<nav aria-label="11. Publisher and Subscriber (C++)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-a-publisher-node">
+    11.1. A Publisher Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-a-subscriber-node">
+    11.2. A Subscriber Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#113-building-new-nodes">
+    11.3. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#114-run-new-nodes">
+    11.4. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-publisher-and-subscriber-python">
+    12. Publisher and Subscriber (Python)
+  </a>
+<nav aria-label="12. Publisher and Subscriber (Python)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#121-a-publisher-node">
+    12.1. A Publisher Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#122-a-subscriber-node">
+    12.2. A Subscriber Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#123-make-script-executable">
+    12.3. Make script executable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#124-building-new-nodes">
+    12.4. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#125-run-new-nodes">
+    12.5. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-service-and-client-c">
+    13. Service and Client (C++)
+  </a>
+<nav aria-label="13. Service and Client (C++)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#131-a-service-node">
+    13.1. A Service Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#132-a-client-node">
+    13.2. A Client Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#133-building-new-nodes">
+    13.3. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#134-run-new-nodes">
+    13.4. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-service-and-client-python">
+    14. Service and Client (Python)
+  </a>
+<nav aria-label="14. Service and Client (Python)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#141-a-service-node">
+    14.1. A Service Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#142-a-client-node">
+    14.2. A Client Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#143-make-scripts-excutable">
+    14.3. Make scripts excutable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#144-building-new-nodes">
+    14.4. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#145-run-new-nodes">
+    14.5. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-playback-data">
+    15. Playback data
+  </a>
+<nav aria-label="15. Playback data" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#151-record-data">
+    15.1. Record data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#152-rosbag-info">
+    15.2. Rosbag info
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#153-rosbag-play">
+    15.3. Rosbag play
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#154-recording-a-subset">
+    15.4. Recording a subset
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-read-message-from-rosbag">
+    16. Read message from Rosbag
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-reference">
+    17. Reference
+  </a>
+</li>
+</ul>
+</nav>
+<div class="tag-cloud-toc">
+<p class="md-nav" style="margin-bottom: 0.5em;">
+<label class="md-nav__title">Tag cloud</label>
+</p>
+<div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkRed;
+        ">ros</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGoldenrod;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkBlue;
+        ">debug</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">samba</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">clock</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">awk</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">toolchain</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">rtos</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkOrchid;
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOliveGreen;
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateGray;
+        ">i2c</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateBlue;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">semihosting</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">top</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">systick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">interrupt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">docker</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">virtual</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">bash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkBlue;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkRed;
+        ">lidar</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">pulse</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkRed;
+        ">camera</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.35rem;
+          color:DarkViolet;
+        ">arm</span>
+<!--<sup class="tag-count">17</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">hls</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">spi</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">pdf</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.4500000000000002rem;
+          color:DarkOliveGreen;
+        ">stm32</span>
+<!--<sup class="tag-count">19</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOliveGreen;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">redirect</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">performance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGoldenrod;
+        ">rtt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkMagenta;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">h264</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkBlue;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">mapping</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">tweaks</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">c</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGoldenrod;
+        ">notes</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">jinja</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">sharing</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">sdcard</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">gnuplot</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">restore</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">tutorial</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">dash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">omx</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">css</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkTurquoise;
+        ">linux</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">hardware accelerator</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.95rem;
+          color:DarkOliveGreen;
+        ">pi</span>
+<!--<sup class="tag-count">9</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">backup</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">grep</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">swv</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGoldenrod;
+        ">livox</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<style>
+            .md-typeset .cover {
+                margin-bottom: 1em;
+            }
+            @media print {
+                .md-typeset .cover {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
+<div class="cover">
+<h1 class="page-title">ROS - Quick Tutorial for Beginners</h1>
+<p class="page-description">This guide is a short version of ROS Tutorial for Beginner which lists useful terms, packages, and commands for quickly understand about the basic of ROS.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name">
+                        #ros
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
+<span class="tag-name">
+                        #tutorial
+                    </span>
+</a>
+</p>
+<p class="md-source-date">
+<hr style="margin-bottom: .5em;"/>
+<small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-07-21 21:18:58</span>
+</small>
+</p>
+</div>
+<style>
+            .md-typeset .toc {
+                display: none;
+            }
+            .md-typeset .toc label {
+                display: none;
+            }
+            .md-typeset .toc .md-nav {
+                font-size: unset;
+                line-height: 1.6;
+            }
+            .md-typeset .toc .md-nav--secondary {
+                margin-left: -2em;
+            }
+            .md-typeset .toc .md-nav__list {
+                margin: 0;
+            }
+            .md-typeset .toc ul {
+                list-style: none;
+            }
+            @media print {
+                .md-typeset .toc {
+                    display: block;
+                    page-break-after: always;
+                }
+                .md-typeset .toc .md-nav__link {
+                    color: var(--md-typeset-a-color);
+                }
+                .md-typeset .toc .md-nav__link.md-nav__link--active {
+                    font-weight: unset;
+                }
+            }
+        </style>
+<div class="toc">
+<h2>Table of Content</h2>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-install-ros">
+    1. Install ROS
+  </a>
+<nav aria-label="1. Install ROS" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-configure-repositories">
+    1.1. Configure repositories
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-build-packages">
+    1.2. Build packages
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-ros-workspace">
+    2. ROS Workspace
+  </a>
+<nav aria-label="2. ROS Workspace" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-the-ros-filesystem">
+    2.1. The ROS Filesystem
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-filesystem-tools">
+    2.2. Filesystem Tools
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-create-a-ros-package">
+    3. Create a ROS Package
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-ros-nodes">
+    4. ROS Nodes
+  </a>
+<nav aria-label="4. ROS Nodes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-roscore">
+    4.1. roscore
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-rosnode">
+    4.2. rosnode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-rosrun">
+    4.3. rosrun
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-ros-topics">
+    5. ROS Topics
+  </a>
+<nav aria-label="5. ROS Topics" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-rqt_graph">
+    5.1. rqt_graph
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-rostopic">
+    5.2. rostopic
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-ros-messages">
+    6. ROS Messages
+  </a>
+<nav aria-label="6. ROS Messages" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-publish-a-message">
+    6.1. Publish a message
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-rqt_plot">
+    6.2. rqt_plot
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-ros-services">
+    7. ROS Services
+  </a>
+<nav aria-label="7. ROS Services" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71-rosparam">
+    7.1. rosparam
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-ros-console">
+    8. ROS Console
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-ros-launch">
+    9. ROS Launch
+  </a>
+<nav aria-label="9. ROS Launch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#91-roslaunch">
+    9.1. roslaunch
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-create-ros-msg-and-srv">
+    10. Create ROS msg and srv
+  </a>
+<nav aria-label="10. Create ROS msg and srv" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#101-create-a-msg">
+    10.1. Create a msg
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#102-creating-a-srv">
+    10.2. Creating a srv
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#103-generate-msg-and-srv">
+    10.3. Generate msg and srv
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-publisher-and-subscriber-c">
+    11. Publisher and Subscriber (C++)
+  </a>
+<nav aria-label="11. Publisher and Subscriber (C++)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-a-publisher-node">
+    11.1. A Publisher Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-a-subscriber-node">
+    11.2. A Subscriber Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#113-building-new-nodes">
+    11.3. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#114-run-new-nodes">
+    11.4. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-publisher-and-subscriber-python">
+    12. Publisher and Subscriber (Python)
+  </a>
+<nav aria-label="12. Publisher and Subscriber (Python)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#121-a-publisher-node">
+    12.1. A Publisher Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#122-a-subscriber-node">
+    12.2. A Subscriber Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#123-make-script-executable">
+    12.3. Make script executable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#124-building-new-nodes">
+    12.4. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#125-run-new-nodes">
+    12.5. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-service-and-client-c">
+    13. Service and Client (C++)
+  </a>
+<nav aria-label="13. Service and Client (C++)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#131-a-service-node">
+    13.1. A Service Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#132-a-client-node">
+    13.2. A Client Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#133-building-new-nodes">
+    13.3. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#134-run-new-nodes">
+    13.4. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-service-and-client-python">
+    14. Service and Client (Python)
+  </a>
+<nav aria-label="14. Service and Client (Python)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#141-a-service-node">
+    14.1. A Service Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#142-a-client-node">
+    14.2. A Client Node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#143-make-scripts-excutable">
+    14.3. Make scripts excutable
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#144-building-new-nodes">
+    14.4. Building new nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#145-run-new-nodes">
+    14.5. Run new nodes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-playback-data">
+    15. Playback data
+  </a>
+<nav aria-label="15. Playback data" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#151-record-data">
+    15.1. Record data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#152-rosbag-info">
+    15.2. Rosbag info
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#153-rosbag-play">
+    15.3. Rosbag play
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#154-recording-a-subset">
+    15.4. Recording a subset
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#16-read-message-from-rosbag">
+    16. Read message from Rosbag
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#17-reference">
+    17. Reference
+  </a>
+</li>
+</ul>
+</nav>
+</div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\ros\tutorial-beginner\ros__Tutorial_for_Beginners.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
+<p><a class="md-button" href="A_gentle_Introduction_to_ROS.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> A Gentle Introduction to ROS by <em class="noem">Jason M. O’Kane</em></a></p>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>The official guide is at <a href="https://wiki.ros.org/ROS/Tutorials">https://wiki.ros.org/ROS/Tutorials</a>.</p>
+</div>
+<div class="admonition caution nt">
+<p class="admonition-title"> </p>
+<p>This guide was created using <strong>ROS Melodic</strong> on <strong>Ubuntu 18.04 LTS</strong>.</p>
+</div>
+<h2 id="1-install-ros" style="margin-top:0">1. Install ROS<a class="headerlink" href="#1-install-ros" title="Permanent link">⚓︎</a></h2>
+<p>There is more than one ROS distribution supported at a time. Some are older releases with long term support, making them more stable, while others are newer with shorter support life times, but with binaries for more recent platforms and more recent versions of the ROS packages that make them up. Recommend ones of the versions below:</p>
+<div class="row">
+<div class="col">
+<p><a href="http://wiki.ros.org/melodic/Installation">ROS Melodic Morenia</a><br/>
+Released May, 2018<br/>
+LTS until May, 2023<br/>
+Recommended for Ubuntu 18.04</p>
+</div>
+<div class="col">
+<p><a href="http://wiki.ros.org/noetic/Installation">ROS Noetic Ninjemys</a><br/>
+Released May, 2020<br/>
+LTS until May, 2025<br/>
+Recommended for Ubuntu 20.04</p>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">What is the difference between ROS Melodic model and Noetic model?</p>
+<p>There aren’t many differences at the base level. The ROS Noetic is recommended for Ubuntu 20.04 whereas ROS Melodic for Ubuntu 18.04:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>ROS Noetic</th>
+<th>ROS Melodic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.8</td>
+<td>2.7</td>
+</tr>
+<tr>
+<td>Gazebo</td>
+<td>11.x</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>OpenCV</td>
+<td>4.2</td>
+<td>3.2</td>
+</tr>
+</tbody>
+</table>
+<p>Detailed comparison is at <a href="http://repositories.ros.org/status_page/compare_kinetic_melodic_noetic.html">repositories.ros.org</a>.</p>
+</div>
+<p>Choose the ROS version based on the installed OS. Here, <strong>Melodic</strong> is used on <strong>Ubuntu 18.04</strong>.</p>
+<h3 id="11-configure-repositories">1.1. Configure repositories<a class="headerlink" href="#11-configure-repositories" title="Permanent link">⚓︎</a></h3>
+<p>Configure the Ubuntu repositories to allow “restricted,” “universe,” and “multiverse” by following the <a href="https://help.ubuntu.com/community/Repositories/Ubuntu">Ubuntu guide</a>.</p>
+<p>Setup source list to get ROS packages:</p>
+<div class="highlight"><pre><span></span><code>sudo sh -c <span class="s1">'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" &gt; /etc/apt/sources.list.d/ros-latest.list'</span>
+</code></pre></div>
+<p>Add keys:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y curl <span class="o">&amp;&amp;</span> <span class="se">\</span>
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span class="p">|</span> sudo apt-key add -
+</code></pre></div>
+<p>Then pull the package list:</p>
+<div class="highlight"><pre><span></span><code>sudo apt update
+</code></pre></div>
+<p>Finally, install a desktop-full package as recommended to start learning:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y ros-melodic-desktop-full <span class="o">&amp;&amp;</span> <span class="se">\</span>
+sudo apt install -y ros-melodic-rqt <span class="o">&amp;&amp;</span> <span class="se">\</span>
+sudo apt install -y ros-melodic-rqt-common-plugins
+</code></pre></div>
+<p>It’s convenient if the ROS environment variables are automatically added to a bash session every time a new shell is launched:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">"source /opt/ros/melodic/setup.bash"</span> &gt;&gt; ~/.bashrc <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div>
+<p>A good way to check the installation is to ensure that <a href="http://wiki.ros.org/ROS/EnvironmentVariables">environment variables</a> like <code>ROS_ROOT</code> and <code>ROS_PACKAGE_PATH</code> are set:</p>
+<div class="highlight"><pre><span></span><code>printenv <span class="p">|</span> grep ROS
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code><span class="na">ROS_ETC_DIR</span><span class="o">=</span><span class="s">/opt/ros/melodic/etc/ros</span>
+<span class="na">ROS_ROOT</span><span class="o">=</span><span class="s">/opt/ros/melodic/share/ros</span>
+<span class="na">ROS_MASTER_URI</span><span class="o">=</span><span class="s">http://localhost:11311</span>
+<span class="na">ROS_VERSION</span><span class="o">=</span><span class="s">1</span>
+<span class="na">ROS_PYTHON_VERSION</span><span class="o">=</span><span class="s">2</span>
+<span class="na">ROS_PACKAGE_PATH</span><span class="o">=</span><span class="s">/opt/ros/melodic/share</span>
+<span class="na">ROSLISP_PACKAGE_DIRECTORIES</span><span class="o">=</span>
+<span class="na">ROS_DISTRO</span><span class="o">=</span><span class="s">melodic</span>
+</code></pre></div>
+</div>
+<h3 id="12-build-packages">1.2. Build packages<a class="headerlink" href="#12-build-packages" title="Permanent link">⚓︎</a></h3>
+<p>Build packages are needed for code compilation.</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+</code></pre></div>
+<p>Init the package <code>rosdep</code> to track package dependency:</p>
+<div class="highlight"><pre><span></span><code>sudo rosdep init &amp;&amp; \
+rosdep update
+</code></pre></div>
+<h2 id="2-ros-workspace">2. ROS Workspace<a class="headerlink" href="#2-ros-workspace" title="Permanent link">⚓︎</a></h2>
+<p>A <a href="http://wiki.ros.org/catkin/workspaces">catkin workspace</a> is a folder where to modify, build, and install catkin packages.</p>
+<p>The <a href="http://wiki.ros.org/catkin/commands/catkin_make">catkin_make</a> command is a convenience tool for working with catkin workspaces. Running it the first time in a workspace, it will create a <code>CMakeLists.txt</code> link in the ‘src’ folder.</p>
+<div class="highlight"><pre><span></span><code>mkdir -p catkin_ws/src <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> catkin_ws <span class="o">&amp;&amp;</span> <span class="se">\</span>
+catkin_make
+</code></pre></div>
+<p>In the current directory, it should now have a <code>build</code> and <code>devel</code> folder. Inside the <code>devel</code> folder, there are now several <code>setup.*sh</code> files. Sourcing any of these files will overlay this workspace on top of current environment.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> devel/setup.bash
+</code></pre></div>
+<p>To make sure workspace is properly overlaid by the setup script, make sure <code>ROS_PACKAGE_PATH</code> environment variable includes the current workspace directory.</p>
+<div class="highlight"><pre><span></span><code> <span class="nb">echo</span> <span class="nv">$ROS_PACKAGE_PATH</span>
+</code></pre></div>
+<div class="log">
+<p><code>/home/vqtrong/Work/catkin_ws/src:/opt/ros/melodic/share</code></p>
+</div>
+<p>This also helps ROS to find new packages.</p>
+<h3 id="21-the-ros-filesystem">2.1. The ROS Filesystem<a class="headerlink" href="#21-the-ros-filesystem" title="Permanent link">⚓︎</a></h3>
+<p>For this tutorial, to inspect a package in ros-tutorials, please install a prebuilt package using:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y ros-melodic-ros-tutorials
+</code></pre></div>
+<p>Two main concepts of the File Systems:</p>
+<ul>
+<li>
+<p><em>Packages</em> are the software organization unit of ROS code. Each package can contain libraries, executables, scripts, or other artifacts.</p>
+</li>
+<li>
+<p><em>Manifests (package.xml)</em> is a description of a package. It serves to define dependencies between packages and to capture meta information about the package like version, maintainer, license, etc…</p>
+</li>
+</ul>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>Code is spread across many ROS packages. Navigating with command-line tools such as <code>ls</code> and <code>cd</code> can be very tedious which is why ROS provides tools to help.</p>
+</div>
+<h3 id="22-filesystem-tools">2.2. Filesystem Tools<a class="headerlink" href="#22-filesystem-tools" title="Permanent link">⚓︎</a></h3>
+<p><code>rospack</code> allows to get information about packages.</p>
+<div class="highlight"><pre><span></span><code>rospack find roscpp
+</code></pre></div>
+<p><code>roscd</code> allows to change directory (cd) directly to a package, and also is able to move to a subdirectory of a package</p>
+<div class="highlight"><pre><span></span><code>roscd roscpp        <span class="c1"># go to cpp package</span>
+roscd roscpp/cmake  <span class="c1"># go to cmake folder inside the cpp package</span>
+roscd log           <span class="c1"># go to the log folder, available after run roscore</span>
+</code></pre></div>
+<h2 id="3-create-a-ros-package">3. Create a ROS Package<a class="headerlink" href="#3-create-a-ros-package" title="Permanent link">⚓︎</a></h2>
+<p>Firstly, use the <code>catkin_create_pkg</code> script to create a new package called <code>beginner_tutorials</code> which depends on <code>std_msgs</code>, <code>roscpp</code>, and <code>rospy</code>:</p>
+<div class="file"></div>
+<p>catkin_ws/</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> src <span class="o">&amp;&amp;</span> <span class="se">\</span>
+catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
+</code></pre></div>
+<p>This will create a <code>beginner_tutorials</code> folder which contains a <code>package.xml</code> and a <code>CMakeLists.txt</code>, which have been partially filled out with the information given in the <code>catkin_create_pkg</code> command.</p>
+<p>Build that new workspace again to see <code>beginner_tutorials</code> is added into <code>build</code> folder:</p>
+<div class="file"></div>
+<p>catkin_ws/src</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+catkin_make
+</code></pre></div>
+<p>Add the workspace to the ROS environment:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> devel/setup.bash
+</code></pre></div>
+<p>To check the direct dependencies of a package:</p>
+<div class="highlight"><pre><span></span><code>rospack depends1 beginner_tutorials
+</code></pre></div>
+<p>To check the indirect dependencies of a package:</p>
+<div class="highlight"><pre><span></span><code>rospack depends beginner_tutorials
+</code></pre></div>
+<h2 id="4-ros-nodes">4. ROS Nodes<a class="headerlink" href="#4-ros-nodes" title="Permanent link">⚓︎</a></h2>
+<p>Quick overview of Graph Concepts:</p>
+<ul>
+<li><a href="http://wiki.ros.org/Nodes">Nodes</a>: A node is an executable that uses ROS to communicate with other nodes.</li>
+<li><a href="http://wiki.ros.org/Messages">Messages</a>: ROS data type used when subscribing or publishing to a topic.</li>
+<li><a href="http://wiki.ros.org/Topics">Topics</a>: Nodes can publish messages to a topic as well as subscribe to a topic to receive messages.</li>
+<li><a href="http://wiki.ros.org/Master">Master</a>: Name service for ROS (i.e. helps nodes find each other)</li>
+<li><a href="http://wiki.ros.org/rosout">rosout</a>: ROS equivalent of stdout/stderr</li>
+<li><a href="http://wiki.ros.org/roscore">roscore</a>: Master + rosout + parameter server (parameter server will be introduced later)</li>
+</ul>
+<h3 id="41-roscore">4.1. roscore<a class="headerlink" href="#41-roscore" title="Permanent link">⚓︎</a></h3>
+<p><code>roscore</code> will start up a ROS Master, a ROS Parameter Server and a rosout logging node</p>
+<p>Options:</p>
+<div class="highlight"><pre><span></span><code>-h, --help          <span class="c1"># show this help message and exit</span>
+-p, --port<span class="o">=</span>         <span class="c1"># master port. Only valid if master is launched</span>
+-v                  <span class="c1"># verbose printing</span>
+-w, --numworkers<span class="o">=</span>   <span class="c1"># override number of worker threads</span>
+-t, --timeout<span class="o">=</span>      <span class="c1"># override the socket connection timeout (in seconds).</span>
+--master-logger-level<span class="o">=</span> <span class="c1"># set logger level</span>
+                       <span class="c1"># ('debug', 'info', 'warn', 'error', 'fatal')</span>
+</code></pre></div>
+<p>See more in <a href="http://wiki.ros.org/roscore">http://wiki.ros.org/roscore</a>.</p>
+<h3 id="42-rosnode">4.2. rosnode<a class="headerlink" href="#42-rosnode" title="Permanent link">⚓︎</a></h3>
+<p><code>rosnode</code> is a command-line tool for printing information about ROS Nodes.</p>
+<p>Commands:</p>
+<div class="highlight"><pre><span></span><code>rosnode ping    <span class="c1"># test connectivity to node</span>
+rosnode list    <span class="c1"># list active nodes</span>
+rosnode info    <span class="c1"># print information about node</span>
+rosnode machine <span class="c1"># list nodes running on a particular machine</span>
+rosnode <span class="nb">kill</span>    <span class="c1"># kill a running node</span>
+rosnode cleanup <span class="c1"># purge registration information of unreachable nodes</span>
+</code></pre></div>
+<p>Type <code>rosnode &lt;command&gt; -h</code> for more detailed usage.</p>
+<div class="np"></div>
+<h3 id="43-rosrun">4.3. rosrun<a class="headerlink" href="#43-rosrun" title="Permanent link">⚓︎</a></h3>
+<p>The syntax for rosrun is:</p>
+<div class="highlight"><pre><span></span><code>rosrun <span class="o">[</span>--prefix cmd<span class="o">]</span> <span class="o">[</span>--debug<span class="o">]</span> PACKAGE EXECUTABLE <span class="o">[</span>ARGS<span class="o">]</span>
+</code></pre></div>
+<p>The tool <code>rosrun</code> will locate <code>PACKAGE</code> and try to find an executable named <code>EXECUTABLE</code> in the PACKAGE tree. If it finds it, it will run it with <code>ARGS</code>.</p>
+<p>Start with this guide, run the <code>turtlesim_node</code> in the <code>turtlesim</code> package:</p>
+<div class="highlight"><pre><span></span><code>rosrun turtlesim turtlesim_node
+</code></pre></div>
+<p>
+<figure class="w40"><img src="rosnode_turtlesim.png"/><figcaption>Turtle sim</figcaption></figure>
+</p>
+<h2 id="5-ros-topics">5. ROS Topics<a class="headerlink" href="#5-ros-topics" title="Permanent link">⚓︎</a></h2>
+<p>Run turtle keyboard tele-operation node in a new terminal:</p>
+<div class="highlight"><pre><span></span><code>rosrun turtlesim turtle_teleop_key
+</code></pre></div>
+<p>After that, the turtle can be moved by using keyboard arrow keys.</p>
+<p>The <code>turtlesim_node</code> and the <code>turtle_teleop_key</code> node are communicating with each other over a ROS Topic. <code>turtle_teleop_key</code> is <em>publishing</em> the key strokes on a topic, while <code>turtlesim</code> <em>subscribes</em> to the same topic to receive the key strokes.</p>
+<div class="np"></div>
+<h3 id="51-rqt_graph">5.1. rqt_graph<a class="headerlink" href="#51-rqt_graph" title="Permanent link">⚓︎</a></h3>
+<p>The <code>rqt_graph</code> tool creates a dynamic graph of what’s going on in the system. <code>rqt_graph</code> is part of the <code>rqt</code> package.</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y ros-melodic-rqt <span class="o">&amp;&amp;</span> <span class="se">\</span>
+sudo apt install -y ros-melodic-rqt-common-plugins
+</code></pre></div>
+<p>Run <code>rqt_graph</code> in a new terminal:</p>
+<div class="highlight"><pre><span></span><code>rosrun rqt_graph rqt_graph
+</code></pre></div>
+<p>The <code>turtlesim_node</code> and the <code>turtle_teleop_key</code> nodes are communicating on the topic named <code>/turtle1/command_vel</code>.</p>
+<p>
+<figure class="w80"><img src="rosnode_rqt_graph.png"/><figcaption>RosGraph</figcaption></figure>
+</p>
+<h3 id="52-rostopic">5.2. rostopic<a class="headerlink" href="#52-rostopic" title="Permanent link">⚓︎</a></h3>
+<p>The <code>rostopic</code> tool allows to get information about ROS topics.</p>
+<div class="highlight"><pre><span></span><code>rostopic bw     <span class="c1"># display bandwidth used by topic</span>
+rostopic <span class="nb">echo</span>   <span class="c1"># print messages to screen</span>
+rostopic hz     <span class="c1"># display publishing rate of topic</span>
+rostopic list   <span class="c1"># print information about active topics</span>
+rostopic pub    <span class="c1"># publish data to topic</span>
+rostopic <span class="nb">type</span>   <span class="c1"># print topic type</span>
+</code></pre></div>
+<h2 id="6-ros-messages">6. ROS Messages<a class="headerlink" href="#6-ros-messages" title="Permanent link">⚓︎</a></h2>
+<p>Communication on topics happens by sending ROS messages between nodes. For the publisher (<code>turtle_teleop_key</code>) and subscriber (<code>turtlesim_node</code>) to communicate, the publisher and subscriber must send and receive the same type of message. This means that a topic type is defined by the message type published on it. The type of the message sent on a topic can be determined using rostopic type.</p>
+<div class="highlight"><pre><span></span><code>rostopic <span class="nb">type</span> /turtle1/cmd_vel
+</code></pre></div>
+<div class="log">
+<p><code>geometry_msgs/Twist</code></p>
+</div>
+<p>The command <code>rosmsg show</code> prints out the details of the message:</p>
+<div class="highlight"><pre><span></span><code>rosmsg show geometry_msgs/Twist
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>geometry_msgs/Vector3 linear
+float64 x
+float64 y
+float64 z
+geometry_msgs/Vector3 angular
+float64 x
+float64 y
+float64 z
+</code></pre></div>
+</div>
+<h3 id="61-publish-a-message">6.1. Publish a message<a class="headerlink" href="#61-publish-a-message" title="Permanent link">⚓︎</a></h3>
+<p>A message can be published through command line:</p>
+<div class="highlight"><pre><span></span><code>rostopic pub <span class="o">[</span>topic<span class="o">]</span> <span class="o">[</span>msg_type<span class="o">]</span> <span class="o">[</span>args<span class="o">]</span>
+</code></pre></div>
+<p>For example, to send one message on the topic <code>/turtle1/cmd_vel</code> using message type <code>geometry_msgs/Twist</code> and its required <code>--</code> params <code>'[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'</code>, enter the below command:</p>
+<div class="highlight"><pre><span></span><code>rostopic pub -1 <span class="se">\</span>
+    /turtle1/cmd_vel <span class="se">\</span>
+    geometry_msgs/Twist <span class="se">\</span>
+    -- <span class="s1">'[2.0, 0.0, 0.0]'</span> <span class="s1">'[0.0, 0.0, 1.8]'</span>
+</code></pre></div>
+<p>To continuously send message at the rate of 1Hz, use <code>-r 1</code> options:</p>
+<div class="highlight"><pre><span></span><code>rostopic pub -r <span class="m">1</span> <span class="se">\</span>
+    /turtle1/cmd_vel <span class="se">\</span>
+    geometry_msgs/Twist <span class="se">\</span>
+    -- <span class="s1">'[2.0, 0.0, 0.0]'</span> <span class="s1">'[0.0, 0.0, -1.8]'</span>
+</code></pre></div>
+<p>The rate of message can be inspected by using the command <code>rostopic hz</code>:</p>
+<div class="highlight"><pre><span></span><code>rostopic hz /turtle1/pose
+</code></pre></div>
+<div class="np"></div>
+<h3 id="62-rqt_plot">6.2. rqt_plot<a class="headerlink" href="#62-rqt_plot" title="Permanent link">⚓︎</a></h3>
+<p>The <code>rqt_plot</code> tool displays a scrolling time plot of the data published on topics:</p>
+<div class="highlight"><pre><span></span><code>rosrun rqt_plot rqt_plot
+</code></pre></div>
+<p>In the new window that should pop up, a text box in the upper left corner gives the ability to add any topic to the plot. Typing <code>/turtle1/pose/x</code> will highlight the plus button, previously disabled. Press it and repeat the same procedure with the topic <code>/turtle1/pose/y</code>. Now the turtle’s x-y location is plotted in the graph.</p>
+<p>
+<figure class="w70"><img src="rosnode_rqt_plot.png"/><figcaption>RosPlot</figcaption></figure>
+</p>
+<h2 id="7-ros-services">7. ROS Services<a class="headerlink" href="#7-ros-services" title="Permanent link">⚓︎</a></h2>
+<p>Services are another way that nodes can communicate with each other. Services allow nodes to send a <em>request</em> and receive a <em>response</em>.</p>
+<p>A <code>rosservice</code> can easily be attached to ROS’s client/service framework with services. Commands that can be used on services are:</p>
+<div class="highlight"><pre><span></span><code>rosservice list         <span class="c1"># print information about active services</span>
+rosservice call         <span class="c1"># call the service with the provided args</span>
+rosservice <span class="nb">type</span>         <span class="c1"># print service type</span>
+rosservice find         <span class="c1"># find services by service type</span>
+rosservice uri          <span class="c1"># print service ROSRPC uri</span>
+</code></pre></div>
+<p>Let’s see current services:</p>
+<div class="highlight"><pre><span></span><code>rosservice list
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>/clear
+/kill
+/reset
+/rosout/get_loggers
+/rosout/set_logger_level
+/spawn
+/turtle1/set_pen
+/turtle1/teleport_absolute
+/turtle1/teleport_relative
+/turtlesim/get_loggers
+/turtlesim/set_logger_level
+</code></pre></div>
+</div>
+<p>Check the params of a service:</p>
+<div class="highlight"><pre><span></span><code>rosservice <span class="nb">type</span> /clear
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>std_srvs/Empty
+</code></pre></div>
+</div>
+<p>The <code>/clear</code> service show Empty param, but the <code>/spawn</code> has 4 params and returns string:</p>
+<div class="highlight"><pre><span></span><code>rosservice <span class="nb">type</span> /spawn
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>turtlesim/Spawn
+</code></pre></div>
+</div>
+<div class="highlight"><pre><span></span><code>rosservice <span class="nb">type</span> /spawn <span class="p">|</span> rossrv show
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>float32 x
+float32 y
+float32 theta
+string name
+---
+string name
+</code></pre></div>
+</div>
+<p>The input params are <code>x</code>, <code>y</code>, <code>theta</code> and <code>name</code>, and the output is <code>name</code>. Ok, let’s clear the background and spawn a new turtle:</p>
+<div class="highlight"><pre><span></span><code>rosservice call /clear <span class="o">&amp;&amp;</span> <span class="se">\</span>
+rosservice call /spawn <span class="m">2</span> <span class="m">2</span> <span class="m">0</span>.2 <span class="s2">""</span>
+</code></pre></div>
+<h3 id="71-rosparam">7.1. rosparam<a class="headerlink" href="#71-rosparam" title="Permanent link">⚓︎</a></h3>
+<p>The <code>rosparam</code> tool allows to store and manipulate data on the ROS Parameter Server. The Parameter Server can store integers, floats, boolean, dictionaries, and lists. <code>rosparam</code> uses the YAML markup language for syntax.</p>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>In simple cases, YAML looks very natural:</p>
+<ul>
+<li><code>1</code> is an integer,</li>
+<li><code>1.0</code> is a float,</li>
+<li><code>one</code> is a string,</li>
+<li><code>true</code> is a boolean,</li>
+<li><code>[1, 2, 3]</code> is a list of integers, and</li>
+<li><code>{a: b, c: d}</code> is a dictionary.</li>
+</ul>
+</div>
+<p><code>rosparam</code> has many commands that can be used on parameters, as shown below:</p>
+<div class="highlight"><pre><span></span><code>rosparam <span class="nb">set</span>            <span class="c1"># set parameter</span>
+rosparam get            <span class="c1"># get parameter</span>
+rosparam load           <span class="c1"># load parameters from file</span>
+rosparam dump           <span class="c1"># dump parameters to file</span>
+rosparam delete         <span class="c1"># delete parameter</span>
+rosparam list           <span class="c1"># list parameter names</span>
+</code></pre></div>
+<p>See the list of params:</p>
+<div class="highlight"><pre><span></span><code>rosparam list
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>/rosdistro
+/roslaunch/uris/host_ubuntu18__43509
+/rosversion
+/run_id
+/turtlesim/background_b
+/turtlesim/background_g
+/turtlesim/background_r
+</code></pre></div>
+</div>
+<p>Here will change the red channel of the background color:</p>
+<div class="highlight"><pre><span></span><code>rosparam <span class="nb">set</span> /turtlesim/background_r <span class="m">150</span>
+</code></pre></div>
+<p>Use get command to see the params:</p>
+<div class="highlight"><pre><span></span><code>rosparam get / <span class="o">&amp;&amp;</span> <span class="se">\</span>
+rosparam get /turtlesim/background_g
+</code></pre></div>
+<p><code>dump</code> and <code>load</code> option are also available:</p>
+<div class="highlight"><pre><span></span><code>rosparam dump <span class="o">[</span>file_name<span class="o">]</span> <span class="o">[</span>namespace<span class="o">]</span>
+rosparam load <span class="o">[</span>file_name<span class="o">]</span> <span class="o">[</span>namespace<span class="o">]</span>
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>rosparam dump params.yaml
+</code></pre></div>
+<p>will create a file <code>params.yaml</code> with the content similar to:</p>
+<div class="log">
+<div class="highlight"><pre><span></span><code><span class="nt">rosdistro</span><span class="p">:</span> <span class="s">"melodic</span>
+
+    <span class="s">"</span>
+<span class="nt">roslaunch</span><span class="p">:</span>
+    <span class="nt">uris</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> host_ubuntu18__43509</span><span class="p">:</span> <span class="s">"http://ubuntu18:43509/"</span> <span class="p p-Indicator">}</span>
+<span class="nt">rosversion</span><span class="p">:</span> <span class="s">"1.14.11</span>
+
+    <span class="s">"</span>
+<span class="nt">run_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">409b84fc-e2ff-11eb-be5c-080027b61567</span>
+<span class="nt">turtlesim</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> background_b</span><span class="p">:</span> <span class="nv">255</span><span class="p p-Indicator">,</span><span class="nt"> background_g</span><span class="p">:</span> <span class="nv">86</span><span class="p p-Indicator">,</span><span class="nt"> background_r</span><span class="p">:</span> <span class="nv">150</span> <span class="p p-Indicator">}</span>
+</code></pre></div>
+</div>
+<h2 id="8-ros-console">8. ROS Console<a class="headerlink" href="#8-ros-console" title="Permanent link">⚓︎</a></h2>
+<p>The command <code>rqt_console</code> attaches to ROS’s logging framework to display output from nodes. <code>rqt_logger_level</code> allows to change the verbosity level (<code>DEBUG</code>, <code>WARN</code>, <code>INFO</code>, and <code>ERROR</code>) of nodes as they run.</p>
+<div class="highlight"><pre><span></span><code>rosrun rqt_console rqt_console <span class="o">&amp;&amp;</span> <span class="se">\</span>
+rosrun rqt_logger_level rqt_logger_level
+</code></pre></div>
+<p>
+<figure class="w80"><img src="rosconsole_logger.png"/><figcaption>ROS Console and Logger Level</figcaption></figure>
+</p>
+<p>Logging levels are prioritized in the following order:</p>
+<ol>
+<li>Fatal</li>
+<li>Error</li>
+<li>Warn</li>
+<li>Info</li>
+<li>Debug</li>
+</ol>
+<p>The <code>Fatal</code> level has the highest priority and <code>Debug</code> level has the lowest. By setting the logger level, logger will show all messages of that priority level or higher. For example, by setting the level to <code>Warn</code>, it will get all <code>Warn</code>, <code>Error</code>, and <code>Fatal</code> logging messages.</p>
+<h2 id="9-ros-launch">9. ROS Launch<a class="headerlink" href="#9-ros-launch" title="Permanent link">⚓︎</a></h2>
+<p>The <code>roslaunch</code> command starts nodes as defined in a launch file.</p>
+<div class="highlight"><pre><span></span><code>roslaunch <span class="o">[</span>package<span class="o">]</span> <span class="o">[</span>filename.launch<span class="o">]</span>
+</code></pre></div>
+<p>Starting with the <code>beginner_tutorials</code> package:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> catkin_ws <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">source</span> devel/setup.bash <span class="o">&amp;&amp;</span> <span class="se">\</span>
+roscd beginner_tutorials
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>vqtrong@ubuntu18:~/Work/catkin_ws/src/beginner_tutorials$
+</code></pre></div>
+</div>
+<p>Then let’s make a <code>launch</code> directory:</p>
+<div class="highlight"><pre><span></span><code>mkdir launch <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> launch
+</code></pre></div>
+<p>Now let’s create a launch file called <code>turtlemimic.launch</code> and paste the following:</p>
+<div class="log">
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;launch&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">ns=</span><span class="s">"turtlesim1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">"turtlesim"</span> <span class="na">name=</span><span class="s">"sim"</span> <span class="na">type=</span><span class="s">"turtlesim_node"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+
+    <span class="nt">&lt;group</span> <span class="na">ns=</span><span class="s">"turtlesim2"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">"turtlesim"</span> <span class="na">name=</span><span class="s">"sim"</span> <span class="na">type=</span><span class="s">"turtlesim_node"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+
+    <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">"turtlesim"</span> <span class="na">name=</span><span class="s">"mimic"</span> <span class="na">type=</span><span class="s">"mimic"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">"input"</span> <span class="na">to=</span><span class="s">"turtlesim1/turtle1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">"output"</span> <span class="na">to=</span><span class="s">"turtlesim2/turtle1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/node&gt;</span>
+<span class="nt">&lt;/launch&gt;</span>
+</code></pre></div>
+</div>
+<p>Notes:</p>
+<ul>
+<li>Two groups with a namespace tag of <code>turtlesim1</code> and <code>turtlesim2</code> are created from a <code>turtlesim</code> node with a name of <code>sim</code>. This allows to start two simulators without having name conflicts.</li>
+<li>The mimic node with the topics <code>input</code> and <code>output</code> remapped to <code>turtlesim1</code> and <code>turtlesim2</code>. This renaming will cause <code>turtlesim2</code> to mimic <code>turtlesim1</code>.</li>
+</ul>
+<h3 id="91-roslaunch">9.1. roslaunch<a class="headerlink" href="#91-roslaunch" title="Permanent link">⚓︎</a></h3>
+<p>Start the launch file:</p>
+<div class="highlight"><pre><span></span><code>roslaunch beginner_tutorials turtlemimic.launch
+</code></pre></div>
+<p>And post messages to the first turtle:</p>
+<div class="highlight"><pre><span></span><code>rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+</code></pre></div>
+<p>Run the <code>rqt_graph</code> to see what is going on:</p>
+<div class="highlight"><pre><span></span><code>rqt_graph
+</code></pre></div>
+<p>
+<figure><img src="roslaunch_turtlemimic.png"/><figcaption>Turtle mimic nodes graph</figcaption>
+</figure>
+</p>
+<h2 id="10-create-ros-msg-and-srv">10. Create ROS <code>msg</code> and <code>srv</code><a class="headerlink" href="#10-create-ros-msg-and-srv" title="Permanent link">⚓︎</a></h2>
+<p><em>msg</em> files are simple text files that describe the fields of a ROS message. They are used to generate source code for messages in different languages. <em>msg</em> files are stored in the <code>msg</code> directory of a package</p>
+<p>The field types include:</p>
+<ul>
+<li>int8, int16, int32, int64 (plus uint*)</li>
+<li>float32, float64</li>
+<li>string</li>
+<li>time, duration</li>
+<li>other msg files</li>
+<li>variable-length array[] and fixed-length array[C]</li>
+</ul>
+<p>There is also a special type in ROS: <code>Header</code>, the header contains a timestamp and coordinate frame information that are commonly used in ROS.</p>
+<p>Here is an example of a msg that uses a Header, a string primitive, and two other msgs :</p>
+<div class="log">
+<div class="highlight"><pre><span></span><code>Header header
+string child_frame_id
+geometry_msgs/PoseWithCovariance pose
+geometry_msgs/TwistWithCovariance twist
+</code></pre></div>
+</div>
+<p><em>srv</em> file describes a service. It is composed of two parts: a request and a response, and <em>srv</em> files are stored in the <code>srv</code> directory. The two parts are separated by a ‘—‘ line.</p>
+<p>Here is an example of a srv file:</p>
+<!--prettier-ignore-start-->
+<div class="log">
+<div class="highlight"><pre><span></span><code>int64 A
+int64 B
+---
+int64 Sum
+</code></pre></div>
+</div>
+<!--prettier-ignore-end-->
+<p>In the above example, A and B are the request, and Sum is the response.</p>
+<h3 id="101-create-a-msg">10.1. Create a <code>msg</code><a class="headerlink" href="#101-create-a-msg" title="Permanent link">⚓︎</a></h3>
+<p>Let’s define a new msg in the <code>beginner_tutorials</code> package:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+mkdir msg <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">"int64 num"</span> &gt; msg/Num.msg
+</code></pre></div>
+<p>Using <code>rosmsg</code> to see a message definition:</p>
+<div class="highlight"><pre><span></span><code>rosmsg show beginner_tutorials/Num
+</code></pre></div>
+<h3 id="102-creating-a-srv">10.2. Creating a <code>srv</code><a class="headerlink" href="#102-creating-a-srv" title="Permanent link">⚓︎</a></h3>
+<p>Let’s define a new msg in the <code>beginner_tutorials</code> package:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+mkdir srv <span class="o">&amp;&amp;</span> <span class="se">\</span>
+touch srv/AddTwoInts.srv
+</code></pre></div>
+<p>The file content:</p>
+<!--prettier-ignore-start-->
+<div class="file"></div>
+<p>AddTwoInts.srv</p>
+<div class="highlight"><pre><span></span><code>int64 a
+int64 b
+---
+int64 sum
+</code></pre></div>
+<!--prettier-ignore-end-->
+<p>Using <code>rossrv</code> to see a service definition:</p>
+<div class="highlight"><pre><span></span><code>rossrv show beginner_tutorials/AddTwoInts
+</code></pre></div>
+<h3 id="103-generate-msg-and-srv">10.3. Generate <code>msg</code> and <code>srv</code><a class="headerlink" href="#103-generate-msg-and-srv" title="Permanent link">⚓︎</a></h3>
+<p>To make sure that the msg files are turned into source code for C++, Python, and other languages, open <code>package.xml</code>, and make sure these two lines are in it:</p>
+<div class="file"></div>
+<p>package.xml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;build_depend&gt;</span>message_generation<span class="nt">&lt;/build_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>message_runtime<span class="nt">&lt;/exec_depend&gt;</span>
+</code></pre></div>
+<p>and then add these packages into the <code>CMakeLists.txt</code> file:</p>
+<div class="file"></div>
+<p>CMakeLists.txt</p>
+<div class="highlight"><pre><span></span><code>find_package<span class="o">(</span>catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  message_generation
+<span class="o">)</span>
+
+<span class="c1">## Generate messages in the 'msg' folder</span>
+add_message_files<span class="o">(</span>
+   FILES
+   Num.msg
+<span class="o">)</span>
+
+<span class="c1">## Generate services in the 'srv' folder</span>
+add_service_files<span class="o">(</span>
+  FILES
+  AddTwoInts.srv
+<span class="o">)</span>
+
+<span class="c1">## Generate added messages and services with any dependencies listed here</span>
+generate_messages<span class="o">(</span>
+   DEPENDENCIES
+   std_msgs
+<span class="o">)</span>
+</code></pre></div>
+<p>make the package again:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> -
+</code></pre></div>
+<p>Any <code>.msg</code> file in the msg directory will generate code for use in all supported languages:</p>
+<ul>
+<li>The C++ message header file will be generated in <br/>
+<code>catkin_ws/devel/include/beginner_tutorials/</code>.</li>
+<li>The Python script will be created in <br/>
+<code>catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg</code>.</li>
+<li>The lisp file appears in <br/>
+<code>catkin_ws/devel/share/common-lisp/ros/beginner_tutorials/msg/</code>.</li>
+</ul>
+<p>Similarly, any <code>.srv</code> files in the srv directory will have generated code in supported languages.</p>
+<ul>
+<li>For C++, this will generate header files in the same directory as the messages.</li>
+<li>For Python and Lisp, there will be an <code>srv</code> folder beside the <code>msg</code> folders.</li>
+</ul>
+<h2 id="11-publisher-and-subscriber-c">11. Publisher and Subscriber (C++)<a class="headerlink" href="#11-publisher-and-subscriber-c" title="Permanent link">⚓︎</a></h2>
+<p>Go to the source code folder of the <code>beginner_tutorials</code> package:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+mkdir src <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> src
+</code></pre></div>
+<div class="np"></div>
+<h3 id="111-a-publisher-node">11.1. A Publisher Node<a class="headerlink" href="#111-a-publisher-node" title="Permanent link">⚓︎</a></h3>
+<p>This tutorial demonstrates simple sending of messages over the ROS system.</p>
+<div class="highlight"><pre><span></span><code>nano talker.cpp
+</code></pre></div>
+<div class="file"></div>
+<p>src/talker.cpp</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">"ros/ros.h"</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">"std_msgs/String.h"</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// init with a name</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">"talker"</span><span class="p">);</span>
+
+    <span class="c1">// create a node</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">n</span><span class="p">;</span>
+
+    <span class="c1">// publish on a the `chatter` topic, queue = 1000</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">chatter_pub</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="s">"chatter"</span><span class="p">,</span>
+        <span class="mi">1000</span>
+    <span class="p">);</span>
+
+    <span class="c1">// publishing rate 1 Hz</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">Rate</span> <span class="n">loop_rate</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="c1">// main loop</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">ros</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// message</span>
+        <span class="n">std_msgs</span><span class="o">::</span><span class="n">String</span> <span class="n">msg</span><span class="p">;</span>
+
+        <span class="c1">// content</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
+        <span class="n">ss</span> <span class="o">&lt;&lt;</span> <span class="s">"hello world "</span> <span class="o">&lt;&lt;</span> <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+        <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+
+        <span class="c1">// publish</span>
+        <span class="n">chatter_pub</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+
+        <span class="c1">// check status</span>
+        <span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span>
+
+        <span class="c1">// sleep</span>
+        <span class="n">loop_rate</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="112-a-subscriber-node">11.2. A Subscriber Node<a class="headerlink" href="#112-a-subscriber-node" title="Permanent link">⚓︎</a></h3>
+<p>This tutorial demonstrates simple receipt of messages over the ROS system.</p>
+<div class="highlight"><pre><span></span><code>nano listener.cpp
+</code></pre></div>
+<div class="file"></div>
+<p>src/listener.cpp</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">"ros/ros.h"</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">"std_msgs/String.h"</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">chatterCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">std_msgs</span><span class="o">::</span><span class="n">String</span><span class="o">::</span><span class="n">ConstPtr</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"I heard: [%s]"</span><span class="p">,</span> <span class="n">msg</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// init with a name</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">"listener"</span><span class="p">);</span>
+
+    <span class="c1">// create a node</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">n</span><span class="p">;</span>
+
+    <span class="c1">// subscribe on a the `chatter` topic, queue = 1000</span>
+    <span class="c1">// execute chatterCallback on receive</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">Subscriber</span> <span class="n">sub</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span>
+        <span class="s">"chatter"</span><span class="p">,</span>
+        <span class="mi">1000</span><span class="p">,</span>
+        <span class="n">chatterCallback</span>
+    <span class="p">);</span>
+
+    <span class="c1">// main loop</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">spin</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="113-building-new-nodes">11.3. Building new nodes<a class="headerlink" href="#113-building-new-nodes" title="Permanent link">⚓︎</a></h3>
+<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all of dependency packages listed above, add below lines also:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+nano CMakeLists.txt
+</code></pre></div>
+<div class="file"></div>
+<p>CMakeLists.txt</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Declare a C++ executable</span>
+
+add_executable<span class="o">(</span>talker src/talker.cpp<span class="o">)</span>
+target_link_libraries<span class="o">(</span>talker <span class="si">${</span><span class="nv">catkin_LIBRARIES</span><span class="si">}</span><span class="o">)</span>
+add_dependencies<span class="o">(</span>talker beginner_tutorials_generate_messages_cpp<span class="o">)</span>
+
+add_executable<span class="o">(</span>listener src/listener.cpp<span class="o">)</span>
+target_link_libraries<span class="o">(</span>listener <span class="si">${</span><span class="nv">catkin_LIBRARIES</span><span class="si">}</span><span class="o">)</span>
+add_dependencies<span class="o">(</span>listener beginner_tutorials_generate_messages_cpp<span class="o">)</span>
+</code></pre></div>
+<p>This will create two executables, talker and listener, which by default will go into package directory in devel space, located by default at <code>catkin_ws/devel/lib/&lt;package name&gt;</code>.</p>
+<p>Finally make the package again:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> -
+</code></pre></div>
+<h3 id="114-run-new-nodes">11.4. Run new nodes<a class="headerlink" href="#114-run-new-nodes" title="Permanent link">⚓︎</a></h3>
+<p>Run <code>roscore</code> first if it is not running. Then run 2 new nodes in two terminals:</p>
+<div class="highlight"><pre><span></span><code>rosrun beginner_tutorials talker
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>rosrun beginner_tutorials listener
+</code></pre></div>
+<p>
+<figure class="w80"><img src="rosrun_talker_listener.png"/><figcaption>Talker and Listener</figcaption></figure>
+</p>
+<h2 id="12-publisher-and-subscriber-python">12. Publisher and Subscriber (Python)<a class="headerlink" href="#12-publisher-and-subscriber-python" title="Permanent link">⚓︎</a></h2>
+<p>Go to the scripts folder of the <code>beginner_tutorials</code> package:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+mkdir scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> scripts
+</code></pre></div>
+<h3 id="121-a-publisher-node">12.1. A Publisher Node<a class="headerlink" href="#121-a-publisher-node" title="Permanent link">⚓︎</a></h3>
+<p>This tutorial demonstrates simple sending of messages over the ROS system.</p>
+<div class="highlight"><pre><span></span><code>nano talker.py
+</code></pre></div>
+<div class="admonition note nt">
+<p class="admonition-title"> </p>
+<p>Note that a node is created from a publisher, in contrast to C++ implementation, a publisher is created from a node.</p>
+</div>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p>In ROS, nodes are uniquely named. If two nodes with the same name are launched, the previous one is kicked off. The <code>anonymous=True</code> flag means that rospy will choose a unique name for a new <code>listener</code> node so that multiple listeners can run simultaneously.</p>
+</div>
+<div class="file"></div>
+<p>scripts/talker.py</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
+
+<span class="k">def</span> <span class="nf">talker</span><span class="p">():</span>
+    <span class="c1"># create a publisher, on topic `chatter`</span>
+    <span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">'chatter'</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="c1"># create a node</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">'talker'</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># set the rate of publishing</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 1hz</span>
+
+    <span class="c1"># main loop</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+        <span class="c1"># make content</span>
+        <span class="n">hello_str</span> <span class="o">=</span> <span class="s2">"hello world </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="n">hello_str</span><span class="p">)</span>
+
+        <span class="c1"># publish a message</span>
+        <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">hello_str</span><span class="p">)</span>
+
+        <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">talker</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
+        <span class="k">pass</span>
+</code></pre></div>
+<h3 id="122-a-subscriber-node">12.2. A Subscriber Node<a class="headerlink" href="#122-a-subscriber-node" title="Permanent link">⚓︎</a></h3>
+<p>This tutorial demonstrates simple receipt of messages over the ROS system.</p>
+<div class="highlight"><pre><span></span><code>nano listener.py
+</code></pre></div>
+<div class="file"></div>
+<p>scripts/listener.py</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">get_caller_id</span><span class="p">()</span> <span class="o">+</span> <span class="s2">"I heard </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">listener</span><span class="p">():</span>
+    <span class="c1"># create a node</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">'listener'</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># create a subcriber</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">"chatter"</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+
+    <span class="c1"># spin() simply keeps python from exiting until this node is stopped</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">listener</span><span class="p">()</span>
+</code></pre></div>
+<div class="admonition info nt">
+<p class="admonition-title"> </p>
+<p><code>rospy.spin()</code> simply keeps the node from exiting until the node has been shutdown. Unlike roscpp, <code>rospy.spin()</code> does not affect the subscriber callback functions, as those have their own threads.</p>
+</div>
+<h3 id="123-make-script-executable">12.3. Make script executable<a class="headerlink" href="#123-make-script-executable" title="Permanent link">⚓︎</a></h3>
+<p>Scripts need to get execution permission before they can run:</p>
+<div class="file"></div>
+<p>scripts</p>
+<div class="highlight"><pre><span></span><code>chmod +x *
+</code></pre></div>
+<div class="np"></div>
+<h3 id="124-building-new-nodes">12.4. Building new nodes<a class="headerlink" href="#124-building-new-nodes" title="Permanent link">⚓︎</a></h3>
+<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all of dependency packages listed above, add below lines also:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+nano CMakeLists.txt
+</code></pre></div>
+<div class="file"></div>
+<p>CMakeLists.txt</p>
+<div class="highlight"><pre><span></span><code>catkin_install_python<span class="o">(</span>PROGRAMS
+    scripts/talker.py
+    scripts/listener.py
+    DESTINATION <span class="si">${</span><span class="nv">CATKIN_PACKAGE_BIN_DESTINATION</span><span class="si">}</span>
+<span class="o">)</span>
+</code></pre></div>
+<p>Finally make the package again:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> -
+</code></pre></div>
+<h3 id="125-run-new-nodes">12.5. Run new nodes<a class="headerlink" href="#125-run-new-nodes" title="Permanent link">⚓︎</a></h3>
+<p>Run <code>roscore</code> first if it is not running. Then run 2 new nodes in two terminals:</p>
+<div class="highlight"><pre><span></span><code>rosrun beginner_tutorials talker.py
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>rosrun beginner_tutorials listener.py
+</code></pre></div>
+<div class="admonition caution">
+<p class="admonition-title">Python script execution</p>
+<p>If the error <code class="highlight">/usr/bin/env: ‘python<span class="se">\r</span>’: No such file or directory</code> shows up, it is because of the ending line characters. Unix use <code>LF</code> only while Windows use <code>CRLF</code>. Save python scripts in Unix ending character only.</p>
+</div>
+<h2 id="13-service-and-client-c">13. Service and Client (C++)<a class="headerlink" href="#13-service-and-client-c" title="Permanent link">⚓︎</a></h2>
+<p>Go to the source code folder of the <code>beginner_tutorials</code> package:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+mkdir src <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> src
+</code></pre></div>
+<h3 id="131-a-service-node">13.1. A Service Node<a class="headerlink" href="#131-a-service-node" title="Permanent link">⚓︎</a></h3>
+<p>This guide will create the service <code>add_two_ints_server</code> node which will receive two ints and return the sum.</p>
+<p>This service uses the <code>beginner_tutorials/AddTwoInts.h</code> header file generated from the srv file that is created earlier.</p>
+<div class="highlight"><pre><span></span><code>nano add_two_ints_server.cpp
+</code></pre></div>
+<div class="file"></div>
+<p>src/add_two_ints_server.cpp</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">"ros/ros.h"</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">"beginner_tutorials/AddTwoInts.h"</span><span class="cp"></span>
+
+<span class="c1">// service fuction</span>
+<span class="kt">bool</span> <span class="nf">add</span><span class="p">(</span><span class="n">beginner_tutorials</span><span class="o">::</span><span class="n">AddTwoInts</span><span class="o">::</span><span class="n">Request</span>  <span class="o">&amp;</span><span class="n">req</span><span class="p">,</span>
+         <span class="n">beginner_tutorials</span><span class="o">::</span><span class="n">AddTwoInts</span><span class="o">::</span><span class="n">Response</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">sum</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">req</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+    <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"request: x=%ld, y=%ld"</span><span class="p">,</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">)</span><span class="n">req</span><span class="p">.</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">)</span><span class="n">req</span><span class="p">.</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"sending back response: [%ld]"</span><span class="p">,</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">)</span><span class="n">res</span><span class="p">.</span><span class="n">sum</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">"add_two_ints_server"</span><span class="p">);</span>
+
+    <span class="c1">// create a node</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">n</span><span class="p">;</span>
+
+    <span class="c1">// node will have a service</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">ServiceServer</span> <span class="n">service</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">advertiseService</span><span class="p">(</span><span class="s">"add_two_ints"</span><span class="p">,</span> <span class="n">add</span><span class="p">);</span>
+    <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Ready to add two ints."</span><span class="p">);</span>
+
+    <span class="c1">// main loop</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">spin</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="132-a-client-node">13.2. A Client Node<a class="headerlink" href="#132-a-client-node" title="Permanent link">⚓︎</a></h3>
+<p>This guide will create the service <code>add_two_ints_client</code> node which will receive two ints and return the sum.</p>
+<div class="highlight"><pre><span></span><code>nano add_two_ints_client.cpp
+</code></pre></div>
+<div class="file"></div>
+<p>src/add_two_ints_client.cpp</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">"ros/ros.h"</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">"beginner_tutorials/AddTwoInts.h"</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// check args</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">"add_two_ints_client"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"usage: add_two_ints_client X Y"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// create a node</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">n</span><span class="p">;</span>
+
+    <span class="c1">// node will have a client</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">ServiceClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">serviceClient</span><span class="o">&lt;</span><span class="n">beginner_tutorials</span><span class="o">::</span><span class="n">AddTwoInts</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"add_two_ints"</span><span class="p">);</span>
+
+    <span class="c1">// create a service target</span>
+    <span class="n">beginner_tutorials</span><span class="o">::</span><span class="n">AddTwoInts</span> <span class="n">srv</span><span class="p">;</span>
+
+    <span class="c1">// add params</span>
+    <span class="n">srv</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">atoll</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">srv</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">atoll</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+    <span class="c1">// call to service</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">srv</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Sum: %ld"</span><span class="p">,</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">)</span><span class="n">srv</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="n">sum</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">ROS_ERROR</span><span class="p">(</span><span class="s">"Failed to call service add_two_ints"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="133-building-new-nodes">13.3. Building new nodes<a class="headerlink" href="#133-building-new-nodes" title="Permanent link">⚓︎</a></h3>
+<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all of dependency packages listed above, add below lines also:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+nano CMakeLists.txt
+</code></pre></div>
+<div class="file"></div>
+<p>CMakeLists.txt</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Declare a C++ executable</span>
+
+add_executable<span class="o">(</span>add_two_ints_server src/add_two_ints_server.cpp<span class="o">)</span>
+target_link_libraries<span class="o">(</span>add_two_ints_server <span class="si">${</span><span class="nv">catkin_LIBRARIES</span><span class="si">}</span><span class="o">)</span>
+add_dependencies<span class="o">(</span>add_two_ints_server beginner_tutorials_gencpp<span class="o">)</span>
+
+add_executable<span class="o">(</span>add_two_ints_client src/add_two_ints_client.cpp<span class="o">)</span>
+target_link_libraries<span class="o">(</span>add_two_ints_client <span class="si">${</span><span class="nv">catkin_LIBRARIES</span><span class="si">}</span><span class="o">)</span>
+add_dependencies<span class="o">(</span>add_two_ints_client beginner_tutorials_gencpp<span class="o">)</span>
+</code></pre></div>
+<p>This will create two executables, add_two_ints_server and add_two_ints_client, which by default will go into package directory in devel space, located by default at <code>catkin_ws/devel/lib/&lt;package name&gt;</code>.</p>
+<p>Finally make the package again:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> -
+</code></pre></div>
+<h3 id="134-run-new-nodes">13.4. Run new nodes<a class="headerlink" href="#134-run-new-nodes" title="Permanent link">⚓︎</a></h3>
+<p>Run <code>roscore</code> first if it is not running. Then run 2 new nodes in two terminals:</p>
+<div class="highlight"><pre><span></span><code>rosrun beginner_tutorials add_two_ints_server
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>rosrun beginner_tutorials add_two_ints_client <span class="m">1</span> <span class="m">2</span>
+</code></pre></div>
+<p>
+<figure><img src="rosrun_service_client.png"/><figcaption>Service and Client</figcaption>
+</figure>
+</p>
+<h2 id="14-service-and-client-python">14. Service and Client (Python)<a class="headerlink" href="#14-service-and-client-python" title="Permanent link">⚓︎</a></h2>
+<p>Go to the source code folder of the <code>beginner_tutorials</code> package:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+mkdir scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
+</code></pre></div>
+<h3 id="141-a-service-node">14.1. A Service Node<a class="headerlink" href="#141-a-service-node" title="Permanent link">⚓︎</a></h3>
+<p>This guide will create the service <code>add_two_ints_server</code> node which will receive two ints and return the sum.</p>
+<p>This service uses the <code>beginner_tutorials/AddTwoInts.h</code> header file generated from the srv file that is created earlier.</p>
+<div class="highlight"><pre><span></span><code>nano add_two_ints_server.py
+</code></pre></div>
+<div class="file"></div>
+<p>scripts/add_two_ints_server.py</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">beginner_tutorials.srv</span> <span class="kn">import</span> <span class="n">AddTwoInts</span><span class="p">,</span><span class="n">AddTwoIntsResponse</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+
+<span class="k">def</span> <span class="nf">handle_add_two_ints</span><span class="p">(</span><span class="n">req</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Returning [</span><span class="si">%s</span><span class="s2"> + </span><span class="si">%s</span><span class="s2"> = </span><span class="si">%s</span><span class="s2">]"</span><span class="o">%</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">req</span><span class="o">.</span><span class="n">b</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">AddTwoIntsResponse</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">req</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">add_two_ints_server</span><span class="p">():</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">'add_two_ints_server'</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span><span class="s1">'add_two_ints'</span><span class="p">,</span> <span class="n">AddTwoInts</span><span class="p">,</span> <span class="n">handle_add_two_ints</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Ready to add two ints."</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">add_two_ints_server</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="142-a-client-node">14.2. A Client Node<a class="headerlink" href="#142-a-client-node" title="Permanent link">⚓︎</a></h3>
+<p>This guide will create the service <code>add_two_ints_client</code> node which will receive two ints and return the sum.</p>
+<div class="highlight"><pre><span></span><code>nano add_two_ints_client.py
+</code></pre></div>
+<div class="file"></div>
+<p>scripts/add_two_ints_client.py</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">beginner_tutorials.srv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">add_two_ints_client</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s1">'add_two_ints'</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">add_two_ints</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">'add_two_ints'</span><span class="p">,</span> <span class="n">AddTwoInts</span><span class="p">)</span>
+        <span class="n">resp1</span> <span class="o">=</span> <span class="n">add_two_ints</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">resp1</span><span class="o">.</span><span class="n">sum</span>
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Service call failed: </span><span class="si">%s</span><span class="s2">"</span><span class="o">%</span><span class="n">e</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">usage</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"</span><span class="si">%s</span><span class="s2"> [x y]"</span><span class="o">%</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">usage</span><span class="p">())</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Requesting </span><span class="si">%s</span><span class="s2">+</span><span class="si">%s</span><span class="s2">"</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> + </span><span class="si">%s</span><span class="s2"> = </span><span class="si">%s</span><span class="s2">"</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">add_two_ints_client</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+</code></pre></div>
+<h3 id="143-make-scripts-excutable">14.3. Make scripts excutable<a class="headerlink" href="#143-make-scripts-excutable" title="Permanent link">⚓︎</a></h3>
+<p>Scripts need to get execution permission before they can run:</p>
+<div class="highlight"><pre><span></span><code>chmod +x *
+</code></pre></div>
+<h3 id="144-building-new-nodes">14.4. Building new nodes<a class="headerlink" href="#144-building-new-nodes" title="Permanent link">⚓︎</a></h3>
+<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all of dependency packages listed above, add below lines also:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+nano CMakeLists.txt
+</code></pre></div>
+<div class="file"></div>
+<p>CMakeLists.txt</p>
+<div class="highlight"><pre><span></span><code>catkin_install_python<span class="o">(</span>PROGRAMS
+    scripts/add_two_ints_server.py
+    scripts/add_two_ints_client.py
+    DESTINATION <span class="si">${</span><span class="nv">CATKIN_PACKAGE_BIN_DESTINATION</span><span class="si">}</span>
+<span class="o">)</span>
+</code></pre></div>
+<p>This will create two executables, add_two_ints_server and add_two_ints_client, which by default will go into package directory in devel space, located by default at <code>catkin_ws/devel/lib/&lt;package name&gt;</code>.</p>
+<p>Finally make the package again:</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> -
+</code></pre></div>
+<h3 id="145-run-new-nodes">14.5. Run new nodes<a class="headerlink" href="#145-run-new-nodes" title="Permanent link">⚓︎</a></h3>
+<p>Run <code>roscore</code> first if it is not running. Then run 2 new nodes in two terminals:</p>
+<div class="highlight"><pre><span></span><code>rosrun beginner_tutorials add_two_ints_server.py
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>rosrun beginner_tutorials add_two_ints_client.py <span class="m">1</span> <span class="m">3</span>
+</code></pre></div>
+<h2 id="15-playback-data">15. Playback data<a class="headerlink" href="#15-playback-data" title="Permanent link">⚓︎</a></h2>
+<p>This tutorial will teach how to record data from a running ROS system into a <code>.bag</code> file, and then to play back the data to produce similar behavior in a running system.</p>
+<h3 id="151-record-data">15.1. Record data<a class="headerlink" href="#151-record-data" title="Permanent link">⚓︎</a></h3>
+<p>First, execute the following commands in separate terminals:</p>
+<p>Terminal 1:</p>
+<div class="highlight"><pre><span></span><code>roscore
+</code></pre></div>
+<p>Terminal 2:</p>
+<div class="highlight"><pre><span></span><code>rosrun turtlesim turtlesim_node
+</code></pre></div>
+<p>Terminal 3:</p>
+<div class="highlight"><pre><span></span><code>rosrun turtlesim turtle_teleop_key
+</code></pre></div>
+<p>This will start two nodes - the turtlesim visualizer and a node that allows for the keyboard control of turtlesim using the arrows keys on the keyboard.</p>
+<p>Lets examine the full list of topics that are currently being published in the running system. To do this, open a new terminal and execute the command:</p>
+<div class="highlight"><pre><span></span><code>rostopic list -v
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>Published topics:
+* /turtle1/color_sensor <span class="o">[</span>turtlesim/Color<span class="o">]</span> <span class="m">1</span> publisher
+* /turtle1/cmd_vel <span class="o">[</span>geometry_msgs/Twist<span class="o">]</span> <span class="m">1</span> publisher
+* /rosout <span class="o">[</span>rosgraph_msgs/Log<span class="o">]</span> <span class="m">2</span> publishers
+* /rosout_agg <span class="o">[</span>rosgraph_msgs/Log<span class="o">]</span> <span class="m">1</span> publisher
+* /turtle1/pose <span class="o">[</span>turtlesim/Pose<span class="o">]</span> <span class="m">1</span> publisher
+
+Subscribed topics:
+* /turtle1/cmd_vel <span class="o">[</span>geometry_msgs/Twist<span class="o">]</span> <span class="m">1</span> subscriber
+* /rosout <span class="o">[</span>rosgraph_msgs/Log<span class="o">]</span> <span class="m">1</span> subscriber
+</code></pre></div>
+</div>
+<p>The list of published topics are the only message types that could potentially be recorded in the data log file, as only published messages are recorded:</p>
+<ul>
+<li>The topic <code>/turtle1/cmd_vel</code> is the command message published by the <code>teleop_turtle</code> node that is taken as input by the turtlesim process.</li>
+<li>The messages <code>/turtle1/color_sensor</code> and <code>/turtle1/pose</code> are output messages published by <code>turtlesim</code>.</li>
+</ul>
+<p>Open a new terminal window. In this window run the following commands. Running <code>rosbag record</code> with the option <code>-a</code> indicates that all published topics should be accumulated in a bag file.</p>
+<div class="highlight"><pre><span></span><code>roscd beginner_tutorials &amp;&amp; \
+mkdir bagfiles &amp;&amp; \
+cd bagfiles &amp;&amp; \
+rosbag record -a
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>[ INFO] [1626862434.586239631]: Recording to '2021-07-21-17-13-54.bag'.
+[ INFO] [1626862434.587320465]: Subscribing to /turtle1/color_sensor
+[ INFO] [1626862434.589356574]: Subscribing to /turtle1/cmd_vel
+[ INFO] [1626862434.591447646]: Subscribing to /rosout
+[ INFO] [1626862434.593544025]: Subscribing to /rosout_agg
+[ INFO] [1626862434.595557444]: Subscribing to /turtle1/pose
+</code></pre></div>
+</div>
+<p>Move back to the terminal window with <code>turtle_teleop</code> and move the turtle around for 10 or so seconds.</p>
+<h3 id="152-rosbag-info">15.2. Rosbag info<a class="headerlink" href="#152-rosbag-info" title="Permanent link">⚓︎</a></h3>
+<p>Run the command <code>rosbag info</code> to see the info of a rosbag file:</p>
+<div class="highlight"><pre><span></span><code>rosbag info &lt;bagfile&gt;
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>path:        xxx.bag
+version:     <span class="m">2</span>.0
+duration:    <span class="m">2</span>:21s <span class="o">(</span>141s<span class="o">)</span>
+start:       xxx
+end:         xxx
+size:        <span class="m">1</span>.3 MB
+messages:    <span class="m">18150</span>
+compression: none <span class="o">[</span><span class="m">2</span>/2 chunks<span class="o">]</span>
+types:       geometry_msgs/Twist <span class="o">[</span>9f195f881246fdfa2798d1d3eebca84a<span class="o">]</span>
+             rosgraph_msgs/Log   <span class="o">[</span>acffd30cd6b6de30f120938c17c593fb<span class="o">]</span>
+             turtlesim/Color     <span class="o">[</span>353891e354491c51aabe32df673fb446<span class="o">]</span>
+             turtlesim/Pose      <span class="o">[</span>863b248d5016ca62ea2e895ae5265cf9<span class="o">]</span>
+topics:      /rosout                  <span class="m">217</span> msgs    : rosgraph_msgs/Log   <span class="o">(</span><span class="m">2</span> connections<span class="o">)</span>
+             /rosout_agg              <span class="m">214</span> msgs    : rosgraph_msgs/Log
+             /turtle1/cmd_vel         <span class="m">286</span> msgs    : geometry_msgs/Twist
+             /turtle1/color_sensor   <span class="m">8716</span> msgs    : turtlesim/Color
+             /turtle1/pose           <span class="m">8717</span> msgs    : turtlesim/Pose
+</code></pre></div>
+</div>
+<h3 id="153-rosbag-play">15.3. Rosbag play<a class="headerlink" href="#153-rosbag-play" title="Permanent link">⚓︎</a></h3>
+<p>The next step in this tutorial is to replay the bag file to reproduce behavior in the running system. First kill the tele-operator program that may be still running from the previous section.</p>
+<p>Leave <code>turtlesim</code> running. In a terminal window run the following command:</p>
+<div class="highlight"><pre><span></span><code>rosbag play &lt;bagfile&gt;
+</code></pre></div>
+<p>In its default mode <code>rosbag play</code> will wait for a certain period (.2 seconds) after advertising each message before it actually begins publishing the contents of the bag file. Waiting for some duration allows any subscriber of a message to be alerted that the message has been advertised and that messages may follow. If rosbag play publishes messages immediately upon advertising, subscribers may not receive the first several published messages. The waiting period can be specified with the <code>-d</code> option.</p>
+<h3 id="154-recording-a-subset">15.4. Recording a subset<a class="headerlink" href="#154-recording-a-subset" title="Permanent link">⚓︎</a></h3>
+<p>When running a complicated system, such as the pr2 software suite, there may be hundreds of topics being published, with some topics, like camera image streams, potentially publishing huge amounts of data. In such a system it is often impractical to write log files consisting of all topics to disk in a single bag file. The rosbag record command supports logging only particular topics to a bag file, allowing users to only record the topics of interest to them.</p>
+<div class="highlight"><pre><span></span><code>rosbag record -O subset /turtle1/cmd_vel /turtle1/pose
+</code></pre></div>
+<p>The <code>-O</code> argument tells <code>rosbag record</code> to log to a file named <code>subset.bag</code>, and the topic arguments cause rosbag record to only subscribe to these two topics.</p>
+<div class="admonition caution">
+<p class="admonition-title">The limitations of rosbag record/play</p>
+<p>Different start condition can cause different results even the events are the same. The rate of recorded events is not guaranteed to be the same as the real actions.</p>
+</div>
+<h2 id="16-read-message-from-rosbag">16. Read message from Rosbag<a class="headerlink" href="#16-read-message-from-rosbag" title="Permanent link">⚓︎</a></h2>
+<p>The script <code>ros_readbagfile</code> will read rosbag file and extract all messages of selected topics:</p>
+<div class="highlight"><pre><span></span><code>ros_readbagfile &lt;mybagfile.bag&gt; <span class="o">[</span>topic1<span class="o">]</span> <span class="o">[</span>topic2<span class="o">]</span> <span class="o">[</span>topic3<span class="o">]</span> <span class="o">[</span>...<span class="o">]</span>
+</code></pre></div>
+<p>Download and install <code>ros_readbag.py</code> using below command:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> <span class="se">\</span>
+wget https://raw.githubusercontent.com/ElectricRCAircraftGuy/eRCaGuy_dotfiles/master/useful_scripts/ros_readbagfile.py
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Edit shebang to use python 2 if needed.</p>
+<p>Change <code>#!/usr/bin/python3</code> to <code>#!/usr/bin/python</code>.</p>
+</div>
+<p>Make it executable:</p>
+<div class="highlight"><pre><span></span><code>chmod +x ros_readbagfile.py
+</code></pre></div>
+<p>The <code>~/bin</code> directory for personal binaries:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p ~/bin
+</code></pre></div>
+<p>Add this folder to the <code>PATH</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">"PATH=\"</span><span class="nv">$PATH</span><span class="s2">:~/bin\""</span> &gt;&gt; ~/.bashrc
+</code></pre></div>
+<p>Move this executable script into that directory as <code>ros_readbagfile</code>, so that it will be available as that command:</p>
+<div class="highlight"><pre><span></span><code>mv ros_readbagfile.py ~/bin/ros_readbagfile
+</code></pre></div>
+<p>Determine the exact topic names you’d like to read from the bag file, by using <code>rosbag info</code> as mentioned above.</p>
+<p>Use <code>ros_readbagfile</code> from terminal as below:</p>
+<div class="highlight"><pre><span></span><code>rosbag info <span class="m">2021</span>-07-21-17-13-54.bag
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code>path:        2021-07-21-17-13-54.bag
+version:     2.0
+duration:    30.8s
+start:       Jul 21 2021 17:13:54.60 (1626862434.60)
+end:         Jul 21 2021 17:14:25.40 (1626862465.40)
+size:        280.8 KB
+messages:    3895
+compression: none [1/1 chunks]
+types:       geometry_msgs/Twist [9f195f881246fdfa2798d1d3eebca84a]
+            rosgraph_msgs/Log   [acffd30cd6b6de30f120938c17c593fb]
+            turtlesim/Color     [353891e354491c51aabe32df673fb446]
+            turtlesim/Pose      [863b248d5016ca62ea2e895ae5265cf9]
+topics:      /rosout                    4 msgs    : rosgraph_msgs/Log   (2 connections)
+            /turtle1/cmd_vel          93 msgs    : geometry_msgs/Twist
+            /turtle1/color_sensor   1899 msgs    : turtlesim/Color
+            /turtle1/pose           1899 msgs    : turtlesim/Pose
+</code></pre></div>
+</div>
+<p>Now, get all messages of the topic <code>/turtle1/pose</code> and save to the file:</p>
+<div class="highlight"><pre><span></span><code>ros_readbagfile <span class="m">2021</span>-07-21-17-13-54.bag /turtle1/pose &gt; turtle1_pose.yaml
+</code></pre></div>
+<div class="log">
+<div class="highlight"><pre><span></span><code># =======================================
+# topic:           /turtle1/pose
+# msg_count:       1899
+# timestamp (sec): 1626862465.397807837 # - - -
+x: 10.0430784225
+y: 6.37491464615
+theta: -2.62400007248
+linear_velocity: 0.0
+angular_velocity: 0.0
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Total messages found:             1899
+#
+#    /turtle1/pose:                 1899
+#
+# DONE.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</code></pre></div>
+</div>
+<h2 id="17-reference">17. Reference<a class="headerlink" href="#17-reference" title="Permanent link">⚓︎</a></h2>
+<p>There is an interesting book named <a href="A_gentle_Introduction_to_ROS.pdf">A Gentle Introduction to ROS</a> by <a href="http://www.cse.sc.edu/~jokane/">Jason M. O’Kane</a> published on <a href="https://cse.sc.edu/~jokane/agitr/">https://cse.sc.edu/~jokane/agitr/</a>. This book supplements ROS’s own documentation, explaining how to interact with existing ROS systems and how to create new ROS programs using C++, with special attention to common mistakes and misunderstandings.</p>
+<p>An exceprt from the book:</p>
+<div class="admonition cite">
+<p class="admonition-title">Giving ROS control</p>
+<p>The final complication is that ROS will only execute our callback function when we give it explicit permission to do so. There are actually two slightly different ways to accomplish this. One version looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span>
+</code></pre></div>
+<p>This code asks ROS to execute all of the pending callbacks from all of the node’s subscriptions, and then return control back to us. The other option looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ros</span><span class="o">::</span><span class="n">spin</span><span class="p">();</span>
+</code></pre></div>
+<p>This alternative to <code>ros::spinOnce()</code> asks ROS to wait for and execute callbacks until the node shuts down. In other words, <code>ros::spin()</code> is roughly equivalent to this loop:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="p">(</span><span class="n">ros</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The question of whether to use <code>ros::spinOnce()</code> or <code>ros::spin()</code> comes down to this:</p>
+<p><em class="noem">Does your program have any repetitive work to do, other than responding to callbacks?</em></p>
+<ul>
+<li>If the answer is <em class="noem">No</em>, then use <code>ros::spin()</code>.</li>
+<li>If the answer is <em class="noem">Yes</em>, then a reasonable option is to write a loop that does that other work and calls <code>ros::spinOnce()</code> periodically to process callbacks.</li>
+</ul>
+<p>A common error in subscriber programs is to mistakenly omit both <code>ros::spinOnce()</code> and <code>ros::spin()</code>. In this case, ROS never has an opportunity to execute your callback function.</p>
+<ul>
+<li>Omitting <code>ros::spin()</code> will likely cause your program to exit shortly after it starts.</li>
+<li>Omitting <code>ros::spinOnce()</code> might make it appear as though no messages are being received.</li>
+</ul>
+</div>
+<div data-value="https://www.codeinsideout.com/blog/ros/tutorial-beginner/" id="page_url"></div>
+<div data-value="blog/ros/tutorial-beginner/" id="page_identifier"></div>
+<div>
+<h2 id="__comments">Comments</h2>
+<div id="disqus_thread"></div>
+<script>var disqus_config = function () { this.page.url = "https://www.codeinsideout.com/blog/ros/tutorial-beginner/", this.page.identifier = "blog/ros/tutorial-beginner/" }; window.addEventListener("load", function () { var e = document, i = e.createElement("script"); i.src = "//vuquangtrong-github-io.disqus.com/embed.js", i.setAttribute("data-timestamp", +new Date), (e.head || e.body).appendChild(i) })</script>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: ROS" class="md-footer__link md-footer__link--prev" href="../" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              ROS
+            </div>
+</div>
+</a>
+<a aria-label="Next: Setup blog" class="md-footer__link md-footer__link--next" href="../../setup-blog/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Setup blog
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            © 2021 Code Inside Out <div style="display:none"><div>
+</div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div>
+    using
+    <a href="https://github.com/vuquangtrong/mkdocs-material-blog">
+        MkDocs Material Blog
+    </a>
+    theme
+</div>
+</div>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://github.com/vuquangtrong" rel="noopener" target="_blank" title="vuquangtrong">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://facebook.com/trongvq" rel="noopener" target="_blank" title="trongvq">
+<svg viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="m279.14 288 14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://www.linkedin.com/in/vqtrong" rel="noopener" target="_blank" title="vqtrong">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+<script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+<script src="../../../assets/view-bigimg.js"></script>
+<script src="../../../assets/extra.js"></script>
+</body>
+</html>
