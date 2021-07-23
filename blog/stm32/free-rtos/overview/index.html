@@ -8,7 +8,7 @@
 <meta content="Using RTOS on MCU is method to deal with concurrent tasks which need to be handled in real-time without delay. A task is a piece of code that can be scheduled by OS scheduler and dedicated for a specific functionality. Tasks can have different priorities to be run in an order." name="description"/>
 <meta content="embedded systems application programming" name="keywords"/>
 <meta content="vqtrong" name="author"/>
-<link href="https://www.codeinsideout.com/blog/stm32/rtos/overview/" rel="canonical"/>
+<link href="https://www.codeinsideout.com/blog/stm32/free-rtos/overview/" rel="canonical"/>
 <link href="../../../../favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.2, mkdocs-material-7.1.11" name="generator"/>
 <title>RTOS Overview - Code Inside Out</title>
@@ -25,7 +25,7 @@
 <meta content="website" property="og:type">
 <meta content="RTOS Overview - Code Inside Out" property="og:title">
 <meta content="Using RTOS on MCU is method to deal with concurrent tasks which need to be handled in real-time without delay. A task is a piece of code that can be scheduled by OS scheduler and dedicated for a specific functionality. Tasks can have different priorities to be run in an order." property="og:description">
-<meta content="https://www.codeinsideout.com/blog/stm32/rtos/overview/" property="og:url">
+<meta content="https://www.codeinsideout.com/blog/stm32/free-rtos/overview/" property="og:url">
 <meta content="https://www.codeinsideout.com/assets/banner.jpg" property="og:image">
 <meta content="Code Inside Out" property="og:site_name">
 <meta content="summary" name="twitter:card">
@@ -282,31 +282,21 @@
         SSD1306 OLED
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../j-link-rtt/">
-        J-Link RTT
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../j-link-sysview/">
-        J-Link SysView
-      </a>
-</li>
 <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_21" id="__nav_2_1_21" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_1_21">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_19" id="__nav_2_1_19" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_19">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
         
-          RTOS
+          FreeRTOS
         </a>
 </label>
-<nav aria-label="RTOS" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_1_21">
+<nav aria-label="FreeRTOS" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_1_19">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../" style="margin: initial; padding: initial; pointer-events: initial">
           
-            RTOS
+            FreeRTOS
           </a>
 </label>
 <ul class="md-nav__list" data-md-scrollfix="">
@@ -350,42 +340,110 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#14-shared-memory">
-    1.4. Shared Memory
+<a class="md-nav__link" href="#14-memory-allocation">
+    1.4. Memory Allocation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-shared-memory">
+    1.5. Shared Memory
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#2-lab-0-create-simple-tasks">
-    2. Lab 0: Create simple tasks
+<a class="md-nav__link" href="#2-freertos-for-stm32">
+    2. FreeRTOS for STM32
   </a>
-<nav aria-label="2. Lab 0: Create simple tasks" class="md-nav">
+<nav aria-label="2. FreeRTOS for STM32" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#21-enable-rtos">
-    2.1. Enable RTOS
+<a class="md-nav__link" href="#21-main-features">
+    2.1. Main features
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#22-add-tasks">
-    2.2. Add Tasks
+<a class="md-nav__link" href="#22-used-resources">
+    2.2. Used resources
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#23-rtos-components">
-    2.3. RTOS components
+<a class="md-nav__link" href="#23-file-structure">
+    2.3. File structure
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#24-the-idle-task">
-    2.4. The Idle Task
+<a class="md-nav__link" href="#24-memory-management">
+    2.4. Memory Management
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#25-the-timer-service">
-    2.5. The Timer Service
+<a class="md-nav__link" href="#25-interrupts">
+    2.5. Interrupts
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#26-api-conventions">
+    2.6. API conventions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#27-general-configs">
+    2.7. General Configs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#28-cmsis_os-api">
+    2.8. CMSIS_OS API
+  </a>
+<nav aria-label="2.8. CMSIS_OS API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#281-cmsos_rtos-wrapper">
+    2.8.1. CMSOS_RTOS Wrapper
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-lab-0-create-simple-tasks">
+    3. Lab 0: Create simple tasks
+  </a>
+<nav aria-label="3. Lab 0: Create simple tasks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-create-a-new-project">
+    3.1. Create a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-enable-rtos">
+    3.2. Enable RTOS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-add-tasks">
+    3.3. Add Tasks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-rtos-components">
+    3.4. RTOS components
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#35-the-idle-task">
+    3.5. The Idle Task
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#36-the-timer-service">
+    3.6. The Timer Service
   </a>
 </li>
 </ul>
@@ -401,6 +459,16 @@
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../j-link-rtt/">
+        J-Link RTT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../j-link-sysview/">
+        J-Link SysView
+      </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../notes/">
@@ -702,32 +770,137 @@
 <label class="md-nav__title">Tag cloud</label>
 </p>
 <div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOliveGreen;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
+          color:DarkTurquoise;
         ">pdf</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkRed;
-        ">virtual</span>
+        ">jinja</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkViolet;
-        ">sysview</span>
+          color:DarkSlateGray;
+        ">swv</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">sharing</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">omx</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#distance">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOliveGreen;
+          color:DarkSlateBlue;
         ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkBlue;
+        ">camera</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">docker</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOliveGreen;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkViolet;
+        ">rtos</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">top</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">adc</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
@@ -737,305 +910,207 @@
         ">semihosting</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
-        ">capture</span>
+          color:DarkCyan;
+        ">clock</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
+<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkGreen;
-        ">rtt</span>
+          color:DarkTurquoise;
+        ">linux</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
 <span class="tag-name" style="
-          font-size:0.55rem;
+          font-size:0.65rem;
+          color:DarkTurquoise;
+        ">notes</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
           color:DarkBlue;
-        ">oled</span>
-<!--<sup class="tag-count">1</sup>-->
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkRed;
-        ">hls</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">pulse</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">gpio</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">headless</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#board">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">board</span>
+          color:DarkGoldenrod;
+        ">virtual</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#spi">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkCyan;
+          color:DarkSlateGray;
         ">spi</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkBlue;
-        ">mkdocs</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">tweaks</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">usart</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">mjpeg</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">redirect</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#html">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">html</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">h264</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkRed;
-        ">stream</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">awk</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkOliveGreen;
-        ">notes</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">v4l2</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">rtos</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">omx</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">c</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">markdown</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">dash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">c++</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkMagenta;
-        ">interrupt</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">sharing</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">tutorial</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">ajax</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkRed;
-        ">ros</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">performance</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">pwm</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkOliveGreen;
-        ">i2c</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#material">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">material</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">ssd1306</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="
-          font-size:1.35rem;
-          color:DarkOrchid;
-        ">arm</span>
-<!--<sup class="tag-count">17</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">clock</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
 <span class="tag-name" style="
           font-size:0.75rem;
-          color:DarkBlue;
+          color:DarkSlateGray;
         ">debug</span>
 <!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkViolet;
+        ">stm32</span>
+<!--<sup class="tag-count">20</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">c</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">toolchain</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOliveGreen;
+        ">lidar</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.95rem;
+          color:DarkGreen;
+        ">pi</span>
+<!--<sup class="tag-count">9</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">h264</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.4rem;
+          color:DarkSlateBlue;
+        ">arm</span>
+<!--<sup class="tag-count">18</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">awk</span>
+<!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#systick">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkRed;
+          color:DarkCyan;
         ">systick</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
 <span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGreen;
-        ">livox</span>
-<!--<sup class="tag-count">2</sup>-->
+          font-size:0.55rem;
+          color:DarkRed;
+        ">performance</span>
+<!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
 <span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkMagenta;
-        ">camera</span>
-<!--<sup class="tag-count">5</sup>-->
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOliveGreen;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#backup">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkRed;
+          color:DarkOliveGreen;
         ">backup</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">css</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateGray;
+        ">rtt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">tutorial</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">redirect</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
@@ -1045,25 +1120,123 @@
         ">hardware accelerator</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
 <span class="tag-name" style="
           font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">pulse</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGoldenrod;
+        ">ros</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.6rem;
           color:DarkRed;
-        ">restore</span>
-<!--<sup class="tag-count">1</sup>-->
+        ">interrupt</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkViolet;
-        ">swv</span>
+          color:DarkOrchid;
+        ">bash</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">hls</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkTurquoise;
-        ">css</span>
+        ">gnuplot</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGoldenrod;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">dash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkGreen;
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateGray;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">mjpeg</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
@@ -1073,179 +1246,74 @@
         ">ffmpeg</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">sdcard</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkRed;
-        ">docs</span>
+        ">mapping</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
 <span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkTurquoise;
-        ">picamera</span>
-<!--<sup class="tag-count">3</sup>-->
+          font-size:0.6rem;
+          color:DarkOrchid;
+        ">livox</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkTurquoise;
-        ">top</span>
+        ">restore</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">tweaks</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkViolet;
+        ">i2c</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkGoldenrod;
-        ">joystick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">docker</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">gnuplot</span>
+        ">c++</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#grep">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
+          color:DarkRed;
         ">grep</span>
 <!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkSlateBlue;
-        ">python</span>
-<!--<sup class="tag-count">5</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#samba">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateBlue;
+          color:DarkGreen;
         ">samba</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkSlateGray;
-        ">linux</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkMagenta;
-        ">uart</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">bash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">mapping</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">jinja</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkBlue;
-        ">dma</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">adc</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGreen;
-        ">javascript</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">sensor</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="
-          font-size:0.95rem;
-          color:DarkTurquoise;
-        ">pi</span>
-<!--<sup class="tag-count">9</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkRed;
-        ">toolchain</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#container">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">container</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="
-          font-size:1.4500000000000002rem;
-          color:DarkBlue;
-        ">stm32</span>
-<!--<sup class="tag-count">19</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkViolet;
-        ">lidar</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">timer</span>
+        ">sdcard</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 </div>
@@ -1284,42 +1352,110 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#14-shared-memory">
-    1.4. Shared Memory
+<a class="md-nav__link" href="#14-memory-allocation">
+    1.4. Memory Allocation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-shared-memory">
+    1.5. Shared Memory
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#2-lab-0-create-simple-tasks">
-    2. Lab 0: Create simple tasks
+<a class="md-nav__link" href="#2-freertos-for-stm32">
+    2. FreeRTOS for STM32
   </a>
-<nav aria-label="2. Lab 0: Create simple tasks" class="md-nav">
+<nav aria-label="2. FreeRTOS for STM32" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#21-enable-rtos">
-    2.1. Enable RTOS
+<a class="md-nav__link" href="#21-main-features">
+    2.1. Main features
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#22-add-tasks">
-    2.2. Add Tasks
+<a class="md-nav__link" href="#22-used-resources">
+    2.2. Used resources
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#23-rtos-components">
-    2.3. RTOS components
+<a class="md-nav__link" href="#23-file-structure">
+    2.3. File structure
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#24-the-idle-task">
-    2.4. The Idle Task
+<a class="md-nav__link" href="#24-memory-management">
+    2.4. Memory Management
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#25-the-timer-service">
-    2.5. The Timer Service
+<a class="md-nav__link" href="#25-interrupts">
+    2.5. Interrupts
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#26-api-conventions">
+    2.6. API conventions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#27-general-configs">
+    2.7. General Configs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#28-cmsis_os-api">
+    2.8. CMSIS_OS API
+  </a>
+<nav aria-label="2.8. CMSIS_OS API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#281-cmsos_rtos-wrapper">
+    2.8.1. CMSOS_RTOS Wrapper
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-lab-0-create-simple-tasks">
+    3. Lab 0: Create simple tasks
+  </a>
+<nav aria-label="3. Lab 0: Create simple tasks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-create-a-new-project">
+    3.1. Create a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-enable-rtos">
+    3.2. Enable RTOS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-add-tasks">
+    3.3. Add Tasks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-rtos-components">
+    3.4. RTOS components
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#35-the-idle-task">
+    3.5. The Idle Task
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#36-the-timer-service">
+    3.6. The Timer Service
   </a>
 </li>
 </ul>
@@ -1332,39 +1468,25 @@
 <label class="md-nav__title">Tag cloud</label>
 </p>
 <div class="tag-cloud-content">
-<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkBlue;
-        ">lidar</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
 <span class="tag-name" style="
           font-size:0.75rem;
-          color:DarkViolet;
+          color:DarkGoldenrod;
         ">debug</span>
 <!--<sup class="tag-count">5</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">pdf</span>
+          color:DarkTurquoise;
+        ">sharing</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkBlue;
-        ">interrupt</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
-        ">jinja</span>
+          color:DarkMagenta;
+        ">awk</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#top">
@@ -1374,361 +1496,144 @@
         ">top</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">pwm</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">tweaks</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
 <span class="tag-name" style="
           font-size:0.65rem;
-          color:DarkOrchid;
-        ">notes</span>
+          color:DarkViolet;
+        ">uart</span>
 <!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">restore</span>
-<!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#linux">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkBlue;
+          color:DarkViolet;
         ">linux</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">h264</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkGreen;
-        ">sdcard</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">redirect</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">awk</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkCyan;
-        ">i2c</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">sensor</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">backup</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="
-          font-size:1.4500000000000002rem;
-          color:DarkSlateGray;
-        ">stm32</span>
-<!--<sup class="tag-count">19</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">clock</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="
-          font-size:1.35rem;
-          color:DarkOliveGreen;
-        ">arm</span>
-<!--<sup class="tag-count">17</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">v4l2</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">docs</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#css">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">css</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">joystick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">ssd1306</span>
+        ">jinja</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGoldenrod;
+          color:DarkRed;
         ">pulse</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">grep</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateBlue;
+          color:DarkMagenta;
         ">hardware accelerator</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">mapping</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">hls</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">timer</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">samba</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#material">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">material</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">sysview</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkRed;
-        ">javascript</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGoldenrod;
-        ">mkdocs</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">headless</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkOrchid;
-        ">ffmpeg</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">distance</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">usart</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkGoldenrod;
-        ">camera</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="
-          font-size:0.95rem;
-          color:DarkMagenta;
-        ">pi</span>
-<!--<sup class="tag-count">9</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#container">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">container</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">mjpeg</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">capture</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#html">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">html</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">dash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkRed;
-        ">dma</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#board">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">board</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGoldenrod;
-        ">ros</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">gnuplot</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkTurquoise;
-        ">adc</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">gpio</span>
+        ">spi</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#docker">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
+          color:DarkOliveGreen;
         ">docker</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">clock</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGoldenrod;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#bash">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
+          color:DarkSlateBlue;
         ">bash</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkSlateGray;
+        ">lidar</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOliveGreen;
+        ">notes</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">samba</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkGoldenrod;
-        ">performance</span>
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkSlateGray;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">omx</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">tutorial</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">hls</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
@@ -1738,144 +1643,375 @@
         ">rtt</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkOrchid;
-        ">picamera</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGoldenrod;
-        ">stream</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkRed;
-        ">tutorial</span>
+          color:DarkGreen;
+        ">css</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
 <span class="tag-name" style="
-          font-size:0.65rem;
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:0.75rem;
           color:DarkCyan;
-        ">uart</span>
-<!--<sup class="tag-count">3</sup>-->
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkBlue;
-        ">toolchain</span>
+          color:DarkSlateBlue;
+        ">c</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkBlue;
+        ">camera</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.4rem;
+          color:DarkCyan;
+        ">arm</span>
+<!--<sup class="tag-count">18</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">redirect</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkRed;
-        ">sharing</span>
+        ">virtual</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOliveGreen;
+          color:DarkTurquoise;
         ">semihosting</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">rtos</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">omx</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkSlateBlue;
-        ">ajax</span>
+        ">grep</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
-        ">c</span>
+          color:DarkCyan;
+        ">restore</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">tweaks</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#livox">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkMagenta;
+          color:DarkSlateGray;
         ">livox</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#oled">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOliveGreen;
+          color:DarkSlateGray;
         ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGoldenrod;
+        ">ros</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkTurquoise;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">sdcard</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">toolchain</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">dash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateGray;
+        ">rtos</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGreen;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkViolet;
+        ">i2c</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkTurquoise;
+        ">stm32</span>
+<!--<sup class="tag-count">20</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.95rem;
+          color:DarkOliveGreen;
+        ">pi</span>
+<!--<sup class="tag-count">9</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">capture</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#swv">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkCyan;
+          color:DarkSlateGray;
         ">swv</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkViolet;
-        ">python</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
-        ">virtual</span>
+          color:DarkRed;
+        ">backup</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateGray;
+        ">interrupt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">pdf</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">h264</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#systick">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateBlue;
+          color:DarkMagenta;
         ">systick</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkRed;
-        ">spi</span>
+          color:DarkGoldenrod;
+        ">gnuplot</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
-        ">markdown</span>
+          color:DarkCyan;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">adc</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#c++">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
+          color:DarkOliveGreen;
         ">c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">mapping</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">performance</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 </div>
@@ -1901,11 +2037,28 @@
 <div class="cover">
 <h1 class="page-title">RTOS Overview</h1>
 <p class="page-description">Using RTOS on MCU is method to deal with concurrent tasks which need to be handled in real-time without delay. A task is a piece of code that can be scheduled by OS scheduler and dedicated for a specific functionality. Tasks can have different priorities to be run in an order.</p>
+<p class="page-tags">
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name">
+                        #arm
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name">
+                        #stm32
+                    </span>
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name">
+                        #rtos
+                    </span>
+</a>
+</p>
 <p class="md-source-date">
 <hr style="margin-bottom: .5em;"/>
 <small>
                             Last update:
-                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-07-09 23:43:44</span>
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-07-23 14:38:44</span>
 </small>
 </p>
 </div>
@@ -1972,42 +2125,110 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#14-shared-memory">
-    1.4. Shared Memory
+<a class="md-nav__link" href="#14-memory-allocation">
+    1.4. Memory Allocation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#15-shared-memory">
+    1.5. Shared Memory
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#2-lab-0-create-simple-tasks">
-    2. Lab 0: Create simple tasks
+<a class="md-nav__link" href="#2-freertos-for-stm32">
+    2. FreeRTOS for STM32
   </a>
-<nav aria-label="2. Lab 0: Create simple tasks" class="md-nav">
+<nav aria-label="2. FreeRTOS for STM32" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#21-enable-rtos">
-    2.1. Enable RTOS
+<a class="md-nav__link" href="#21-main-features">
+    2.1. Main features
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#22-add-tasks">
-    2.2. Add Tasks
+<a class="md-nav__link" href="#22-used-resources">
+    2.2. Used resources
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#23-rtos-components">
-    2.3. RTOS components
+<a class="md-nav__link" href="#23-file-structure">
+    2.3. File structure
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#24-the-idle-task">
-    2.4. The Idle Task
+<a class="md-nav__link" href="#24-memory-management">
+    2.4. Memory Management
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#25-the-timer-service">
-    2.5. The Timer Service
+<a class="md-nav__link" href="#25-interrupts">
+    2.5. Interrupts
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#26-api-conventions">
+    2.6. API conventions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#27-general-configs">
+    2.7. General Configs
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#28-cmsis_os-api">
+    2.8. CMSIS_OS API
+  </a>
+<nav aria-label="2.8. CMSIS_OS API" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#281-cmsos_rtos-wrapper">
+    2.8.1. CMSOS_RTOS Wrapper
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-lab-0-create-simple-tasks">
+    3. Lab 0: Create simple tasks
+  </a>
+<nav aria-label="3. Lab 0: Create simple tasks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-create-a-new-project">
+    3.1. Create a new project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-enable-rtos">
+    3.2. Enable RTOS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-add-tasks">
+    3.3. Add Tasks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-rtos-components">
+    3.4. RTOS components
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#35-the-idle-task">
+    3.5. The Idle Task
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#36-the-timer-service">
+    3.6. The Timer Service
   </a>
 </li>
 </ul>
@@ -2017,11 +2238,10 @@
 </nav>
 </div>
 <div class="btn-actions screen-only">
-<p><a class="md-button" href="..\..\..\..\pdfs\blog\stm32\rtos\overview\rtos__RTOS_Overview.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a><a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_RTOS_Simple_Tasks.zip"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> F051R8_RTOS_Simple_Tasks.zip</a>
+<p><a class="md-button" href="..\..\..\..\pdfs\blog\stm32\free-rtos\overview\free-rtos__RTOS_Overview.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a><a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_RTOS_Simple_Tasks.zip"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> F051R8_RTOS_Simple_Tasks.zip</a>
 <a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F411CE_RTOS_Simple_Tasks_SysView.zip"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> F411CE_RTOS_Simple_Tasks_SysView.zip</a></p>
 </div>
 <h2 id="1-rtos">1. RTOS<a class="headerlink" href="#1-rtos" title="Permanent link">⚓︎</a></h2>
-<p><a href="https://www.freertos.org/FreeRTOS-quick-start-guide.html">FreeRTOS Quick Start Guide</a></p>
 <p>RTOS stands for Real Time Operating System. And as the name suggests, it is capable of doing tasks, as an operating system does. The main purpose of an OS is to have the functionality, of running multiple tasks at the same time, which obviously isn’t possible with bare metal.</p>
 <p><mark>The core of an RTOS is an advanced algorithm for <a href="https://en.wikipedia.org/wiki/Scheduling_(computing)">scheduling</a>, with the key factors are minimal <a href="https://en.wikipedia.org/wiki/Interrupt_latency">interrupt latency</a> and minimal <a href="https://en.wikipedia.org/wiki/Context_switch">thread switching latency</a>. A real-time OS is valued more for how quickly or how predictably it can respond than for the amount of work it can perform in a given period of time.</mark></p>
 <p>Refer to the <a href="https://en.wikipedia.org/wiki/Comparison_of_real-time_operating_systems">comparison table of RTOSs</a>.</p>
@@ -2069,7 +2289,26 @@
 <p>SysTick is apart of the ARM Core, that counts down from the reload value to zero, and fire an interrupt to make a periodical event. SysTick is mainly used for delay function in non-RTOS firmware, and is used as the interrupt for RTOS scheduler.</p>
 <p>SysTick is also used as countable time span of a waiting task. For example, a task need to read an input, and it should wait for 50 ms, if nothing comes, task should move to other work. This task will use SysTick , which is fired every 1 ms, to count up a waiting counter, if the counter reaches 50 ticks, task quits the waiting loop and runs other code.</p>
 <p>Read more about setting up <a href="../systick/">SysTick and Delay</a>.</p>
-<h3 id="14-shared-memory">1.4. Shared Memory<a class="headerlink" href="#14-shared-memory" title="Permanent link">⚓︎</a></h3>
+<h3 id="14-memory-allocation">1.4. Memory Allocation<a class="headerlink" href="#14-memory-allocation" title="Permanent link">⚓︎</a></h3>
+<p>Real time operating system supports <strong>static</strong> and <strong>dynamic</strong> memory allocation, with different strategies and algorithm.</p>
+<p><strong>Creating RTOS objects dynamically</strong> has the benefit of greater simplicity, and the potential to minimize the application’s maximum RAM usage:</p>
+<ul>
+<li>The memory allocation occurs automatically.</li>
+<li>The RAM used by an RTOS object can be re-used if the object is deleted.</li>
+<li>The memory allocation scheme used can be chosen to best suite the application.</li>
+</ul>
+<div class="np"></div>
+<p><strong>Creating RTOS objects using statically allocated RAM</strong> has the benefit of providing the application more control:</p>
+<ul>
+<li>RTOS objects can be placed at specific memory locations.</li>
+<li>It allows the RTOS to be used in applications that simply don’t allow any dynamic memory allocation.</li>
+<li>Avoid memory-related issues such as leak memory, dangling pointer, and undefined objects.</li>
+</ul>
+<p>
+<figure><img src="rtos_memory_layout.drawio.svg"/><figcaption>Memory layout in FreeRTOS</figcaption>
+</figure>
+</p>
+<h3 id="15-shared-memory">1.5. Shared Memory<a class="headerlink" href="#15-shared-memory" title="Permanent link">⚓︎</a></h3>
 <p>Tasks are usually a work to do in a loop and it thinks it can control all of resource. In a system, there are many tasks run together, and in many cases, they works with condition from others.</p>
 <p>Inter-task communication is defined as some type:</p>
 <ul>
@@ -2078,6 +2317,10 @@
 <li>Mutex/Semaphore: synchronize acess to a shared resource, lock resource which is in-use</li>
 </ul>
 <p>
+<figure><img src="rtos_queue.png"/><figcaption>Queue between tasks</figcaption>
+</figure>
+</p>
+<p>
 <figure><img src="rtos_signal.png"/><figcaption>Signal between tasks</figcaption>
 </figure>
 </p>
@@ -2085,11 +2328,286 @@
 <figure><img src="rtos_semaphore.png"/><figcaption>Shared resource between tasks</figcaption>
 </figure>
 </p>
+<div class="np"></div>
+<h2 id="2-freertos-for-stm32">2. FreeRTOS for STM32<a class="headerlink" href="#2-freertos-for-stm32" title="Permanent link">⚓︎</a></h2>
+<p>In the STM32Cube firmware solution, FreeRTOS is used as a real time operating system through the generic CMSIS-OS wrapping layer provided by ARM. Examples and applications using the FreeRTOS can be directly ported on any other RTOS without modifying the high level APIs, only the CMSIS-OS wrapper has to be changed in this case.</p>
+<h3 id="21-main-features">2.1. Main features<a class="headerlink" href="#21-main-features" title="Permanent link">⚓︎</a></h3>
+<ul>
+<li>Preemptive or cooperative real-time kernel</li>
+<li>Tiny memory footprint (less than 10kB ROM) and easy scalable</li>
+<li>Includes a tickless mode for low power applications</li>
+<li>Synchronization and inter-task communication using<ul>
+<li>message queues</li>
+<li>binary and counting semaphores</li>
+<li>mutexes</li>
+<li>group events (flags)</li>
+<li>stream buffer</li>
+</ul>
+</li>
+<li>Software timers for tasks scheduling</li>
+<li>Execution trace functionality</li>
+<li>CMSIS-RTOS API port</li>
+</ul>
+<h3 id="22-used-resources">2.2. Used resources<a class="headerlink" href="#22-used-resources" title="Permanent link">⚓︎</a></h3>
+<p>Core resources:</p>
+<ul>
+<li>System timer (<code>SysTick</code>) – generate system time (time slice)</li>
+<li>Two stack pointers: MSP, PSP</li>
+</ul>
+<p>Interrupt vectors:</p>
+<ul>
+<li><code>SVC</code> – system service call (like SWI in ARM7)</li>
+<li><code>PendSV</code> – pended system call (switching context)</li>
+<li><code>SysTick</code> – System Timer</li>
+</ul>
+<p>Memory:</p>
+<ul>
+<li>Flash: 6-10 KB Flash +</li>
+<li>RAM memory: 0.5 KB + task stacks</li>
+</ul>
+<h3 id="23-file-structure">2.3. File structure<a class="headerlink" href="#23-file-structure" title="Permanent link">⚓︎</a></h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>task.c</code></td>
+<td>ask functions and utilities definition</td>
+</tr>
+<tr>
+<td><code>list.c</code></td>
+<td>List implementation used by the scheduler</td>
+</tr>
+<tr>
+<td><code>queue.c</code></td>
+<td>Queue implementation used by tasks</td>
+</tr>
+<tr>
+<td><code>timers.c</code></td>
+<td>Software timers functions definition</td>
+</tr>
+<tr>
+<td><code>port.c</code></td>
+<td>Low level functions supporting SysTick timer, context switch, interrupt management on low hw level – strongly depends on the platform (core and sw toolset). Mostly written in assembly</td>
+</tr>
+<tr>
+<td><code>FreeRTOS.h</code></td>
+<td>Configuration file which collect whole FreeRTOS sources</td>
+</tr>
+<tr>
+<td><code>FreeRTOSConfig.h</code></td>
+<td>Configuration of FreeRTOS system, system clock and irq parameters configuration</td>
+</tr>
+<tr>
+<td><code>heap_x.c</code></td>
+<td>Different implementation of dynamic memory management</td>
+</tr>
+<tr>
+<td><code>croutine.c</code></td>
+<td>Co-routines functions definitions. Efficient in 8 and 16bit architecture. In 32bit architecture usage of tasks is suggested</td>
+</tr>
+<tr>
+<td><code>event_groups.c</code></td>
+<td>Flags to notify tasks about am event</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-memory-management">2.4. Memory Management<a class="headerlink" href="#24-memory-management" title="Permanent link">⚓︎</a></h3>
+<p>FreeRTOS uses a region of memory called Heap (into the RAM) to allocate memory for tasks, queues, timers , semaphores, mutexes and when dynamically creating variables. FreeRTOS heap is different than the system heap defined at the compiler level.</p>
+<p>When FreeRTOS requires RAM, instead of calling the standard <code>malloc()</code>, it calls <code>PvPortMalloc()</code>. When it needs to free memory it calls <code>PvPortFree()</code> instead of the standard <code>free()</code>.</p>
+<p>FreeRTOS offers several heap management schemes that range in complexity and features. The FreeRTOS download includes five sample memory allocation implementations, each of which are described in the following subsections. The subsections also include information on when each of the provided implementations might be the most appropriate to select.</p>
+<p>Heap management schemes:</p>
+<ul>
+<li><a href="https://www.freertos.org/a00111.html#heap_1">heap_1</a> - the very simplest, does not permit memory to be freed.</li>
+<li><a href="https://www.freertos.org/a00111.html#heap_2">heap_2</a> - permits memory to be freed, but does not coalescence adjacent free blocks.</li>
+<li><a href="https://www.freertos.org/a00111.html#heap_3">heap_3</a> - simply wraps the standard <code>malloc()</code> and free() for thread safety.</li>
+<li><a href="https://www.freertos.org/a00111.html#heap_4">heap_4</a> - coalescence adjacent free blocks to avoid fragmentation. Includes absolute address placement option.</li>
+<li><a href="https://www.freertos.org/a00111.html#heap_5">heap_5</a> - as per <strong>heap_4</strong>, with the ability to span the heap across multiple non-adjacent memory areas.</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li><strong>heap_1</strong> is less useful since FreeRTOS added support for static allocation.</li>
+<li><strong>heap_2</strong> is now considered legacy as the newer <strong>heap_4</strong> implementation is preferred.</li>
+</ul>
+<h3 id="25-interrupts">2.5. Interrupts<a class="headerlink" href="#25-interrupts" title="Permanent link">⚓︎</a></h3>
+<p><strong>PendSV</strong> interrupt</p>
+<ul>
+<li>Used for task switching before tick rate</li>
+<li>Lowest NVIC interrupt priority</li>
+<li>Not triggered by any peripheral</li>
+</ul>
+<p><strong>SVC</strong> interrupt</p>
+<ul>
+<li>Interrupt risen by SVC instruction</li>
+<li>SVC 0 call used only once, to start the scheduler (within <code>vPortStartFirstTask()</code> which is used to start the kernel)</li>
+</ul>
+<p><strong>SysTick</strong> timer</p>
+<ul>
+<li>Lowest NVIC interrupt priority</li>
+<li>Used for task switching on <code>configTICK_RATE_HZ</code> regular time base</li>
+<li>Set PendSV if context switch is necessary</li>
+</ul>
+<h3 id="26-api-conventions">2.6. API conventions<a class="headerlink" href="#26-api-conventions" title="Permanent link">⚓︎</a></h3>
+<ol>
+<li>
+<p>Prefixes at variable names:</p>
+<ul>
+<li><code>c</code> – char / <code>s</code> – short / <code>l</code> – long / <code>u</code> – unsigned</li>
+<li><code>x</code> – portBASE_TYPE defined in <code>portmacro.h</code> for each platform (in STM32 it is long)</li>
+<li><code>p</code> - pointer</li>
+</ul>
+</li>
+<li>
+<p>Functions name structure: <code>prefix</code>+<code>file name</code>+<code>function name</code>.<br/>
+   For example: <code>vTaskPrioritySet()</code>.</p>
+</li>
+<li>
+<p>Prefixes at macros defines their definition location and names.<br/>
+   For example: <code>portMAX_DELAY</code></p>
+</li>
+</ol>
+<h3 id="27-general-configs">2.7. General Configs<a class="headerlink" href="#27-general-configs" title="Permanent link">⚓︎</a></h3>
+<p>Configuration options are declared in file <code>FreeRTOSConfig.h</code>.</p>
+<p>Important configuration options are:</p>
+<table>
+<thead>
+<tr>
+<th>Config option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>configUSE_PREEMPTION</code></td>
+<td>Enables Preemption</td>
+</tr>
+<tr>
+<td><code>configCPU_CLOCK_HZ</code></td>
+<td>CPU clock frequency in Hz</td>
+</tr>
+<tr>
+<td><code>configTICK_RATE_HZ</code></td>
+<td>Tick rate in Hz</td>
+</tr>
+<tr>
+<td><code>configMAX_PRIORITIES</code></td>
+<td>Maximum task priority</td>
+</tr>
+<tr>
+<td><code>configTOTAL_HEAP_SIZE</code></td>
+<td>Total heap size for dynamic allocation</td>
+</tr>
+<tr>
+<td><code>configLIBRARY_LOWEST_INTERRUPT_PRIORITY</code></td>
+<td>Lowest interrupt priority (0xF when using 4 cortex preemption bits)</td>
+</tr>
+<tr>
+<td><code>configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY</code></td>
+<td>Highest thread safe interrupt priority (higher priorities are lower numeric value)</td>
+</tr>
+</tbody>
+</table>
+<p>If <strong>preemption is enabled</strong>, RTOS will uses <strong>pre-emptive</strong> scheduling, otherwise, RTOS will uses <strong>co-operative</strong> scheduling:</p>
 <p>
-<figure><img src="rtos_queue.png"/><figcaption>Queue between tasks</figcaption>
-</figure>
+<figure class="w50"><img src="rtos_preemptive_scheduler.png"/><figcaption>Pre-emptive scheduling</figcaption></figure>
 </p>
-<h2 id="2-lab-0-create-simple-tasks">2. Lab 0: Create simple tasks<a class="headerlink" href="#2-lab-0-create-simple-tasks" title="Permanent link">⚓︎</a></h2>
+<p>
+<figure class="w50"><img src="rtos_co-operative_scheduler.png"/><figcaption>Co-operative scheduling</figcaption></figure>
+</p>
+<p>The <code>xPortGetFreeHeapSize()</code> API function returns the total amount of heap space that remains unallocated (allowing the <code>configTOTAL_HEAP_SIZE</code> setting to be optimized).
+The total amount of heap space that remains unallocated is also available with <code>xFreeBytesRemaining</code> variable for heap management schemes 2 to 5.</p>
+<p>Each created task (including the idle task) requires a Task Control Block (TCB) and a stack that are allocated in the heap.
+The TCB size in bytes depends of the options enabled in the <code>FreeRTOSConfig.h</code>:</p>
+<ul>
+<li>With minimum configuration the TCB size is 24 words i.e 96 bytes.</li>
+<li>if <code>configUSE_TASK_NOTIFICATIONS</code> enabled add 8 bytes (2 words)</li>
+<li>if <code>configUSE_TRACE_FACILITY</code> enabled add 8 bytes (2 words)</li>
+<li>if <code>configUSE_MUTEXES</code> enabled add 8 bytes (2 words).</li>
+</ul>
+<p>The task stack size is passed as argument when creating at task. The task stack size is defined in words of 32 bits not in bytes.
+<code>Task Memory = TCB size + (4 x Task Stack size)</code>.</p>
+<p>The <code>configMINIMAL_STACK_SIZE</code> defines the minimum stack size that can be used in words. the idle task stack size takes automatically this value.</p>
+<p>When Soft Timers are enabled (<code>configUSE_TIMERS</code> enabled) , the scheduler creates automatically the timers service task (daemon) when started. The timers service task is used to control and monitor (internally) all timers that the user will create.
+The scheduler also creates automatically a message queue used to send commands to the timers task (timer start, timer stop, etc.).</p>
+<p>The number of elements of a queue (number of messages that can be hold) are configurable through the define <code>configTIMER_QUEUE_LENGTH</code>.</p>
+<h3 id="28-cmsis_os-api">2.8. CMSIS_OS API<a class="headerlink" href="#28-cmsis_os-api" title="Permanent link">⚓︎</a></h3>
+<ul>
+<li>CMSIS-OS API is a generic RTOS interface for Cortex-M processor based devices.<br/>
+    Implementation in file <code>cmsis-os.c</code> in <code>\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS</code>.</li>
+<li>Middleware components using the CMSIS-OS API are RTOS independent, this allows an easy linking to any third-party RTOS.</li>
+<li>The CMSIS-OS API defines a minimum feature set including<ul>
+<li>Thread Management</li>
+<li>Kernel control</li>
+<li>Semaphore management</li>
+<li>Message queue and mail queue</li>
+<li>Memory management</li>
+</ul>
+</li>
+</ul>
+<p>For detailed documents, refer to <a href="http://www.keil.com/pack/doc/CMSIS/RTOS/html/index.html">http://www.keil.com/pack/doc/CMSIS/RTOS/html/index.html</a>.</p>
+<div class="np"></div>
+<h4 id="281-cmsos_rtos-wrapper">2.8.1. CMSOS_RTOS Wrapper<a class="headerlink" href="#281-cmsos_rtos-wrapper" title="Permanent link">⚓︎</a></h4>
+<table>
+<thead>
+<tr>
+<th>API category</th>
+<th>CMSIS_RTOS API</th>
+<th>FreeRTOS API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kernel control</td>
+<td><code>osKernelStart</code></td>
+<td><code>vTaskStartScheduler</code></td>
+</tr>
+<tr>
+<td>Thread management</td>
+<td><code>osThreadCreate</code></td>
+<td><code>xTaskCreate</code></td>
+</tr>
+<tr>
+<td>Semaphore</td>
+<td><code>osSemaphoreCreate</code></td>
+<td><code>vSemaphoreCreateBinary</code>, <code>xSemaphoreCreateCounting</code></td>
+</tr>
+<tr>
+<td>Mutex</td>
+<td><code>osMutexWait</code></td>
+<td><code>xSemaphoreTake</code></td>
+</tr>
+<tr>
+<td>Message queue</td>
+<td><code>osMessagePut</code></td>
+<td><code>xQueueSend</code>, <code>xQueueSendFromISR</code></td>
+</tr>
+<tr>
+<td>Timer</td>
+<td><code>osTimerCreate</code></td>
+<td><code>xTimerCreate</code></td>
+</tr>
+</tbody>
+</table>
+<p>Most of the functions returns <code>osStatus</code> value, which allows to check whether the function is completed or there was some issue (defined in the <code>cmsis_os.h</code> file).</p>
+<p>Each OS component has its own ID:</p>
+<ul>
+<li>Tasks: <code>osThreadId</code> (mapped to <code>TaskHandle_t</code> within FreeRTOS API)</li>
+<li>Queues: <code>osMessageQId</code> (mapped to <code>QueueHandle_t</code> within FreeRTOS API)</li>
+<li>Semaphores: <code>osSemaphoreId</code> (mapped to <code>SemaphoreHandle_t</code> within FreeRTOS API)</li>
+<li>Mutexes: <code>osMutexId</code> (mapped to <code>SemaphoreHandle_t</code> within FreeRTOS API)</li>
+<li>SW timers: <code>osTimerId</code> (mapped to <code>TimerHandle_t</code> within FreeRTOS API)</li>
+</ul>
+<p>Delays and timeouts are given in ms:</p>
+<ul>
+<li><code>0</code> – no delay</li>
+<li><code>&gt;0</code> – delay in ms</li>
+<li><code>0xFFFFFFFF</code> – wait forever (defined in osWaitForever within cmsis_os.h file)</li>
+</ul>
+<h2 id="3-lab-0-create-simple-tasks">3. Lab 0: Create simple tasks<a class="headerlink" href="#3-lab-0-create-simple-tasks" title="Permanent link">⚓︎</a></h2>
 <p>Assume that an application intend to toggle two LEDs at 1 Second and 2 Second intervals respectively. Below is a bare-metal approach (without timers) of doing it:</p>
 <div class="row">
 <div class="col">
@@ -2120,26 +2638,29 @@
 <p>This lab guides to setup RTOS with 3 simple tasks to blink LEDs and read one input button.</p>
 </div>
 </div>
-<h3 id="21-enable-rtos">2.1. Enable RTOS<a class="headerlink" href="#21-enable-rtos" title="Permanent link">⚓︎</a></h3>
-<p>Under the <strong>Pinout and Configuration</strong> tab, select the <strong>Middleware</strong> section and choose <strong>FreeRTOS</strong>.</p>
-<p>There are 2 version of CMSIS wrapper: Vesion 1 and Version 2. The differences are listed in <a href="https://arm-software.github.io/CMSIS_5/RTOS2/html/os2MigrationFunctions.html">ARM document site</a>. Note to enable the option <em>USE_PREEMPTION</em>.</p>
+<h3 id="31-create-a-new-project">3.1. Create a new project<a class="headerlink" href="#31-create-a-new-project" title="Permanent link">⚓︎</a></h3>
+<p>Start a new project and select a target MCU. After setting up the clock and basic pinouts, it is the time to select a timer for HAL timebase.</p>
+<p>
+<figure class="w80"><img src="select_hal_timebase.png"/><figcaption>Select timebase source for HAL functions</figcaption></figure>
+</p>
+<h3 id="32-enable-rtos">3.2. Enable RTOS<a class="headerlink" href="#32-enable-rtos" title="Permanent link">⚓︎</a></h3>
+<p>Under the <strong>Pinout and Configuration</strong> tab, select the <strong>Middleware</strong> section and choose <strong>FreeRTOS</strong>. There are 2 version of CMSIS wrapper: Vesion 1 and Version 2. The differences are listed in <a href="https://arm-software.github.io/CMSIS_5/RTOS2/html/os2MigrationFunctions.html">ARM document site</a>.</p>
+<p>Note to enable the option <em>USE_PREEMPTION</em>. User can config some features of RTOS through a list of enabled definition.</p>
+<h3 id="33-add-tasks">3.3. Add Tasks<a class="headerlink" href="#33-add-tasks" title="Permanent link">⚓︎</a></h3>
+<p>Adding a task using IDE is very simple. In the tab <strong>Tasks and Queues</strong>, add 3 new tasks by filling some importance settings for a task: Task Name, Task Priority, Task Stack size, and Task Function.</p>
+<p>It is optional to set the Task Allocation mode, which is set to Dymamic as default.</p>
 <p>
 <figure><img src="enable_rtos.png"/><figcaption>Enable RTOS version 10 with CMSIS V2</figcaption>
 </figure>
 </p>
-<p>User can config some features of RTOS through a list of enabled definition.</p>
-<p>
-<figure class="w80"><img src="set_rtos_params.png"/><figcaption>RTOS optional definitions</figcaption></figure>
-</p>
-<h3 id="22-add-tasks">2.2. Add Tasks<a class="headerlink" href="#22-add-tasks" title="Permanent link">⚓︎</a></h3>
-<p>Adding a task using IDE is very simple. In the tab <strong>Tasks and Queues</strong>, add 3 new tasks by filling the Task Name, Task Stack, and Task Function.</p>
 <p>
 <figure><img src="add_rtos_tasks.png"/><figcaption>Add a new Task</figcaption>
 </figure>
 </p>
-<h3 id="23-rtos-components">2.3. RTOS components<a class="headerlink" href="#23-rtos-components" title="Permanent link">⚓︎</a></h3>
+<div class="np"></div>
+<h3 id="34-rtos-components">3.4. RTOS components<a class="headerlink" href="#34-rtos-components" title="Permanent link">⚓︎</a></h3>
 <div class="row">
-<div class="col">
+<div class="col breakable-image">
 <p>
 <figure><img src="rtos_components.png"/><figcaption>RTOS components</figcaption>
 </figure>
@@ -2208,7 +2729,7 @@
 </ul>
 <p>That is enough to create 3 concurrent tasks. Let’s run it and see how the LEDs and the button work.</p>
 <div class="np"></div>
-<h3 id="24-the-idle-task">2.4. The Idle Task<a class="headerlink" href="#24-the-idle-task" title="Permanent link">⚓︎</a></h3>
+<h3 id="35-the-idle-task">3.5. The Idle Task<a class="headerlink" href="#35-the-idle-task" title="Permanent link">⚓︎</a></h3>
 <p>When running in a debug session, CubeIDE supports to see the state of all tasks under FreeRTOS environment. To open it, click on <strong>Windows</strong> » <strong>Show View</strong> » <strong>FreeRTOS</strong>.</p>
 <p>There is 2 new tasks appearing in the list: <em>IDLE</em> and <em>TmrSrv</em>.</p>
 <p>
@@ -2218,7 +2739,7 @@
 <p>The idle task is created automatically when the RTOS scheduler is started to ensure there is always at least one task that is able to run. It is created at the lowest possible priority to ensure it does not use any CPU time if there are higher priority application tasks in the ready state.</p>
 <p>The idle task is responsible for freeing memory allocated by the RTOS to tasks that have since been deleted. It is therefore important in applications that make use of the <code>vTaskDelete()</code> function to ensure the idle task is not starved of processing time. The idle task has no other active functions so can legitimately be starved of microcontroller time under all other conditions.</p>
 <p><strong>The Idle Task Hook</strong>: An idle task hook is a function that is called during each cycle of the idle task. It is common to use the idle hook function to place the microcontroller CPU into a power saving mode.</p>
-<h3 id="25-the-timer-service">2.5. The Timer Service<a class="headerlink" href="#25-the-timer-service" title="Permanent link">⚓︎</a></h3>
+<h3 id="36-the-timer-service">3.6. The Timer Service<a class="headerlink" href="#36-the-timer-service" title="Permanent link">⚓︎</a></h3>
 <p>There is a dedicated <code>Tmr Svc</code> (Timer Service or Daemon) task that maintains an ordered list of <em>Software Timers</em>, with the timer to expire next in front of the list). The Timer Service task is not continuously running: from the Timer List, the task knows the time when it has to wake up each time a timer in the timer list has expired. When a timer has expired, the Timer Service task calls its callback (the Timer callback).</p>
 <p><br/>
 <strong>A Software Timer</strong></p>
@@ -2267,12 +2788,12 @@
 <figure><img src="rtos_softtimer.png"/><figcaption>Software Timer and the Timer Service status</figcaption>
 </figure>
 </p>
-<div data-value="https://www.codeinsideout.com/blog/stm32/rtos/overview/" id="page_url"></div>
-<div data-value="blog/stm32/rtos/overview/" id="page_identifier"></div>
+<div data-value="https://www.codeinsideout.com/blog/stm32/free-rtos/overview/" id="page_url"></div>
+<div data-value="blog/stm32/free-rtos/overview/" id="page_identifier"></div>
 <div>
 <h2 id="__comments">Comments</h2>
 <div id="disqus_thread"></div>
-<script>var disqus_config = function () { this.page.url = "https://www.codeinsideout.com/blog/stm32/rtos/overview/", this.page.identifier = "blog/stm32/rtos/overview/" }; window.addEventListener("load", function () { var e = document, i = e.createElement("script"); i.src = "//vuquangtrong-github-io.disqus.com/embed.js", i.setAttribute("data-timestamp", +new Date), (e.head || e.body).appendChild(i) })</script>
+<script>var disqus_config = function () { this.page.url = "https://www.codeinsideout.com/blog/stm32/free-rtos/overview/", this.page.identifier = "blog/stm32/free-rtos/overview/" }; window.addEventListener("load", function () { var e = document, i = e.createElement("script"); i.src = "//vuquangtrong-github-io.disqus.com/embed.js", i.setAttribute("data-timestamp", +new Date), (e.head || e.body).appendChild(i) })</script>
 </div>
 </article>
 </div>
@@ -2284,7 +2805,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: RTOS" class="md-footer__link md-footer__link--prev" href="../" rel="prev">
+<a aria-label="Previous: FreeRTOS" class="md-footer__link md-footer__link--prev" href="../" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -2293,7 +2814,7 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              RTOS
+              FreeRTOS
             </div>
 </div>
 </a>

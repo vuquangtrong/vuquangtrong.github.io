@@ -282,6 +282,37 @@
         SSD1306 OLED
       </a>
 </li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_19" id="__nav_2_1_19" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_1_19">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/free-rtos/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          FreeRTOS
+        </a>
+</label>
+<nav aria-label="FreeRTOS" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_1_19">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../stm32/free-rtos/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            FreeRTOS
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/free-rtos/overview/">
+        RTOS Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../stm32/free-rtos/systick/">
+        RTOS SysTick
+      </a>
+</li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../stm32/j-link-rtt/">
         J-Link RTT
@@ -291,37 +322,6 @@
 <a class="md-nav__link" href="../../stm32/j-link-sysview/">
         J-Link SysView
       </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_21" id="__nav_2_1_21" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_1_21">
-<span class="md-nav__icon md-icon"></span>
-<a class="md-nav__link" href="../../stm32/rtos/" style="margin: initial; padding: initial; pointer-events: initial">
-        
-          RTOS
-        </a>
-</label>
-<nav aria-label="RTOS" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_2_1_21">
-<span class="md-nav__icon md-icon"></span>
-<a class="md-nav__link" href="../../stm32/rtos/" style="margin: initial; padding: initial; pointer-events: initial">
-          
-            RTOS
-          </a>
-</label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/rtos/overview/">
-        RTOS Overview
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../stm32/rtos/systick/">
-        RTOS SysTick
-      </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../stm32/notes/">
@@ -470,24 +470,58 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#2-install-livox-sdk">
-    2. Install Livox SDK
+<a class="md-nav__link" href="#2-dependencies">
+    2. Dependencies
   </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#3-install-livox-ros-driver">
-    3. Install Livox ROS Driver
-  </a>
-<nav aria-label="3. Install Livox ROS Driver" class="md-nav">
+<nav aria-label="2. Dependencies" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#31-install-ros">
-    3.1. Install ROS
+<a class="md-nav__link" href="#21-point-cloud-library">
+    2.1. Point Cloud Library
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#install-livox-ros-driver">
-    Install Livox ROS driver
+<a class="md-nav__link" href="#22-eigen">
+    2.2. Eigen
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-opencv">
+    2.3. OpenCV
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-re-link-libraries">
+    2.4. Re-link libraries
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-install-livox-sdk">
+    3. Install Livox SDK
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-install-livox-ros-driver">
+    4. Install Livox ROS Driver
+  </a>
+<nav aria-label="4. Install Livox ROS Driver" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-install-ros">
+    4.1. Install ROS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-install-livox-ros-driver">
+    4.2. Install Livox ROS driver
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-missing-features">
+    4.3. Missing features
   </a>
 </li>
 </ul>
@@ -668,166 +702,138 @@
 <label class="md-nav__title">Tag cloud</label>
 </p>
 <div class="tag-cloud-content">
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">hls</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkSlateGray;
-        ">javascript</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkRed;
-        ">ssd1306</span>
+        ">tutorial</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkOrchid;
-        ">picamera</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkViolet;
-        ">backup</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">c</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">capture</span>
+          color:DarkOliveGreen;
+        ">spi</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#uart">
 <span class="tag-name" style="
           font-size:0.65rem;
-          color:DarkOrchid;
+          color:DarkGoldenrod;
         ">uart</span>
 <!--<sup class="tag-count">3</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkBlue;
-        ">ffmpeg</span>
+          color:DarkOrchid;
+        ">javascript</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkViolet;
-        ">joystick</span>
+          color:DarkOrchid;
+        ">pwm</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkOliveGreen;
+        ">camera</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.4rem;
+          color:DarkGoldenrod;
+        ">arm</span>
+<!--<sup class="tag-count">18</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">systick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkGoldenrod;
-        ">html</span>
+        ">c</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">sysview</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#dma">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkBlue;
+          color:DarkGreen;
         ">dma</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">tutorial</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkGoldenrod;
-        ">linux</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">gpio</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkMagenta;
-        ">ros</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">mjpeg</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">systick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#css">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">css</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="
-          font-size:0.65rem;
           color:DarkTurquoise;
-        ">notes</span>
-<!--<sup class="tag-count">3</sup>-->
+        ">livox</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkMagenta;
-        ">lidar</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
-        ">omx</span>
+          color:DarkGoldenrod;
+        ">top</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOrchid;
-        ">sdcard</span>
+          color:DarkBlue;
+        ">tweaks</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOliveGreen;
+        ">interrupt</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#stream">
 <span class="tag-name" style="
@@ -836,53 +842,193 @@
         ">stream</span>
 <!--<sup class="tag-count">3</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">sysview</span>
+          color:DarkMagenta;
+        ">awk</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
-        ">material</span>
+          color:DarkBlue;
+        ">omx</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
-        ">sensor</span>
+          color:DarkCyan;
+        ">sharing</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkMagenta;
+        ">debug</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">bash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.95rem;
+          color:DarkGreen;
+        ">pi</span>
+<!--<sup class="tag-count">9</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">pulse</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">swv</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">hls</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkCyan;
+        ">notes</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">timer</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
 <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
+          font-size:0.6rem;
+          color:DarkOliveGreen;
         ">rtos</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">grep</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">h264</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
+          color:DarkOliveGreen;
         ">headless</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">mapping</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#container">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
+          color:DarkCyan;
         ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">semihosting</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">css</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkViolet;
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">mapping</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">hardware accelerator</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
@@ -892,257 +1038,47 @@
         ">clock</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#board">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">board</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">adc</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">timer</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">docker</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkRed;
-        ">interrupt</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">dash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">semihosting</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">v4l2</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">usart</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="
-          font-size:0.95rem;
-          color:DarkBlue;
-        ">pi</span>
-<!--<sup class="tag-count">9</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">ajax</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkGreen;
+          color:DarkRed;
         ">rtt</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#awk">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">awk</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">gnuplot</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">c++</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">h264</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">redirect</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">restore</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">markdown</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">top</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">distance</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">pwm</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkRed;
-        ">debug</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">tweaks</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="
-          font-size:1.4500000000000002rem;
-          color:DarkOrchid;
-        ">stm32</span>
-<!--<sup class="tag-count">19</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">performance</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkSlateBlue;
-        ">livox</span>
+          color:DarkOrchid;
+        ">i2c</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkOliveGreen;
-        ">mkdocs</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">oled</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkOliveGreen;
-        ">swv</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">pulse</span>
+        ">capture</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkViolet;
+          color:DarkTurquoise;
         ">virtual</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkTurquoise;
-        ">camera</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkSlateGray;
-        ">i2c</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
-        ">spi</span>
+          color:DarkMagenta;
+        ">toolchain</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
 <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">grep</span>
-<!--<sup class="tag-count">1</sup>-->
+          font-size:0.65rem;
+          color:DarkViolet;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#docs">
 <span class="tag-name" style="
@@ -1151,68 +1087,166 @@
         ">docs</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkBlue;
-        ">python</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkCyan;
-        ">sharing</span>
+          color:DarkOliveGreen;
+        ">performance</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkTurquoise;
+        ">stm32</span>
+<!--<sup class="tag-count">20</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkTurquoise;
-        ">hardware accelerator</span>
+        ">redirect</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#backup">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">backup</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkViolet;
+        ">lidar</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">samba</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
+          color:DarkViolet;
         ">jinja</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">restore</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">sdcard</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">dash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">docker</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOrchid;
+          color:DarkSlateBlue;
         ">pdf</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
-        ">samba</span>
+          color:DarkTurquoise;
+        ">v4l2</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
 <span class="tag-name" style="
-          font-size:1.35rem;
-          color:DarkOliveGreen;
-        ">arm</span>
-<!--<sup class="tag-count">17</sup>-->
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkBlue;
-        ">toolchain</span>
+        ">mjpeg</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
-        ">bash</span>
+          color:DarkSlateGray;
+        ">gpio</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">gnuplot</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkCyan;
+        ">ros</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOrchid;
+        ">linux</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOrchid;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOrchid;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
 </a>
 </div>
 </div>
@@ -1234,24 +1268,58 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#2-install-livox-sdk">
-    2. Install Livox SDK
+<a class="md-nav__link" href="#2-dependencies">
+    2. Dependencies
   </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#3-install-livox-ros-driver">
-    3. Install Livox ROS Driver
-  </a>
-<nav aria-label="3. Install Livox ROS Driver" class="md-nav">
+<nav aria-label="2. Dependencies" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#31-install-ros">
-    3.1. Install ROS
+<a class="md-nav__link" href="#21-point-cloud-library">
+    2.1. Point Cloud Library
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#install-livox-ros-driver">
-    Install Livox ROS driver
+<a class="md-nav__link" href="#22-eigen">
+    2.2. Eigen
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-opencv">
+    2.3. OpenCV
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-re-link-libraries">
+    2.4. Re-link libraries
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-install-livox-sdk">
+    3. Install Livox SDK
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-install-livox-ros-driver">
+    4. Install Livox ROS Driver
+  </a>
+<nav aria-label="4. Install Livox ROS Driver" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-install-ros">
+    4.1. Install ROS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-install-livox-ros-driver">
+    4.2. Install Livox ROS driver
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-missing-features">
+    4.3. Missing features
   </a>
 </li>
 </ul>
@@ -1264,46 +1332,137 @@
 <label class="md-nav__title">Tag cloud</label>
 </p>
 <div class="tag-cloud-content">
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">gnuplot</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkBlue;
-        ">v4l2</span>
+        ">grep</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkRed;
-        ">samba</span>
+          color:DarkSlateBlue;
+        ">oled</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
-        ">bash</span>
+          color:DarkBlue;
+        ">jinja</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkMagenta;
-        ">hls</span>
+        ">distance</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
 <span class="tag-name" style="
-          font-size:0.95rem;
-          color:DarkOrchid;
-        ">pi</span>
-<!--<sup class="tag-count">9</sup>-->
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkViolet;
+        ">notes</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkCyan;
+        ">rtos</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">redirect</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOrchid;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">c</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">systick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkCyan;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkBlue;
-        ">c++</span>
+        ">virtual</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">clock</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#awk">
@@ -1313,502 +1472,411 @@
         ">awk</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkSlateBlue;
-        ">notes</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">hardware accelerator</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">oled</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">restore</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkViolet;
-        ">debug</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">headless</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGoldenrod;
-        ">linux</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkBlue;
+          color:DarkCyan;
         ">pulse</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkRed;
-        ">ros</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="
-          font-size:1.35rem;
-          color:DarkRed;
-        ">arm</span>
-<!--<sup class="tag-count">17</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">h264</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">jinja</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#css">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">css</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">tweaks</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkMagenta;
+          color:DarkCyan;
         ">javascript</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">spi</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">mapping</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">omx</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">joystick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkSlateGray;
-        ">dma</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkRed;
-        ">picamera</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="
-          font-size:1.4500000000000002rem;
-          color:DarkGoldenrod;
-        ">stm32</span>
-<!--<sup class="tag-count">19</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#material">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">material</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gnuplot">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">gnuplot</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">adc</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkTurquoise;
-        ">i2c</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">swv</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">mjpeg</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkBlue;
-        ">board</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">pwm</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">toolchain</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">c</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">docker</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGreen;
-        ">uart</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">tutorial</span>
+        ">css</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#dash">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
+          color:DarkOrchid;
         ">dash</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">clock</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">ssd1306</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<a class="tag" href="https://www.codeinsideout.com/tags/#tutorial">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkBlue;
-        ">redirect</span>
+        ">tutorial</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
+          color:DarkSlateBlue;
         ">sdcard</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#html">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">html</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">rtos</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">usart</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">sensor</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">timer</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGreen;
-        ">livox</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#container">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">container</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">ajax</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkCyan;
-        ">python</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGoldenrod;
-        ">interrupt</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">systick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#top">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">top</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">distance</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#grep">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">grep</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkTurquoise;
-        ">stream</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">capture</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">sharing</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkBlue;
-        ">mkdocs</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">sysview</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">semihosting</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">gpio</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkViolet;
-        ">rtt</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkBlue;
-        ">ffmpeg</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">markdown</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
+          color:DarkViolet;
         ">performance</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#backup">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkCyan;
+          color:DarkTurquoise;
         ">backup</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">linux</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#restore">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">restore</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkGoldenrod;
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">samba</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGoldenrod;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
+          color:DarkGreen;
         ">pdf</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">toolchain</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">swv</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">sharing</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkCyan;
+        ">rtt</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkTurquoise;
+        ">ros</span>
+<!--<sup class="tag-count">3</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
 <span class="tag-name" style="
           font-size:0.75rem;
-          color:DarkMagenta;
+          color:DarkCyan;
         ">camera</span>
 <!--<sup class="tag-count">5</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
-        ">virtual</span>
+          color:DarkSlateBlue;
+        ">html</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">docs</span>
+          color:DarkOrchid;
+        ">bash</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#tweaks">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">tweaks</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGreen;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
 <span class="tag-name" style="
           font-size:0.65rem;
-          color:DarkOrchid;
+          color:DarkBlue;
         ">lidar</span>
 <!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#top">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">top</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkBlue;
+        ">livox</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">h264</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.4rem;
+          color:DarkSlateGray;
+        ">arm</span>
+<!--<sup class="tag-count">18</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkSlateBlue;
+        ">debug</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">mapping</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.95rem;
+          color:DarkCyan;
+        ">pi</span>
+<!--<sup class="tag-count">9</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.5rem;
+          color:DarkOrchid;
+        ">stm32</span>
+<!--<sup class="tag-count">20</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#omx">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">omx</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">semihosting</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hardware accelerator">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">hardware accelerator</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">docker</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGoldenrod;
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGreen;
+        ">i2c</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">spi</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">hls</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkRed;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkCyan;
+        ">interrupt</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
 </div>
 </div>
@@ -1844,12 +1912,17 @@
                         #livox
                     </span>
 </a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name">
+                        #ros
+                    </span>
+</a>
 </p>
 <p class="md-source-date">
 <hr style="margin-bottom: .5em;"/>
 <small>
                             Last update:
-                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-29 15:27:33</span>
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-07-23 14:38:22</span>
 </small>
 </p>
 </div>
@@ -1900,24 +1973,58 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#2-install-livox-sdk">
-    2. Install Livox SDK
+<a class="md-nav__link" href="#2-dependencies">
+    2. Dependencies
   </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#3-install-livox-ros-driver">
-    3. Install Livox ROS Driver
-  </a>
-<nav aria-label="3. Install Livox ROS Driver" class="md-nav">
+<nav aria-label="2. Dependencies" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#31-install-ros">
-    3.1. Install ROS
+<a class="md-nav__link" href="#21-point-cloud-library">
+    2.1. Point Cloud Library
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#install-livox-ros-driver">
-    Install Livox ROS driver
+<a class="md-nav__link" href="#22-eigen">
+    2.2. Eigen
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-opencv">
+    2.3. OpenCV
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-re-link-libraries">
+    2.4. Re-link libraries
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-install-livox-sdk">
+    3. Install Livox SDK
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-install-livox-ros-driver">
+    4. Install Livox ROS Driver
+  </a>
+<nav aria-label="4. Install Livox ROS Driver" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-install-ros">
+    4.1. Install ROS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-install-livox-ros-driver">
+    4.2. Install Livox ROS driver
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-missing-features">
+    4.3. Missing features
   </a>
 </li>
 </ul>
@@ -1939,16 +2046,33 @@ sudo apt-get install -y curl <span class="o">&amp;&amp;</span> <span class="se">
 sudo apt-get install -y git <span class="o">&amp;&amp;</span> <span class="se">\</span>
 sudo apt-get install -y cmake
 </code></pre></div>
-<h2 id="2-install-livox-sdk">2. Install Livox SDK<a class="headerlink" href="#2-install-livox-sdk" title="Permanent link">⚓︎</a></h2>
+<h2 id="2-dependencies">2. Dependencies<a class="headerlink" href="#2-dependencies" title="Permanent link">⚓︎</a></h2>
+<h3 id="21-point-cloud-library">2.1. Point Cloud Library<a class="headerlink" href="#21-point-cloud-library" title="Permanent link">⚓︎</a></h3>
+<p>The <a href="https://pointclouds.org/">Point Cloud Library</a> (PCL) is a large scale, open project[1] for point cloud processing. The PCL framework contains numerous state-of-the art algorithms including filtering, feature estimation, surface reconstruction, registration, model fitting and segmentation.</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y libpcl-dev
+</code></pre></div>
+<h3 id="22-eigen">2.2. Eigen<a class="headerlink" href="#22-eigen" title="Permanent link">⚓︎</a></h3>
+<p><a href="http://eigen.tuxfamily.org/">Eigen</a> is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y libeigen3-dev
+</code></pre></div>
+<h3 id="23-opencv">2.3. OpenCV<a class="headerlink" href="#23-opencv" title="Permanent link">⚓︎</a></h3>
+<p><strong>OpenCV</strong> (Open Source Computer Vision Library) is an open-source computer vision library and has bindings for C++, Python, and Java. It is used for a very wide range of applications, including medical image analysis, stitching street view images, surveillance video, detecting and recognizing faces, tracking moving objects, extracting 3D models, and much more. OpenCV can take advantage of multi-core processing and features GPU acceleration for real-time operation.</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y python-opencv python3-opencv
+</code></pre></div>
+<h3 id="24-re-link-libraries">2.4. Re-link libraries<a class="headerlink" href="#24-re-link-libraries" title="Permanent link">⚓︎</a></h3>
+<div class="highlight"><pre><span></span><code>sudo ln -s /usr/bin/vtk6 /usr/bin/vtk
+sudo ln -s /usr/lib/python2.7/dist-packages/vtk/libvtkRenderingPythonTkWidgets.x86_64-linux-gnu.so /usr/lib/x86_64-linux-gnu/libvtkRenderingPythonTkWidgets.so
+</code></pre></div>
+<h2 id="3-install-livox-sdk">3. Install Livox SDK<a class="headerlink" href="#3-install-livox-sdk" title="Permanent link">⚓︎</a></h2>
 <div class="admonition info nt">
 <p class="admonition-title"> </p>
-<p><a href="https://github.com/Livox-SDK/Livox-SDK">https://github.com/Livox-SDK/Livox-SDK</a></p>
+<p>The official guide is at <a href="https://github.com/Livox-SDK/Livox-SDK">https://github.com/Livox-SDK/Livox-SDK</a>.</p>
 </div>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/Livox-SDK/Livox-SDK.git
-<span class="nb">cd</span> Livox-SDK
-<span class="nb">cd</span> build
-cmake ..
-make
+<div class="highlight"><pre><span></span><code>git clone https://github.com/Livox-SDK/Livox-SDK.git <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> Livox-SDK <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> build <span class="o">&amp;&amp;</span> <span class="se">\</span>
+cmake .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
+make <span class="o">&amp;&amp;</span> <span class="se">\</span>
 sudo make install
 </code></pre></div>
 <div class="admonition note">
@@ -1961,93 +2085,53 @@ sudo make install
 <div class="highlight"><pre><span></span><code>sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 </code></pre></div>
 <p>Cross Compile Livox-SDK for ARM 32 bits tool-chain，In the Livox SDK directory，run the following commands to cross compile the project:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Livox-SDK
-<span class="nb">cd</span> build
-cmake .. -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux -DCMAKE_C_COMPILER<span class="o">=</span>arm-linux-gnueabi-gcc -DCMAKE_CXX_COMPILER<span class="o">=</span>arm-linux-gnueabi-g++
-make
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Livox-SDK <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> build <span class="o">&amp;&amp;</span> <span class="se">\</span>
+cmake .. -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux <span class="o">&amp;&amp;</span> <span class="se">\</span>
+-DCMAKE_C_COMPILER<span class="o">=</span>arm-linux-gnueabi-gcc <span class="o">&amp;&amp;</span> <span class="se">\</span>
+-DCMAKE_CXX_COMPILER<span class="o">=</span>arm-linux-gnueabi-g++ <span class="o">&amp;&amp;</span> <span class="se">\</span>
+make  <span class="o">&amp;&amp;</span> <span class="se">\</span>
 sudo make install
 </code></pre></div>
 <p>For ARM 64 bits tool-chain，in the Livox SDK directory，run the following commands to cross compile the project:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Livox-SDK
-<span class="nb">cd</span> build
-cmake .. -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux -DCMAKE_C_COMPILER<span class="o">=</span>aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER<span class="o">=</span>aarch64-linux-gnu-g++
-make
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Livox-SDK <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">cd</span> build <span class="o">&amp;&amp;</span> <span class="se">\</span>
+cmake .. -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux <span class="o">&amp;&amp;</span> <span class="se">\ </span>-DCMAKE_C_COMPILER<span class="o">=</span>aarch64-linux-gnu-gcc <span class="o">&amp;&amp;</span> <span class="se">\ </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>aarch64-linux-gnu-g++ <span class="o">&amp;&amp;</span> <span class="se">\</span>
+make <span class="o">&amp;&amp;</span> <span class="se">\</span>
 sudo make install
 </code></pre></div>
-<p>Note:</p>
-<p>gcc/g++ cross compiler need to support C ++11 standard</p>
+<p>Note that <code>gcc</code>/<code>g++</code> cross compiler need to support C ++11 standard.</p>
 </div>
-<p>Read more in the GitHub page: <a href="https://github.com/Livox-SDK/Livox-SDK">https://github.com/Livox-SDK/Livox-SDK</a>.</p>
-<h2 id="3-install-livox-ros-driver">3. Install Livox ROS Driver<a class="headerlink" href="#3-install-livox-ros-driver" title="Permanent link">⚓︎</a></h2>
+<h2 id="4-install-livox-ros-driver">4. Install Livox ROS Driver<a class="headerlink" href="#4-install-livox-ros-driver" title="Permanent link">⚓︎</a></h2>
 <p>ROS driver can be run under Ubuntu 14.04/ 16.04/ 18.04 operating system with ROS environment (indigo, kinetic, melodic) installed.</p>
-<h3 id="31-install-ros">3.1. Install ROS<a class="headerlink" href="#31-install-ros" title="Permanent link">⚓︎</a></h3>
-<p>ROS (Robot Operating System) provides libraries and tools to help software developers create robot applications. It provides hardware abstraction, device drivers, libraries, visualizers, message-passing, package management, and more.
-Be sure to install the full version of ROS (ros-distro-desktop-full).</p>
-<p><br/>
-<strong>1. Configure Ubuntu repositories</strong></p>
-<p>Configure Ubuntu repositories to allow “restricted,” “universe,” and “multiverse.”
-<figure><img src="ubuntu_sw_source.png"/><figcaption>Ubuntu repositories</figcaption>
-</figure>
-</p>
-<p><br/>
-<strong>2. Setup <code>sources.list</code></strong></p>
+<h3 id="41-install-ros">4.1. Install ROS<a class="headerlink" href="#41-install-ros" title="Permanent link">⚓︎</a></h3>
+<p>ROS (Robot Operating System) provides libraries and tools to help software developers create robot applications. It provides hardware abstraction, device drivers, libraries, visualizers, message-passing, package management, and more. Be sure to install the full version of ROS (ros-&lt;distro&gt;-desktop-full).</p>
+<p>Refer to <a href="../../ros/tutorial-beginner/#1-install-ros">Install ROS</a> guide to complete the installation.</p>
+<p>Main steps include:</p>
+<ol>
+<li>
+<p>Setup source list to get ROS packages:</p>
 <div class="highlight"><pre><span></span><code>sudo sh -c <span class="s1">'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" &gt; /etc/apt/sources.list.d/ros-latest.list'</span>
 </code></pre></div>
-<p><br/>
-<strong>3. Set up keys</strong></p>
-<div class="highlight"><pre><span></span><code>sudo apt-get install -y curl
+</li>
+<li>
+<p>Add keys:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y curl <span class="o">&amp;&amp;</span> <span class="se">\</span>
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span class="p">|</span> sudo apt-key add -
 </code></pre></div>
-<p><br/>
-<strong>4. Refresh repos</strong></p>
-<div class="highlight"><pre><span></span><code>sudo apt-get update
+</li>
+<li>
+<p>Then pull the package list:</p>
+<div class="highlight"><pre><span></span><code>sudo apt update
 </code></pre></div>
-<p><br/>
-<strong>5. Install ROS</strong></p>
-<p>ROS has different models, such as Melodic, Noetic, etc. See current models in <a href="https://www.ros.org/install/">https://www.ros.org/install/</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">What is the difference between ROS Melodic model and Noetic model?</p>
-<p>There aren’t many differences at the base level. The ROS Noetic is recommended for Ubuntu 20.04 whereas ROS Melodic for Ubuntu 18.04:</p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>ROS Noetic</th>
-<th>ROS Melodic</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Python</td>
-<td>3.8</td>
-<td>2.7</td>
-</tr>
-<tr>
-<td>Gazebo</td>
-<td>11.x</td>
-<td>9.0</td>
-</tr>
-<tr>
-<td>OpenCV</td>
-<td>4.2</td>
-<td>3.2</td>
-</tr>
-</tbody>
-</table>
-<p>Detailed comparison is at <a href="http://repositories.ros.org/status_page/compare_kinetic_melodic_noetic.html">repositories.ros.org</a>.</p>
-</div>
-<p>Choose the ROS version based on the installed OS:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install ros-melodic-desktop-full
+</li>
+<li>
+<p>Finally, install a desktop-full package as recommended to start learning:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y ros-melodic-desktop-full
 </code></pre></div>
-<p>or</p>
-<div class="highlight"><pre><span></span><code>sudo apt install ros-noetic-desktop-full
-</code></pre></div>
-<p>It’s convenient if the ROS environment variables are automatically added to a bash session every time a new shell is launched:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">"source /opt/ros/melodic/setup.bash"</span> &gt;&gt; ~/.bashrc
-<span class="nb">source</span> ~/.bashrc
-</code></pre></div>
-<p>If there are more than one ROS distribution installed, <code>~/.bashrc</code> must only source the <code>setup.bash</code> for the version which is currently being used.</p>
-<h3 id="install-livox-ros-driver">Install Livox ROS driver<a class="headerlink" href="#install-livox-ros-driver" title="Permanent link">⚓︎</a></h3>
+</li>
+</ol>
+<h3 id="42-install-livox-ros-driver">4.2. Install Livox ROS driver<a class="headerlink" href="#42-install-livox-ros-driver" title="Permanent link">⚓︎</a></h3>
 <p>Get <code>livox_ros_driver</code> from GitHub</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/Livox-SDK/livox_ros_driver.git ws_livox/src
 </code></pre></div>
@@ -2056,7 +2140,7 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span cla
 <p>Be sure to use the above command to clone the code to the local, otherwise it will compile error due to the file path problem.</p>
 </div>
 <p>Then build it:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ws_livox
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ws_livox <span class="o">&amp;&amp;</span> <span class="se">\</span>
 catkin_make
 </code></pre></div>
 <div class="admonition info nt">
@@ -2064,6 +2148,33 @@ catkin_make
 <p>If running <code>catkin_make</code> gives error of command not found, it’s probably that the ROS <code>setup.bash</code> is not executed and included in <code>~/.bashrc</code>. See above section to source it.</p>
 </div>
 <p>Read more in <a href="https://github.com/Livox-SDK/livox_ros_driver">https://github.com/Livox-SDK/livox_ros_driver</a>.</p>
+<h3 id="43-missing-features">4.3. Missing features<a class="headerlink" href="#43-missing-features" title="Permanent link">⚓︎</a></h3>
+<p>Even the build is completed, there are still some warning during the compilation due to missing definitions.</p>
+<div class="log">
+<div class="highlight"><pre><span></span><code><span class="gd">-- Could NOT find ensenso (missing: ENSENSO_LIBRARY ENSENSO_INCLUDE_DIR)</span>
+** WARNING ** io features related to ensenso will be disabled
+<span class="gd">-- Could NOT find DAVIDSDK (missing: DAVIDSDK_LIBRARY DAVIDSDK_INCLUDE_DIR)</span>
+** WARNING ** io features related to davidSDK will be disabled
+<span class="gd">-- Could NOT find DSSDK (missing: _DSSDK_LIBRARIES)</span>
+** WARNING ** io features related to dssdk will be disabled
+** WARNING ** io features related to pcap will be disabled
+** WARNING ** io features related to png will be disabled
+<span class="gd">-- Found libusb-1.0: /usr/include</span>
+** WARNING ** io features related to libusb-1.0 will be disabled
+<span class="gd">-- Checking for module 'flann'</span>
+<span class="gd">--   Found flann, version 1.9.1</span>
+<span class="gd">-- Found Flann: /usr/lib/x86_64-linux-gnu/libflann_cpp_s.a</span>
+<span class="gd">-- Could NOT find ensenso (missing: ENSENSO_LIBRARY ENSENSO_INCLUDE_DIR)</span>
+** WARNING ** visualization features related to ensenso will be disabled
+<span class="gd">-- Could NOT find DAVIDSDK (missing: DAVIDSDK_LIBRARY DAVIDSDK_INCLUDE_DIR)</span>
+** WARNING ** visualization features related to davidSDK will be disabled
+<span class="gd">-- Could NOT find DSSDK (missing: _DSSDK_LIBRARIES)</span>
+** WARNING ** visualization features related to dssdk will be disabled
+<span class="gd">-- Could NOT find RSSDK (missing: _RSSDK_LIBRARIES)</span>
+** WARNING ** visualization features related to rssdk will be disabled
+</code></pre></div>
+</div>
+<p>At this time, they do not harm, then these warning may be solved later.</p>
 <div data-value="https://www.codeinsideout.com/blog/lidar/livox-sdk/" id="page_url"></div>
 <div data-value="blog/lidar/livox-sdk/" id="page_identifier"></div>
 <div>
