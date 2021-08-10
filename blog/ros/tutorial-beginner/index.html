@@ -10,10 +10,10 @@
 <meta content="vqtrong" name="author"/>
 <link href="https://www.codeinsideout.com/blog/ros/tutorial-beginner/" rel="canonical"/>
 <link href="../../../favicon.png" rel="icon"/>
-<meta content="mkdocs-1.2.2, mkdocs-material-7.2.2" name="generator"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.3" name="generator"/>
 <title>ROS - Quick Tutorial for Beginners - Code Inside Out</title>
-<link href="../../../assets/stylesheets/main.1118c9be.min.css" rel="stylesheet"/>
-<link href="../../../assets/stylesheets/palette.ba0d045b.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.f7f47774.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <meta content="#ffffff" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
@@ -222,7 +222,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../stm32/semihosting/">
-        Semihosting
+        SemiHosting
       </a>
 </li>
 <li class="md-nav__item">
@@ -580,13 +580,13 @@
 <nav aria-label="2. ROS Workspace" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#21-the-ros-filesystem">
-    2.1. The ROS Filesystem
+<a class="md-nav__link" href="#21-the-ros-file-system">
+    2.1. The ROS File system
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#22-filesystem-tools">
-    2.2. Filesystem Tools
+<a class="md-nav__link" href="#22-file-system-tools">
+    2.2. File system Tools
   </a>
 </li>
 </ul>
@@ -605,17 +605,17 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#41-roscore">
-    4.1. roscore
+    4.1. Roscore
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#42-rosnode">
-    4.2. rosnode
+    4.2. Rosnode
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#43-rosrun">
-    4.3. rosrun
+    4.3. Rosrun
   </a>
 </li>
 </ul>
@@ -629,12 +629,12 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#51-rqt_graph">
-    5.1. rqt_graph
+    5.1. Rqt_graph
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#52-rostopic">
-    5.2. rostopic
+    5.2. Rostopic
   </a>
 </li>
 </ul>
@@ -653,7 +653,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#62-rqt_plot">
-    6.2. rqt_plot
+    6.2. Rqt_plot
   </a>
 </li>
 </ul>
@@ -667,7 +667,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#71-rosparam">
-    7.1. rosparam
+    7.1. Rosparam
   </a>
 </li>
 </ul>
@@ -686,7 +686,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#91-roslaunch">
-    9.1. roslaunch
+    9.1. Roslaunch
   </a>
 </li>
 </ul>
@@ -825,8 +825,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#143-make-scripts-excutable">
-    14.3. Make scripts excutable
+<a class="md-nav__link" href="#143-make-scripts-executable">
+    14.3. Make scripts executable
   </a>
 </li>
 <li class="md-nav__item">
@@ -984,33 +984,334 @@
 <label class="md-nav__title">Tag cloud</label>
 </p>
 <div class="tag-cloud-content">
+<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">board</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.75rem;
+          color:DarkRed;
+        ">stm32</span>
+<!--<sup class="tag-count">25</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">hyper-v</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkSlateGray;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">spi</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkRed;
+          color:DarkCyan;
         ">mapping</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">redirect</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkOrchid;
-        ">virtual-machine</span>
+          color:DarkGreen;
+        ">i2c</span>
 <!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">dash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkCyan;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkSlateGray;
+        ">rtos</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#SemiHosting">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">SemiHosting</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">h264</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#livox">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
+          color:DarkOrchid;
         ">livox</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">ssd1306</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">pdf</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.6500000000000001rem;
+          color:DarkBlue;
+        ">arm</span>
+<!--<sup class="tag-count">23</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">pulse</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">systick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGoldenrod;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">reentrant</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkTurquoise;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOliveGreen;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stack">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">stack</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">samba</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkGreen;
+        ">camera</span>
+<!--<sup class="tag-count">6</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
+<span class="tag-name" style="
+          font-size:1.05rem;
+          color:DarkCyan;
+        ">raspberry-pi</span>
+<!--<sup class="tag-count">11</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">bash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkOliveGreen;
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">docker</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">usart</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateGray;
+        ">lidar</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#python">
 <span class="tag-name" style="
           font-size:0.75rem;
-          color:DarkCyan;
+          color:DarkGoldenrod;
         ">python</span>
 <!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#memory">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkRed;
+        ">memory</span>
+<!--<sup class="tag-count">3</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#pi">
 <span class="tag-name" style="
@@ -1019,311 +1320,45 @@
         ">pi</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="
-          font-size:0.8rem;
-          color:DarkMagenta;
-        ">camera</span>
-<!--<sup class="tag-count">6</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<a class="tag" href="https://www.codeinsideout.com/tags/#css">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkOliveGreen;
-        ">bash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">sensor</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">docs</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#container">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">container</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">c</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGoldenrod;
-        ">mkdocs</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">semihosting</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkRed;
-        ">stream</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">gpio</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGoldenrod;
-        ">uart</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">reentrant</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">sdcard</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">ssd1306</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">adc</span>
+        ">css</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#gps">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
+          color:DarkBlue;
         ">gps</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
 <span class="tag-name" style="
-          font-size:1.6500000000000001rem;
-          color:DarkSlateBlue;
-        ">arm</span>
-<!--<sup class="tag-count">23</sup>-->
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
 <span class="tag-name" style="
           font-size:0.75rem;
-          color:DarkGreen;
-        ">rtos</span>
+          color:DarkTurquoise;
+        ">debug</span>
 <!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">hls</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">oled</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">pwm</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">mjpeg</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
-<span class="tag-name" style="
-          font-size:1.05rem;
-          color:DarkGoldenrod;
-        ">raspberry-pi</span>
-<!--<sup class="tag-count">11</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#material">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">material</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="
-          font-size:1.75rem;
-          color:DarkOrchid;
-        ">stm32</span>
-<!--<sup class="tag-count">25</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">redirect</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGreen;
-        ">picamera</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkCyan;
-        ">rtt</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">docker</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stack">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">stack</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkBlue;
-        ">linux</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">samba</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">ajax</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#memory">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkBlue;
-        ">memory</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkBlue;
-        ">dma</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">dash</span>
-<!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
+          color:DarkGoldenrod;
         ">clock</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">v4l2</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">capture</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkMagenta;
-        ">javascript</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">pdf</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkMagenta;
-        ">interrupt</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">timer</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkBlue;
+          color:DarkRed;
         ">virtual</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
@@ -1334,152 +1369,124 @@
         ">sharing</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">jinja</span>
+          color:DarkRed;
+        ">sensor</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
-        ">distance</span>
+          color:DarkRed;
+        ">toolchain</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">sdcard</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkOliveGreen;
+        ">linux</span>
+<!--<sup class="tag-count">5</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#swv">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
+          color:DarkOliveGreen;
         ">swv</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">markdown</span>
+          color:DarkOliveGreen;
+        ">hls</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#h264">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">h264</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkGreen;
-        ">lidar</span>
+          color:DarkViolet;
+        ">rtt</span>
 <!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">spi</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">joystick</span>
-<!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#ros">
 <span class="tag-name" style="
           font-size:0.65rem;
-          color:DarkMagenta;
+          color:DarkSlateBlue;
         ">ros</span>
 <!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">pulse</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#css">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">css</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkViolet;
-        ">ffmpeg</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">headless</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">hyper-v</span>
-<!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateBlue;
+          color:DarkSlateGray;
         ">performance</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
 <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">html</span>
-<!--<sup class="tag-count">1</sup>-->
+          font-size:0.6rem;
+          color:DarkGreen;
+        ">virtual-machine</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">c++</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkMagenta;
-        ">debug</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">usart</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#board">
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkRed;
-        ">board</span>
+        ">joystick</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkMagenta;
-        ">sysview</span>
+          color:DarkSlateGray;
+        ">c</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGreen;
+        ">interrupt</span>
+<!--<sup class="tag-count">3</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#notes">
 <span class="tag-name" style="
@@ -1488,25 +1495,18 @@
         ">notes</span>
 <!--<sup class="tag-count">4</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">systick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkMagenta;
-        ">i2c</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkTurquoise;
-        ">toolchain</span>
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">jinja</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 </div>
@@ -1549,13 +1549,13 @@
 <nav aria-label="2. ROS Workspace" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#21-the-ros-filesystem">
-    2.1. The ROS Filesystem
+<a class="md-nav__link" href="#21-the-ros-file-system">
+    2.1. The ROS File system
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#22-filesystem-tools">
-    2.2. Filesystem Tools
+<a class="md-nav__link" href="#22-file-system-tools">
+    2.2. File system Tools
   </a>
 </li>
 </ul>
@@ -1574,17 +1574,17 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#41-roscore">
-    4.1. roscore
+    4.1. Roscore
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#42-rosnode">
-    4.2. rosnode
+    4.2. Rosnode
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#43-rosrun">
-    4.3. rosrun
+    4.3. Rosrun
   </a>
 </li>
 </ul>
@@ -1598,12 +1598,12 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#51-rqt_graph">
-    5.1. rqt_graph
+    5.1. Rqt_graph
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#52-rostopic">
-    5.2. rostopic
+    5.2. Rostopic
   </a>
 </li>
 </ul>
@@ -1622,7 +1622,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#62-rqt_plot">
-    6.2. rqt_plot
+    6.2. Rqt_plot
   </a>
 </li>
 </ul>
@@ -1636,7 +1636,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#71-rosparam">
-    7.1. rosparam
+    7.1. Rosparam
   </a>
 </li>
 </ul>
@@ -1655,7 +1655,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#91-roslaunch">
-    9.1. roslaunch
+    9.1. Roslaunch
   </a>
 </li>
 </ul>
@@ -1794,8 +1794,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#143-make-scripts-excutable">
-    14.3. Make scripts excutable
+<a class="md-nav__link" href="#143-make-scripts-executable">
+    14.3. Make scripts executable
   </a>
 </li>
 <li class="md-nav__item">
@@ -1857,207 +1857,137 @@
 <label class="md-nav__title">Tag cloud</label>
 </p>
 <div class="tag-cloud-content">
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">pi</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="
-          font-size:1.6500000000000001rem;
-          color:DarkSlateBlue;
-        ">arm</span>
-<!--<sup class="tag-count">23</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkTurquoise;
-        ">mkdocs</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">dash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#spi">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
+          color:DarkOrchid;
         ">spi</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">ajax</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-<span class="tag-name" style="
-          font-size:1.75rem;
-          color:DarkSlateGray;
-        ">stm32</span>
-<!--<sup class="tag-count">25</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkViolet;
-        ">rtos</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">swv</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkSlateGray;
-        ">virtual-machine</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">gpio</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkOliveGreen;
-        ">linux</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">ssd1306</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
-<span class="tag-name" style="
-          font-size:0.55rem;
           color:DarkTurquoise;
-        ">samba</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">virtual</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkOliveGreen;
-        ">dma</span>
+        ">i2c</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gps">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">gps</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkOliveGreen;
-        ">pwm</span>
+        ">pdf</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
 <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">performance</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="
-          font-size:0.55rem;
+          font-size:0.75rem;
           color:DarkRed;
-        ">mjpeg</span>
-<!--<sup class="tag-count">1</sup>-->
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">sharing</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
 <span class="tag-name" style="
           font-size:0.65rem;
-          color:DarkViolet;
-        ">interrupt</span>
+          color:DarkSlateGray;
+        ">stream</span>
 <!--<sup class="tag-count">3</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateBlue;
+          color:DarkCyan;
         ">toolchain</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkSlateBlue;
-        ">javascript</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">joystick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#semihosting">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">semihosting</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">v4l2</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#css">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOliveGreen;
+          color:DarkRed;
         ">css</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkMagenta;
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkOrchid;
+        ">camera</span>
+<!--<sup class="tag-count">6</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">docker</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">performance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkMagenta;
-        ">hls</span>
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">clock</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">distance</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">pulse</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">bash</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">v4l2</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
@@ -2067,81 +1997,298 @@
         ">rtt</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
+<span class="tag-name" style="
+          font-size:1.05rem;
+          color:DarkRed;
+        ">raspberry-pi</span>
+<!--<sup class="tag-count">11</sup>-->
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#h264">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
+          color:DarkTurquoise;
         ">h264</span>
 <!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGreen;
-        ">stream</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">headless</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">jinja</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#html">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">html</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">oled</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkOliveGreen;
-        ">lidar</span>
-<!--<sup class="tag-count">2</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#stack">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGoldenrod;
+          color:DarkOrchid;
         ">stack</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkRed;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">pi</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#SemiHosting">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">SemiHosting</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGreen;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkSlateGray;
+        ">rtos</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkGreen;
+        ">notes</span>
+<!--<sup class="tag-count">4</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">joystick</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">virtual</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOliveGreen;
+        ">ffmpeg</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">usart</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOliveGreen;
+          color:DarkTurquoise;
         ">sdcard</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<span class="tag-name" style="
+          font-size:1.75rem;
+          color:DarkBlue;
+        ">stm32</span>
+<!--<sup class="tag-count">25</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkGoldenrod;
-        ">pulse</span>
+        ">dash</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.6500000000000001rem;
+          color:DarkMagenta;
+        ">arm</span>
+<!--<sup class="tag-count">23</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkBlue;
+        ">dma</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkMagenta;
+        ">debug</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">reentrant</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gps">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">gps</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkMagenta;
-        ">c++</span>
+        ">sharing</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkRed;
+        ">interrupt</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">hyper-v</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">mapping</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#memory">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkViolet;
+        ">memory</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGreen;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkGoldenrod;
+        ">ros</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">c</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkRed;
+        ">linux</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">jinja</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#systick">
@@ -2151,235 +2298,88 @@
         ">systick</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkCyan;
-        ">redirect</span>
+          color:DarkMagenta;
+        ">c++</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGoldenrod;
-        ">ros</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">docs</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkRed;
-        ">capture</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkOrchid;
-        ">python</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">hyper-v</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-<span class="tag-name" style="
-          font-size:0.8rem;
-          color:DarkSlateBlue;
-        ">camera</span>
-<!--<sup class="tag-count">6</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkTurquoise;
-        ">uart</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkOliveGreen;
-        ">ffmpeg</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkTurquoise;
-        ">picamera</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkRed;
-        ">i2c</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">usart</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkBlue;
-        ">debug</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">timer</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#material">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">material</span>
+        ">ajax</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#board">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGoldenrod;
+          color:DarkRed;
         ">board</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">sensor</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">distance</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
+          color:DarkRed;
         ">markdown</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="
-          font-size:0.7rem;
-          color:DarkTurquoise;
-        ">notes</span>
-<!--<sup class="tag-count">4</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkViolet;
-        ">reentrant</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">adc</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docker">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">docker</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
-<span class="tag-name" style="
-          font-size:1.05rem;
-          color:DarkSlateGray;
-        ">raspberry-pi</span>
-<!--<sup class="tag-count">11</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">bash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#memory">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkGreen;
-        ">memory</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">sysview</span>
+        ">swv</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#livox">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGoldenrod;
+          color:DarkOrchid;
         ">livox</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkViolet;
+        ">virtual-machine</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
-        ">container</span>
+          color:DarkSlateBlue;
+        ">ssd1306</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
 <span class="tag-name" style="
-          font-size:0.55rem;
+          font-size:0.6rem;
           color:DarkRed;
-        ">mapping</span>
-<!--<sup class="tag-count">1</sup>-->
+        ">lidar</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
-        ">c</span>
+          color:DarkOrchid;
+        ">redirect</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">samba</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkViolet;
-        ">clock</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">pdf</span>
+        ">hls</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 </div>
@@ -2416,7 +2416,7 @@
 <hr style="margin-bottom: .5em;"/>
 <small>
                             Last update:
-                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-08-04 17:31:07</span>
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-08-10 16:50:49</span>
 </small>
 </p>
 </div>
@@ -2487,13 +2487,13 @@
 <nav aria-label="2. ROS Workspace" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#21-the-ros-filesystem">
-    2.1. The ROS Filesystem
+<a class="md-nav__link" href="#21-the-ros-file-system">
+    2.1. The ROS File system
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#22-filesystem-tools">
-    2.2. Filesystem Tools
+<a class="md-nav__link" href="#22-file-system-tools">
+    2.2. File system Tools
   </a>
 </li>
 </ul>
@@ -2512,17 +2512,17 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#41-roscore">
-    4.1. roscore
+    4.1. Roscore
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#42-rosnode">
-    4.2. rosnode
+    4.2. Rosnode
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#43-rosrun">
-    4.3. rosrun
+    4.3. Rosrun
   </a>
 </li>
 </ul>
@@ -2536,12 +2536,12 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#51-rqt_graph">
-    5.1. rqt_graph
+    5.1. Rqt_graph
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#52-rostopic">
-    5.2. rostopic
+    5.2. Rostopic
   </a>
 </li>
 </ul>
@@ -2560,7 +2560,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#62-rqt_plot">
-    6.2. rqt_plot
+    6.2. Rqt_plot
   </a>
 </li>
 </ul>
@@ -2574,7 +2574,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#71-rosparam">
-    7.1. rosparam
+    7.1. Rosparam
   </a>
 </li>
 </ul>
@@ -2593,7 +2593,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#91-roslaunch">
-    9.1. roslaunch
+    9.1. Roslaunch
   </a>
 </li>
 </ul>
@@ -2732,8 +2732,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#143-make-scripts-excutable">
-    14.3. Make scripts excutable
+<a class="md-nav__link" href="#143-make-scripts-executable">
+    14.3. Make scripts executable
   </a>
 </li>
 <li class="md-nav__item">
@@ -2792,11 +2792,11 @@
 </nav>
 </div><div class="btn-actions screen-only"><p><a class="md-button" href="..\..\..\pdfs\blog\ros\tutorial-beginner\ros__Tutorial_for_Beginners.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span>PDF</a></p></div>
 <p><a class="md-button" href="A_gentle_Introduction_to_ROS.pdf"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"></path></svg></span> A Gentle Introduction to ROS by <em class="noem">Jason M. O’Kane</em></a></p>
-<div class="admonition info nt">
+<div class="admonition info no-title">
 <p class="admonition-title"> </p>
 <p>The official guide is at <a href="https://wiki.ros.org/ROS/Tutorials">https://wiki.ros.org/ROS/Tutorials</a>.</p>
 </div>
-<div class="admonition caution nt">
+<div class="admonition caution no-title">
 <p class="admonition-title"> </p>
 <p>This guide was created using <strong>ROS Melodic</strong> on <strong>Ubuntu 18.04 LTS</strong>.</p>
 </div>
@@ -2887,7 +2887,7 @@ sudo apt install -y ros-melodic-rqt-common-plugins
 <p>Build packages are needed for code compilation.</p>
 <div class="highlight"><pre><span></span><code>sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
 </code></pre></div>
-<p>Init the package <code>rosdep</code> to track package dependency:</p>
+<p>Initialize the package <code>rosdep</code> to track package dependency:</p>
 <div class="highlight"><pre><span></span><code>sudo rosdep init &amp;&amp; \
 rosdep update
 </code></pre></div>
@@ -2908,7 +2908,7 @@ catkin_make
 <p><code>/home/vqtrong/Work/catkin_ws/src:/opt/ros/melodic/share</code></p>
 </div>
 <p>This also helps ROS to find new packages.</p>
-<h3 id="21-the-ros-filesystem">2.1. The ROS Filesystem<a class="headerlink" href="#21-the-ros-filesystem" title="Permanent link">⚓︎</a></h3>
+<h3 id="21-the-ros-file-system">2.1. The ROS File system<a class="headerlink" href="#21-the-ros-file-system" title="Permanent link">⚓︎</a></h3>
 <p>For this tutorial, to inspect a package in ros-tutorials, please install a prebuilt package using:</p>
 <div class="highlight"><pre><span></span><code>sudo apt install -y ros-melodic-ros-tutorials
 </code></pre></div>
@@ -2921,15 +2921,15 @@ catkin_make
 <p><em>Manifests (package.xml)</em> is a description of a package. It serves to define dependencies between packages and to capture meta information about the package like version, maintainer, license, etc…</p>
 </li>
 </ul>
-<div class="admonition info nt">
+<div class="admonition info no-title">
 <p class="admonition-title"> </p>
 <p>Code is spread across many ROS packages. Navigating with command-line tools such as <code>ls</code> and <code>cd</code> can be very tedious which is why ROS provides tools to help.</p>
 </div>
-<h3 id="22-filesystem-tools">2.2. Filesystem Tools<a class="headerlink" href="#22-filesystem-tools" title="Permanent link">⚓︎</a></h3>
-<p><code>rospack</code> allows to get information about packages.</p>
+<h3 id="22-file-system-tools">2.2. File system Tools<a class="headerlink" href="#22-file-system-tools" title="Permanent link">⚓︎</a></h3>
+<p><code>rospack</code> allows getting information about packages.</p>
 <div class="highlight"><pre><span></span><code>rospack find roscpp
 </code></pre></div>
-<p><code>roscd</code> allows to change directory (cd) directly to a package, and also is able to move to a subdirectory of a package</p>
+<p><code>roscd</code> allows changing directory (<code>cd</code>) directly to a package, and also is able to move to a subdirectory of a package</p>
 <div class="highlight"><pre><span></span><code>roscd roscpp        <span class="c1"># go to cpp package</span>
 roscd roscpp/cmake  <span class="c1"># go to cmake folder inside the cpp package</span>
 roscd log           <span class="c1"># go to the log folder, available after run roscore</span>
@@ -2964,11 +2964,11 @@ catkin_make
 <li><a href="http://wiki.ros.org/Messages">Messages</a>: ROS data type used when subscribing or publishing to a topic.</li>
 <li><a href="http://wiki.ros.org/Topics">Topics</a>: Nodes can publish messages to a topic as well as subscribe to a topic to receive messages.</li>
 <li><a href="http://wiki.ros.org/Master">Master</a>: Name service for ROS (i.e. helps nodes find each other)</li>
-<li><a href="http://wiki.ros.org/rosout">rosout</a>: ROS equivalent of stdout/stderr</li>
-<li><a href="http://wiki.ros.org/roscore">roscore</a>: Master + rosout + parameter server (parameter server will be introduced later)</li>
+<li><a href="http://wiki.ros.org/rosout">Rosout</a>: ROS equivalent of stdout/stderr</li>
+<li><a href="http://wiki.ros.org/roscore">Roscore</a>: Master + Rosout + Ros parameter server (parameter server will be introduced later)</li>
 </ul>
-<h3 id="41-roscore">4.1. roscore<a class="headerlink" href="#41-roscore" title="Permanent link">⚓︎</a></h3>
-<p><code>roscore</code> will start up a ROS Master, a ROS Parameter Server and a rosout logging node</p>
+<h3 id="41-roscore">4.1. Roscore<a class="headerlink" href="#41-roscore" title="Permanent link">⚓︎</a></h3>
+<p><code>roscore</code> will start up a ROS Master, a ROS Parameter Server and a Rosout logging node</p>
 <p>Options:</p>
 <div class="highlight"><pre><span></span><code>-h, --help          <span class="c1"># show this help message and exit</span>
 -p, --port<span class="o">=</span>         <span class="c1"># master port. Only valid if master is launched</span>
@@ -2979,7 +2979,7 @@ catkin_make
                        <span class="c1"># ('debug', 'info', 'warn', 'error', 'fatal')</span>
 </code></pre></div>
 <p>See more in <a href="http://wiki.ros.org/roscore">http://wiki.ros.org/roscore</a>.</p>
-<h3 id="42-rosnode">4.2. rosnode<a class="headerlink" href="#42-rosnode" title="Permanent link">⚓︎</a></h3>
+<h3 id="42-rosnode">4.2. Rosnode<a class="headerlink" href="#42-rosnode" title="Permanent link">⚓︎</a></h3>
 <p><code>rosnode</code> is a command-line tool for printing information about ROS Nodes.</p>
 <p>Commands:</p>
 <div class="highlight"><pre><span></span><code>rosnode ping    <span class="c1"># test connectivity to node</span>
@@ -2990,9 +2990,9 @@ rosnode <span class="nb">kill</span>    <span class="c1"># kill a running node</
 rosnode cleanup <span class="c1"># purge registration information of unreachable nodes</span>
 </code></pre></div>
 <p>Type <code>rosnode &lt;command&gt; -h</code> for more detailed usage.</p>
-<div class="np"></div>
-<h3 id="43-rosrun">4.3. rosrun<a class="headerlink" href="#43-rosrun" title="Permanent link">⚓︎</a></h3>
-<p>The syntax for rosrun is:</p>
+<div class="new-page"></div>
+<h3 id="43-rosrun">4.3. Rosrun<a class="headerlink" href="#43-rosrun" title="Permanent link">⚓︎</a></h3>
+<p>The syntax for <code>rosrun</code> is:</p>
 <div class="highlight"><pre><span></span><code>rosrun <span class="o">[</span>--prefix cmd<span class="o">]</span> <span class="o">[</span>--debug<span class="o">]</span> PACKAGE EXECUTABLE <span class="o">[</span>ARGS<span class="o">]</span>
 </code></pre></div>
 <p>The tool <code>rosrun</code> will locate <code>PACKAGE</code> and try to find an executable named <code>EXECUTABLE</code> in the PACKAGE tree. If it finds it, it will run it with <code>ARGS</code>.</p>
@@ -3003,13 +3003,13 @@ rosnode cleanup <span class="c1"># purge registration information of unreachable
 <figure class="w40"><img src="rosnode_turtlesim.png"/><figcaption>Turtle sim</figcaption></figure>
 </p>
 <h2 id="5-ros-topics">5. ROS Topics<a class="headerlink" href="#5-ros-topics" title="Permanent link">⚓︎</a></h2>
-<p>Run turtle keyboard tele-operation node in a new terminal:</p>
+<p>Run turtle keyboard <code>turtle_teleop_key</code> node in a new terminal:</p>
 <div class="highlight"><pre><span></span><code>rosrun turtlesim turtle_teleop_key
 </code></pre></div>
 <p>After that, the turtle can be moved by using keyboard arrow keys.</p>
-<p>The <code>turtlesim_node</code> and the <code>turtle_teleop_key</code> node are communicating with each other over a ROS Topic. <code>turtle_teleop_key</code> is <em>publishing</em> the key strokes on a topic, while <code>turtlesim</code> <em>subscribes</em> to the same topic to receive the key strokes.</p>
-<div class="np"></div>
-<h3 id="51-rqt_graph">5.1. rqt_graph<a class="headerlink" href="#51-rqt_graph" title="Permanent link">⚓︎</a></h3>
+<p>The <code>turtlesim_node</code> and the <code>turtle_teleop_key</code> node are communicating with each other over a ROS Topic. <code>turtle_teleop_key</code> is <em>publishing</em> the keystrokes on a topic, while <code>turtlesim</code> <em>subscribes</em> to the same topic to receive the keystrokes.</p>
+<div class="new-page"></div>
+<h3 id="51-rqt_graph">5.1. Rqt_graph<a class="headerlink" href="#51-rqt_graph" title="Permanent link">⚓︎</a></h3>
 <p>The <code>rqt_graph</code> tool creates a dynamic graph of what’s going on in the system. <code>rqt_graph</code> is part of the <code>rqt</code> package.</p>
 <div class="highlight"><pre><span></span><code>sudo apt install -y ros-melodic-rqt <span class="o">&amp;&amp;</span> <span class="se">\</span>
 sudo apt install -y ros-melodic-rqt-common-plugins
@@ -3021,8 +3021,8 @@ sudo apt install -y ros-melodic-rqt-common-plugins
 <p>
 <figure class="w80"><img src="rosnode_rqt_graph.png"/><figcaption>RosGraph</figcaption></figure>
 </p>
-<h3 id="52-rostopic">5.2. rostopic<a class="headerlink" href="#52-rostopic" title="Permanent link">⚓︎</a></h3>
-<p>The <code>rostopic</code> tool allows to get information about ROS topics.</p>
+<h3 id="52-rostopic">5.2. Rostopic<a class="headerlink" href="#52-rostopic" title="Permanent link">⚓︎</a></h3>
+<p>The <code>rostopic</code> tool allows getting information about ROS topics.</p>
 <div class="highlight"><pre><span></span><code>rostopic bw     <span class="c1"># display bandwidth used by topic</span>
 rostopic <span class="nb">echo</span>   <span class="c1"># print messages to screen</span>
 rostopic hz     <span class="c1"># display publishing rate of topic</span>
@@ -3031,7 +3031,7 @@ rostopic pub    <span class="c1"># publish data to topic</span>
 rostopic <span class="nb">type</span>   <span class="c1"># print topic type</span>
 </code></pre></div>
 <h2 id="6-ros-messages">6. ROS Messages<a class="headerlink" href="#6-ros-messages" title="Permanent link">⚓︎</a></h2>
-<p>Communication on topics happens by sending ROS messages between nodes. For the publisher (<code>turtle_teleop_key</code>) and subscriber (<code>turtlesim_node</code>) to communicate, the publisher and subscriber must send and receive the same type of message. This means that a topic type is defined by the message type published on it. The type of the message sent on a topic can be determined using rostopic type.</p>
+<p>Communication on topics happens by sending ROS messages between nodes. For the publisher (<code>turtle_teleop_key</code>) and subscriber (<code>turtlesim_node</code>) to communicate, the publisher and subscriber must send and receive the same type of message. This means that a topic type is defined by the message type published on it. The type of the message sent on a topic can be determined using <code>rostopic</code> type.</p>
 <div class="highlight"><pre><span></span><code>rostopic <span class="nb">type</span> /turtle1/cmd_vel
 </code></pre></div>
 <div class="log">
@@ -3055,7 +3055,7 @@ float64 z
 <p>A message can be published through command line:</p>
 <div class="highlight"><pre><span></span><code>rostopic pub <span class="o">[</span>topic<span class="o">]</span> <span class="o">[</span>msg_type<span class="o">]</span> <span class="o">[</span>args<span class="o">]</span>
 </code></pre></div>
-<p>For example, to send one message on the topic <code>/turtle1/cmd_vel</code> using message type <code>geometry_msgs/Twist</code> and its required <code>--</code> params <code>'[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'</code>, enter the below command:</p>
+<p>For example, to send one message on the topic <code>/turtle1/cmd_vel</code> using message type <code>geometry_msgs/Twist</code> and its required <code>--</code> parameters <code>'[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'</code>, enter the below command:</p>
 <div class="highlight"><pre><span></span><code>rostopic pub -1 <span class="se">\</span>
     /turtle1/cmd_vel <span class="se">\</span>
     geometry_msgs/Twist <span class="se">\</span>
@@ -3070,8 +3070,8 @@ float64 z
 <p>The rate of message can be inspected by using the command <code>rostopic hz</code>:</p>
 <div class="highlight"><pre><span></span><code>rostopic hz /turtle1/pose
 </code></pre></div>
-<div class="np"></div>
-<h3 id="62-rqt_plot">6.2. rqt_plot<a class="headerlink" href="#62-rqt_plot" title="Permanent link">⚓︎</a></h3>
+<div class="new-page"></div>
+<h3 id="62-rqt_plot">6.2. Rqt_plot<a class="headerlink" href="#62-rqt_plot" title="Permanent link">⚓︎</a></h3>
 <p>The <code>rqt_plot</code> tool displays a scrolling time plot of the data published on topics:</p>
 <div class="highlight"><pre><span></span><code>rosrun rqt_plot rqt_plot
 </code></pre></div>
@@ -3105,14 +3105,14 @@ rosservice uri          <span class="c1"># print service ROSRPC uri</span>
 /turtlesim/set_logger_level
 </code></pre></div>
 </div>
-<p>Check the params of a service:</p>
+<p>Check the parameter of a service:</p>
 <div class="highlight"><pre><span></span><code>rosservice <span class="nb">type</span> /clear
 </code></pre></div>
 <div class="log">
 <div class="highlight"><pre><span></span><code>std_srvs/Empty
 </code></pre></div>
 </div>
-<p>The <code>/clear</code> service show Empty param, but the <code>/spawn</code> has 4 params and returns string:</p>
+<p>The <code>/clear</code> service shows an Empty parameter, but the <code>/spawn</code> has 4 parameter and returns string:</p>
 <div class="highlight"><pre><span></span><code>rosservice <span class="nb">type</span> /spawn
 </code></pre></div>
 <div class="log">
@@ -3130,13 +3130,13 @@ string name
 string name
 </code></pre></div>
 </div>
-<p>The input params are <code>x</code>, <code>y</code>, <code>theta</code> and <code>name</code>, and the output is <code>name</code>. Ok, let’s clear the background and spawn a new turtle:</p>
+<p>The input parameter are <code>x</code>, <code>y</code>, <code>theta</code> and <code>name</code>, and the output is <code>name</code>. Ok, let’s clear the background and spawn a new turtle:</p>
 <div class="highlight"><pre><span></span><code>rosservice call /clear <span class="o">&amp;&amp;</span> <span class="se">\</span>
 rosservice call /spawn <span class="m">2</span> <span class="m">2</span> <span class="m">0</span>.2 <span class="s2">""</span>
 </code></pre></div>
-<h3 id="71-rosparam">7.1. rosparam<a class="headerlink" href="#71-rosparam" title="Permanent link">⚓︎</a></h3>
-<p>The <code>rosparam</code> tool allows to store and manipulate data on the ROS Parameter Server. The Parameter Server can store integers, floats, boolean, dictionaries, and lists. <code>rosparam</code> uses the YAML markup language for syntax.</p>
-<div class="admonition info nt">
+<h3 id="71-rosparam">7.1. Rosparam<a class="headerlink" href="#71-rosparam" title="Permanent link">⚓︎</a></h3>
+<p>The <code>rosparam</code> tool allows storing and manipulate data on the ROS Parameter Server. The Parameter Server can store integers, floats, boolean, dictionaries, and lists. <code>rosparam</code> uses the YAML markup language for syntax.</p>
+<div class="admonition info no-title">
 <p class="admonition-title"> </p>
 <p>In simple cases, YAML looks very natural:</p>
 <ul>
@@ -3156,7 +3156,7 @@ rosparam dump           <span class="c1"># dump parameters to file</span>
 rosparam delete         <span class="c1"># delete parameter</span>
 rosparam list           <span class="c1"># list parameter names</span>
 </code></pre></div>
-<p>See the list of params:</p>
+<p>See the list of parameters:</p>
 <div class="highlight"><pre><span></span><code>rosparam list
 </code></pre></div>
 <div class="log">
@@ -3172,7 +3172,7 @@ rosparam list           <span class="c1"># list parameter names</span>
 <p>Here will change the red channel of the background color:</p>
 <div class="highlight"><pre><span></span><code>rosparam <span class="nb">set</span> /turtlesim/background_r <span class="m">150</span>
 </code></pre></div>
-<p>Use get command to see the params:</p>
+<p>Use get command to see the parameters:</p>
 <div class="highlight"><pre><span></span><code>rosparam get / <span class="o">&amp;&amp;</span> <span class="se">\</span>
 rosparam get /turtlesim/background_g
 </code></pre></div>
@@ -3254,7 +3254,7 @@ roscd beginner_tutorials
 <li>Two groups with a namespace tag of <code>turtlesim1</code> and <code>turtlesim2</code> are created from a <code>turtlesim</code> node with a name of <code>sim</code>. This allows to start two simulators without having name conflicts.</li>
 <li>The mimic node with the topics <code>input</code> and <code>output</code> remapped to <code>turtlesim1</code> and <code>turtlesim2</code>. This renaming will cause <code>turtlesim2</code> to mimic <code>turtlesim1</code>.</li>
 </ul>
-<h3 id="91-roslaunch">9.1. roslaunch<a class="headerlink" href="#91-roslaunch" title="Permanent link">⚓︎</a></h3>
+<h3 id="91-roslaunch">9.1. Roslaunch<a class="headerlink" href="#91-roslaunch" title="Permanent link">⚓︎</a></h3>
 <p>Start the launch file:</p>
 <div class="highlight"><pre><span></span><code>roslaunch beginner_tutorials turtlemimic.launch
 </code></pre></div>
@@ -3269,18 +3269,18 @@ roscd beginner_tutorials
 </figure>
 </p>
 <h2 id="10-create-ros-msg-and-srv">10. Create ROS <code>msg</code> and <code>srv</code><a class="headerlink" href="#10-create-ros-msg-and-srv" title="Permanent link">⚓︎</a></h2>
-<p><em>msg</em> files are simple text files that describe the fields of a ROS message. They are used to generate source code for messages in different languages. <em>msg</em> files are stored in the <code>msg</code> directory of a package</p>
+<p>The <em>msg</em> files are simple text files that describe the fields of a ROS message. They are used to generating source code for messages in different languages. The <em>msg</em> files are stored in the <code>msg</code> directory of a package</p>
 <p>The field types include:</p>
 <ul>
-<li>int8, int16, int32, int64 (plus uint*)</li>
-<li>float32, float64</li>
-<li>string</li>
-<li>time, duration</li>
-<li>other msg files</li>
-<li>variable-length array[] and fixed-length array[C]</li>
+<li><code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code></li>
+<li><code>float32</code>, <code>float64</code></li>
+<li><code>string</code></li>
+<li><code>time</code>, <code>duration</code></li>
+<li>other <code>msg</code> files</li>
+<li>variable-length <code>array[]</code> and fixed-length <code>array[x]</code></li>
 </ul>
 <p>There is also a special type in ROS: <code>Header</code>, the header contains a timestamp and coordinate frame information that are commonly used in ROS.</p>
-<p>Here is an example of a msg that uses a Header, a string primitive, and two other msgs :</p>
+<p>Here is an example of a msg that uses a <code>Header</code>, a <code>string</code> primitive, and two other messages :</p>
 <div class="log">
 <div class="highlight"><pre><span></span><code>Header header
 string child_frame_id
@@ -3288,7 +3288,7 @@ geometry_msgs/PoseWithCovariance pose
 geometry_msgs/TwistWithCovariance twist
 </code></pre></div>
 </div>
-<p><em>srv</em> file describes a service. It is composed of two parts: a request and a response, and <em>srv</em> files are stored in the <code>srv</code> directory. The two parts are separated by a ‘—‘ line.</p>
+<p>The <em>srv</em> file describes a service. It is composed of two parts: a request and a response, and <em>srv</em> files are stored in the <code>srv</code> directory. The two parts are separated by a ‘—‘ line.</p>
 <p>Here is an example of a srv file:</p>
 <!--prettier-ignore-start-->
 <div class="log">
@@ -3371,17 +3371,17 @@ catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
 </code></pre></div>
 <p>Any <code>.msg</code> file in the msg directory will generate code for use in all supported languages:</p>
 <ul>
-<li>The C++ message header file will be generated in <br/>
+<li>The C++ message header file will be generated in<br/>
 <code>catkin_ws/devel/include/beginner_tutorials/</code>.</li>
-<li>The Python script will be created in <br/>
+<li>The Python script will be created in<br/>
 <code>catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg</code>.</li>
-<li>The lisp file appears in <br/>
+<li>The lisp file appears in<br/>
 <code>catkin_ws/devel/share/common-lisp/ros/beginner_tutorials/msg/</code>.</li>
 </ul>
 <p>Similarly, any <code>.srv</code> files in the srv directory will have generated code in supported languages.</p>
 <ul>
 <li>For C++, this will generate header files in the same directory as the messages.</li>
-<li>For Python and Lisp, there will be an <code>srv</code> folder beside the <code>msg</code> folders.</li>
+<li>For Python and Lisp, there will be a <code>srv</code> folder beside the <code>msg</code> folders.</li>
 </ul>
 <p>Here are the generated files:</p>
 <p><a href="Num.h">devel/include/beginner_tutorials/Num.h</a><br/>
@@ -3644,7 +3644,7 @@ mkdir src <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="113-building-new-nodes">11.3. Building new nodes<a class="headerlink" href="#113-building-new-nodes" title="Permanent link">⚓︎</a></h3>
-<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all of dependency packages listed above, add below lines also:</p>
+<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all dependency packages listed above, add below lines also:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
 nano CMakeLists.txt
 </code></pre></div>
@@ -3661,7 +3661,7 @@ target_link_libraries<span class="o">(</span>listener <span class="si">${</span>
 add_dependencies<span class="o">(</span>listener beginner_tutorials_generate_messages_cpp<span class="o">)</span>
 </code></pre></div>
 <p>This will create two executables, talker and listener, which by default will go into package directory in devel space, located by default at <code>catkin_ws/devel/lib/&lt;package name&gt;</code>.</p>
-<p>Finally make the package again:</p>
+<p>Finally, make the package again:</p>
 <div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
 catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
@@ -3677,7 +3677,7 @@ catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <figure class="w80"><img src="rosrun_talker_listener.png"/><figcaption>Talker and Listener</figcaption></figure>
 </p>
 <h2 id="12-publisher-and-subscriber-python">12. Publisher and Subscriber (Python)<a class="headerlink" href="#12-publisher-and-subscriber-python" title="Permanent link">⚓︎</a></h2>
-<p>Go to the scripts folder of the <code>beginner_tutorials</code> package:</p>
+<p>Go to the scripts’ folder of the <code>beginner_tutorials</code> package:</p>
 <div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
 mkdir scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <span class="nb">cd</span> scripts
@@ -3686,11 +3686,11 @@ mkdir scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <p>This tutorial demonstrates simple sending of messages over the ROS system.</p>
 <div class="highlight"><pre><span></span><code>nano talker.py
 </code></pre></div>
-<div class="admonition note nt">
+<div class="admonition note no-title">
 <p class="admonition-title"> </p>
 <p>Note that a node is created from a publisher, in contrast to C++ implementation, a publisher is created from a node.</p>
 </div>
-<div class="admonition info nt">
+<div class="admonition info no-title">
 <p class="admonition-title"> </p>
 <p>In ROS, nodes are uniquely named. If two nodes with the same name are launched, the previous one is kicked off. The <code>anonymous=True</code> flag means that rospy will choose a unique name for a new <code>listener</code> node so that multiple listeners can run simultaneously.</p>
 </div>
@@ -3755,7 +3755,7 @@ mkdir scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">listener</span><span class="p">()</span>
 </code></pre></div>
-<div class="admonition info nt">
+<div class="admonition info no-title">
 <p class="admonition-title"> </p>
 <p><code>rospy.spin()</code> simply keeps the node from exiting until the node has been shutdown. Unlike roscpp, <code>rospy.spin()</code> does not affect the subscriber callback functions, as those have their own threads.</p>
 </div>
@@ -3765,9 +3765,9 @@ mkdir scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <p>scripts</p>
 <div class="highlight"><pre><span></span><code>chmod +x *
 </code></pre></div>
-<div class="np"></div>
+<div class="new-page"></div>
 <h3 id="124-building-new-nodes">12.4. Building new nodes<a class="headerlink" href="#124-building-new-nodes" title="Permanent link">⚓︎</a></h3>
-<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all of dependency packages listed above, add below lines also:</p>
+<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all dependency packages listed above, add below lines also:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
 nano CMakeLists.txt
 </code></pre></div>
@@ -3779,7 +3779,7 @@ nano CMakeLists.txt
     DESTINATION <span class="si">${</span><span class="nv">CATKIN_PACKAGE_BIN_DESTINATION</span><span class="si">}</span>
 <span class="o">)</span>
 </code></pre></div>
-<p>Finally make the package again:</p>
+<p>Finally, make the package again:</p>
 <div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
 catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
@@ -3883,7 +3883,7 @@ mkdir src <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="133-building-new-nodes">13.3. Building new nodes<a class="headerlink" href="#133-building-new-nodes" title="Permanent link">⚓︎</a></h3>
-<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all of dependency packages listed above, add below lines also:</p>
+<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all dependency packages listed above, add below lines also:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
 nano CMakeLists.txt
 </code></pre></div>
@@ -3900,7 +3900,7 @@ target_link_libraries<span class="o">(</span>add_two_ints_client <span class="si
 add_dependencies<span class="o">(</span>add_two_ints_client beginner_tutorials_gencpp<span class="o">)</span>
 </code></pre></div>
 <p>This will create two executables, add_two_ints_server and add_two_ints_client, which by default will go into package directory in devel space, located by default at <code>catkin_ws/devel/lib/&lt;package name&gt;</code>.</p>
-<p>Finally make the package again:</p>
+<p>Finally, make the package again:</p>
 <div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
 catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
@@ -3985,12 +3985,12 @@ mkdir scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Requesting </span><span class="si">%s</span><span class="s2">+</span><span class="si">%s</span><span class="s2">"</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> + </span><span class="si">%s</span><span class="s2"> = </span><span class="si">%s</span><span class="s2">"</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">add_two_ints_client</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
 </code></pre></div>
-<h3 id="143-make-scripts-excutable">14.3. Make scripts excutable<a class="headerlink" href="#143-make-scripts-excutable" title="Permanent link">⚓︎</a></h3>
+<h3 id="143-make-scripts-executable">14.3. Make scripts executable<a class="headerlink" href="#143-make-scripts-executable" title="Permanent link">⚓︎</a></h3>
 <p>Scripts need to get execution permission before they can run:</p>
 <div class="highlight"><pre><span></span><code>chmod +x *
 </code></pre></div>
 <h3 id="144-building-new-nodes">14.4. Building new nodes<a class="headerlink" href="#144-building-new-nodes" title="Permanent link">⚓︎</a></h3>
-<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all of dependency packages listed above, add below lines also:</p>
+<p>Add the source code files which need to be compiled into the <code>CMakeLists.txt</code>. With all dependency packages listed above, add below lines also:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> <span class="se">\</span>
 nano CMakeLists.txt
 </code></pre></div>
@@ -4003,7 +4003,7 @@ nano CMakeLists.txt
 <span class="o">)</span>
 </code></pre></div>
 <p>This will create two executables, add_two_ints_server and add_two_ints_client, which by default will go into package directory in devel space, located by default at <code>catkin_ws/devel/lib/&lt;package name&gt;</code>.</p>
-<p>Finally make the package again:</p>
+<p>Finally, make the package again:</p>
 <div class="highlight"><pre><span></span><code>roscd beginner_tutorials <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <span class="nb">cd</span> ../.. <span class="o">&amp;&amp;</span> <span class="se">\</span>
 catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
@@ -4028,8 +4028,8 @@ catkin_make <span class="o">&amp;&amp;</span> <span class="se">\</span>
 <p>Terminal 3:</p>
 <div class="highlight"><pre><span></span><code>rosrun turtlesim turtle_teleop_key
 </code></pre></div>
-<p>This will start two nodes - the turtlesim visualizer and a node that allows for the keyboard control of turtlesim using the arrows keys on the keyboard.</p>
-<p>Lets examine the full list of topics that are currently being published in the running system. To do this, open a new terminal and execute the command:</p>
+<p>This will start two nodes — the <code>turtlesim</code> visualizer and a node that allows for the keyboard control of <code>turtlesim</code> using the arrows keys on the keyboard.</p>
+<p>Let’s examine the full list of topics that are currently being published in the running system. To do this, open a new terminal and execute the command:</p>
 <div class="highlight"><pre><span></span><code>rostopic list -v
 </code></pre></div>
 <div class="log">
@@ -4045,9 +4045,9 @@ Subscribed topics:
 * /rosout <span class="o">[</span>rosgraph_msgs/Log<span class="o">]</span> <span class="m">1</span> subscriber
 </code></pre></div>
 </div>
-<p>The list of published topics are the only message types that could potentially be recorded in the data log file, as only published messages are recorded:</p>
+<p>The list of published topics is the only message types that could potentially be recorded in the data log file, as only published messages are recorded:</p>
 <ul>
-<li>The topic <code>/turtle1/cmd_vel</code> is the command message published by the <code>teleop_turtle</code> node that is taken as input by the turtlesim process.</li>
+<li>The topic <code>/turtle1/cmd_vel</code> is the command message published by the <code>teleop_turtle</code> node that is taken as input by the <code>turtlesim</code> process.</li>
 <li>The messages <code>/turtle1/color_sensor</code> and <code>/turtle1/pose</code> are output messages published by <code>turtlesim</code>.</li>
 </ul>
 <p>Open a new terminal window. In this window run the following commands. Running <code>rosbag record</code> with the option <code>-a</code> indicates that all published topics should be accumulated in a bag file.</p>
@@ -4067,7 +4067,7 @@ rosbag record -a
 </div>
 <p>Move back to the terminal window with <code>turtle_teleop</code> and move the turtle around for 10 or so seconds.</p>
 <h3 id="152-rosbag-info">15.2. Rosbag info<a class="headerlink" href="#152-rosbag-info" title="Permanent link">⚓︎</a></h3>
-<p>Run the command <code>rosbag info</code> to see the info of a rosbag file:</p>
+<p>Run the command <code>rosbag info</code> to see the info of a <em class="noem">rosbag</em> file:</p>
 <div class="highlight"><pre><span></span><code>rosbag info &lt;bagfile&gt;
 </code></pre></div>
 <div class="log">
@@ -4091,16 +4091,16 @@ topics:      /rosout                  <span class="m">217</span> msgs    : rosgr
 </code></pre></div>
 </div>
 <h3 id="153-rosbag-play">15.3. Rosbag play<a class="headerlink" href="#153-rosbag-play" title="Permanent link">⚓︎</a></h3>
-<p>The next step in this tutorial is to replay the bag file to reproduce behavior in the running system. First kill the tele-operator program that may be still running from the previous section.</p>
+<p>The next step in this tutorial is to replay the bag file to reproduce behavior in the running system. First kill the <code>tele-operator</code> program that may be still running from the previous section.</p>
 <p>Leave <code>turtlesim</code> running. In a terminal window run the following command:</p>
 <div class="highlight"><pre><span></span><code>rosbag play &lt;bagfile&gt;
 </code></pre></div>
-<p>In its default mode <code>rosbag play</code> will wait for a certain period (.2 seconds) after advertising each message before it actually begins publishing the contents of the bag file. Waiting for some duration allows any subscriber of a message to be alerted that the message has been advertised and that messages may follow. If rosbag play publishes messages immediately upon advertising, subscribers may not receive the first several published messages. The waiting period can be specified with the <code>-d</code> option.</p>
+<p>In its default mode <code>rosbag play</code> will wait for a certain period (.2 seconds) after advertising each message before it actually begins publishing the contents of the bag file. Waiting for some duration allows any subscriber of a message to be alerted that the message has been advertised and that messages may follow. If <code>rosbag play</code> publishes messages immediately upon advertising, subscribers may not receive the first several published messages. The waiting period can be specified with the <code>-d</code> option.</p>
 <h3 id="154-recording-a-subset">15.4. Recording a subset<a class="headerlink" href="#154-recording-a-subset" title="Permanent link">⚓︎</a></h3>
-<p>When running a complicated system, such as the pr2 software suite, there may be hundreds of topics being published, with some topics, like camera image streams, potentially publishing huge amounts of data. In such a system it is often impractical to write log files consisting of all topics to disk in a single bag file. The rosbag record command supports logging only particular topics to a bag file, allowing users to only record the topics of interest to them.</p>
+<p>When running a complicated system, such as the pr2 software suite, there may be hundreds of topics being published, with some topics, like camera image streams, potentially publishing huge amounts of data. In such a system it is often impractical to write log files consisting of all topics to disk in a single bag file. The <code>rosbag record</code> command supports logging only particular topics to a bag file, allowing users to only record the topics of interest to them.</p>
 <div class="highlight"><pre><span></span><code>rosbag record -O subset /turtle1/cmd_vel /turtle1/pose
 </code></pre></div>
-<p>The <code>-O</code> argument tells <code>rosbag record</code> to log to a file named <code>subset.bag</code>, and the topic arguments cause rosbag record to only subscribe to these two topics.</p>
+<p>The <code>-O</code> argument tells <code>rosbag record</code> to log to a file named <code>subset.bag</code>, and the topic arguments cause <code>rosbag</code> record to only subscribe to these two topics.</p>
 <div class="admonition caution">
 <p class="admonition-title">The limitations of rosbag record/play</p>
 <p>Different start condition can cause different results even the events are the same. The rate of recorded events is not guaranteed to be the same as the real actions.</p>
@@ -4213,7 +4213,7 @@ angular_velocity: 0.0
 </div>
 <h2 id="17-reference">17. Reference<a class="headerlink" href="#17-reference" title="Permanent link">⚓︎</a></h2>
 <p>There is an interesting book named <a href="A_gentle_Introduction_to_ROS.pdf">A Gentle Introduction to ROS</a> by <a href="http://www.cse.sc.edu/~jokane/">Jason M. O’Kane</a> published on <a href="https://cse.sc.edu/~jokane/agitr/">https://cse.sc.edu/~jokane/agitr/</a>. This book supplements ROS’s own documentation, explaining how to interact with existing ROS systems and how to create new ROS programs using C++, with special attention to common mistakes and misunderstandings.</p>
-<p>An exceprt from the book:</p>
+<p>An excerpt from the book:</p>
 <div class="admonition cite">
 <p class="admonition-title">Giving ROS control</p>
 <p>The final complication is that ROS will only execute our callback function when we give it explicit permission to do so. There are actually two slightly different ways to accomplish this. One version looks like this:</p>
@@ -4323,7 +4323,7 @@ angular_velocity: 0.0
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
-<script src="../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+<script src="../../../assets/javascripts/bundle.29db7785.min.js"></script>
 <script src="../../../assets/view-bigimg.js"></script>
 <script src="../../../assets/extra.js"></script>
 </body>
