@@ -10,7 +10,7 @@
 <meta content="vqtrong" name="author"/>
 <link href="https://www.codeinsideout.com/blog/stm32/adc/" rel="canonical"/>
 <link href="../../../favicon.png" rel="icon"/>
-<meta content="mkdocs-1.2.2, mkdocs-material-7.2.3" name="generator"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.4" name="generator"/>
 <title>STM32 - Analog to Digital Converter - Code Inside Out</title>
 <link href="../../../assets/stylesheets/main.f7f47774.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
@@ -128,6 +128,14 @@
 </nav>
 <main class="md-main" data-md-component="main">
 <div class="md-main__inner md-grid">
+<style>
+        .md-sidebar {
+            opacity: 0.2;
+        }
+        .md-sidebar:hover {
+            opacity: 1;
+        }
+    </style>
 <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
@@ -568,24 +576,45 @@
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_4">
 <span class="md-nav__icon md-icon"></span>
-<a class="md-nav__link" href="../../lidar/" style="margin: initial; padding: initial; pointer-events: initial">
+<a class="md-nav__link" href="../../gnss/" style="margin: initial; padding: initial; pointer-events: initial">
         
-          Lidar
+          GNSS
         </a>
 </label>
-<nav aria-label="Lidar" class="md-nav" data-md-level="2">
+<nav aria-label="GNSS" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_4">
 <span class="md-nav__icon md-icon"></span>
-<a class="md-nav__link" href="../../lidar/" style="margin: initial; padding: initial; pointer-events: initial">
+<a class="md-nav__link" href="../../gnss/" style="margin: initial; padding: initial; pointer-events: initial">
           
-            Lidar
+            GNSS
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../gnss/unicorecomm/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          Unicorecomm
+        </a>
+</label>
+<nav aria-label="Unicorecomm" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../gnss/unicorecomm/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            Unicorecomm
           </a>
 </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../lidar/livox-sdk/">
-        Livox SDK
+<a class="md-nav__link" href="../../gnss/unicorecomm/ub4xx/">
+        UB482/UB4B0M
       </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -594,13 +623,91 @@
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_5">
 <span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../imu/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          IMU
+        </a>
+</label>
+<nav aria-label="IMU" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../imu/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            IMU
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" id="__nav_2_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../imu/invensense/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          InvenSense
+        </a>
+</label>
+<nav aria-label="InvenSense" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_5_1">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../imu/invensense/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            InvenSense
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../imu/invensense/dk-20789/">
+        DK-20789
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../lidar/" style="margin: initial; padding: initial; pointer-events: initial">
+        
+          LIDAR
+        </a>
+</label>
+<nav aria-label="LIDAR" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+<a class="md-nav__link" href="../../lidar/" style="margin: initial; padding: initial; pointer-events: initial">
+          
+            LIDAR
+          </a>
+</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lidar/livox-sdk/">
+        Livox SDK
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lidar/livox-mapping-apx15/">
+        Livox high precision mapping
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../../linux/" style="margin: initial; padding: initial; pointer-events: initial">
         
           Linux
         </a>
 </label>
 <nav aria-label="Linux" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_5">
+<label class="md-nav__title" for="__nav_2_7">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../../linux/" style="margin: initial; padding: initial; pointer-events: initial">
           
@@ -632,8 +739,8 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_6">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../../ros/" style="margin: initial; padding: initial; pointer-events: initial">
         
@@ -641,7 +748,7 @@
         </a>
 </label>
 <nav aria-label="ROS" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_6">
+<label class="md-nav__title" for="__nav_2_8">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../../ros/" style="margin: initial; padding: initial; pointer-events: initial">
           
@@ -658,8 +765,8 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
         
@@ -667,7 +774,7 @@
         </a>
 </label>
 <nav aria-label="Setup blog" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_7">
+<label class="md-nav__title" for="__nav_2_9">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../../setup-blog/" style="margin: initial; padding: initial; pointer-events: initial">
           
@@ -704,8 +811,8 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_8">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../../virtual-machine/" style="margin: initial; padding: initial; pointer-events: initial">
         
@@ -713,7 +820,7 @@
         </a>
 </label>
 <nav aria-label="Virtual machine" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_8">
+<label class="md-nav__title" for="__nav_2_10">
 <span class="md-nav__icon md-icon"></span>
 <a class="md-nav__link" href="../../virtual-machine/" style="margin: initial; padding: initial; pointer-events: initial">
           
@@ -875,326 +982,123 @@
 <label class="md-nav__title">Tag cloud</label>
 </p>
 <div class="tag-cloud-content">
-<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
 <span class="tag-name" style="
-          font-size:0.8rem;
+          font-size:0.65rem;
+          color:DarkSlateGray;
+        ">interrupt</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+<span class="tag-name" style="
+          font-size:0.55rem;
           color:DarkRed;
-        ">camera</span>
-<!--<sup class="tag-count">6</sup>-->
+        ">adc</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">mjpeg</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">timer</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkCyan;
+        ">mkdocs</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkBlue;
+        ">ros</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkRed;
+        ">i2c</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+<span class="tag-name" style="
+          font-size:1.6500000000000001rem;
+          color:DarkMagenta;
+        ">arm</span>
+<!--<sup class="tag-count">23</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+<span class="tag-name" style="
+          font-size:0.7rem;
+          color:DarkSlateGray;
+        ">notes</span>
+<!--<sup class="tag-count">4</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">gpio</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">virtual</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">sensor</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">capture</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">markdown</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">hls</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">javascript</span>
+<!--<sup class="tag-count">2</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#css">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkGreen;
         ">css</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#bash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">bash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#container">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">container</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">v4l2</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">clock</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#board">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">board</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">sdcard</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">mapping</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">usart</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pulse">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">pulse</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ssd1306">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">ssd1306</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">toolchain</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">hyper-v</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">sysview</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">sensor</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkSlateGray;
-        ">uart</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
-<span class="tag-name" style="
-          font-size:1.05rem;
-          color:DarkRed;
-        ">raspberry-pi</span>
-<!--<sup class="tag-count">11</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">adc</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#memory">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkBlue;
-        ">memory</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#systick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">systick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">headless</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-<span class="tag-name" style="
-          font-size:1.6500000000000001rem;
-          color:DarkOliveGreen;
-        ">arm</span>
-<!--<sup class="tag-count">23</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">jinja</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#livox">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">livox</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">sharing</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">docs</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGreen;
-        ">javascript</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGreen;
-        ">hls</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">capture</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#python">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkGoldenrod;
-        ">python</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkRed;
-        ">picamera</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">reentrant</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">ajax</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">mjpeg</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pi">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">pi</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">joystick</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">pdf</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
-<span class="tag-name" style="
-          font-size:0.75rem;
-          color:DarkGreen;
-        ">rtos</span>
-<!--<sup class="tag-count">5</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">c</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#material">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">material</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">redirect</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGoldenrod;
-        ">rtt</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#c++">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">c++</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkMagenta;
-        ">dma</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gps">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkCyan;
-        ">gps</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#docker">
@@ -1204,6 +1108,188 @@
         ">docker</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">hyper-v</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gnss">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkTurquoise;
+        ">gnss</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkMagenta;
+        ">mapping</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkViolet;
+        ">clock</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">headless</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#memory">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGreen;
+        ">memory</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sharing">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">sharing</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkTurquoise;
+        ">picamera</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkBlue;
+        ">uart</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkGoldenrod;
+        ">lidar</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">docs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+<span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">camera</span>
+<!--<sup class="tag-count">6</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#c/c++">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">c/c++</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+<span class="tag-name" style="
+          font-size:0.75rem;
+          color:DarkTurquoise;
+        ">rtos</span>
+<!--<sup class="tag-count">5</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#material">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGoldenrod;
+        ">material</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+<span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkTurquoise;
+        ">stream</span>
+<!--<sup class="tag-count">3</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#imu">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">imu</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">swv</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#libs">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">libs</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
+<span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkRed;
+        ">virtual-machine</span>
+<!--<sup class="tag-count">2</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">pwm</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">spi</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#html">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">html</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">sdcard</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#stack">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">stack</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#ajax">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">ajax</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#h264">
 <span class="tag-name" style="
           font-size:0.55rem;
@@ -1211,192 +1297,157 @@
         ">h264</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">jinja</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkCyan;
+        ">oled</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">reentrant</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#gps">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">gps</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">v4l2</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkTurquoise;
+        ">sysview</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#container">
+<span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">container</span>
+<!--<sup class="tag-count">1</sup>-->
+</a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
 <span class="tag-name" style="
           font-size:0.75rem;
-          color:DarkSlateBlue;
+          color:DarkSlateGray;
         ">debug</span>
 <!--<sup class="tag-count">5</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#samba">
+<a class="tag" href="https://www.codeinsideout.com/tags/#usart">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkOrchid;
-        ">samba</span>
+          color:DarkSlateGray;
+        ">usart</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">dash</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stack">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">stack</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkTurquoise;
-        ">interrupt</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#swv">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">swv</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#spi">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">spi</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#lidar">
+<a class="tag" href="https://www.codeinsideout.com/tags/#dma">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkBlue;
-        ">lidar</span>
+          color:DarkMagenta;
+        ">dma</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#linux">
 <span class="tag-name" style="
           font-size:0.75rem;
-          color:DarkTurquoise;
+          color:DarkSlateGray;
         ">linux</span>
 <!--<sup class="tag-count">5</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+<a class="tag" href="https://www.codeinsideout.com/tags/#ins">
 <span class="tag-name" style="
-          font-size:0.65rem;
+          font-size:0.55rem;
           color:DarkGoldenrod;
-        ">ros</span>
-<!--<sup class="tag-count">3</sup>-->
+        ">ins</span>
+<!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
+<a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkOliveGreen;
-        ">virtual-machine</span>
+          color:DarkGreen;
+        ">rtt</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+<a class="tag" href="https://www.codeinsideout.com/tags/#dash">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">markdown</span>
+          color:DarkViolet;
+        ">dash</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+<a class="tag" href="https://www.codeinsideout.com/tags/#pdf">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
-        ">virtual</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">gpio</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#SemiHosting">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">SemiHosting</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#html">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">html</span>
-<!--<sup class="tag-count">1</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-<span class="tag-name" style="
-          font-size:0.7rem;
-          color:DarkOliveGreen;
-        ">notes</span>
-<!--<sup class="tag-count">4</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkBlue;
-        ">mkdocs</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-<span class="tag-name" style="
-          font-size:0.65rem;
-          color:DarkOliveGreen;
-        ">stream</span>
-<!--<sup class="tag-count">3</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#oled">
-<span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">oled</span>
+          color:DarkRed;
+        ">pdf</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
 <span class="tag-name" style="
           font-size:0.6rem;
-          color:DarkSlateGray;
+          color:DarkTurquoise;
         ">ffmpeg</span>
 <!--<sup class="tag-count">2</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
 <span class="tag-name" style="
-          font-size:0.55rem;
+          font-size:1.8rem;
           color:DarkCyan;
-        ">pwm</span>
-<!--<sup class="tag-count">1</sup>-->
+        ">stm32</span>
+<!--<sup class="tag-count">26</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-<span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkRed;
-        ">i2c</span>
-<!--<sup class="tag-count">2</sup>-->
-</a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+<a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
 <span class="tag-name" style="
           font-size:0.55rem;
           color:DarkGreen;
-        ">timer</span>
+        ">redirect</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+<a class="tag" href="https://www.codeinsideout.com/tags/#python">
 <span class="tag-name" style="
-          font-size:1.75rem;
-          color:DarkBlue;
-        ">stm32</span>
-<!--<sup class="tag-count">25</sup>-->
+          font-size:0.75rem;
+          color:DarkGreen;
+        ">python</span>
+<!--<sup class="tag-count">5</sup>-->
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#distance">
+<a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
-        ">distance</span>
+          color:DarkOrchid;
+        ">toolchain</span>
 <!--<sup class="tag-count">1</sup>-->
+</a>
+<a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
+<span class="tag-name" style="
+          font-size:1.05rem;
+          color:DarkGreen;
+        ">raspberry-pi</span>
+<!--<sup class="tag-count">11</sup>-->
 </a>
 <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
 <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkCyan;
+          color:DarkTurquoise;
         ">performance</span>
 <!--<sup class="tag-count">1</sup>-->
 </a>
@@ -1439,17 +1490,12 @@
                         #adc
                     </span>
 </a>
-<a class="tag" href="https://www.codeinsideout.com/tags/#joystick">
-<span class="tag-name">
-                        #joystick
-                    </span>
-</a>
 </p>
 <p class="md-source-date">
 <hr style="margin-bottom: .5em;"/>
 <small>
                             Last update:
-                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-08-10 16:50:49</span>
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-08-17 10:23:58</span>
 </small>
 </p>
 </div>
@@ -1794,26 +1840,26 @@ Any board which has STM32 MCUs. This tutorial will be using the STM32F0 Discover
 </p>
 <h3 id="63-generated-code" style="margin-top:0;">6.3. Generated code<a class="headerlink" href="#63-generated-code" title="Permanent link">⚓︎</a></h3>
 <p>An ADC instance <code>ADC_HandleTypeDef hadc;</code> is created and the that ADC is initialized in the function <code>MX_ADC_Init()</code> in which the common settings will be applied. After that, it enables all selected channel for a converting sequence.</p>
-<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">MX_ADC_Init_Single_Conversion</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">ADC_ChannelConfTypeDef</span> <span class="n">sConfig</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-  <span class="cm">/** Configure the global features of the ADC</span>
-<span class="cm">  (Clock, Resolution, Data Alignment and number of conversion) */</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">ADC1</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ClockPrescaler</span> <span class="o">=</span> <span class="n">ADC_CLOCK_ASYNC_DIV1</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Resolution</span> <span class="o">=</span> <span class="n">ADC_RESOLUTION_12B</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DataAlign</span> <span class="o">=</span> <span class="n">ADC_DATAALIGN_RIGHT</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ScanConvMode</span> <span class="o">=</span> <span class="n">ADC_SCAN_DIRECTION_FORWARD</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">EOCSelection</span> <span class="o">=</span> <span class="n">ADC_EOC_SINGLE_CONV</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">LowPowerAutoWait</span> <span class="o">=</span> <span class="n">DISABLE</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">LowPowerAutoPowerOff</span> <span class="o">=</span> <span class="n">DISABLE</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ContinuousConvMode</span> <span class="o">=</span> <span class="n">DISABLE</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DiscontinuousConvMode</span> <span class="o">=</span> <span class="n">DISABLE</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ExternalTrigConv</span> <span class="o">=</span> <span class="n">ADC_SOFTWARE_START</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ExternalTrigConvEdge</span> <span class="o">=</span> <span class="n">ADC_EXTERNALTRIGCONVEDGE_NONE</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DMAContinuousRequests</span> <span class="o">=</span> <span class="n">DISABLE</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Overrun</span> <span class="o">=</span> <span class="n">ADC_OVR_DATA_PRESERVED</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_ADC_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span> <span class="n">Error_Handler</span><span class="p">();</span> <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">MX_ADC_Init_Single_Conversion</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">ADC_ChannelConfTypeDef</span><span class="w"> </span><span class="n">sConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/** Configure the global features of the ADC</span>
+<span class="cm">  (Clock, Resolution, Data Alignment and number of conversion) */</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ClockPrescaler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_CLOCK_ASYNC_DIV1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Resolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_RESOLUTION_12B</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DataAlign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_DATAALIGN_RIGHT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ScanConvMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_SCAN_DIRECTION_FORWARD</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">EOCSelection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_EOC_SINGLE_CONV</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">LowPowerAutoWait</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">LowPowerAutoPowerOff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ContinuousConvMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DiscontinuousConvMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ExternalTrigConv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_SOFTWARE_START</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ExternalTrigConvEdge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_EXTERNALTRIGCONVEDGE_NONE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DMAContinuousRequests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Overrun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_OVR_DATA_PRESERVED</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HAL_ADC_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">HAL_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Error_Handler</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="64-single-channel-single-conversion">6.4. Single-Channel, Single Conversion<a class="headerlink" href="#64-single-channel-single-conversion" title="Permanent link">⚓︎</a></h3>
 <p>To read an ADC channel, it is needed to configure one and only target channel. If there is more than one channel, ADC module will act as scan mode, and if the target channel has its number less than the first enabled channel, it will not be read.</p>
@@ -1826,56 +1872,56 @@ Any board which has STM32 MCUs. This tutorial will be using the STM32F0 Discover
 <li>Read the returned value with <code>HAL_ADC_GetValue()</code></li>
 <li>Clear all channel registered in Channel Selection <code>CHSELR</code> register by assigning it to 0.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Add_ADC_Channel</span><span class="p">(</span><span class="n">ADC_HandleTypeDef</span><span class="o">*</span> <span class="n">hadc</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">channel</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">sampling_time</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">ADC_ChannelConfTypeDef</span> <span class="n">sConfig</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-  <span class="cm">/** Configure for the selected ADC regular channel to be converted. */</span>
-  <span class="n">sConfig</span><span class="p">.</span><span class="n">Channel</span> <span class="o">=</span> <span class="n">channel</span><span class="p">;</span>
-  <span class="n">sConfig</span><span class="p">.</span><span class="n">Rank</span> <span class="o">=</span> <span class="n">ADC_RANK_CHANNEL_NUMBER</span><span class="p">;</span>
-  <span class="n">sConfig</span><span class="p">.</span><span class="n">SamplingTime</span> <span class="o">=</span> <span class="n">sampling_time</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_ADC_ConfigChannel</span><span class="p">(</span><span class="n">hadc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sConfig</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span> <span class="n">Error_Handler</span><span class="p">();</span> <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">Add_ADC_Channel</span><span class="p">(</span><span class="n">ADC_HandleTypeDef</span><span class="o">*</span><span class="w"> </span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sampling_time</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">ADC_ChannelConfTypeDef</span><span class="w"> </span><span class="n">sConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/** Configure for the selected ADC regular channel to be converted. */</span><span class="w"></span>
+<span class="w">  </span><span class="n">sConfig</span><span class="p">.</span><span class="n">Channel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">channel</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">sConfig</span><span class="p">.</span><span class="n">Rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_RANK_CHANNEL_NUMBER</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">sConfig</span><span class="p">.</span><span class="n">SamplingTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sampling_time</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HAL_ADC_ConfigChannel</span><span class="p">(</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sConfig</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">HAL_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Error_Handler</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">uint32_t</span> <span class="nf">Read_ADC_Channel</span><span class="p">(</span><span class="n">ADC_HandleTypeDef</span><span class="o">*</span> <span class="n">hadc</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">channel</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">sampling_time</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kt">uint32_t</span> <span class="n">adc_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="c1">// clear all channel</span>
-  <span class="n">hadc</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">-&gt;</span><span class="n">CHSELR</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="n">Add_ADC_Channel</span><span class="p">(</span><span class="n">hadc</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">sampling_time</span><span class="p">);</span>
-  <span class="c1">// read</span>
-  <span class="n">HAL_ADC_Start</span><span class="p">(</span><span class="n">hadc</span><span class="p">);</span>
-  <span class="n">HAL_ADC_PollForConversion</span><span class="p">(</span><span class="n">hadc</span><span class="p">,</span> <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
-  <span class="n">adc_value</span> <span class="o">=</span> <span class="n">HAL_ADC_GetValue</span><span class="p">(</span><span class="n">hadc</span><span class="p">);</span>
-  <span class="n">HAL_ADC_Stop</span><span class="p">(</span><span class="n">hadc</span><span class="p">);</span>
-  <span class="c1">// clear all channel</span>
-  <span class="n">hadc</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">-&gt;</span><span class="n">CHSELR</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="c1">// return</span>
-  <span class="k">return</span> <span class="n">adc_value</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">Read_ADC_Channel</span><span class="p">(</span><span class="n">ADC_HandleTypeDef</span><span class="o">*</span><span class="w"> </span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sampling_time</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">adc_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clear all channel</span>
+<span class="w">  </span><span class="n">hadc</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">-&gt;</span><span class="n">CHSELR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Add_ADC_Channel</span><span class="p">(</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="n">sampling_time</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// read</span>
+<span class="w">  </span><span class="n">HAL_ADC_Start</span><span class="p">(</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">HAL_ADC_PollForConversion</span><span class="p">(</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">HAL_MAX_DELAY</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">adc_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HAL_ADC_GetValue</span><span class="p">(</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">HAL_ADC_Stop</span><span class="p">(</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clear all channel</span>
+<span class="w">  </span><span class="n">hadc</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">-&gt;</span><span class="n">CHSELR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// return</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">adc_value</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p><br>
 <strong>Read Joystick’s position</strong></br></p>
 <p>As the ADC value is an 12-bit register, Joystick has 2 channels, an array will be used to store the Joystick’s position. A buffer also is used to hold the message which will be sent on UART1.</p>
-<div class="highlight"><pre><span></span><code><span class="kt">uint16_t</span> <span class="n">joystick</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-<span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span> <span class="c1">// xxxx,yyyy\r\n</span>
+<div class="highlight"><pre><span></span><code><span class="kt">uint16_t</span><span class="w"> </span><span class="n">joystick</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c1">// xxxx,yyyy\r\n</span>
 </code></pre></div>
 <p>It is recommended to do ADC Calibration before activating the ADC conversion. Then in the main while loop, call to <code>Read_ADC()</code> on <code>ADC_CHANNEL_1</code> and <code>ADC_CHANNEL_2</code>. The 20 ms delay will help to reduce the conversion rate to about 50 Hz.</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="cp">#if defined(ADC_1_CH_SINGLE_MODE)</span>
-    <span class="n">MX_ADC_Init_Single_Conversion</span><span class="p">();</span>
-    <span class="n">HAL_ADCEx_Calibration_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span>
-    <span class="cp">#endif</span>
-    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cp">#ifdef ADC_1_CH_SINGLE_MODE</span>
-        <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">LED_GPIO_Port</span><span class="p">,</span> <span class="n">LED_Pin</span><span class="p">);</span>
-        <span class="n">joystick</span><span class="p">[</span><span class="n">JS_X</span><span class="p">]</span> <span class="o">=</span> <span class="n">Read_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="n">ADC_CHANNEL_1</span><span class="p">,</span>
-                                          <span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span>
-        <span class="n">joystick</span><span class="p">[</span><span class="n">JS_Y</span><span class="p">]</span> <span class="o">=</span> <span class="n">Read_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="n">ADC_CHANNEL_2</span><span class="p">,</span>
-                                          <span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span>
-        <span class="cp">#endif</span>
-        <span class="n">HAL_UART_Transmit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span>
-                                          <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
-        <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#if defined(ADC_1_CH_SINGLE_MODE)</span>
+<span class="w">    </span><span class="n">MX_ADC_Init_Single_Conversion</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">HAL_ADCEx_Calibration_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cp">#ifdef ADC_1_CH_SINGLE_MODE</span>
+<span class="w">        </span><span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">LED_GPIO_Port</span><span class="p">,</span><span class="w"> </span><span class="n">LED_Pin</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">joystick</span><span class="p">[</span><span class="n">JS_X</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Read_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_CHANNEL_1</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                          </span><span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">joystick</span><span class="p">[</span><span class="n">JS_Y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Read_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_CHANNEL_2</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                          </span><span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="cp">#endif</span>
+<span class="w">        </span><span class="n">HAL_UART_Transmit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span><span class="w"></span>
+<span class="w">                                          </span><span class="n">HAL_MAX_DELAY</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Run the application and connect to the UART1 terminal, value of <code>VRX</code> and <code>VRY</code> will be printed out, like below:</p>
 <p>
@@ -1905,26 +1951,26 @@ Any board which has STM32 MCUs. This tutorial will be using the STM32F0 Discover
 <p>In the <strong>Multiple-Channel mode</strong>, ADC module starts with the first activated channel which has the smallest channel number when the function <code>HAL_ADC_Start()</code> is called.</p>
 <p>For each subsequence call of <code>HAL_ADC_PollForConversion()</code>, ADC module read the channel then move to the next channel, and wait for next polling call.</p>
 <div class="new-page"></div>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="cp">#if defined(ADC_1_CH_SINGLE_MODE) || defined(ADC_N_CH_SINGLE_MODE)</span>
-    <span class="n">MX_ADC_Init_Single_Conversion</span><span class="p">();</span>
-    <span class="n">HAL_ADCEx_Calibration_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span>
-    <span class="cp">#endif</span>
-    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cp">#ifdef ADC_N_CH_SINGLE_MODE</span>
-        <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">LED_GPIO_Port</span><span class="p">,</span> <span class="n">LED_Pin</span><span class="p">);</span>
-        <span class="n">HAL_ADC_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span>
-        <span class="n">HAL_ADC_PollForConversion</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
-        <span class="n">joystick</span><span class="p">[</span><span class="n">JS_X</span><span class="p">]</span> <span class="o">=</span> <span class="n">HAL_ADC_GetValue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span>
-        <span class="n">HAL_ADC_PollForConversion</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
-        <span class="n">joystick</span><span class="p">[</span><span class="n">JS_Y</span><span class="p">]</span> <span class="o">=</span> <span class="n">HAL_ADC_GetValue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span>
-        <span class="n">HAL_ADC_Stop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span>
-        <span class="cp">#endif</span>
-        <span class="n">HAL_UART_Transmit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span>
-                                            <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
-        <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#if defined(ADC_1_CH_SINGLE_MODE) || defined(ADC_N_CH_SINGLE_MODE)</span>
+<span class="w">    </span><span class="n">MX_ADC_Init_Single_Conversion</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">HAL_ADCEx_Calibration_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cp">#ifdef ADC_N_CH_SINGLE_MODE</span>
+<span class="w">        </span><span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">LED_GPIO_Port</span><span class="p">,</span><span class="w"> </span><span class="n">LED_Pin</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">HAL_ADC_Start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">HAL_ADC_PollForConversion</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">HAL_MAX_DELAY</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">joystick</span><span class="p">[</span><span class="n">JS_X</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HAL_ADC_GetValue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">HAL_ADC_PollForConversion</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">HAL_MAX_DELAY</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">joystick</span><span class="p">[</span><span class="n">JS_Y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HAL_ADC_GetValue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">HAL_ADC_Stop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="cp">#endif</span>
+<span class="w">        </span><span class="n">HAL_UART_Transmit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span><span class="w"></span>
+<span class="w">                                            </span><span class="n">HAL_MAX_DELAY</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="66-continuous-conversion">6.6. Continuous Conversion<a class="headerlink" href="#66-continuous-conversion" title="Permanent link">⚓︎</a></h3>
 <p>ADC module will not stop in this mode. When it finishes converting the last channel, it goes back to the first channel and then do conversion again.</p>
@@ -1939,78 +1985,78 @@ Any board which has STM32 MCUs. This tutorial will be using the STM32F0 Discover
 <figure><img src="ide_adc_continuos_dma.png"/><figcaption>Setup ADC in continuous mode with DMA</figcaption>
 </figure>
 </p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">MX_ADC_Init_Continuous_Conversion</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">ADC1</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ClockPrescaler</span> <span class="o">=</span> <span class="n">ADC_CLOCK_ASYNC_DIV1</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Resolution</span> <span class="o">=</span> <span class="n">ADC_RESOLUTION_12B</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DataAlign</span> <span class="o">=</span> <span class="n">ADC_DATAALIGN_RIGHT</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ScanConvMode</span> <span class="o">=</span> <span class="n">ADC_SCAN_DIRECTION_FORWARD</span><span class="p">;</span>
-<span class="hll">  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">EOCSelection</span> <span class="o">=</span> <span class="n">ADC_EOC_SEQ_CONV</span><span class="p">;</span>
-</span>  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">LowPowerAutoWait</span> <span class="o">=</span> <span class="n">DISABLE</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">LowPowerAutoPowerOff</span> <span class="o">=</span> <span class="n">DISABLE</span><span class="p">;</span>
-<span class="hll">  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ContinuousConvMode</span> <span class="o">=</span> <span class="n">ENABLE</span><span class="p">;</span>
-</span><span class="hll">  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DiscontinuousConvMode</span> <span class="o">=</span> <span class="n">DISABLE</span><span class="p">;</span>
-</span>  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ExternalTrigConv</span> <span class="o">=</span> <span class="n">ADC_SOFTWARE_START</span><span class="p">;</span>
-  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ExternalTrigConvEdge</span> <span class="o">=</span> <span class="n">ADC_EXTERNALTRIGCONVEDGE_NONE</span><span class="p">;</span>
-<span class="hll">  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DMAContinuousRequests</span> <span class="o">=</span> <span class="n">ENABLE</span><span class="p">;</span>
-</span>  <span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Overrun</span> <span class="o">=</span> <span class="n">ADC_OVR_DATA_PRESERVED</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">HAL_ADC_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Error_Handler</span><span class="p">();</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">MX_ADC_Init_Continuous_Conversion</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ClockPrescaler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_CLOCK_ASYNC_DIV1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Resolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_RESOLUTION_12B</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DataAlign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_DATAALIGN_RIGHT</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ScanConvMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_SCAN_DIRECTION_FORWARD</span><span class="p">;</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">EOCSelection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_EOC_SEQ_CONV</span><span class="p">;</span><span class="w"></span>
+</span><span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">LowPowerAutoWait</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">LowPowerAutoPowerOff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">;</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ContinuousConvMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">;</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DiscontinuousConvMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">;</span><span class="w"></span>
+</span><span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ExternalTrigConv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_SOFTWARE_START</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">ExternalTrigConvEdge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_EXTERNALTRIGCONVEDGE_NONE</span><span class="p">;</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">DMAContinuousRequests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">;</span><span class="w"></span>
+</span><span class="w">  </span><span class="n">hadc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Overrun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_OVR_DATA_PRESERVED</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HAL_ADC_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">HAL_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Error_Handler</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Then DMA module is linked to the ADC module in the function <code>HAL_ADC_MspInit()</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">HAL_ADC_MspInit</span><span class="p">(</span><span class="n">ADC_HandleTypeDef</span><span class="o">*</span> <span class="n">hadc</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">GPIO_InitTypeDef</span> <span class="n">GPIO_InitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">hadc</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">==</span><span class="n">ADC1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">__HAL_RCC_ADC1_CLK_ENABLE</span><span class="p">();</span>
-    <span class="n">__HAL_RCC_GPIOA_CLK_ENABLE</span><span class="p">();</span>
-    <span class="cm">/**ADC GPIO Configuration</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">HAL_ADC_MspInit</span><span class="p">(</span><span class="n">ADC_HandleTypeDef</span><span class="o">*</span><span class="w"> </span><span class="n">hadc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">GPIO_InitTypeDef</span><span class="w"> </span><span class="n">GPIO_InitStruct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">hadc</span><span class="o">-&gt;</span><span class="n">Instance</span><span class="o">==</span><span class="n">ADC1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">__HAL_RCC_ADC1_CLK_ENABLE</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">__HAL_RCC_GPIOA_CLK_ENABLE</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/**ADC GPIO Configuration</span>
 <span class="cm">    PA1     ------&gt; ADC_IN1</span>
-<span class="cm">    PA2     ------&gt; ADC_IN2 */</span>
-    <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pin</span> <span class="o">=</span> <span class="n">GPIO_PIN_1</span><span class="o">|</span><span class="n">GPIO_PIN_2</span><span class="p">;</span>
-    <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">GPIO_MODE_ANALOG</span><span class="p">;</span>
-    <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pull</span> <span class="o">=</span> <span class="n">GPIO_NOPULL</span><span class="p">;</span>
-    <span class="n">HAL_GPIO_Init</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">GPIO_InitStruct</span><span class="p">);</span>
-    <span class="cm">/* ADC1 DMA Init */</span>
-    <span class="cm">/* ADC Init */</span>
-    <span class="n">hdma_adc</span><span class="p">.</span><span class="n">Instance</span> <span class="o">=</span> <span class="n">DMA1_Channel1</span><span class="p">;</span>
-    <span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Direction</span> <span class="o">=</span> <span class="n">DMA_PERIPH_TO_MEMORY</span><span class="p">;</span>
-    <span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">PeriphInc</span> <span class="o">=</span> <span class="n">DMA_PINC_DISABLE</span><span class="p">;</span>
-    <span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">MemInc</span> <span class="o">=</span> <span class="n">DMA_MINC_ENABLE</span><span class="p">;</span>
-    <span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">PeriphDataAlignment</span> <span class="o">=</span> <span class="n">DMA_PDATAALIGN_HALFWORD</span><span class="p">;</span>
-    <span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">MemDataAlignment</span> <span class="o">=</span> <span class="n">DMA_MDATAALIGN_HALFWORD</span><span class="p">;</span>
-    <span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">DMA_CIRCULAR</span><span class="p">;</span>
-    <span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Priority</span> <span class="o">=</span> <span class="n">DMA_PRIORITY_LOW</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">HAL_DMA_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hdma_adc</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HAL_OK</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">Error_Handler</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="n">__HAL_LINKDMA</span><span class="p">(</span><span class="n">hadc</span><span class="p">,</span><span class="n">DMA_Handle</span><span class="p">,</span><span class="n">hdma_adc</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="cm">    PA2     ------&gt; ADC_IN2 */</span><span class="w"></span>
+<span class="w">    </span><span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GPIO_PIN_1</span><span class="o">|</span><span class="n">GPIO_PIN_2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GPIO_MODE_ANALOG</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GPIO_NOPULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">HAL_GPIO_Init</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">GPIO_InitStruct</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* ADC1 DMA Init */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* ADC Init */</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdma_adc</span><span class="p">.</span><span class="n">Instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA1_Channel1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA_PERIPH_TO_MEMORY</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">PeriphInc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA_PINC_DISABLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">MemInc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA_MINC_ENABLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">PeriphDataAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA_PDATAALIGN_HALFWORD</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">MemDataAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA_MDATAALIGN_HALFWORD</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA_CIRCULAR</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdma_adc</span><span class="p">.</span><span class="n">Init</span><span class="p">.</span><span class="n">Priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA_PRIORITY_LOW</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HAL_DMA_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hdma_adc</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">HAL_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">Error_Handler</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">__HAL_LINKDMA</span><span class="p">(</span><span class="n">hadc</span><span class="p">,</span><span class="n">DMA_Handle</span><span class="p">,</span><span class="n">hdma_adc</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>After that, add channel want to be read, and start the ADC in DMA mode. Make sure to set the buffer and the length for DMA.</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#if defined(ADC_1_CH_CONTINUOUS_MODE)</span>
-    <span class="n">Add_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="n">ADC_CHANNEL_1</span><span class="p">,</span> <span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Add_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_CHANNEL_1</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span><span class="w"></span>
 <span class="cp">#endif</span>
 <span class="cp">#if defined(ADC_N_CH_SINGLE_MODE) || defined(ADC_N_CH_CONTINUOUS_MODE)</span>
-    <span class="n">Add_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="n">ADC_CHANNEL_1</span><span class="p">,</span> <span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span>
-<span class="hll">    <span class="n">Add_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="n">ADC_CHANNEL_2</span><span class="p">,</span> <span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Add_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_CHANNEL_1</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="n">Add_ADC_Channel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_SAMPLETIME_239CYCLES_5</span><span class="p">);</span><span class="w"></span>
 </span><span class="hll"><span class="cp">#endif</span>
 </span>
 <span class="cp">#if defined(ADC_1_CH_CONTINUOUS_MODE)</span>
-    <span class="n">HAL_ADC_Start_DMA</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">joystick</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">HAL_ADC_Start_DMA</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">joystick</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="cp">#endif</span>
 
 <span class="cp">#if defined(ADC_N_CH_CONTINUOUS_MODE)</span>
-    <span class="n">HAL_ADC_Start_DMA</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">joystick</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">HAL_ADC_Start_DMA</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hadc</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">joystick</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
 <span class="hll"><span class="cp">#endif</span>
-</span>    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+</span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>That’s all for this tutorial. The Discontinuous and Injected Scan mode will be covered in other guides.</p>
 <div data-value="https://www.codeinsideout.com/blog/stm32/adc/" id="page_url"></div>
@@ -2097,7 +2143,7 @@ Any board which has STM32 MCUs. This tutorial will be using the STM32F0 Discover
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "header.autohide", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
-<script src="../../../assets/javascripts/bundle.29db7785.min.js"></script>
+<script src="../../../assets/javascripts/bundle.febc23d1.min.js"></script>
 <script src="../../../assets/view-bigimg.js"></script>
 <script src="../../../assets/extra.js"></script>
 </body>
