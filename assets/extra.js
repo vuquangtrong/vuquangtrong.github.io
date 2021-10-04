@@ -97,19 +97,19 @@ function reactivateElements() {
     activateBigImg();
     activateExternalLinks();
     activatePaginationLinks();
-    resetDisqusPlugin();
-    scrollToTop();
+    // resetDisqusPlugin();
+    // scrollToTop();
 }
 window.addEventListener("load", () => {
     reactivateElements();
 });
 // capture the location at page load
-var currentLocation = document.location.href;
-const observer = new MutationObserver(() => {
-    if (currentLocation !== document.location.href) {
-        console.log("URL changed!");
-        currentLocation = document.location.href;
-        reactivateElements();
-    }
-});
-observer.observe(document.getElementsByTagName("HEAD")[0], { childList: true });
+// var currentLocation = document.location.href;
+// const observer = new MutationObserver(() => {
+//     if (currentLocation !== document.location.href) {
+//         console.log("URL changed!");
+//         currentLocation = document.location.href;
+//         reactivateElements();
+//     }
+// });
+// observer.observe(document.getElementsByTagName("HEAD")[0], { childList: true });
