@@ -10,6 +10,10 @@
 
 
 
+    
+
+
+
 
 
     
@@ -30,19 +34,19 @@
         <meta name="keywords" content="embedded systems application programming">
       
       
-        <meta name="author" content="Vũ Quang Trọng">
+        <meta name="author" content="Vũ Quang Trọng (vuquangtrong@gmail.com)">
       
       
         <link rel="canonical" href="https://www.codeinsideout.com/blog/stm32/free-rtos/interrupt/">
       
       <link rel="icon" href="../../../../favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
-    
-    <title>FreeRTOS - Interrupt - Code Inside Out</title>
+       
+    <title>Interrupt -  STM32 - FreeRTOS  - Code Inside Out</title>
 
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.cdeb8541.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a57b2b03.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -86,7 +90,7 @@
     
     
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="FreeRTOS - Interrupt - Code Inside Out"/>
+    <meta property="og:title" content="Interrupt - Code Inside Out"/>
     <meta property="og:description" content="FreeRTOS only handles 3 interrupts which are SVC, PendSV, and SysTick. All remaining interrupts are handled by application, and they are not blocked by tasks. However, there are some rules have to be followed in order to not mess up the task stacks and task priority in scheduler." />
     <meta property="og:url" content="https://www.codeinsideout.com/blog/stm32/free-rtos/interrupt/" />
     <meta property="og:image" content="https://www.codeinsideout.com/assets/banner.jpg" />
@@ -716,14 +720,14 @@
         
 
 
-<nav class="md-nav md-nav--secondary" aria-label="FreeRTOS - Interrupt">
+<nav class="md-nav md-nav--secondary" aria-label="Interrupt">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      FreeRTOS - Interrupt
+      Interrupt
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -942,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/setup-camera/" class="md-nav__link">
+      <a href="../../../pi/set-up-camera/" class="md-nav__link">
         Setup Camera
       </a>
     </li>
@@ -1265,8 +1269,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../virtual-machine/virtual-box/serial-ports/" class="md-nav__link">
-        Virtual serial ports
+      <a href="../../../virtual-machine/serial-ports/" class="md-nav__link">
+        Serial ports
       </a>
     </li>
   
@@ -2648,35 +2652,35 @@
         
           
           
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
             
              
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
           
         
           
@@ -2708,35 +2712,35 @@
         
           
           
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
             
              
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
           
         
           
@@ -16923,176 +16927,6 @@
   
 
   
-    
-    
-      
-        
-        
-        
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-        
-        
-          
-        
-      
-    
-  
 
   
     
@@ -17258,9 +17092,6 @@
           
           
         
-          
-          
-        
         
         
           
@@ -17431,9 +17262,6 @@
           
           
         
-          
-          
-        
         
         
           
@@ -17444,9 +17272,6 @@
         
         
         
-        
-          
-          
         
           
           
@@ -17625,9 +17450,6 @@
         
         
         
-        
-          
-          
         
           
           
@@ -17971,12 +17793,1534 @@
           
           
         
+        
+        
+          
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+      
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
           
           
         
         
         
           
+        
+      
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+      
+    
+  
+
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+          
+        
+      
+    
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+          
+        
+      
+    
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+      
+    
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+        
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
         
       
     
@@ -18161,40 +19505,18 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
         
       
     
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
   
 
   
@@ -18214,7 +19536,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
         <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
+          color:DarkViolet;
         ">i2c</span>
         <!--<sup class="tag-count">2</sup>-->
       </a>
@@ -18222,23 +19544,12 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
         <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">h264</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-        <span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkRed;
-        ">notes</span>
-        <!--<sup class="tag-count">4</sup>-->
+          font-size:0.575rem;
+          color:DarkOliveGreen;
+        ">virtual-machine</span>
+        <!--<sup class="tag-count">3</sup>-->
       </a>
     
       
@@ -18247,7 +19558,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkRed;
+          color:DarkOliveGreen;
         ">markdown</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
@@ -18255,188 +19566,111 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-        <span class="tag-name" style="
-          font-size:1.15rem;
-          color:DarkCyan;
-        ">stm32</span>
-        <!--<sup class="tag-count">26</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkMagenta;
-        ">redirect</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#gnss">
         <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkGreen;
-        ">virtual-machine</span>
+          color:DarkSlateGray;
+        ">gnss</span>
         <!--<sup class="tag-count">2</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkTurquoise;
-        ">rtt</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#c/c++">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">c/c++</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#linux">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkTurquoise;
-        ">linux</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#serial">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOrchid;
-        ">serial</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkOrchid;
-        ">camera</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
         <span class="tag-name" style="
           font-size:0.575rem;
-          color:DarkBlue;
-        ">interrupt</span>
+          color:DarkOrchid;
+        ">picamera</span>
         <!--<sup class="tag-count">3</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#python">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkOrchid;
+        ">python</span>
+        <!--<sup class="tag-count">5</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+        <span class="tag-name" style="
+          font-size:1.0750000000000002rem;
+          color:DarkViolet;
+        ">arm</span>
+        <!--<sup class="tag-count">23</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkMagenta;
-        ">hyper-v</span>
+        ">sdcard</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#virtual">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOliveGreen;
+        ">headless</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#imu">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOliveGreen;
+        ">imu</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkGoldenrod;
+        ">h264</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#css">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkSlateGray;
-        ">virtual</span>
+        ">css</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkOrchid;
-        ">usart</span>
+          color:DarkOliveGreen;
+        ">toolchain</span>
         <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">mkdocs</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkOrchid;
-        ">uart</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkTurquoise;
-        ">pwm</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">jinja</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">ffmpeg</span>
-        <!--<sup class="tag-count">2</sup>-->
       </a>
     
       
@@ -18445,8 +19679,19 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#dash">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkTurquoise;
+          color:DarkOliveGreen;
         ">dash</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateGray;
+        ">oled</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -18456,9 +19701,119 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#container">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkRed;
+          color:DarkOliveGreen;
         ">container</span>
         <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">rtt</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkSlateGray;
+        ">rtos</span>
+        <!--<sup class="tag-count">5</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
+        <span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">raspberry-pi</span>
+        <!--<sup class="tag-count">12</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+        <span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateGray;
+        ">notes</span>
+        <!--<sup class="tag-count">4</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">swv</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateBlue;
+        ">redirect</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkSlateBlue;
+        ">mapping</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOliveGreen;
+        ">adc</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#libs">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkTurquoise;
+        ">libs</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">ffmpeg</span>
+        <!--<sup class="tag-count">2</sup>-->
       </a>
     
       
@@ -18475,12 +19830,67 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkSlateBlue;
+        ">stream</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkCyan;
-        ">ros</span>
+          color:DarkOliveGreen;
+        ">hls</span>
         <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#timer">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkTurquoise;
+        ">timer</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">mkdocs</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#jetson">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">jetson</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkSlateGray;
+        ">camera</span>
+        <!--<sup class="tag-count">5</sup>-->
       </a>
     
       
@@ -18489,19 +19899,8 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkViolet;
+          color:DarkBlue;
         ">v4l2</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOliveGreen;
-        ">performance</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -18511,7 +19910,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#capture">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkSlateBlue;
+          color:DarkGreen;
         ">capture</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
@@ -18519,12 +19918,243 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
         <span class="tag-name" style="
           font-size:0.575rem;
-          color:DarkRed;
-        ">picamera</span>
+          color:DarkCyan;
+        ">interrupt</span>
         <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">clock</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkGreen;
+        ">pwm</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">jinja</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOrchid;
+        ">hyper-v</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">docs</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#c/c++">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkViolet;
+        ">c/c++</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkViolet;
+        ">mjpeg</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#serial">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkTurquoise;
+        ">serial</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateBlue;
+        ">reentrant</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#stack">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkGreen;
+        ">stack</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkTurquoise;
+        ">uart</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkTurquoise;
+        ">debug</span>
+        <!--<sup class="tag-count">5</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">usart</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">dma</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkViolet;
+        ">linux</span>
+        <!--<sup class="tag-count">5</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">javascript</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#memory">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkGreen;
+        ">memory</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkCyan;
+        ">docker</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOliveGreen;
+        ">ros</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#spi">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOrchid;
+        ">spi</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+        <span class="tag-name" style="
+          font-size:1.15rem;
+          color:DarkOrchid;
+        ">stm32</span>
+        <!--<sup class="tag-count">26</sup>-->
       </a>
     
       
@@ -18541,78 +20171,12 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkGoldenrod;
-        ">reentrant</span>
+          color:DarkMagenta;
+        ">performance</span>
         <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#spi">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateGray;
-        ">spi</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkRed;
-        ">mjpeg</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#python">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkSlateGray;
-        ">python</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateBlue;
-        ">timer</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#swv">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkRed;
-        ">swv</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkOrchid;
-        ">rtos</span>
-        <!--<sup class="tag-count">5</sup>-->
       </a>
     
       
@@ -18621,229 +20185,9 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkOliveGreen;
+          color:DarkSlateGray;
         ">sensor</span>
         <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
-        <span class="tag-name" style="
-          font-size:0.775rem;
-          color:DarkGoldenrod;
-        ">raspberry-pi</span>
-        <!--<sup class="tag-count">11</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOrchid;
-        ">mapping</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#docs">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkTurquoise;
-        ">docs</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOliveGreen;
-        ">dma</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#docker">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkBlue;
-        ">docker</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkViolet;
-        ">clock</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#libs">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkRed;
-        ">libs</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateBlue;
-        ">sdcard</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#stack">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkViolet;
-        ">stack</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateBlue;
-        ">hls</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkViolet;
-        ">stream</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkTurquoise;
-        ">headless</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkRed;
-        ">debug</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-        <span class="tag-name" style="
-          font-size:1.0750000000000002rem;
-          color:DarkCyan;
-        ">arm</span>
-        <!--<sup class="tag-count">23</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#css">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateBlue;
-        ">css</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkMagenta;
-        ">javascript</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkViolet;
-        ">toolchain</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkTurquoise;
-        ">adc</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#oled">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkRed;
-        ">oled</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#memory">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">memory</span>
-        <!--<sup class="tag-count">2</sup>-->
       </a>
     
   
@@ -18862,16 +20206,17 @@
             <div class="md-sidebar__scrollwrap">
                 <div class="md-sidebar__inner">
                     
+                        
 
 
-<nav class="md-nav md-nav--secondary" aria-label="FreeRTOS - Interrupt">
+<nav class="md-nav md-nav--secondary" aria-label="Interrupt">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      FreeRTOS - Interrupt
+      Interrupt
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -18923,6 +20268,9 @@
             .md-typeset .cover {
                 margin-bottom: 1em;
             }
+            .md-typeset .page-category {
+                font-size: large;
+            }
             .md-typeset .page-description {
                 font-weight: bold;
             }
@@ -18938,7 +20286,10 @@
         </style>
 
         <div class="cover">
-            <h1 class="page-title">FreeRTOS - Interrupt</h1>
+            
+            <p class="page-category print-only">STM32 - FreeRTOS</p>
+            
+            <h1 class="page-title">Interrupt</h1>
             <p class="page-description">FreeRTOS only handles 3 interrupts which are SVC, PendSV, and SysTick. All remaining interrupts are handled by application, and they are not blocked by tasks. However, there are some rules have to be followed in order to not mess up the task stacks and task priority in scheduler.</p>
             
                 <p class="page-tags">
@@ -18969,6 +20320,15 @@
                     
                 </p>
             
+            
+                
+                    <p class="md-source-date">
+                        <hr style="margin-bottom: .5em;">
+                        <small>
+                            Last update:
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2021-10-31</span>
+                        </small>
+                    </p>
             
         </div>
         
@@ -19013,14 +20373,14 @@
             
 
 
-<nav class="md-nav md-nav--secondary" aria-label="FreeRTOS - Interrupt">
+<nav class="md-nav md-nav--secondary" aria-label="Interrupt">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      FreeRTOS - Interrupt
+      Interrupt
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -19270,10 +20630,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "header.autohide", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "header.autohide", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.1e84347e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b1047164.min.js"></script>
       
         <script src="../../../../assets/view-bigimg.js"></script>
       
