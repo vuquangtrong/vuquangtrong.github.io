@@ -28,7 +28,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="ARM SemiHosting is a distinctive feature of the ARM platform, that allows to use input and output functions on a host computer that get forwarded to the microcontrollers over a hardware debugger. It is helpful when there is no input/output interface dedicated for logging on the target MCU.">
+        <meta name="description" content="ARM Semihosting is a distinctive feature of the ARM platform, that allows to use input and output functions on a host computer that get forwarded to the microcontrollers over a hardware debugger. It is helpful when there is no input/output interface dedicated for logging on the target MCU.">
       
       
         <meta name="keywords" content="embedded systems application programming">
@@ -43,7 +43,7 @@
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
        
-    <title>Debug with ARM SemiHosting -  STM32  - Code Inside Out</title>
+    <title>Debug with ARM Semihosting -  STM32  - Code Inside Out</title>
 
     
       <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
@@ -90,8 +90,8 @@
     
     
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Debug with ARM SemiHosting - Code Inside Out"/>
-    <meta property="og:description" content="ARM SemiHosting is a distinctive feature of the ARM platform, that allows to use input and output functions on a host computer that get forwarded to the microcontrollers over a hardware debugger. It is helpful when there is no input/output interface dedicated for logging on the target MCU." />
+    <meta property="og:title" content="Debug with ARM Semihosting - Code Inside Out"/>
+    <meta property="og:description" content="ARM Semihosting is a distinctive feature of the ARM platform, that allows to use input and output functions on a host computer that get forwarded to the microcontrollers over a hardware debugger. It is helpful when there is no input/output interface dedicated for logging on the target MCU." />
     <meta property="og:url" content="https://www.codeinsideout.com/blog/stm32/semihosting/" />
     <meta property="og:image" content="https://www.codeinsideout.com/assets/banner.jpg" />
     <meta property="og:site_name" content="Code Inside Out" />
@@ -148,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SemiHosting
+              Semihosting
             
           </span>
         </div>
@@ -479,25 +479,25 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          SemiHosting
+          Semihosting
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        SemiHosting
+        Semihosting
       </a>
       
         
 
 
-<nav class="md-nav md-nav--secondary" aria-label="Debug with ARM SemiHosting">
+<nav class="md-nav md-nav--secondary" aria-label="Debug with ARM Semihosting">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Debug with ARM SemiHosting
+      Debug with ARM Semihosting
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -510,10 +510,10 @@
       
         <li class="md-nav__item">
   <a href="#2-semihosting" class="md-nav__link">
-    2. SemiHosting
+    2. Semihosting
   </a>
   
-    <nav class="md-nav" aria-label="2. SemiHosting">
+    <nav class="md-nav" aria-label="2. Semihosting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -547,7 +547,7 @@
         
           <li class="md-nav__item">
   <a href="#223-initialize-semihosting" class="md-nav__link">
-    2.2.3. Initialize SemiHosting
+    2.2.3. Initialize Semihosting
   </a>
   
 </li>
@@ -571,7 +571,7 @@
       
         <li class="md-nav__item">
   <a href="#3-debug-with-semihosting" class="md-nav__link">
-    3. Debug with SemiHosting
+    3. Debug with Semihosting
   </a>
   
 </li>
@@ -1121,7 +1121,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../linux/">Linux</a>
+          <a href="../../jetson/">Jetson</a>
           
             <label for="__nav_2_3">
               <span class="md-nav__icon md-icon"></span>
@@ -1129,10 +1129,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+      <nav class="md-nav" aria-label="Jetson" data-md-level="2">
         <label class="md-nav__title" for="__nav_2_3">
           <span class="md-nav__icon md-icon"></span>
-          Linux
+          Jetson
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1142,8 +1142,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/byobu/" class="md-nav__link">
-        Byobu
+      <a href="../../jetson/linux-tegra/" class="md-nav__link">
+        Linux for Tegra
       </a>
     </li>
   
@@ -1156,36 +1156,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/dual-boot/" class="md-nav__link">
-        Dual Boot
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/samba/" class="md-nav__link">
-        Samba
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../linux/tweaks/" class="md-nav__link">
-        Tweaks
+      <a href="../../jetson/custom-image/" class="md-nav__link">
+        Custom image
       </a>
     </li>
   
@@ -1265,7 +1237,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../virtual-machine/">Virtual machine</a>
+          <a href="../../linux/">Linux</a>
           
             <label for="__nav_2_5">
               <span class="md-nav__icon md-icon"></span>
@@ -1273,8 +1245,117 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="Virtual machine" data-md-level="2">
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
         <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/notes/" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/byobu/" class="md-nav__link">
+        Byobu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/dual-boot/" class="md-nav__link">
+        Dual Boot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/samba/" class="md-nav__link">
+        Samba
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/tweaks/" class="md-nav__link">
+        Tweaks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../virtual-machine/">Virtual machine</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Virtual machine" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
           <span class="md-nav__icon md-icon"></span>
           Virtual machine
         </label>
@@ -1352,7 +1433,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
       
       
       
@@ -1362,14 +1443,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../other-stuff/">Other stuff</a>
           
-            <label for="__nav_2_7">
+            <label for="__nav_2_8">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="Other stuff" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_7">
+        <label class="md-nav__title" for="__nav_2_8">
           <span class="md-nav__icon md-icon"></span>
           Other stuff
         </label>
@@ -1781,6 +1862,235 @@
   
 
   
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+          
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+        
+        
+      
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+          
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+        
+        
+      
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+        
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+        
+        
+      
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+          
+        
+      
+    
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+        
+        
+      
+    
+  
 
   
     
@@ -1799,16 +2109,56 @@
           
           
         
+          
+          
         
+          
+          
         
+          
           
+            
+             
+          
         
+        
+        
       
     
   
 
   
     
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+      
     
       
         
@@ -1826,6 +2176,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -1840,9 +2196,15 @@
     
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -1880,7 +2242,13 @@
           
             
              
+          
+        
           
+          
+        
+          
+          
         
           
           
@@ -1893,9 +2261,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -1926,7 +2300,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -1947,9 +2327,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -1973,9 +2359,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -2032,8 +2424,14 @@
           
           
         
+          
+          
+        
+          
+          
         
         
+        
           
         
       
@@ -2044,9 +2442,15 @@
     
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -2084,9 +2488,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -2127,9 +2537,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -2171,7 +2587,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -2220,7 +2642,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -2259,9 +2687,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -2308,9 +2742,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -2396,16 +2836,28 @@
           
           
         
+          
+          
+        
+          
+          
         
         
+        
           
         
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -2458,9 +2910,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -2512,9 +2970,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -2572,7 +3036,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -2627,9 +3097,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -2688,9 +3164,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -2803,8 +3285,14 @@
           
           
         
+          
+          
+        
+          
+          
         
         
+        
       
     
   
@@ -2813,9 +3301,15 @@
     
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -2873,9 +3367,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -2937,9 +3437,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -3002,7 +3508,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -3063,9 +3575,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -3125,9 +3643,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -3224,6 +3748,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -3257,9 +3787,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -3329,7 +3865,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -3396,9 +3938,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -3526,6 +4074,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -3533,9 +4087,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -3606,7 +4166,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -3678,9 +4244,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -3797,6 +4369,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -3839,9 +4417,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -3919,7 +4503,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -3995,9 +4585,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -4105,6 +4701,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -4153,9 +4755,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -4241,7 +4849,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -4320,9 +4934,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -4443,6 +5063,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -4482,9 +5108,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -4564,7 +5196,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -4651,9 +5289,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -4750,6 +5394,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -4826,9 +5476,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -4918,7 +5574,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -5002,9 +5664,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -5176,6 +5844,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -5188,9 +5862,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -5286,7 +5966,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -5384,9 +6070,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -5567,6 +6259,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -5582,9 +6280,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -5687,7 +6391,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -5787,9 +6497,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -5983,6 +6699,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -5995,9 +6717,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -6102,7 +6830,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -6205,9 +6939,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -6395,6 +7135,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -6422,9 +7168,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -6532,7 +7284,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -6637,9 +7395,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -6833,6 +7597,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -6866,9 +7636,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -6983,6 +7759,12 @@
         
         
         
+        
+          
+          
+        
+          
+          
         
           
           
@@ -7094,9 +7876,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -7212,9 +8000,15 @@
     
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -7329,9 +8123,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -7446,9 +8246,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -7568,9 +8374,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -7685,9 +8497,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -7802,9 +8620,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -7918,9 +8742,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -8042,9 +8872,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -8165,9 +9001,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -8288,9 +9130,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -8411,9 +9259,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -8538,9 +9392,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -8664,9 +9524,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -8790,9 +9656,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -8916,9 +9788,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -9047,9 +9925,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -9173,9 +10057,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -9299,9 +10189,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -9430,9 +10326,15 @@
     
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -9556,9 +10458,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -9682,9 +10590,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -9812,9 +10726,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -9941,9 +10861,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -10070,9 +10996,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -10199,9 +11131,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -10332,9 +11270,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -10464,9 +11408,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -10596,9 +11546,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -10733,9 +11689,15 @@
     
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -10865,9 +11827,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -11002,9 +11970,15 @@
     
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -11134,9 +12108,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -11266,9 +12246,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -11398,9 +12384,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -11534,9 +12526,15 @@
     
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -11669,9 +12667,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -11804,9 +12808,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -11939,9 +12949,15 @@
       
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -12074,9 +13090,15 @@
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -12224,6 +13246,9 @@
           
             
              
+          
+        
+          
           
         
           
@@ -12346,14 +13371,23 @@
           
           
         
+          
+          
         
         
+        
       
     
       
+        
         
         
         
+          
+          
+        
+          
+          
         
           
           
@@ -12494,9 +13528,15 @@
     
     
       
+        
         
         
+        
+          
+          
         
+          
+          
         
           
           
@@ -12636,9 +13676,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -12861,6 +13907,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -12923,9 +13975,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -13066,7 +14124,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -13205,9 +14269,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -13484,6 +14554,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -13491,9 +14567,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -13641,7 +14723,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -13786,9 +14874,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -14072,6 +15166,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -14084,9 +15184,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -14236,7 +15342,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -14384,9 +15496,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -14678,6 +15796,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -14685,9 +15809,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -14847,7 +15977,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -15004,9 +16140,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -15314,6 +16456,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -15326,9 +16474,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -15490,7 +16644,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -15650,9 +16810,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -15949,6 +17115,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -15976,9 +17148,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -16143,7 +17321,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -16311,9 +17495,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -16560,6 +17750,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -16641,9 +17837,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -16808,7 +18010,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -16977,9 +18185,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -17307,6 +18521,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -17314,9 +18534,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -17494,7 +18720,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -17669,9 +18901,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -18012,6 +19250,12 @@
         
           
           
+        
+          
+          
+        
+          
+          
             
              
           
@@ -18030,9 +19274,15 @@
       
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -18220,7 +19470,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -18410,9 +19666,15 @@
     
     
       
+        
+        
         
         
+          
+          
         
+          
+          
         
           
           
@@ -18777,6 +20039,12 @@
           
           
         
+          
+          
+        
+          
+          
+        
         
         
           
@@ -18799,7 +20067,13 @@
           
             
              
+          
+        
           
+          
+        
+          
+          
         
           
           
@@ -18989,7 +20263,13 @@
       
         
         
+        
+        
+          
+          
         
+          
+          
         
           
           
@@ -19189,6 +20469,12 @@
           
             
              
+          
+        
+          
+          
+        
+          
           
         
           
@@ -19390,6 +20676,9 @@
         
           
           
+            
+             
+          
         
           
           
@@ -19555,10 +20844,14 @@
         
           
           
-        
         
+          
+          
         
           
+          
+        
+        
         
       
     
@@ -19578,34 +20871,221 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#timer">
         <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">jinja</span>
-        <!--<sup class="tag-count">2</sup>-->
+          font-size:0.525rem;
+          color:DarkViolet;
+        ">timer</span>
+        <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
         <span class="tag-name" style="
-          font-size:0.55rem;
+          font-size:0.525rem;
+          color:DarkGoldenrod;
+        ">reentrant</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkViolet;
+        ">dash</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateGray;
+        ">javascript</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#c/c++">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkViolet;
+        ">c/c++</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+        <span class="tag-name" style="
+          font-size:0.625rem;
           color:DarkGreen;
-        ">clock</span>
+        ">notes</span>
+        <!--<sup class="tag-count">5</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateBlue;
+        ">v4l2</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#capture">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">capture</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#memory">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">memory</span>
         <!--<sup class="tag-count">2</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#css">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">css</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">toolchain</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+        <span class="tag-name" style="
+          font-size:0.675rem;
+          color:DarkGreen;
+        ">linux</span>
+        <!--<sup class="tag-count">7</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkCyan;
+        ">mapping</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkCyan;
+        ">mjpeg</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkSlateBlue;
+        ">picamera</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
         <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkRed;
-        ">ffmpeg</span>
+          color:DarkSlateBlue;
+        ">rtt</span>
         <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">hls</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#imu">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOrchid;
+        ">imu</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">performance</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateBlue;
+        ">swv</span>
+        <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
@@ -19616,347 +21096,6 @@
           font-size:0.525rem;
           color:DarkBlue;
         ">spi</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkViolet;
-        ">picamera</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#container">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkBlue;
-        ">container</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-        <span class="tag-name" style="
-          font-size:0.6rem;
-          color:DarkGoldenrod;
-        ">notes</span>
-        <!--<sup class="tag-count">4</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOliveGreen;
-        ">reentrant</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#stack">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkCyan;
-        ">stack</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">rtt</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOliveGreen;
-        ">javascript</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">i2c</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkMagenta;
-        ">camera</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#c/c++">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateGray;
-        ">c/c++</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkMagenta;
-        ">interrupt</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkGoldenrod;
-        ">mapping</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkMagenta;
-        ">redirect</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGoldenrod;
-        ">pwm</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#libs">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">libs</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOrchid;
-        ">usart</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#linux">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkSlateBlue;
-        ">linux</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOliveGreen;
-        ">sensor</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkViolet;
-        ">v4l2</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGoldenrod;
-        ">markdown</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkViolet;
-        ">mjpeg</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
-        <span class="tag-name" style="
-          font-size:0.8rem;
-          color:DarkViolet;
-        ">raspberry-pi</span>
-        <!--<sup class="tag-count">12</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#dma">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">dma</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-        <span class="tag-name" style="
-          font-size:1.15rem;
-          color:DarkViolet;
-        ">stm32</span>
-        <!--<sup class="tag-count">26</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkMagenta;
-        ">adc</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#memory">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">memory</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#dash">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkBlue;
-        ">dash</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGoldenrod;
-        ">sdcard</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkCyan;
-        ">headless</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkTurquoise;
-        ">performance</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOliveGreen;
-        ">capture</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -19974,11 +21113,11 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkBlue;
-        ">toolchain</span>
+          color:DarkSlateBlue;
+        ">gpio</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -19988,7 +21127,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#ros">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkViolet;
+          color:DarkBlue;
         ">ros</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
@@ -19996,55 +21135,22 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#imu">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkTurquoise;
-        ">imu</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#gnss">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkBlue;
-        ">gnss</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
-        <span class="tag-name" style="
-          font-size:0.625rem;
           color:DarkRed;
-        ">debug</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#oled">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOrchid;
-        ">oled</span>
+        ">sysview</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkViolet;
-        ">swv</span>
+        ">headless</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -20054,7 +21160,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
         <span class="tag-name" style="
           font-size:0.625rem;
-          color:DarkBlue;
+          color:DarkTurquoise;
         ">rtos</span>
         <!--<sup class="tag-count">5</sup>-->
       </a>
@@ -20065,7 +21171,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
         <span class="tag-name" style="
           font-size:0.575rem;
-          color:DarkSlateGray;
+          color:DarkCyan;
         ">virtual-machine</span>
         <!--<sup class="tag-count">3</sup>-->
       </a>
@@ -20073,88 +21179,77 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#python">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateBlue;
+        ">markdown</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#jetson">
         <span class="tag-name" style="
           font-size:0.625rem;
-          color:DarkOliveGreen;
-        ">python</span>
+          color:DarkMagenta;
+        ">jetson</span>
         <!--<sup class="tag-count">5</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#dma">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">dma</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkGreen;
-        ">gpio</span>
+          color:DarkRed;
+        ">sdcard</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkOrchid;
-        ">uart</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkTurquoise;
-        ">docker</span>
+        ">redirect</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkGreen;
-        ">hyper-v</span>
+          color:DarkCyan;
+        ">sensor</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#css">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#stack">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkOliveGreen;
-        ">css</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#stream">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkBlue;
-        ">stream</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#timer">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">timer</span>
+          color:DarkSlateGray;
+        ">stack</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -20164,7 +21259,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkSlateBlue;
+          color:DarkViolet;
         ">mkdocs</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
@@ -20172,45 +21267,67 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#docs">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOliveGreen;
-        ">docs</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#jetson">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkBlue;
-        ">jetson</span>
+        ">pwm</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#container">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkSlateGray;
-        ">h264</span>
+          color:DarkRed;
+        ">container</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">docker</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">clock</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkSlateGray;
-        ">hls</span>
+        ">hyper-v</span>
         <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkViolet;
+        ">i2c</span>
+        <!--<sup class="tag-count">2</sup>-->
       </a>
     
       
@@ -20219,7 +21336,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#arm">
         <span class="tag-name" style="
           font-size:1.0750000000000002rem;
-          color:DarkGoldenrod;
+          color:DarkRed;
         ">arm</span>
         <!--<sup class="tag-count">23</sup>-->
       </a>
@@ -20227,12 +21344,199 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">ffmpeg</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#h264">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkGreen;
-        ">sysview</span>
+          color:DarkSlateBlue;
+        ">h264</span>
         <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkTurquoise;
+        ">interrupt</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOrchid;
+        ">jinja</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
+        <span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">raspberry-pi</span>
+        <!--<sup class="tag-count">12</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#libs">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkCyan;
+        ">libs</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#oled">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">oled</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#python">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkViolet;
+        ">python</span>
+        <!--<sup class="tag-count">5</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+        <span class="tag-name" style="
+          font-size:1.15rem;
+          color:DarkGoldenrod;
+        ">stm32</span>
+        <!--<sup class="tag-count">26</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkMagenta;
+        ">camera</span>
+        <!--<sup class="tag-count">5</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">usart</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkTurquoise;
+        ">adc</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#build">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateBlue;
+        ">build</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#uart">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkGoldenrod;
+        ">uart</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#stream">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkOliveGreen;
+        ">stream</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkViolet;
+        ">docs</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#gnss">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">gnss</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkGoldenrod;
+        ">debug</span>
+        <!--<sup class="tag-count">5</sup>-->
       </a>
     
   
@@ -20254,14 +21558,14 @@
                         
 
 
-<nav class="md-nav md-nav--secondary" aria-label="Debug with ARM SemiHosting">
+<nav class="md-nav md-nav--secondary" aria-label="Debug with ARM Semihosting">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Debug with ARM SemiHosting
+      Debug with ARM Semihosting
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -20274,10 +21578,10 @@
       
         <li class="md-nav__item">
   <a href="#2-semihosting" class="md-nav__link">
-    2. SemiHosting
+    2. Semihosting
   </a>
   
-    <nav class="md-nav" aria-label="2. SemiHosting">
+    <nav class="md-nav" aria-label="2. Semihosting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -20311,7 +21615,7 @@
         
           <li class="md-nav__item">
   <a href="#223-initialize-semihosting" class="md-nav__link">
-    2.2.3. Initialize SemiHosting
+    2.2.3. Initialize Semihosting
   </a>
   
 </li>
@@ -20335,7 +21639,7 @@
       
         <li class="md-nav__item">
   <a href="#3-debug-with-semihosting" class="md-nav__link">
-    3. Debug with SemiHosting
+    3. Debug with Semihosting
   </a>
   
 </li>
@@ -20381,8 +21685,8 @@
             
             <p class="page-category print-only">STM32</p>
             
-            <h1 class="page-title">Debug with ARM SemiHosting</h1>
-            <p class="page-description">ARM SemiHosting is a distinctive feature of the ARM platform, that allows to use input and output functions on a host computer that get forwarded to the microcontrollers over a hardware debugger. It is helpful when there is no input/output interface dedicated for logging on the target MCU.</p>
+            <h1 class="page-title">Debug with ARM Semihosting</h1>
+            <p class="page-description">ARM Semihosting is a distinctive feature of the ARM platform, that allows to use input and output functions on a host computer that get forwarded to the microcontrollers over a hardware debugger. It is helpful when there is no input/output interface dedicated for logging on the target MCU.</p>
             
                 <p class="page-tags">
                     
@@ -20412,7 +21716,7 @@
                         <hr style="margin-bottom: .5em;">
                         <small>
                             Last update:
-                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2021-10-31</span>
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2021-11-01</span>
                         </small>
                     </p>
             
@@ -20459,14 +21763,14 @@
             
 
 
-<nav class="md-nav md-nav--secondary" aria-label="Debug with ARM SemiHosting">
+<nav class="md-nav md-nav--secondary" aria-label="Debug with ARM Semihosting">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Debug with ARM SemiHosting
+      Debug with ARM Semihosting
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -20479,10 +21783,10 @@
       
         <li class="md-nav__item">
   <a href="#2-semihosting" class="md-nav__link">
-    2. SemiHosting
+    2. Semihosting
   </a>
   
-    <nav class="md-nav" aria-label="2. SemiHosting">
+    <nav class="md-nav" aria-label="2. Semihosting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -20516,7 +21820,7 @@
         
           <li class="md-nav__item">
   <a href="#223-initialize-semihosting" class="md-nav__link">
-    2.2.3. Initialize SemiHosting
+    2.2.3. Initialize Semihosting
   </a>
   
 </li>
@@ -20540,7 +21844,7 @@
       
         <li class="md-nav__item">
   <a href="#3-debug-with-semihosting" class="md-nav__link">
-    3. Debug with SemiHosting
+    3. Debug with Semihosting
   </a>
   
 </li>
@@ -20553,29 +21857,29 @@
         
         
             <div class="btn-actions screen-only">
-<p><a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_Semihosting.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg></span> SemiHosting</a></p>
+<p><a class="md-button" href="https://github.com/vuquangtrong/STM32-Tutorials/blob/main/Archives/F051R8_Semihosting.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg></span> Semihosting</a></p>
 </div>
 <div class="admonition done">
-<p class="admonition-title">SemiHosting setup</p>
+<p class="admonition-title">Semihosting setup</p>
 <ol>
 <li>Connect a debugger via SWD interface</li>
-<li>Include SemiHosting lib in GCC linker <code>-l rdimon --specs=rdimon.specs</code></li>
+<li>Include Semihosting lib in GCC linker <code>-l rdimon --specs=rdimon.specs</code></li>
 <li>Exclude the default <em>syscall.c</em> implementation</li>
 <li>Initialize in the startup of the application with <code>initialise_monitor_handles();</code></li>
-<li>Run OpenOCD with command <code>monitor arm SemiHosting enable</code></li>
+<li>Run OpenOCD with command <code>monitor arm semihosting enable</code></li>
 </ol>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">SemiHosting notes</p>
-<p>SemiHosting implementation in OpenOCD is designed so that every string must be terminated with the newline character <code>\n</code> before the string appears on the OpenOCD console.</p>
-<p>SemiHosting only works during a debug session, and it&rsquo;s slow and affects the system performance.</p>
-<p>CPU is halt when SemiHosting is executing in host machine, therefore SemiHosting is not suitable for realtime application.</p>
+<p class="admonition-title">Semihosting notes</p>
+<p>Semihosting implementation in OpenOCD is designed so that every string must be terminated with the newline character <code>\n</code> before the string appears on the OpenOCD console.</p>
+<p>Semihosting only works during a debug session, and it&rsquo;s slow and affects the system performance.</p>
+<p>CPU is halt when Semihosting is executing in host machine, therefore Semihosting is not suitable for realtime application.</p>
 </div>
 <h2 id="1-debugging">1. Debugging<a class="headerlink" href="#1-debugging" title="Permanent link">⚓︎</a></h2>
 <p>There are some debug techniques used to inspect the firmware running on ARM-based MCUs:</p>
 <ul>
 <li>
-<p><a href="#">SemiHosting</a>: built-in to every ARM chips, need adding additional library and running in debug mode</p>
+<p><a href="#">Semihosting</a>: built-in to every ARM chips, need adding additional library and running in debug mode</p>
 </li>
 <li>
 <p><a href="#">Redirection</a>: forward to a <a href="../uart-redirection/">UART port</a> but need using GPIO and extra hardware (USB to Serial converter), or forward to a <a href="#">Virtual COM port</a> but need a USB peripheral</p>
@@ -20590,25 +21894,25 @@
 <p>
 <figure class="w70"><img src="debug_via_printf.png" /><figcaption>Ways to print debug</figcaption></figure>
 </p>
-<h2 id="2-semihosting">2. SemiHosting<a class="headerlink" href="#2-semihosting" title="Permanent link">⚓︎</a></h2>
-<p>ARM SemiHosting is a distinctive feature of the ARM platform, that allows to use input and output functions on a host computer that get forwarded to the microcontrollers over a hardware debugger, such as <code>printf()</code> and <code>scanf()</code>, or even <code>fopen()</code>.</p>
-<p>SemiHosting is implemented by a set of defined software instructions, for example, <code>SVC</code>, that generate exceptions from program control. The application invokes the appropriate SemiHosting call and the debugger then handles the exception by communicating with the debugging application on the host computer.</p>
+<h2 id="2-semihosting">2. Semihosting<a class="headerlink" href="#2-semihosting" title="Permanent link">⚓︎</a></h2>
+<p>ARM Semihosting is a distinctive feature of the ARM platform, that allows to use input and output functions on a host computer that get forwarded to the microcontrollers over a hardware debugger, such as <code>printf()</code> and <code>scanf()</code>, or even <code>fopen()</code>.</p>
+<p>Semihosting is implemented by a set of defined software instructions, for example, <code>SVC</code>, that generate exceptions from program control. The application invokes the appropriate Semihosting call and the debugger then handles the exception by communicating with the debugging application on the host computer.</p>
 <blockquote>
-<p>ARM processors prior to ARMv7 use the <code>SVC</code> instructions, formerly known as <code>SWI</code> instructions, to make SemiHosting calls. However, for an ARMv6-M or ARMv7-M, in a Cortex-M1 or Cortex-M3 processor, SemiHosting is implemented using the <code>BKPT</code> instruction.</p>
+<p>ARM processors prior to ARMv7 use the <code>SVC</code> instructions, formerly known as <code>SWI</code> instructions, to make Semihosting calls. However, for an ARMv6-M or ARMv7-M, in a Cortex-M1 or Cortex-M3 processor, Semihosting is implemented using the <code>BKPT</code> instruction.</p>
 </blockquote>
 <p>
-<figure><img src="semihosting_overview.png" /><figcaption>SemiHosting overview</figcaption>
+<figure><img src="semihosting_overview.png" /><figcaption>Semihosting overview</figcaption>
 </figure>
 </p>
 <h3 id="21-hardware-setup">2.1. Hardware setup<a class="headerlink" href="#21-hardware-setup" title="Permanent link">⚓︎</a></h3>
-<p>SemiHosting need to be run under a debug session to communicate with SemiHosting-enabled debugger. In STM32, debugging channel maybe ST-LINK debugger (onboard, or external) which connects to the MCU via <strong>SWCLK</strong> and <strong>SWDIO</strong> in the SWD interface.</p>
+<p>Semihosting need to be run under a debug session to communicate with Semihosting-enabled debugger. In STM32, debugging channel maybe ST-LINK debugger (onboard, or external) which connects to the MCU via <strong>SWCLK</strong> and <strong>SWDIO</strong> in the SWD interface.</p>
 <p>In the STM32CubeMX, under the Pinout and Configuration tab, select the <strong>SYS</strong> module and check on the <strong>Debug Serial Wire</strong> option to assign the Debug function on pins <strong>PA14</strong> and <strong>PA13</strong>.</p>
 <p>
 <figure><img src="ide_enable_swd.png" /><figcaption>Enable Serial Wire Debug pins</figcaption>
 </figure>
 </p>
 <h3 id="22-software-setup">2.2. Software setup<a class="headerlink" href="#22-software-setup" title="Permanent link">⚓︎</a></h3>
-<p>To use SemiHosting, it has to be set in linker options, and initialized in the main program.</p>
+<p>To use Semihosting, it has to be set in linker options, and initialized in the main program.</p>
 <h4 id="221-linker-options">2.2.1. Linker options<a class="headerlink" href="#221-linker-options" title="Permanent link">⚓︎</a></h4>
 <p>GNU ARM libraries use <a href="https://sourceware.org/newlib/docs.html"><code>newlib</code></a> to provide standard implementation of C libraries. However, to reduce the code size and make it independent to hardware, there is a lightweight version <code>newlib-nano</code> used in MCUs.</p>
 <p>However, <code>newlib-nano</code> does not provide an implementation of low-level system calls which are used by C standard libraries, such as <code>print()</code> or <code>scan()</code>. To make the application compilable, a new library named <code>nosys</code> should be added. This library just provide a simple implementation of low-level system calls which mostly return a by-pass value.</p>
@@ -20630,12 +21934,12 @@
 <h4 id="222-exclude-user-system-calls">2.2.2. Exclude user system calls<a class="headerlink" href="#222-exclude-user-system-calls" title="Permanent link">⚓︎</a></h4>
 <p>In addition, STM32CubeIDE automatically generates <code>syscalls.c</code> with a simple implementation for <code>nosys.specs</code>. <mark>Must exclude <code>syscalls.c</code> from build to avoid compilation error of multiple definitions</mark>.</p>
 <p>
-<figure class="w90"><img src="ide_add_semihosting.png" /><figcaption>Add SemiHosting in GCC Linker</figcaption></figure>
+<figure class="w90"><img src="ide_add_semihosting.png" /><figcaption>Add Semihosting in GCC Linker</figcaption></figure>
 </p>
 <p>
 <figure class="w90"><img src="ide_exclude_syscall.png" /><figcaption>Exclude <code>syscalls.c</code></figcaption></figure>
 </p>
-<h4 id="223-initialize-semihosting">2.2.3. Initialize SemiHosting<a class="headerlink" href="#223-initialize-semihosting" title="Permanent link">⚓︎</a></h4>
+<h4 id="223-initialize-semihosting">2.2.3. Initialize Semihosting<a class="headerlink" href="#223-initialize-semihosting" title="Permanent link">⚓︎</a></h4>
 <p>The <code>rdimon</code> library has to be initialized before it can run properly. It exposes a function to do that, then use it:</p>
 <div class="highlight"><pre><span></span><code><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">initialise_monitor_handles</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -20646,14 +21950,14 @@
 </code></pre></div>
 <p>After that, the application can use <code>printf()</code>, <code>scanf()</code>, or <code>gets()</code>.</p>
 <h3 id="23-debugger-option">2.3. Debugger option<a class="headerlink" href="#23-debugger-option" title="Permanent link">⚓︎</a></h3>
-<p>The final thing is to enable SemiHosting on debugger that will handle the interruption fired from MCUs. Debugger has to communicate with MCUs and the host computer. In some cases, it has to use <em>Software Reset</em> method to help debugger reset the target MCU.</p>
+<p>The final thing is to enable Semihosting on debugger that will handle the interruption fired from MCUs. Debugger has to communicate with MCUs and the host computer. In some cases, it has to use <em>Software Reset</em> method to help debugger reset the target MCU.</p>
 <p>Use <strong>ST-LINK over OpenOCD</strong> with the start-up command:</p>
-<div class="highlight"><pre><span></span><code><span class="n">monitor</span><span class="w"> </span><span class="n">arm</span><span class="w"> </span><span class="n">SemiHosting</span><span class="w"> </span><span class="n">enable</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">monitor</span><span class="w"> </span><span class="n">arm</span><span class="w"> </span><span class="n">semihosting</span><span class="w"> </span><span class="n">enable</span><span class="w"></span>
 </code></pre></div>
 <p>
-<figure class="w85"><img src="ide_enable_semihosting_debugger.png" /><figcaption>Enable SemiHosting in debugger</figcaption></figure>
+<figure class="w85"><img src="ide_enable_semihosting_debugger.png" /><figcaption>Enable Semihosting in debugger</figcaption></figure>
 </p>
-<h2 id="3-debug-with-semihosting">3. Debug with SemiHosting<a class="headerlink" href="#3-debug-with-semihosting" title="Permanent link">⚓︎</a></h2>
+<h2 id="3-debug-with-semihosting">3. Debug with Semihosting<a class="headerlink" href="#3-debug-with-semihosting" title="Permanent link">⚓︎</a></h2>
 <p>Run the project in debug mode and then interact with MCUs.
 Here are some lines of code to print a message, get a string, and write to a file on the host machine:</p>
 <div class="file"></div>
@@ -20690,10 +21994,10 @@ Here are some lines of code to print a message, get a string, and write to a fil
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <blockquote>
-<p>When using <code>fopen()</code>, should specify the location, such as <code>~/test.out</code> <span class="critic comment">on Linux</span> or <code>D:\\test.out</code> <span class="critic comment">on Windows</span>, if not, the target file will be created in the folder containing the <code>openocd.exe</code> program.</p>
+<p>When using <code>fopen()</code>, the file path is specified either as relative to the current directory of the host process (e.g. <code>openocd.exe</code>), or absolute, using the path conventions of the host operating system. Refer <a href="https://developer.arm.com/documentation/100863/0300/Semihosting-operations/SYS-OPEN--0x01-?lang=en">here</a>.</p>
 </blockquote>
 <p>
-<figure><img src="semihosting_in_action.png" /><figcaption>Interact with SemiHosting</figcaption>
+<figure><img src="semihosting_in_action.png" /><figcaption>Interact with Semihosting</figcaption>
 </figure>
 </p>
         
