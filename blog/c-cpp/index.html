@@ -10,13 +10,9 @@
 
 
 
-    
 
 
 
-
-
-    
 
 
 <!-- base -->
@@ -28,7 +24,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="The prebuilt system images for Jetson boards are quite large. We can reduce their size using JetPack SDK, but it's sometimes still to big. Here is a method to build a minimal system image from an Ubuntu base with some necessary packages">
+        <meta name="description" content="Tips for programming in C/C++">
       
       
         <meta name="keywords" content="embedded systems application programming">
@@ -37,19 +33,19 @@
         <meta name="author" content="Vũ Quang Trọng (vuquangtrong@gmail.com)">
       
       
-        <link rel="canonical" href="https://www.codeinsideout.com/blog/jetson/custom-image/draft/">
+        <link rel="canonical" href="https://www.codeinsideout.com/blog/c-cpp/">
       
-      <link rel="icon" href="../../../../favicon.png">
+      <link rel="icon" href="../../favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
        
-    <title>Build a minimal system image for Jetson board -  Jetson  - Code Inside Out</title>
+    <title>C/C++ Programming -  - Code Inside Out</title>
 
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a57b2b03.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -68,9 +64,9 @@
     
     
     
-      <link rel="stylesheet" href="../../../../assets/view-bigimg.css">
+      <link rel="stylesheet" href="../../assets/view-bigimg.css">
     
-      <link rel="stylesheet" href="../../../../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
     
       
@@ -90,9 +86,9 @@
     
     
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Build a minimal system image for Jetson board - Code Inside Out"/>
-    <meta property="og:description" content="The prebuilt system images for Jetson boards are quite large. We can reduce their size using JetPack SDK, but it's sometimes still to big. Here is a method to build a minimal system image from an Ubuntu base with some necessary packages" />
-    <meta property="og:url" content="https://www.codeinsideout.com/blog/jetson/custom-image/draft/" />
+    <meta property="og:title" content="C/C++ Programming - Code Inside Out"/>
+    <meta property="og:description" content="Tips for programming in C/C++" />
+    <meta property="og:url" content="https://www.codeinsideout.com/blog/c-cpp/" />
     <meta property="og:image" content="https://www.codeinsideout.com/assets/banner.jpg" />
     <meta property="og:site_name" content="Code Inside Out" />
     <meta name="twitter:card" content="summary" />
@@ -108,17 +104,12 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#1-prepare" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -129,7 +120,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Code Inside Out" class="md-header__button md-logo" aria-label="Code Inside Out" data-md-component="logo">
+    <a href="../.." title="Code Inside Out" class="md-header__button md-logo" aria-label="Code Inside Out" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg>
@@ -148,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Custom image
+              C/C++ Programming
             
           </span>
         </div>
@@ -218,7 +209,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../.." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -232,7 +223,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../" class="md-tabs__link md-tabs__link--active">
+    <a href="../" class="md-tabs__link md-tabs__link--active">
       Blog
     </a>
   </li>
@@ -244,7 +235,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../../projects/" class="md-tabs__link">
+    <a href="../../projects/" class="md-tabs__link">
       Projects
     </a>
   </li>
@@ -256,7 +247,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../../tags/" class="md-tabs__link">
+    <a href="../../tags/" class="md-tabs__link">
       Tags
     </a>
   </li>
@@ -285,7 +276,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Code Inside Out" class="md-nav__button md-logo" aria-label="Code Inside Out" data-md-component="logo">
+    <a href="../.." title="Code Inside Out" class="md-nav__button md-logo" aria-label="Code Inside Out" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg>
@@ -304,7 +295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -332,7 +323,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../">Blog</a>
+          <a href="../">Blog</a>
           
             <label for="__nav_2">
               <span class="md-nav__icon md-icon"></span>
@@ -364,7 +355,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../stm32/">STM32</a>
+          <a href="../stm32/">STM32</a>
           
             <label for="__nav_2_1">
               <span class="md-nav__icon md-icon"></span>
@@ -385,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/intro/" class="md-nav__link">
+      <a href="../stm32/intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -399,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/prepare/" class="md-nav__link">
+      <a href="../stm32/prepare/" class="md-nav__link">
         Preparation
       </a>
     </li>
@@ -413,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/tools/" class="md-nav__link">
+      <a href="../stm32/tools/" class="md-nav__link">
         Toolchain
       </a>
     </li>
@@ -427,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/docs/" class="md-nav__link">
+      <a href="../stm32/docs/" class="md-nav__link">
         Documents
       </a>
     </li>
@@ -441,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/clock/" class="md-nav__link">
+      <a href="../stm32/clock/" class="md-nav__link">
         Clock Tree
       </a>
     </li>
@@ -455,7 +446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/interrupt/" class="md-nav__link">
+      <a href="../stm32/interrupt/" class="md-nav__link">
         Interrupt
       </a>
     </li>
@@ -469,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/semihosting/" class="md-nav__link">
+      <a href="../stm32/semihosting/" class="md-nav__link">
         Semihosting
       </a>
     </li>
@@ -483,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/gpio/" class="md-nav__link">
+      <a href="../stm32/gpio/" class="md-nav__link">
         GPIO
       </a>
     </li>
@@ -497,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/dma/" class="md-nav__link">
+      <a href="../stm32/dma/" class="md-nav__link">
         DMA
       </a>
     </li>
@@ -511,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/swv/" class="md-nav__link">
+      <a href="../stm32/swv/" class="md-nav__link">
         SWV
       </a>
     </li>
@@ -525,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/add-swo/" class="md-nav__link">
+      <a href="../stm32/add-swo/" class="md-nav__link">
         Add SWO
       </a>
     </li>
@@ -539,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/uart/" class="md-nav__link">
+      <a href="../stm32/uart/" class="md-nav__link">
         UART
       </a>
     </li>
@@ -553,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/uart-redirection/" class="md-nav__link">
+      <a href="../stm32/uart-redirection/" class="md-nav__link">
         UART Redirection
       </a>
     </li>
@@ -567,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/timer/" class="md-nav__link">
+      <a href="../stm32/timer/" class="md-nav__link">
         Timers
       </a>
     </li>
@@ -581,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/sensor-us-100/" class="md-nav__link">
+      <a href="../stm32/sensor-us-100/" class="md-nav__link">
         US-100 Sensor
       </a>
     </li>
@@ -595,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/adc/" class="md-nav__link">
+      <a href="../stm32/adc/" class="md-nav__link">
         ADC
       </a>
     </li>
@@ -609,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/i2c-spi/" class="md-nav__link">
+      <a href="../stm32/i2c-spi/" class="md-nav__link">
         I2C - SPI
       </a>
     </li>
@@ -623,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/oled-ssd1306/" class="md-nav__link">
+      <a href="../stm32/oled-ssd1306/" class="md-nav__link">
         SSD1306 OLED
       </a>
     </li>
@@ -648,7 +639,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../stm32/free-rtos/overview/">FreeRTOS</a>
+          <a href="../stm32/free-rtos/overview/">FreeRTOS</a>
           
             <label for="__nav_2_1_19">
               <span class="md-nav__icon md-icon"></span>
@@ -669,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/free-rtos/systick/" class="md-nav__link">
+      <a href="../stm32/free-rtos/systick/" class="md-nav__link">
         SysTick & Delay
       </a>
     </li>
@@ -683,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/free-rtos/memory/" class="md-nav__link">
+      <a href="../stm32/free-rtos/memory/" class="md-nav__link">
         Memory
       </a>
     </li>
@@ -697,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/free-rtos/interrupt/" class="md-nav__link">
+      <a href="../stm32/free-rtos/interrupt/" class="md-nav__link">
         Interrupt
       </a>
     </li>
@@ -711,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/free-rtos/tasks/" class="md-nav__link">
+      <a href="../stm32/free-rtos/tasks/" class="md-nav__link">
         Tasks
       </a>
     </li>
@@ -725,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/free-rtos/reentrant/" class="md-nav__link">
+      <a href="../stm32/free-rtos/reentrant/" class="md-nav__link">
         Reentrant
       </a>
     </li>
@@ -739,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/free-rtos/stack/" class="md-nav__link">
+      <a href="../stm32/free-rtos/stack/" class="md-nav__link">
         Stack Overflow
       </a>
     </li>
@@ -760,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/j-link-rtt/" class="md-nav__link">
+      <a href="../stm32/j-link-rtt/" class="md-nav__link">
         J-Link RTT
       </a>
     </li>
@@ -774,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/j-link-sysview/" class="md-nav__link">
+      <a href="../stm32/j-link-sysview/" class="md-nav__link">
         J-Link SysView
       </a>
     </li>
@@ -788,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../stm32/notes/" class="md-nav__link">
+      <a href="../stm32/notes/" class="md-nav__link">
         Notes
       </a>
     </li>
@@ -820,7 +811,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../pi/">Raspberry Pi</a>
+          <a href="../pi/">Raspberry Pi</a>
           
             <label for="__nav_2_2">
               <span class="md-nav__icon md-icon"></span>
@@ -841,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/headless-mode/" class="md-nav__link">
+      <a href="../pi/headless-mode/" class="md-nav__link">
         Headless mode
       </a>
     </li>
@@ -855,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/compile-ffmpeg/" class="md-nav__link">
+      <a href="../pi/compile-ffmpeg/" class="md-nav__link">
         Compile FFmpeg
       </a>
     </li>
@@ -869,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/resource-usage/" class="md-nav__link">
+      <a href="../pi/resource-usage/" class="md-nav__link">
         Resource usage
       </a>
     </li>
@@ -883,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/set-up-camera/" class="md-nav__link">
+      <a href="../pi/set-up-camera/" class="md-nav__link">
         Setup Camera
       </a>
     </li>
@@ -897,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/stream-ffmpeg-hls-dash/" class="md-nav__link">
+      <a href="../pi/stream-ffmpeg-hls-dash/" class="md-nav__link">
         HLS/DASH Streaming
       </a>
     </li>
@@ -911,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/stream-picamera-mjpeg/" class="md-nav__link">
+      <a href="../pi/stream-picamera-mjpeg/" class="md-nav__link">
         MJPEG streaming
       </a>
     </li>
@@ -925,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/stream-picamera-h264/" class="md-nav__link">
+      <a href="../pi/stream-picamera-h264/" class="md-nav__link">
         H264 streaming
       </a>
     </li>
@@ -939,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/backup-sdcard/" class="md-nav__link">
+      <a href="../pi/backup-sdcard/" class="md-nav__link">
         Backup SDCard
       </a>
     </li>
@@ -953,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/check-camera-i2c/" class="md-nav__link">
+      <a href="../pi/check-camera-i2c/" class="md-nav__link">
         Diagnostic Camera
       </a>
     </li>
@@ -967,7 +958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/ubuntu/" class="md-nav__link">
+      <a href="../pi/ubuntu/" class="md-nav__link">
         Ubuntu
       </a>
     </li>
@@ -981,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pi/notes/" class="md-nav__link">
+      <a href="../pi/notes/" class="md-nav__link">
         Notes
       </a>
     </li>
@@ -1013,7 +1004,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../">Jetson</a>
+          <a href="../jetson/">Jetson</a>
           
             <label for="__nav_2_3">
               <span class="md-nav__icon md-icon"></span>
@@ -1034,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux-tegra/" class="md-nav__link">
+      <a href="../jetson/linux-tegra/" class="md-nav__link">
         Linux for Tegra
       </a>
     </li>
@@ -1048,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../jetson/custom-image/" class="md-nav__link">
         Custom image
       </a>
     </li>
@@ -1080,7 +1071,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../ros/">ROS</a>
+          <a href="../ros/">ROS</a>
           
         </div>
       
@@ -1097,7 +1088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ros/tutorial-beginner/" class="md-nav__link">
+      <a href="../ros/tutorial-beginner/" class="md-nav__link">
         Tutorial for Beginners
       </a>
     </li>
@@ -1129,7 +1120,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../linux/">Linux</a>
+          <a href="../linux/">Linux</a>
           
             <label for="__nav_2_5">
               <span class="md-nav__icon md-icon"></span>
@@ -1150,7 +1141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/notes/" class="md-nav__link">
+      <a href="../linux/notes/" class="md-nav__link">
         Notes
       </a>
     </li>
@@ -1164,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/byobu/" class="md-nav__link">
+      <a href="../linux/byobu/" class="md-nav__link">
         Byobu
       </a>
     </li>
@@ -1178,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/dual-boot/" class="md-nav__link">
+      <a href="../linux/dual-boot/" class="md-nav__link">
         Dual Boot
       </a>
     </li>
@@ -1192,7 +1183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/samba/" class="md-nav__link">
+      <a href="../linux/samba/" class="md-nav__link">
         Samba
       </a>
     </li>
@@ -1206,7 +1197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/tweaks/" class="md-nav__link">
+      <a href="../linux/tweaks/" class="md-nav__link">
         Tweaks
       </a>
     </li>
@@ -1238,7 +1229,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../virtual-machine/">Virtual machine</a>
+          <a href="../virtual-machine/">Virtual machine</a>
           
             <label for="__nav_2_6">
               <span class="md-nav__icon md-icon"></span>
@@ -1259,7 +1250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../virtual-machine/docker/" class="md-nav__link">
+      <a href="../virtual-machine/docker/" class="md-nav__link">
         Docker
       </a>
     </li>
@@ -1273,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../virtual-machine/hyper-v/" class="md-nav__link">
+      <a href="../virtual-machine/hyper-v/" class="md-nav__link">
         Hyper-V
       </a>
     </li>
@@ -1287,7 +1278,21 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../virtual-machine/serial-ports/" class="md-nav__link">
+      <a href="../virtual-machine/notes/" class="md-nav__link">
+        Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machine/serial-ports/" class="md-nav__link">
         Serial ports
       </a>
     </li>
@@ -1306,11 +1311,66 @@
               
   
   
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index md-nav__link--active">
+          <a href="./">C/C++ Programming</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="C/C++ Programming" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          C/C++ Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
   
     <li class="md-nav__item">
-      <a href="../../../c-cpp-notes/" class="md-nav__link">
+      <a href="notes/" class="md-nav__link">
         C/C++ Notes
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="print-struct-using-macro/" class="md-nav__link">
+        Print a struct
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1333,7 +1393,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../other-stuff/">Other stuff</a>
+          <a href="../other-stuff/">Other stuff</a>
           
             <label for="__nav_2_8">
               <span class="md-nav__icon md-icon"></span>
@@ -1354,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../other-stuff/set-up-a-blog/" class="md-nav__link">
+      <a href="../other-stuff/set-up-a-blog/" class="md-nav__link">
         Set up a blog
       </a>
     </li>
@@ -1368,7 +1428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../other-stuff/mkdocs-plugins/" class="md-nav__link">
+      <a href="../other-stuff/mkdocs-plugins/" class="md-nav__link">
         MkDocs plugins
       </a>
     </li>
@@ -1382,7 +1442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../other-stuff/customize-theme/" class="md-nav__link">
+      <a href="../other-stuff/customize-theme/" class="md-nav__link">
         Customize theme
       </a>
     </li>
@@ -1396,7 +1456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../other-stuff/markdown-syntax/" class="md-nav__link">
+      <a href="../other-stuff/markdown-syntax/" class="md-nav__link">
         Markdown syntax
       </a>
     </li>
@@ -1410,7 +1470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../other-stuff/print-to-pdf/" class="md-nav__link">
+      <a href="../other-stuff/print-to-pdf/" class="md-nav__link">
         Print to PDF
       </a>
     </li>
@@ -1450,7 +1510,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../projects/">Projects</a>
+          <a href="../../projects/">Projects</a>
           
         </div>
       
@@ -1478,7 +1538,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../projects/lidar-mapping-poc/">Lidar Mapping (PoC)</a>
+          <a href="../../projects/lidar-mapping-poc/">Lidar Mapping (PoC)</a>
           
             <label for="__nav_3_1">
               <span class="md-nav__icon md-icon"></span>
@@ -1499,7 +1559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/tasks/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/tasks/" class="md-nav__link">
         Task List
       </a>
     </li>
@@ -1513,7 +1573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/issues/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/issues/" class="md-nav__link">
         Issue List
       </a>
     </li>
@@ -1527,7 +1587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/reference/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/reference/" class="md-nav__link">
         Reference
       </a>
     </li>
@@ -1541,7 +1601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/design/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/design/" class="md-nav__link">
         System design
       </a>
     </li>
@@ -1555,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/components/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/components/" class="md-nav__link">
         Components
       </a>
     </li>
@@ -1569,7 +1629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/gnss/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/gnss/" class="md-nav__link">
         GNSS module
       </a>
     </li>
@@ -1583,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/imu/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/imu/" class="md-nav__link">
         IMU module
       </a>
     </li>
@@ -1597,7 +1657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/base/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/base/" class="md-nav__link">
         Base station
       </a>
     </li>
@@ -1611,7 +1671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/rover/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/rover/" class="md-nav__link">
         Rover system
       </a>
     </li>
@@ -1625,7 +1685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/mapping/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/mapping/" class="md-nav__link">
         Mapping process
       </a>
     </li>
@@ -1639,7 +1699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/post-process/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/post-process/" class="md-nav__link">
         Post-process
       </a>
     </li>
@@ -1653,7 +1713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../projects/lidar-mapping-poc/notes/" class="md-nav__link">
+      <a href="../../projects/lidar-mapping-poc/notes/" class="md-nav__link">
         Notes
       </a>
     </li>
@@ -1682,7 +1742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../tags/" class="md-nav__link">
+      <a href="../../tags/" class="md-nav__link">
         Tags
       </a>
     </li>
@@ -1694,8 +1754,32 @@
 
                     
                     
-                        <br>
-                        <div class="tag-cloud-nav">
+                </div>
+            </div>
+        </div>
+    
+    
+        
+        <div class="md-sidebar md-sidebar--secondary"
+             data-md-component="sidebar"
+             data-md-type="toc" >
+            <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                    
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="C/C++ Programming">
+  
+  
+  
+  
+</nav>
+                    
+                    
+                    
+                        
+                        <div class="tag-cloud-toc">
                             
 
 
@@ -1718,6 +1802,8 @@
   
 
   
+
+  
     
     
       
@@ -1748,6 +1834,32 @@
         
         
           
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+        
         
       
     
@@ -1825,65 +1937,6 @@
         
         
           
-        
-      
-    
-  
-
-  
-    
-    
-      
-        
-        
-        
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            
-             
-          
-        
-          
-          
-        
-        
-        
-      
-    
-      
-        
-        
-        
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            
-             
-          
-        
-        
         
       
     
@@ -18971,6 +19024,383 @@
         
         
           
+        
+      
+    
+  
+
+  
+    
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
+        
+      
+    
+      
+        
+        
+        
+        
+          
+          
+        
+          
+          
+            
+             
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        
         
       
     
@@ -20763,176 +21193,33 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#memory">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
         <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkTurquoise;
-        ">memory</span>
+          color:DarkOliveGreen;
+        ">rtt</span>
         <!--<sup class="tag-count">2</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
         <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkBlue;
-        ">docker</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
-        <span class="tag-name" style="
-          font-size:0.525rem;
+          font-size:0.625rem;
           color:DarkTurquoise;
-        ">redirect</span>
-        <!--<sup class="tag-count">1</sup>-->
+        ">debug</span>
+        <!--<sup class="tag-count">5</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#serial">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOrchid;
-        ">serial</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateGray;
-        ">jinja</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#uart">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkSlateBlue;
-        ">uart</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateGray;
-        ">javascript</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#libs">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkGoldenrod;
-        ">libs</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkOrchid;
-        ">camera</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
-        <span class="tag-name" style="
-          font-size:0.8rem;
-          color:DarkBlue;
-        ">raspberry-pi</span>
-        <!--<sup class="tag-count">12</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkRed;
-        ">rtos</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#imu">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateGray;
-        ">imu</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkBlue;
-        ">mapping</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">performance</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#adc">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">adc</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#spi">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkBlue;
-        ">spi</span>
+        ">v4l2</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -20942,7 +21229,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#sysview">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkGoldenrod;
+          color:DarkTurquoise;
         ">sysview</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
@@ -20950,88 +21237,55 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOrchid;
-        ">gpio</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkCyan;
-        ">sdcard</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">mjpeg</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#usart">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOrchid;
-        ">usart</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#capture">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkBlue;
-        ">capture</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#container">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkBlue;
-        ">container</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#v4l2">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">v4l2</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkOliveGreen;
-        ">pwm</span>
+        ">sensor</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">reentrant</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkTurquoise;
+        ">ros</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">h264</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateGray;
+        ">dash</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -21041,7 +21295,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#dma">
         <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkSlateGray;
+          color:DarkViolet;
         ">dma</span>
         <!--<sup class="tag-count">2</sup>-->
       </a>
@@ -21049,12 +21303,177 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#redirect">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkCyan;
+        ">redirect</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkBlue;
+        ">clock</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkBlue;
+        ">hls</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#jinja">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">jinja</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#c/c++">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkSlateGray;
+        ">c/c++</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
         <span class="tag-name" style="
           font-size:0.575rem;
-          color:DarkSlateGray;
-        ">virtual-machine</span>
+          color:DarkCyan;
+        ">picamera</span>
         <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
+        <span class="tag-name" style="
+          font-size:1.15rem;
+          color:DarkOliveGreen;
+        ">stm32</span>
+        <!--<sup class="tag-count">26</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#pwm">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkViolet;
+        ">pwm</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#mapping">
+        <span class="tag-name" style="
+          font-size:0.575rem;
+          color:DarkRed;
+        ">mapping</span>
+        <!--<sup class="tag-count">3</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#swv">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOrchid;
+        ">swv</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateGray;
+        ">mkdocs</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#jetson">
+        <span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkOrchid;
+        ">jetson</span>
+        <!--<sup class="tag-count">4</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#usart">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOliveGreen;
+        ">usart</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#memory">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkOliveGreen;
+        ">memory</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#css">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">css</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#javascript">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkGreen;
+        ">javascript</span>
+        <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
@@ -21063,7 +21482,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#oled">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkTurquoise;
+          color:DarkGoldenrod;
         ">oled</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
@@ -21071,11 +21490,88 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#rtos">
+        <span class="tag-name" style="
+          font-size:0.625rem;
+          color:DarkGoldenrod;
+        ">rtos</span>
+        <!--<sup class="tag-count">5</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#adc">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkTurquoise;
+        ">adc</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#capture">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkGreen;
-        ">hyper-v</span>
+        ">capture</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkRed;
+        ">i2c</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#raspberry-pi">
+        <span class="tag-name" style="
+          font-size:0.8rem;
+          color:DarkMagenta;
+        ">raspberry-pi</span>
+        <!--<sup class="tag-count">12</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#container">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkCyan;
+        ">container</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#gnss">
+        <span class="tag-name" style="
+          font-size:0.55rem;
+          color:DarkMagenta;
+        ">gnss</span>
+        <!--<sup class="tag-count">2</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#performance">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkRed;
+        ">performance</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -21093,78 +21589,45 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#dash">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#build">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkBlue;
-        ">dash</span>
+          color:DarkGreen;
+        ">build</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#linux">
-        <span class="tag-name" style="
-          font-size:0.675rem;
-          color:DarkTurquoise;
-        ">linux</span>
-        <!--<sup class="tag-count">7</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#reentrant">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#gpio">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkSlateGray;
-        ">reentrant</span>
+          color:DarkOrchid;
+        ">gpio</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#notes">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkSlateBlue;
-        ">notes</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#serial">
         <span class="tag-name" style="
           font-size:0.525rem;
           color:DarkSlateGray;
-        ">docs</span>
+        ">serial</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#css">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
         <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkTurquoise;
-        ">css</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#c/c++">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkSlateGray;
-        ">c/c++</span>
-        <!--<sup class="tag-count">1</sup>-->
+          font-size:0.575rem;
+          color:DarkMagenta;
+        ">interrupt</span>
+        <!--<sup class="tag-count">3</sup>-->
       </a>
     
       
@@ -21181,77 +21644,154 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#h264">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#linux">
+        <span class="tag-name" style="
+          font-size:0.675rem;
+          color:DarkGreen;
+        ">linux</span>
+        <!--<sup class="tag-count">7</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkViolet;
-        ">h264</span>
+          color:DarkCyan;
+        ">headless</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#debug">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#notes">
+        <span class="tag-name" style="
+          font-size:0.65rem;
+          color:DarkBlue;
+        ">notes</span>
+        <!--<sup class="tag-count">6</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#python">
         <span class="tag-name" style="
           font-size:0.625rem;
           color:DarkGreen;
-        ">debug</span>
+        ">python</span>
         <!--<sup class="tag-count">5</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#build">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#camera">
         <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkMagenta;
-        ">build</span>
-        <!--<sup class="tag-count">2</sup>-->
+          font-size:0.625rem;
+          color:DarkViolet;
+        ">camera</span>
+        <!--<sup class="tag-count">5</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#clock">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkSlateBlue;
-        ">clock</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#gnss">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkGoldenrod;
-        ">gnss</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#mkdocs">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#hyper-v">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkBlue;
-        ">mkdocs</span>
+          color:DarkCyan;
+        ">hyper-v</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#ros">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#spi">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkRed;
-        ">ros</span>
+          color:DarkSlateBlue;
+        ">spi</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#mjpeg">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateBlue;
+        ">mjpeg</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#libs">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkSlateGray;
+        ">libs</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#virtual-machine">
+        <span class="tag-name" style="
+          font-size:0.6rem;
+          color:DarkSlateGray;
+        ">virtual-machine</span>
+        <!--<sup class="tag-count">4</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#sdcard">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkOliveGreen;
+        ">sdcard</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#imu">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkViolet;
+        ">imu</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#docker">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkCyan;
+        ">docker</span>
+        <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#docs">
+        <span class="tag-name" style="
+          font-size:0.525rem;
+          color:DarkGreen;
+        ">docs</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
     
@@ -21261,7 +21801,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#timer">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkRed;
+          color:DarkViolet;
         ">timer</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
@@ -21269,12 +21809,23 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#sensor">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkOrchid;
-        ">sensor</span>
+          color:DarkRed;
+        ">toolchain</span>
         <!--<sup class="tag-count">1</sup>-->
+      </a>
+    
+      
+      
+      
+      <a class="tag" href="https://www.codeinsideout.com/tags/#arm">
+        <span class="tag-name" style="
+          font-size:1.0750000000000002rem;
+          color:DarkBlue;
+        ">arm</span>
+        <!--<sup class="tag-count">23</sup>-->
       </a>
     
       
@@ -21283,7 +21834,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#markdown">
         <span class="tag-name" style="
           font-size:0.525rem;
-          color:DarkMagenta;
+          color:DarkSlateBlue;
         ">markdown</span>
         <!--<sup class="tag-count">1</sup>-->
       </a>
@@ -21294,7 +21845,7 @@
       <a class="tag" href="https://www.codeinsideout.com/tags/#ffmpeg">
         <span class="tag-name" style="
           font-size:0.55rem;
-          color:DarkViolet;
+          color:DarkBlue;
         ">ffmpeg</span>
         <!--<sup class="tag-count">2</sup>-->
       </a>
@@ -21302,212 +21853,17 @@
       
       
       
-      <a class="tag" href="https://www.codeinsideout.com/tags/#stm32">
-        <span class="tag-name" style="
-          font-size:1.15rem;
-          color:DarkCyan;
-        ">stm32</span>
-        <!--<sup class="tag-count">26</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#hls">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGoldenrod;
-        ">hls</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#swv">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">swv</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#jetson">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkGoldenrod;
-        ">jetson</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#rtt">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkOrchid;
-        ">rtt</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#arm">
-        <span class="tag-name" style="
-          font-size:1.0750000000000002rem;
-          color:DarkCyan;
-        ">arm</span>
-        <!--<sup class="tag-count">23</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#headless">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkGreen;
-        ">headless</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#python">
-        <span class="tag-name" style="
-          font-size:0.625rem;
-          color:DarkGoldenrod;
-        ">python</span>
-        <!--<sup class="tag-count">5</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#toolchain">
-        <span class="tag-name" style="
-          font-size:0.525rem;
-          color:DarkOliveGreen;
-        ">toolchain</span>
-        <!--<sup class="tag-count">1</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#picamera">
+      <a class="tag" href="https://www.codeinsideout.com/tags/#uart">
         <span class="tag-name" style="
           font-size:0.575rem;
-          color:DarkCyan;
-        ">picamera</span>
-        <!--<sup class="tag-count">3</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#i2c">
-        <span class="tag-name" style="
-          font-size:0.55rem;
-          color:DarkRed;
-        ">i2c</span>
-        <!--<sup class="tag-count">2</sup>-->
-      </a>
-    
-      
-      
-      
-      <a class="tag" href="https://www.codeinsideout.com/tags/#interrupt">
-        <span class="tag-name" style="
-          font-size:0.575rem;
-          color:DarkCyan;
-        ">interrupt</span>
+          color:DarkBlue;
+        ">uart</span>
         <!--<sup class="tag-count">3</sup>-->
       </a>
     
   
 </div>
                         </div>
-                    
-                </div>
-            </div>
-        </div>
-    
-    
-        
-        <div class="md-sidebar md-sidebar--secondary"
-             data-md-component="sidebar"
-             data-md-type="toc" >
-            <div class="md-sidebar__scrollwrap">
-                <div class="md-sidebar__inner">
-                    
-                        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Build a minimal system image for Jetson board">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Build a minimal system image for Jetson board
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-prepare" class="md-nav__link">
-    1. Prepare
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-make-a-rootfs" class="md-nav__link">
-    2. Make a RootFs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-make-a-rootfs" class="md-nav__link">
-    3. Make a RootFs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-add-packages" class="md-nav__link">
-    4. Add packages
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-build-the-image" class="md-nav__link">
-    5. Build the image
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-flash-on-the-sdcard" class="md-nav__link">
-    6. Flash on the sdcard
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                    
-                    
                     
                 </div>
             </div>
@@ -21542,26 +21898,8 @@
 
         <div class="cover">
             
-            <p class="page-category print-only">Jetson</p>
-            
-            <h1 class="page-title">Build a minimal system image for Jetson board</h1>
-            <p class="page-description">The prebuilt system images for Jetson boards are quite large. We can reduce their size using JetPack SDK, but it's sometimes still to big. Here is a method to build a minimal system image from an Ubuntu base with some necessary packages</p>
-            
-                <p class="page-tags">
-                    
-                        <a class="tag" href="https://www.codeinsideout.com/tags/#jetson">
-                            <span class="tag-name">
-                                #jetson
-                            </span>
-                        </a>
-                    
-                        <a class="tag" href="https://www.codeinsideout.com/tags/#build">
-                            <span class="tag-name">
-                                #build
-                            </span>
-                        </a>
-                    
-                </p>
+            <h1 class="page-title">C/C++ Programming</h1>
+            <p class="page-description">Tips for programming in C/C++</p>
             
             
                 
@@ -21569,7 +21907,7 @@
                         <hr style="margin-bottom: .5em;">
                         <small>
                             Last update:
-                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2021-11-04</span>
+                            <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2021-11-08</span>
                         </small>
                     </p>
             
@@ -21616,156 +21954,32 @@
             
 
 
-<nav class="md-nav md-nav--secondary" aria-label="Build a minimal system image for Jetson board">
+<nav class="md-nav md-nav--secondary" aria-label="C/C++ Programming">
   
   
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Build a minimal system image for Jetson board
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-prepare" class="md-nav__link">
-    1. Prepare
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-make-a-rootfs" class="md-nav__link">
-    2. Make a RootFs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-make-a-rootfs" class="md-nav__link">
-    3. Make a RootFs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-add-packages" class="md-nav__link">
-    4. Add packages
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-build-the-image" class="md-nav__link">
-    5. Build the image
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-flash-on-the-sdcard" class="md-nav__link">
-    6. Flash on the sdcard
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
         </div>
 
         
         
-            <h2 id="1-prepare">1. Prepare<a class="headerlink" href="#1-prepare" title="Permanent link">⚓︎</a></h2>
-<p><code>apt-fast</code> is a shellscript wrapper for for <code>apt-get</code> and <code>apt-cache</code> which speeds up downloading of packages. Since we are going to download a lot of packages for new rootfs, <code>apt-fast</code> will be helpful.</p>
-<p>Refer to <a href="../../linux/notes/tweaks/index.md">Linux Tweaks</a>.</p>
-<h2 id="2-make-a-rootfs">2. Make a RootFs<a class="headerlink" href="#2-make-a-rootfs" title="Permanent link">⚓︎</a></h2>
-<p><code>debootstrap</code></p>
-<div class="highlight"><pre><span></span><code>sudo apt install -y --no-install-recommends git qemu-user-static debootstrap binfmt-support coreutils parted wget gdisk e2fsprogs
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">JETSON_ROOTFS_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/jetson-minimal/rootfs
-<span class="nb">export</span> <span class="nv">JETSON_NANO_BOARD</span><span class="o">=</span>jetson-nano
-<span class="nb">export</span> <span class="nv">JETSON_NANO_REVISION</span><span class="o">=</span><span class="m">300</span>
-<span class="nb">export</span> <span class="nv">JETSON_BUILD_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/jetson-minimal/build
-</code></pre></div>
-<!--
-https://askubuntu.com/questions/428698/are-there-alternative-repositories-to-ports-ubuntu-com-for-arm
--->
-
-<div class="highlight"><pre><span></span><code>sudo debootstrap <span class="se">\</span>
-        --arch<span class="o">=</span>arm64 <span class="se">\</span>
-        --foreign <span class="se">\</span>
-        --variant<span class="o">=</span>minbase <span class="se">\</span>
-        --include<span class="o">=</span>python <span class="se">\</span>
-        bionic <span class="se">\</span>
-        <span class="nv">$JETSON_ROOTFS_DIR</span> <span class="se">\</span>
-        http://ports.ubuntu.com/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt;EOF &gt; $JETSON_ROOTFS_DIR/etc/resolv.conf</span>
-<span class="s">nameserver 1.1.1.1</span>
-<span class="s">EOF</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>wget http://vn.archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2021.03.26.tar.gz
-tar xzf ubuntu-keyring_2021.03.26.tar.gz
-sudo cp -f ubuntu-keyring_2021.03.26/keyrings/* /usr/share/keyrings/
-</code></pre></div>
-<h2 id="3-make-a-rootfs">3. Make a RootFs<a class="headerlink" href="#3-make-a-rootfs" title="Permanent link">⚓︎</a></h2>
-<p>As shown in the section <a href="../../linux-tegra/#4-build-system-image">Build system image</a>, the default NVIDIA image is about 5 GB, which comes with a lot of unnecessary stuff such browser, GUI. NVIDIA also has a guide to make a new rootfs using <code>nv_build_samplefs.sh</code> script.</p>
-<p>Here is another method, using <code>debootstrap</code>. This method is written in the post <a href="https://pythops.com/post/create-your-own-image-for-jetson-nano-board.html">Create your own image for jetson nano board</a>. The current version of that script is for Ubuntu 20.04 and BSP 32.5.1.</p>
-<p>I forked that repo, and added some modifications to make it work with Ubuntu 18.04 and the latest Jetson BSP 32.6.1.</p>
-<div class="highlight"><pre><span></span><code>sudo apt install -y build-essential bison flex bc git
-</code></pre></div>
-<ol>
-<li>
-<p>Checkout the scripts</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/vuquangtrong/jetson-nano-image.git
-</code></pre></div>
-<p>then go inside:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> jetson-nano-image
-</code></pre></div>
-</li>
-<li>
-<p>Make rootfs</p>
-<p>Set the rootfs folder:</p>
-<div class="highlight"><pre><span></span><code>export JETSON_ROOTFS_DIR=$HOME/jetson-minimal/rootfs
-</code></pre></div>
-<p>and run the script:</p>
-<div class="highlight"><pre><span></span><code>sudo -E ./create-rootfs.sh
-</code></pre></div>
-</li>
-</ol>
-<h2 id="4-add-packages">4. Add packages<a class="headerlink" href="#4-add-packages" title="Permanent link">⚓︎</a></h2>
-<p>Ansible is used to automatically install packages to the rootfs.</p>
-<ol>
-<li>
-<p>Install dependency</p>
-<div class="highlight"><pre><span></span><code>sudo apt install -y ansible <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo apt install -y qemu-user-static libxml2-utils <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo apt install -y python-pip python-dev libffi-dev libssl-dev <span class="o">&amp;&amp;</span> <span class="se">\</span>
-pip install ansible
-</code></pre></div>
-</li>
-<li>
-<p>Move to <code>ansible</code> folder and run a playbook:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ansible <span class="o">&amp;&amp;</span> <span class="se">\</span>
-sudo -E ansible-playbook jetson.yaml
-</code></pre></div>
-</li>
-</ol>
-<h2 id="5-build-the-image">5. Build the image<a class="headerlink" href="#5-build-the-image" title="Permanent link">⚓︎</a></h2>
-<p>Export some definitions:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">JETSON_NANO_BOARD</span><span class="o">=</span>jetson-nano
-<span class="nb">export</span> <span class="nv">JETSON_NANO_REVISION</span><span class="o">=</span><span class="m">300</span>
-<span class="nb">export</span> <span class="nv">JETSON_BUILD_DIR</span><span class="o">=</span><span class="nv">$HOME</span>/jetson-minimal/build
-</code></pre></div>
-<p>then build the image as follows:</p>
-<div class="highlight"><pre><span></span><code>sudo -E ./create-image.sh
-</code></pre></div>
-<h2 id="6-flash-on-the-sdcard">6. Flash on the sdcard<a class="headerlink" href="#6-flash-on-the-sdcard" title="Permanent link">⚓︎</a></h2>
-<p>Insert your microSD card and run this command:</p>
-<div class="highlight"><pre><span></span><code>sudo ./flash-image.sh /path/to/jetson.img /dev/mmcblk0
-</code></pre></div>
-<p>This script will automatically resize the root partition to occupy all the available space in the sdcard.</p>
+            <h2>Posts in this sections:</h2>
+            <ol>
+            
+                
+                    <li>
+                        <a href="https://www.codeinsideout.com/blog/c-cpp/notes/">Notes for C and C++ programming</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="https://www.codeinsideout.com/blog/c-cpp/print-struct-using-macro/">Print a struct with its field name and value</a>
+                    </li>
+                
+            
+            </ol>
         
 
     
@@ -21773,10 +21987,8 @@ sudo -E ansible-playbook jetson.yaml
               
                 
 
+  
 
-  <h2 id="__comments">Comments</h2>
-  <div id="disqus_thread"></div>
-  <script>var script,disqus_config=function(){this.page.url="https://www.codeinsideout.com/blog/jetson/custom-image/draft/",this.page.identifier="blog/jetson/custom-image/draft/"};"undefined"==typeof DISQUS?((script=document.createElement("script")).async=!0,script.src="https://vuquangtrong-github-io.disqus.com/embed.js",script.setAttribute("data-timestamp",Date.now()),document.body.appendChild(script)):DISQUS.reset({reload:!0,config:disqus_config})</script>
 
               
             </article>
@@ -21796,7 +22008,7 @@ sudo -E ansible-playbook jetson.yaml
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Custom image" rel="prev">
+        <a href="../virtual-machine/serial-ports/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Serial ports" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -21805,20 +22017,20 @@ sudo -E ansible-playbook jetson.yaml
               <span class="md-footer__direction">
                 Previous
               </span>
-              Custom image
+              Serial ports
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../linux-tegra/" class="md-footer__link md-footer__link--next" aria-label="Next: Linux for Tegra" rel="next">
+        <a href="notes/" class="md-footer__link md-footer__link--next" aria-label="Next: C/C++ Notes" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Linux for Tegra
+              C/C++ Notes
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -21871,14 +22083,14 @@ sudo -E ansible-playbook jetson.yaml
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "header.autohide", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "header.autohide", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
       
-        <script src="../../../../assets/view-bigimg.js"></script>
+        <script src="../../assets/view-bigimg.js"></script>
       
-        <script src="../../../../assets/extra.js"></script>
+        <script src="../../assets/extra.js"></script>
       
     
   </body>
