@@ -1,0 +1,13 @@
+[Unit]
+Description=NTRIP Server
+After=multi-user.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+ExecStart=/home/pi/base/ntripcaster /home/pi/base/ntripcaster.json
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
