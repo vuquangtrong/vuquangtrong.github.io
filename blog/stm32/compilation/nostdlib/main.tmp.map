@@ -1,0 +1,81 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000020000000 0x0000000000020000 xrw
+FLASH            0x0000000008000000 0x0000000000080000 xr
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD delay.o
+                0x0000000020020000                _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector
+ *(.isr_vector)
+
+.text           0x0000000008000000       0x94
+ *(.text)
+ .text          0x0000000008000000       0x68 main.o
+                0x0000000008000000                main
+ .text          0x0000000008000068       0x2c delay.o
+                0x0000000008000068                delay
+                0x0000000008000094                _etext = .
+
+.glue_7         0x0000000008000094        0x0
+ .glue_7        0x0000000008000094        0x0 linker stubs
+
+.glue_7t        0x0000000008000094        0x0
+ .glue_7t       0x0000000008000094        0x0 linker stubs
+
+.vfp11_veneer   0x0000000008000094        0x0
+ .vfp11_veneer  0x0000000008000094        0x0 linker stubs
+
+.v4_bx          0x0000000008000094        0x0
+ .v4_bx         0x0000000008000094        0x0 linker stubs
+
+.iplt           0x0000000008000094        0x0
+ .iplt          0x0000000008000094        0x0 main.o
+
+.rodata         0x0000000008000094        0x4
+ *(.rodata)
+ .rodata        0x0000000008000094        0x4 delay.o
+                0x0000000008000094                DELAY_MAX
+                0x0000000008000098                _lddata = LOADADDR (.data)
+
+.rel.dyn        0x0000000008000098        0x0
+ .rel.iplt      0x0000000008000098        0x0 main.o
+
+.data           0x0000000020000000        0x4 load address 0x0000000008000098
+                0x0000000020000000                _sdata = .
+ *(.data)
+ .data          0x0000000020000000        0x4 main.o
+                0x0000000020000000                isLoop
+ .data          0x0000000020000004        0x0 delay.o
+                0x0000000020000004                _edata = .
+
+.igot.plt       0x0000000020000004        0x0 load address 0x000000000800009c
+ .igot.plt      0x0000000020000004        0x0 main.o
+
+.bss            0x0000000020000004        0x4 load address 0x000000000800009c
+                0x0000000020000004                _sbss = .
+ *(.bss)
+ .bss           0x0000000020000004        0x0 main.o
+ .bss           0x0000000020000004        0x4 delay.o
+                0x0000000020000004                delay_counter
+                0x0000000020000008                _ebss = .
+OUTPUT(main.tmp elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x0000000000000000       0x39
+ .comment       0x0000000000000000       0x39 main.o
+                                         0x3a (size before relaxing)
+ .comment       0x0000000000000039       0x3a delay.o
+
+.ARM.attributes
+                0x0000000000000000       0x2e
+ .ARM.attributes
+                0x0000000000000000       0x2e main.o
+ .ARM.attributes
+                0x000000000000002e       0x2e delay.o

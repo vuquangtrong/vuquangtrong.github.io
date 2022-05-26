@@ -1,0 +1,166 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000020000000 0x0000000000020000 xrw
+FLASH            0x0000000008000000 0x0000000000080000 xr
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD delay.o
+LOAD vector.o
+LOAD startup.o
+                0x0000000020020000                _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x0000000008000000      0x198
+ *(.isr_vector)
+ .isr_vector    0x0000000008000000      0x198 vector.o
+                0x0000000008000000                vector_table
+
+.text           0x0000000008000198      0x120
+ *(.text)
+ .text          0x0000000008000198       0x68 main.o
+                0x0000000008000198                main
+ .text          0x0000000008000200       0x2c delay.o
+                0x0000000008000200                delay
+ .text          0x000000000800022c        0x6 vector.o
+                0x000000000800022c                RTC_Alarm_IRQHandler
+                0x000000000800022c                EXTI2_IRQHandler
+                0x000000000800022c                DebugMon_Handler
+                0x000000000800022c                SPI4_IRQHandler
+                0x000000000800022c                TIM1_CC_IRQHandler
+                0x000000000800022c                DMA2_Stream5_IRQHandler
+                0x000000000800022c                HardFault_Handler
+                0x000000000800022c                DMA1_Stream5_IRQHandler
+                0x000000000800022c                SysTick_Handler
+                0x000000000800022c                PVD_IRQHandler
+                0x000000000800022c                SDIO_IRQHandler
+                0x000000000800022c                TAMP_STAMP_IRQHandler
+                0x000000000800022c                PendSV_Handler
+                0x000000000800022c                NMI_Handler
+                0x000000000800022c                EXTI3_IRQHandler
+                0x000000000800022c                TIM1_UP_TIM10_IRQHandler
+                0x000000000800022c                I2C3_ER_IRQHandler
+                0x000000000800022c                EXTI0_IRQHandler
+                0x000000000800022c                I2C2_EV_IRQHandler
+                0x000000000800022c                DMA1_Stream2_IRQHandler
+                0x000000000800022c                FPU_IRQHandler
+                0x000000000800022c                UsageFault_Handler
+                0x000000000800022c                DMA2_Stream2_IRQHandler
+                0x000000000800022c                SPI1_IRQHandler
+                0x000000000800022c                TIM1_BRK_TIM9_IRQHandler
+                0x000000000800022c                DMA2_Stream3_IRQHandler
+                0x000000000800022c                USART6_IRQHandler
+                0x000000000800022c                DMA2_Stream0_IRQHandler
+                0x000000000800022c                TIM4_IRQHandler
+                0x000000000800022c                I2C1_EV_IRQHandler
+                0x000000000800022c                DMA1_Stream6_IRQHandler
+                0x000000000800022c                DMA1_Stream1_IRQHandler
+                0x000000000800022c                TIM3_IRQHandler
+                0x000000000800022c                RCC_IRQHandler
+                0x000000000800022c                Default_Handler
+                0x000000000800022c                EXTI15_10_IRQHandler
+                0x000000000800022c                ADC_IRQHandler
+                0x000000000800022c                DMA1_Stream7_IRQHandler
+                0x000000000800022c                SPI5_IRQHandler
+                0x000000000800022c                TIM5_IRQHandler
+                0x000000000800022c                DMA2_Stream7_IRQHandler
+                0x000000000800022c                I2C3_EV_IRQHandler
+                0x000000000800022c                EXTI9_5_IRQHandler
+                0x000000000800022c                RTC_WKUP_IRQHandler
+                0x000000000800022c                SPI2_IRQHandler
+                0x000000000800022c                MemManage_Handler
+                0x000000000800022c                DMA1_Stream0_IRQHandler
+                0x000000000800022c                SVC_Handler
+                0x000000000800022c                EXTI4_IRQHandler
+                0x000000000800022c                WWDG_IRQHandler
+                0x000000000800022c                TIM2_IRQHandler
+                0x000000000800022c                OTG_FS_WKUP_IRQHandler
+                0x000000000800022c                TIM1_TRG_COM_TIM11_IRQHandler
+                0x000000000800022c                EXTI1_IRQHandler
+                0x000000000800022c                USART2_IRQHandler
+                0x000000000800022c                I2C2_ER_IRQHandler
+                0x000000000800022c                DMA2_Stream1_IRQHandler
+                0x000000000800022c                FLASH_IRQHandler
+                0x000000000800022c                DMA2_Stream4_IRQHandler
+                0x000000000800022c                BusFault_Handler
+                0x000000000800022c                USART1_IRQHandler
+                0x000000000800022c                OTG_FS_IRQHandler
+                0x000000000800022c                SPI3_IRQHandler
+                0x000000000800022c                DMA1_Stream4_IRQHandler
+                0x000000000800022c                I2C1_ER_IRQHandler
+                0x000000000800022c                DMA2_Stream6_IRQHandler
+                0x000000000800022c                DMA1_Stream3_IRQHandler
+ *fill*         0x0000000008000232        0x2 
+ .text          0x0000000008000234       0x84 startup.o
+                0x0000000008000234                Reset_Handler
+                0x00000000080002b8                _etext = .
+
+.glue_7         0x00000000080002b8        0x0
+ .glue_7        0x00000000080002b8        0x0 linker stubs
+
+.glue_7t        0x00000000080002b8        0x0
+ .glue_7t       0x00000000080002b8        0x0 linker stubs
+
+.vfp11_veneer   0x00000000080002b8        0x0
+ .vfp11_veneer  0x00000000080002b8        0x0 linker stubs
+
+.v4_bx          0x00000000080002b8        0x0
+ .v4_bx         0x00000000080002b8        0x0 linker stubs
+
+.iplt           0x00000000080002b8        0x0
+ .iplt          0x00000000080002b8        0x0 main.o
+
+.rodata         0x00000000080002b8        0x4
+ *(.rodata)
+ .rodata        0x00000000080002b8        0x4 delay.o
+                0x00000000080002b8                DELAY_MAX
+                0x00000000080002bc                _lddata = LOADADDR (.data)
+
+.rel.dyn        0x00000000080002bc        0x0
+ .rel.iplt      0x00000000080002bc        0x0 main.o
+
+.data           0x0000000020000000        0x4 load address 0x00000000080002bc
+                0x0000000020000000                _sdata = .
+ *(.data)
+ .data          0x0000000020000000        0x4 main.o
+                0x0000000020000000                isLoop
+ .data          0x0000000020000004        0x0 delay.o
+ .data          0x0000000020000004        0x0 vector.o
+ .data          0x0000000020000004        0x0 startup.o
+                0x0000000020000004                _edata = .
+
+.igot.plt       0x0000000020000004        0x0 load address 0x00000000080002c0
+ .igot.plt      0x0000000020000004        0x0 main.o
+
+.bss            0x0000000020000004        0x4 load address 0x00000000080002c0
+                0x0000000020000004                _sbss = .
+ *(.bss)
+ .bss           0x0000000020000004        0x0 main.o
+ .bss           0x0000000020000004        0x4 delay.o
+                0x0000000020000004                delay_counter
+ .bss           0x0000000020000008        0x0 vector.o
+ .bss           0x0000000020000008        0x0 startup.o
+                0x0000000020000008                _ebss = .
+OUTPUT(main.elf elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x0000000000000000       0x39
+ .comment       0x0000000000000000       0x39 main.o
+                                         0x3a (size before relaxing)
+ .comment       0x0000000000000039       0x3a delay.o
+ .comment       0x0000000000000039       0x3a vector.o
+ .comment       0x0000000000000039       0x3a startup.o
+
+.ARM.attributes
+                0x0000000000000000       0x2e
+ .ARM.attributes
+                0x0000000000000000       0x2e main.o
+ .ARM.attributes
+                0x000000000000002e       0x2e delay.o
+ .ARM.attributes
+                0x000000000000005c       0x2e vector.o
+ .ARM.attributes
+                0x000000000000008a       0x2e startup.o
