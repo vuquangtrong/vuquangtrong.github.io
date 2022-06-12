@@ -1,0 +1,17 @@
+cc_library_shared {
+    name: "libinvcase",
+    srcs: [
+        "invcase.c"
+    ],
+    cflags: [
+        "-Wall", 
+        "-Werror"
+    ],
+    header_libs: [
+        "libhardware_legacy_headers"
+    ],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+    ],
+}

@@ -1,0 +1,22 @@
+// This default implementation is loaded if no other device specific modules are
+// present. The exact load order can be seen in libhardware/hardware.c
+// The format of the name is invcase.<hardware>.so
+
+cc_library_shared {
+    name: "invcase.default",
+    relative_install_path: "hw",
+    srcs: [
+        "invcase.c"
+    ],
+    cflags: [
+        "-Wall", 
+        "-Werror"
+    ],
+    header_libs: [
+        "libhardware_headers"
+    ],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+    ],
+}
