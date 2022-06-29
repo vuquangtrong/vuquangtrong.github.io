@@ -1,0 +1,16 @@
+cc_binary {
+    name: "invcase_hidl_test",
+    defaults: ["hidl_defaults"],
+    proprietary: true,
+    relative_install_path: "hw",
+    srcs: [
+        "invcase_hidl_test.cpp"
+    ],
+    shared_libs: [
+        "android.hardware.invcase@1.0",
+        "libhidlbase",
+        "libhidltransport",
+        "libutils",
+        "liblog",
+    ],
+}

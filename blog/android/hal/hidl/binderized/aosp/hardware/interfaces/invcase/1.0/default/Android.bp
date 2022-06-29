@@ -1,0 +1,19 @@
+cc_binary {
+    name: "android.hardware.invcase@1.0-service",
+    defaults: ["hidl_defaults"],
+    vendor: true,
+    relative_install_path: "hw",
+    srcs: [
+        "service.cpp",
+        "Invcase.cpp"
+    ],
+    init_rc: ["android.hardware.invcase@1.0-service.rc"],
+    shared_libs: [
+        "android.hardware.invcase@1.0",
+        "libhidlbase",
+        "libhidltransport",
+        "liblog",
+        "libutils",
+    ],
+    vintf_fragments: ["android.hardware.invcase@1.0.xml"],
+}
