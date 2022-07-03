@@ -346,7 +346,13 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc" checked
+        onchange='(function(){
+          var _pid = "__nav_1".slice(0, -2);
+          var _pel = document.getElementById(_pid);
+          _pel.checked  = false;
+        })()'
+      >
       
       
         
@@ -386,6 +392,13 @@
         <li class="md-nav__item">
   <a href="#projects" class="md-nav__link">
      Projects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-stats" class="md-nav__link">
+     GitHub Stats
   </a>
   
 </li>
@@ -465,6 +478,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/" class="md-nav__link">
+        Recent posts
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -537,6 +562,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/" class="md-nav__link">
+        STM32 ARM Cortex-M Microcontrollers
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -572,6 +609,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/intro/" class="md-nav__link">
+        Introduction to ARM Cortex-M & STM32 MCUs
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -616,6 +665,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/prepare/" class="md-nav__link">
+        Prepare boards and equipment
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -658,6 +719,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/tools/" class="md-nav__link">
+        Tools for developing, programming and debugging
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -702,6 +775,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/docs/" class="md-nav__link">
+        Documents for programming a microcontroller
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -744,6 +829,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/blink/" class="md-nav__link">
+        Blink - say Hello to the World
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -788,6 +885,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/semihosting/" class="md-nav__link">
+        ARM Semihosting - native but slow Debugging
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -830,6 +939,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/swv/" class="md-nav__link">
+        Serial Wire Viewer (SWD + SWO) - fast & native Debugging
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -874,6 +995,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/assembly/" class="md-nav__link">
+        GCC Inline Assembly code
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -916,6 +1049,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/stack-memory/" class="md-nav__link">
+        Stack Memory
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -960,6 +1105,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/exception/" class="md-nav__link">
+        Exception and Interrupt
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1002,6 +1159,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/fault-handler/" class="md-nav__link">
+        Fault Handlers
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1046,6 +1215,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/system-call-exception/" class="md-nav__link">
+        Exceptions for System-level Services
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1088,6 +1269,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/task-scheduler/" class="md-nav__link">
+        A simple implementation of a Task Scheduler
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1132,6 +1325,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/compilation/" class="md-nav__link">
+        Compilation process with Linker and Startup code
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1175,6 +1380,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/segger-rtt/" class="md-nav__link">
+        SEGGER Real-Time Transfer - very fast Debugging
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1217,6 +1434,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/stm32/segger-systemview/" class="md-nav__link">
+        J-Link SysView - Record and Visualize System Activities
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1310,6 +1539,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/freertos/overview/" class="md-nav__link">
+        RTOS Overview and FreeRTOS introduction
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1352,6 +1593,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/freertos/blink/" class="md-nav__link">
+        Blink - say Hello to the World
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1396,6 +1649,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/freertos/memory/" class="md-nav__link">
+        Dynamic Memory Management
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1438,6 +1703,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/freertos/reentrant/" class="md-nav__link">
+        Reentrancy in Newlib
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1482,6 +1759,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/freertos/segger-systemview/" class="md-nav__link">
+        SEGGER SystemView - Record and Visualize System Activities
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1525,6 +1814,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/freertos/notification/" class="md-nav__link">
+        Notifications - Inter-task Communication and Synchronization
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1567,6 +1868,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/freertos/priority/" class="md-nav__link">
+        Priority - a key for Scheduler
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1658,6 +1971,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/android/build-aosp/" class="md-nav__link">
+        Build Android system and Kernel images
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1693,6 +2018,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/android/build-aosp/notes/" class="md-nav__link">
+        AOSP Build Notes
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1743,6 +2080,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/android/kernel-module/" class="md-nav__link">
+        Kernel Module
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1851,6 +2200,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/android/hal/classical/legacy/" class="md-nav__link">
+        Legacy HAL
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1893,6 +2254,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/android/hal/classical/conventional/" class="md-nav__link">
+        Conventional HAL
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -1950,6 +2323,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/android/hal/hidl/" class="md-nav__link">
+        HAL Interface Definition Language
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1985,6 +2370,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/android/hal/hidl/binderized/" class="md-nav__link">
+        Binderized HAL (HIDL)
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -2110,6 +2507,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/arduino/esp32/introduction/" class="md-nav__link">
+        Getting started with ESP32 Development Boards
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -2196,6 +2605,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/book/v-model/" class="md-nav__link">
+        The V-Model in Software Development
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -2285,6 +2706,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/c-cpp/compilation/" class="md-nav__link">
+        Compilation Process
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -2327,6 +2760,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/c-cpp/cross-compilation/" class="md-nav__link">
+        Cross-Compilation
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -2371,6 +2816,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/c-cpp/library-linking/" class="md-nav__link">
+        Library Linking
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -2414,6 +2871,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/c-cpp/print-struct-using-macro/" class="md-nav__link">
+        Use Macro to Print a Struct with its field
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -2456,6 +2925,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/c-cpp/notes/" class="md-nav__link">
+        Notes for C and C++ Programming
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -2515,6 +2996,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/jetson/" class="md-nav__link">
+        NVIDIA Jetson
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -2550,6 +3043,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/jetson/linux-for-tegra/" class="md-nav__link">
+        Understand Linux for Tegra (L4T) system package
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -2593,6 +3098,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/jetson/custom-image/" class="md-nav__link">
+        Debootstrap a minimal Image for Jetson boards
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -2686,6 +3203,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/linux/byobu/" class="md-nav__link">
+        Byobu - Multiple windows in Terminal
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -2728,6 +3257,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/linux/samba/" class="md-nav__link">
+        Samba - Sharing Files in a Network
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -2772,6 +3313,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/linux/shell-script/" class="md-nav__link">
+        Shell Scripts
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -2814,6 +3367,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/linux/system-call/" class="md-nav__link">
+        User-space, Kernel-space, and System Calls
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -2858,6 +3423,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/linux/bootup-sequence/" class="md-nav__link">
+        Bootup Sequence
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -2901,6 +3478,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/linux/tweaks/" class="md-nav__link">
+        Tweaks for a better performance
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -2943,6 +3532,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/linux/notes/" class="md-nav__link">
+        Notes for working in Linux
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3020,6 +3621,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/" class="md-nav__link">
+        Raspberry Pi
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -3055,6 +3668,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/headless-mode/" class="md-nav__link">
+        Guide to set up Headless mode
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3099,6 +3724,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/compile-ffmpeg/" class="md-nav__link">
+        Compile FFmpeg with Hardware Acceleration
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3141,6 +3778,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/backup-sdcard/" class="md-nav__link">
+        Backup and Restore SDCard content
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3185,6 +3834,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/check-camera/" class="md-nav__link">
+        Diagnostic Camera on I2C Bus
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3227,6 +3888,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/resource-usage/" class="md-nav__link">
+        Monitor the Resource Usage of a Process
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3271,6 +3944,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/set-up-camera/" class="md-nav__link">
+        Set up Camera and test Video Encoders' Performance
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3313,6 +3998,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/stream-ffmpeg-hls-dash/" class="md-nav__link">
+        Camera live streaming using HLS/DASH
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3357,6 +4054,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/stream-picamera-mjpeg/" class="md-nav__link">
+        Camera live streaming using MJPEG format
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3399,6 +4108,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/stream-picamera-h264/" class="md-nav__link">
+        Camera live streaming using H264 format
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3443,6 +4164,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/ubuntu/" class="md-nav__link">
+        Run Ubuntu distro
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3485,6 +4218,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/pi/notes/" class="md-nav__link">
+        Notes for Raspberry Pi
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3568,6 +4313,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/ros/beginner-guide-1/" class="md-nav__link">
+        Beginner Guide 1 - Definitions
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3610,6 +4367,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/ros/beginner-guide-2/" class="md-nav__link">
+        Beginner Guide 2 - Create a package
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3697,6 +4466,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/virtual-machine/docker/" class="md-nav__link">
+        Docker - Platform of Runnable Containers
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3739,6 +4520,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/virtual-machine/hyper-v/" class="md-nav__link">
+        Hyper-V on Windows
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3783,6 +4576,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/virtual-machine/serial-ports/" class="md-nav__link">
+        Use Serial Ports on Virtual Machines
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3825,6 +4630,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/virtual-machine/notes/" class="md-nav__link">
+        Notes for Virtual Machines
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -3910,6 +4727,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/yocto/introduction/" class="md-nav__link">
+        Introduction of Yocto Project
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3953,6 +4782,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/yocto/concepts/" class="md-nav__link">
+        Yocto Project Concepts
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -3995,6 +4836,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/yocto/raspberry-pi/" class="md-nav__link">
+        Build minial image for Raspberry Pi
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4088,6 +4941,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/site-setup/create-site-project/" class="md-nav__link">
+        A Guide to Create a Personal Site
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -4130,6 +4995,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/site-setup/mkdocs-plugins/" class="md-nav__link">
+        Additional Features using MkDocs Plugins
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4174,6 +5051,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/site-setup/markdown-syntax/" class="md-nav__link">
+        Syntaxes for Writing Markdown Documents
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -4216,6 +5105,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/site-setup/handle-missing-page/" class="md-nav__link">
+        Hanlde Page Not Found (404) error
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4260,6 +5161,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/site-setup/add-new-features/" class="md-nav__link">
+        Add Tags, Recent Post and new Features to my Blog site
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -4303,6 +5216,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/site-setup/print-to-pdf/" class="md-nav__link">
+        Print Pages to PDF files
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -4345,6 +5270,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blog/site-setup/protected-page/" class="md-nav__link">
+        [Protected] A Password-proteted private page!
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4414,6 +5351,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -4449,6 +5398,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/gnss-base/" class="md-nav__link">
+        Create a GNSS Base Station
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4492,6 +5453,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-base/" class="md-nav__link">
+        Set up a Lidar Base station for detecting vehicles
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4558,6 +5531,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/" class="md-nav__link">
+        Lidar Mapping (PoC)
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -4593,6 +5578,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/issues/" class="md-nav__link">
+        Issue List
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4637,6 +5634,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/reference/" class="md-nav__link">
+        Livox's Reference Project
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -4679,6 +5688,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4723,6 +5744,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/design/" class="md-nav__link">
+        System Design
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -4765,6 +5798,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/gnss/" class="md-nav__link">
+        GNSS Module using Unicorecomm boards
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4809,6 +5854,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/imu/" class="md-nav__link">
+        IMU Module using DK-20789
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -4851,6 +5908,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/base/" class="md-nav__link">
+        Base Stattion on Raspberry Pi 3 B+ board
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4895,6 +5964,18 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/rover/" class="md-nav__link">
+        Rover system on a Jetson Nano Dev Kit
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -4937,6 +6018,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projects/lidar-mapping-poc/notes/" class="md-nav__link">
+        Notes for Jetson Nano
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -4995,6 +6088,18 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tags/" class="md-nav__link">
+        Tags
+      </a>
+    </li>
+  
+
             
           
         </ul>
@@ -36275,7 +37380,7 @@
                     <span>
                     
                         Last update:
-                        2022-06-12
+                        2022-07-03
                     
                     </span>
                 </p>
@@ -36355,6 +37460,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#github-stats" class="md-nav__link">
+     GitHub Stats
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -36364,17 +37476,6 @@
 
     
     <style>
-    /*
-    body {
-        background-image: url('/assets/background.png');
-        background-blend-mode: difference;
-        background-size: contain;
-    }
-    */
-    .md-header, 
-    .md-tabs {
-        background-color: unset;
-    }
     .md-typeset .cover {
         display: none;
     }
@@ -36385,48 +37486,31 @@
     .md-typeset h2 {
         color: navy;
     }
-    .md-typeset .cards .card {
-        padding: 1em;
-    }
-    .md-typeset .cards .col:first-of-type {
-        margin-left: -1em;
-    }
-    .md-typeset .cards .col:last-of-type {
-        margin-right: -1em;
-    }
-    .md-typeset .cards .col.github:first-of-type {
-        margin-left: -1.5em;
-    }
-    .md-typeset .cards .col.github {
-        margin-left: -0.5em;
-    }
-    .md-typeset .cards .card h2 {
-        margin-top: 0;
-    }
 </style>
 
 <h1 id="code-inside-out">Code Inside Out<a class="headerlink" href="#code-inside-out" title="Permanent link">#</a></h1>
 <p>Interesting stuff in Embedded Systems and IoT Applications.<br />
 From hardware to cloud applications. Step by step.
 (ﾉ ◕ ヮ ◕)ﾉ*:・ﾟ ✧</p>
-<div class="row cards">
-<div class="col card">
+<div class="row">
+<div class="col">
 <h2 id="blog"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 22a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12Z"/></svg></span> Blog<a class="headerlink" href="#blog" title="Permanent link">#</a></h2>
 <p>Each post is what I&rsquo;ve learned, and I wrote them down to share. Hope you&rsquo;ll find something interesting there.</p>
 <p><a class="md-button" href="blog/">Read news</a></p>
 </div>
-<div class="col card">
+<div class="col">
 <h2 id="projects"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5V9M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m.12 13.5 3.74 3.74 1.42-1.41-2.33-2.33 2.33-2.33-1.42-1.41-3.74 3.74m11.16 0-3.74-3.74-1.42 1.41 2.33 2.33-2.33 2.33 1.42 1.41 3.74-3.74Z"/></svg></span> Projects<a class="headerlink" href="#projects" title="Permanent link">#</a></h2>
 <p>A list of my projects which are done for learning and practicing in free time. Wanna give me a hand ?! Let&rsquo;s do it together.</p>
 <p><a class="md-button" href="projects/">See projects</a></p>
 </div>
 </div>
-<div class="row cards">
-<div class="col github">
-<p><img alt="" src="https://github-readme-stats.vercel.app/api?username=vuquangtrong&amp;count_private=true&amp;show_icons=true&amp;hide_border=true&amp;custom_title=GitHub%20Stats&amp;title_color=000080" /></p>
+<h2 id="github-stats"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> GitHub Stats<a class="headerlink" href="#github-stats" title="Permanent link">#</a></h2>
+<div class="row">
+<div class="col">
+<p><img alt="" src="https://github-readme-stats.vercel.app/api?username=vuquangtrong&amp;count_private=true&amp;show_icons=true&amp;hide_border=true&amp;hide_title=true" /></p>
 </div>
-<div class="col github">
-<p><img alt="" src="https://github-readme-stats.vercel.app/api/top-langs/?username=vuquangtrong&amp;layout=compact&amp;hide=html,autoit&amp;hide_border=true&amp;langs_count=8&amp;title_color=000080" /></p>
+<div class="col">
+<p><img alt="" src="https://github-readme-stats.vercel.app/api/top-langs/?username=vuquangtrong&amp;layout=compact&amp;langs_count=8&amp;hide=html,autoit&amp;hide_border=true&amp;hide_title=true" /></p>
 </div>
 </div>
 <blockquote>
