@@ -1,0 +1,27 @@
+cc_binary {
+    name: "android.hardware.invcase-service",
+    vendor: true,
+    relative_install_path: "hw",
+    init_rc: ["android.hardware.invcase-service.rc"],
+    vintf_fragments: ["android.hardware.invcase-service.xml"],
+
+    srcs: [
+        "Invcase.cpp",
+        "service.cpp",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+
+    shared_libs: [
+        "libbase",
+        "liblog",
+        "libhardware",
+        "libbinder_ndk",
+        "libbinder",
+        "libutils",
+        "android.hardware.invcase-V1-ndk_platform",
+    ],
+}

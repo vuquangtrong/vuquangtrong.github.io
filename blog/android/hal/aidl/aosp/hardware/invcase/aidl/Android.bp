@@ -1,0 +1,15 @@
+aidl_interface {
+    name: "android.hardware.invcase",
+    vendor: true,
+    srcs: ["android/hardware/invcase/*.aidl"],
+    stability: "vintf",
+    owner: "vqtrong",
+    backend: {
+        cpp: {
+            enabled: false,
+        },
+        java: {
+            sdk_version: "module_current",
+        },
+    },
+}
